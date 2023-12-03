@@ -75,6 +75,13 @@ a {
     color: white;
 }
 
+.app-name {
+    font-weight: bold;
+}
+.app-description {
+    font-size: 90%;
+}
+
 .note {
     color: #808080;
     font-size: 90%;
