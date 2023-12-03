@@ -1,0 +1,11 @@
+h3 {
+    padding: 0;
+    margin: 0;
+    background-color: purple;
+    color: white;
+}
+
+p {
+    margin: 2px;
+    padding: 0;
+}

@@ -1,0 +1,22 @@
+body {
+    font-family: "Liberation Sans", sans-serif;
+    padding: 0;
+    margin-left: 0;
+    margin-top: 10px;
+    background: black;
+}
+
+#top-screen {
+    background-color: white;
+    width: 400px;
+    height: 216px;
+    overflow: hidden;
+}
+
+#bottom-screen {
+    background-color: white;
+    width: 320px;
+    height: 240px;
+    margin-left: 39.4667px;
+    overflow: hidden;
+}
