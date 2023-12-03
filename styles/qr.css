@@ -1,0 +1,16 @@
+#qr {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+
+#text {
+    width: 90%;
+}
+
+#bottom-screen {
+    text-align: center;
+}
