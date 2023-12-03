@@ -100,8 +100,10 @@ setInterval(function (){
 })
 
 // This prevents the browser from moving the page using the arrow keys
-function prevent(){
-    void(0);
+function prevent(event){
+    if(event.keyCode === 8) return true; //backspace
+
+    event.preventDefault();
     return false;
 }
 document.onkeydown = prevent;
