@@ -18,7 +18,7 @@ window.addEventListener("load",function (){
     function jump(){
         if(!active) return;
         if(jumpPower > 0) return;
-        jumpPower = 120;
+        jumpPower = 130;
     }
 
     var spikes = [
