@@ -2,6 +2,13 @@ function getZoom(){
     return (( window.outerWidth - 10 ) / window.innerWidth);
 }
 
+function randf(min, max) {
+    return Math.random() * (max - min) + min;
+}
+function randi(min, max) {
+    return Math.floor(Math.random() * (Math.ceil(min) - Math.floor(max)) + min);
+}
+
 function lerp(start, end, amt){
     return (1-amt)*start+amt*end
 }
