@@ -15,6 +15,7 @@ window.addEventListener("load",function (){
     var active = true;
 
     function jump(){
+        if(!active) return;
         if(jumpPower > 0) return;
         jumpPower = 100;
     }
