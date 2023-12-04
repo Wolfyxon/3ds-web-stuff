@@ -6,6 +6,12 @@ function lerp(start, end, amt){
     return (1-amt)*start+amt*end
 }
 
+// Make sure to use with await!
+function sleep(s) {
+    return new Promise(resolve => setTimeout(resolve, s*1000));
+}
+
+
 // array.includes and string.includes does not work on the 3DS browser
 function includes(container,search){
     if(Array.isArray(container)){
