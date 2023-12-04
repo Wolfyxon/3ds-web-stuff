@@ -49,7 +49,7 @@ window.addEventListener("load",function (){
     setInterval(function (){
 
         if(jumpPower > 0){
-            jumpPower -= 3;
+            jumpPower -= 2;
         }
         yOffset = lerp(yOffset,-jumpPower,0.1)
 
