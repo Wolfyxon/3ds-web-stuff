@@ -43,7 +43,7 @@ window.addEventListener("load",function (){
     var prevSpikeOffset = 0;
     setInterval(function (){
         addSpike()
-    },1000)
+    },2000)
 
     // Main loop
     setInterval(function (){
