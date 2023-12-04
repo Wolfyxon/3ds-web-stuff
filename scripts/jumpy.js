@@ -63,7 +63,7 @@ window.addEventListener("load",function (){
                 i--;
             }
             spikes[i] -= 3;
-            ctx.drawImage(imgSpike,i+x,100, 40,50)
+            ctx.drawImage(imgSpike,x,100, 40,50)
         }
         ctx.drawImage(currentSprite,10,100+yOffset, 40,50)
     })
