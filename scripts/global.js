@@ -2,6 +2,10 @@ function getZoom(){
     return (( window.outerWidth - 10 ) / window.innerWidth);
 }
 
+function lerp(start, end, amt){
+    return (1-amt)*start+amt*end
+}
+
 // array.includes and string.includes does not work on the 3DS browser
 function includes(container,search){
     if(Array.isArray(container)){
