@@ -5,6 +5,7 @@ window.addEventListener("load",function (){
     const imgStanding = document.getElementById("img-standing")
     const imgRun1 = document.getElementById("img-run1")
     const imgRun2 = document.getElementById("img-run2")
+    const imgSpike = document.getElementById("img-spike")
 
     var currentSprite = imgStanding;
 
@@ -17,7 +18,16 @@ window.addEventListener("load",function (){
     function jump(){
         if(!active) return;
         if(jumpPower > 0) return;
-        jumpPower = 100;
+        jumpPower = 120;
+    }
+
+    var spikes = [
+        // x
+    ]
+
+    function addSpike(offset){
+        if(!offset) offset = 0;
+        spikes.push(400+offset)
     }
 
     // Sprite updating
@@ -30,15 +40,32 @@ window.addEventListener("load",function (){
 
     },100)
 
+    var prevSpikeOffset = 0;
+    setInterval(function (){
+        var offset = randi(-50,50);
+        addSpike(offset)
+    },1000)
+
     // Main loop
     setInterval(function (){
 
         if(jumpPower > 0){
-            jumpPower -= 1;
+            jumpPower -= 3;
         }
         yOffset = lerp(yOffset,-jumpPower,0.1)
 
+        if(isBtnPressed("a") || isBtnPressed("up")) jump()
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for(var i=0;i<spikes.length;i++){
+            const x = spikes[i]
+            if(x < -10){
+                spikes.splice(i, 1);
+                i--;
+            }
+            spikes[i] -= 1;
+            ctx.drawImage(imgSpike,i+x,100, 40,50)
+        }
         ctx.drawImage(currentSprite,10,100+yOffset, 40,50)
     })
 })
