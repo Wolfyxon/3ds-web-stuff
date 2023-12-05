@@ -16,14 +16,10 @@ window.addEventListener("load",function (){
         btn.innerText = "Clicked "+clickCount+" times"
     })
 
-    window.addEventListener("keydown",function (e){
-        keyTxt.innerText = "Key code: "+e.keyCode;
-    })
-
     setInterval(function (){
         gamepadTxt.innerText = "Pressed: "+getPressedBtns();
         justPressedTxt.innerText = "Just pressed: "+justPressed;
-
+        keyTxt.innerText = "Key code: "+pressedKeycodes;
         scrollPos.innerText = "Scroll pos: " + window.scrollX + " " + window.scrollY;
         const zoom = (( window.outerWidth - 10 ) / window.innerWidth) * 100;
         zoomPos.innerText = "Zoom: " + window.outerWidth + " " +window.outerHeight + " " + zoom + "%";
