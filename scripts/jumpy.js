@@ -23,6 +23,7 @@ window.addEventListener("load",function (){
 
     var jumpyRun1 = false;
     var active = false;
+    var resetCooldown = false;
 
     function jump(){
         if(!active) return;
@@ -86,7 +87,11 @@ window.addEventListener("load",function (){
                 if(x < jumpyWidth && -yOffset<jumpyHeight){
                     currentSprite = imgDead
                     active = false;
+                    resetCooldown = true;
                     gameoverTxt.innerText = "Game over"
+                    setTimeout(function (){
+                        resetCooldown = false;
+                    },200)
                 }
 
                 spikes[i] -= 3
