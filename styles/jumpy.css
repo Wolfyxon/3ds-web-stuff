@@ -8,6 +8,8 @@
     position: absolute;
     left: 100px;
     top: 70px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
 }
 
 #manual {
