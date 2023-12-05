@@ -66,7 +66,10 @@ window.addEventListener("load",function (){
         }
         yOffset = lerp(yOffset,-jumpPower,0.1)
 
-        if(isBtnPressed("a") || isBtnPressed("up")) jump()
+        if(isBtnPressed("a") || isBtnPressed("up")){
+            if(!active) reset()
+            jump()
+        }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for(var i=0;i<spikes.length;i++){
