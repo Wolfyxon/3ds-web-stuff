@@ -3,6 +3,7 @@ window.addEventListener("load",function (){
     const ctx = canvas.getContext("2d");
 
     const imgStanding = document.getElementById("img-standing")
+    const imgDead = document.getElementById("img-dead")
     const imgRun1 = document.getElementById("img-run1")
     const imgRun2 = document.getElementById("img-run2")
     const imgSpike = document.getElementById("img-spike")
