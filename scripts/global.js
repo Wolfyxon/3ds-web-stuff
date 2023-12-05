@@ -70,10 +70,10 @@ function getPressedBtns(){
     checkAndAdd(8,"START")
     checkAndAdd(9,"SELECT")
 
-    checkAndAdd(12,"Up")
-    checkAndAdd(13,"Down")
-    checkAndAdd(14,"Left")
-    checkAndAdd(15,"Right")
+    checkAndAdd(12,"Up",38)
+    checkAndAdd(13,"Down",40)
+    checkAndAdd(14,"Left",37)
+    checkAndAdd(15,"Right",39)
 
     return res;
 }
