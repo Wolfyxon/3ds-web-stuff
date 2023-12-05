@@ -8,6 +8,11 @@ a {
     text-align: center;
 }
 
+#bottom-screen {
+    color: white;
+    background-color: #2b2b2e;
+}
+
 #title-zone {
     border-radius: 5%;
     background-color: #4a3c85;
@@ -88,6 +93,7 @@ a {
 }
 
 #tab-news article {
+    color: black;
     border-top: 5px solid black;
 }
 
