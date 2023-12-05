@@ -43,7 +43,7 @@ function getGamepad(){
 
 var justPressed = []
 var lastPressed = []
-
+var pressedKeycodes = [] // for keyboard
 
 function getPressedBtns(){
     const gp = getGamepad();
@@ -110,6 +110,14 @@ setInterval(function (){
         }
     }
     lastPressed = curPressed
+})
+
+window.addEventListener("keydown",function(e){
+    pressedKeycodes.push(e.keyCode)
+})
+
+window.addEventListener("keyup",function(e){
+    pressedKeycodes.push(e.keyCode)
 })
 
 // This prevents the browser from moving the page using the arrow keys
