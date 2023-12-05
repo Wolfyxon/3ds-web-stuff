@@ -50,6 +50,22 @@ window.addEventListener("load",function (){
         spikes.push(400+offset)
     }
 
+    var time = 0;
+    var highScore = 0;
+
+    setInterval(function (){
+        if(!active) return;
+        time += 1;
+        if(time > highScore) highScore = time;
+
+        const timeValTxt = new Date(time * 1000).toISOString();
+        const highTimeValTxt = new Date(highScore * 1000).toISOString();
+
+        timeText.innerText = timeValTxt;
+        highScoreText.innerText = highTimeValTxt;
+
+    },1000)
+
     // Sprite updating
     setInterval(function (){
         if(!active) return;
