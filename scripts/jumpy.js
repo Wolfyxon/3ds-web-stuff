@@ -75,7 +75,14 @@ window.addEventListener("load",function (){
                 spikes.splice(i, 1);
                 i--;
             }
-            if(active) spikes[i] -= 3;
+            if(active){
+                if(x < jumpyWidth && -yOffset<jumpyHeight){
+                    currentSprite = imgDead
+                    active = false;
+                }
+
+                spikes[i] -= 3
+            };
             ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
         }
         ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
