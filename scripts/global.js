@@ -124,6 +124,7 @@ window.addEventListener("keyup",function(e){
 // This prevents the browser from moving the page using the arrow keys
 function prevent(event){
     if(event.keyCode === 8) return true; //backspace
+    if(event.keyCode === 116) return true; //f5
 
     event.preventDefault();
     return false;
