@@ -59,11 +59,11 @@ window.addEventListener("load",function (){
         time += 1;
         if(time > highScore) highScore = time;
 
-        const timeValTxt = new Date(time * 1000).toISOString();
-        const highTimeValTxt = new Date(highScore * 1000).toISOString();
+        const timeValTxt = new Date(time * 1000).toISOString().slice(11,19);
+        const highTimeValTxt = new Date(highScore * 1000).toISOString().slice(11,19);
 
-        timeText.innerText = timeValTxt;
-        highScoreText.innerText = highTimeValTxt;
+        timeText.innerText = "Time: "  + timeValTxt;
+        highScoreText.innerText = "High score: " + highTimeValTxt;
 
     },1000)
 
