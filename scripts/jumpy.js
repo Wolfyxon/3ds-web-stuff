@@ -35,6 +35,7 @@ window.addEventListener("load",function (){
     }
 
     function reset(){
+        time = 0;
         gameoverTxt.innerText = ""
         spikes = [];
         currentSprite = imgRun1;
