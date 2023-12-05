@@ -3,6 +3,9 @@ window.addEventListener("load",function (){
     const ctx = canvas.getContext("2d");
 
     const gameoverTxt = document.getElementById("gameover")
+    const timeText = document.getElementById("text")
+    const highScoreText = document.getElementById("high-score")
+
 
     const imgStanding = document.getElementById("img-standing")
     const imgDead = document.getElementById("img-dead")
