@@ -2,6 +2,8 @@ window.addEventListener("load",function (){
     const canvas = document.getElementById("canv")
     const ctx = canvas.getContext("2d");
 
+    const gameoverTxt = document.getElementById("gameover")
+
     const imgStanding = document.getElementById("img-standing")
     const imgDead = document.getElementById("img-dead")
     const imgRun1 = document.getElementById("img-run1")
@@ -29,6 +31,7 @@ window.addEventListener("load",function (){
     }
 
     function reset(){
+        gameoverTxt.innerText = ""
         spikes = [];
         currentSprite = imgRun1;
         active = true;
@@ -67,6 +70,7 @@ window.addEventListener("load",function (){
         yOffset = lerp(yOffset,-jumpPower,0.1)
 
         if(isBtnPressed("a") || isBtnPressed("up")){
+            if(resetCooldown) return;
             if(!active) reset()
             jump()
         }
@@ -82,6 +86,7 @@ window.addEventListener("load",function (){
                 if(x < jumpyWidth && -yOffset<jumpyHeight){
                     currentSprite = imgDead
                     active = false;
+                    gameoverTxt.innerText = "Game over"
                 }
 
                 spikes[i] -= 3
