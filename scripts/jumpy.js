@@ -53,7 +53,6 @@ window.addEventListener("load",function (){
 
     // Main loop
     setInterval(function (){
-
         if(jumpPower > 0){
             jumpPower -= 2;
         }
@@ -68,7 +67,7 @@ window.addEventListener("load",function (){
                 spikes.splice(i, 1);
                 i--;
             }
-            spikes[i] -= 3;
+            if(active) spikes[i] -= 3;
             ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
         }
         ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
