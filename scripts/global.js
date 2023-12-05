@@ -51,7 +51,6 @@ function getPressedBtns(){
     var res = [];
 
     function checkAndAdd(index, name, altKeyCode){
-        console.log(altKeyCode)
         if( (altKeyCode && includes(pressedKeycodes,altKeyCode)) || p.buttons[index] !== 1 ){
             res.push(name)
         }
