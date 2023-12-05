@@ -87,6 +87,10 @@ a {
     font-size: 90%;
 }
 
+#tab-news article {
+    border-top: 5px solid black;
+}
+
 #tab-news article h3 {
     color: darkred;
 }
