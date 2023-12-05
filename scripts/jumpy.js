@@ -27,6 +27,12 @@ window.addEventListener("load",function (){
         jumpPower = 130;
     }
 
+    function reset(){
+        spikes = [];
+        currentSprite = imgRun1;
+        active = true;
+    }
+
     var spikes = [
         // x
     ]
@@ -72,5 +78,6 @@ window.addEventListener("load",function (){
             ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
         }
         ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
+
     })
 })
