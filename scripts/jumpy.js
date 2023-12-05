@@ -48,6 +48,7 @@ window.addEventListener("load",function (){
 
     var prevSpikeOffset = 0;
     setInterval(function (){
+        if(!active) return;
         addSpike()
     },2000)
 
