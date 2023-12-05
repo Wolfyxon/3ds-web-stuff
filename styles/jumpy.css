@@ -10,6 +10,10 @@
     top: 70px;
 }
 
+#manual {
+    text-align: center;
+}
+
 #stats {
     text-align: center;
 }
