@@ -108,7 +108,7 @@ window.addEventListener("load",function (){
                     currentSprite = imgDead
                     active = false;
                     resetCooldown = true;
-                    gameoverTxt.innerText = "Game over"
+                    gameoverTxt.innerText = "GAME OVER"
                     setTimeout(function (){
                         resetCooldown = false;
                     },200)
