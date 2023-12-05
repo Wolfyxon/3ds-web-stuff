@@ -20,7 +20,7 @@ window.addEventListener("load",function (){
     var yOffset = 0;
 
     var jumpyRun1 = false;
-    var active = true;
+    var active = false;
 
     function jump(){
         if(!active) return;
