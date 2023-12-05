@@ -9,6 +9,12 @@ window.addEventListener("load",function (){
 
     var currentSprite = imgStanding;
 
+    const spikeHeight = 50;
+    const spikeWidth = 40;
+
+    const jumpyHeight = 50;
+    const jumpyWidth = 40;
+
     var jumpPower = 0;
     var yOffset = 0;
 
@@ -63,8 +69,8 @@ window.addEventListener("load",function (){
                 i--;
             }
             spikes[i] -= 3;
-            ctx.drawImage(imgSpike,x,100, 40,50)
+            ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
         }
-        ctx.drawImage(currentSprite,10,100+yOffset, 40,50)
+        ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
     })
 })
