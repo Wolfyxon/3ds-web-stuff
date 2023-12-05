@@ -1,7 +1,3 @@
-function getZoom(){
-    return (( window.outerWidth - 10 ) / window.innerWidth);
-}
-
 function randf(min, max) {
     return Math.random() * (max - min) + min;
 }
