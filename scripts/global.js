@@ -47,11 +47,10 @@ var pressedKeycodes = [] // for keyboard
 
 function getPressedBtns(){
     const gp = getGamepad();
-    if(gp === undefined) return []
     var res = [];
 
     function checkAndAdd(index, name, altKeyCode){
-        if( (altKeyCode && includes(pressedKeycodes,altKeyCode)) || p.buttons[index] !== 1 ){
+        if( (altKeyCode && includes(pressedKeycodes,altKeyCode)) || (gp && gp.buttons[index] !== 1) ){
             res.push(name)
         }
     }
