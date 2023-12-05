@@ -20,3 +20,8 @@ body {
     margin-left: 39.4667px;
     overflow: hidden;
 }
+
+.note {
+    color: #808080;
+    font-size: 90%;
+}
