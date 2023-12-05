@@ -113,11 +113,12 @@ setInterval(function (){
 })
 
 window.addEventListener("keydown",function(e){
+    if(includes(pressedKeycodes,e.keyCode)) return;
     pressedKeycodes.push(e.keyCode)
 })
 
 window.addEventListener("keyup",function(e){
-    pressedKeycodes.push(e.keyCode)
+    pressedKeycodes = []
 })
 
 // This prevents the browser from moving the page using the arrow keys
