@@ -41,6 +41,10 @@ function getGamepad(){
     return navigator.webkitGetGamepads()[0];
 }
 
+var justPressed = []
+var lastPressed = []
+
+
 function getPressedBtns(){
     const gp = getGamepad();
     if(gp === undefined) return []
@@ -82,7 +86,6 @@ function isBtnPressed(name){
     return false;
 }
 
-var justPressed = []
 
 function isBtnJustPressed(name){
     for(var i=0;i<justPressed.length;i++){
@@ -93,7 +96,7 @@ function isBtnJustPressed(name){
     return false;
 }
 
-var lastPressed = []
+
 setInterval(function (){
     window.scrollTo(40,227); // this makes sure the screen is always centered, however it still requires the user to adjust the zoom
 
