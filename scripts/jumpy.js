@@ -96,6 +96,11 @@ window.addEventListener("load",function (){
             if(!active) reset()
             jump()
         }
+        if(isBtnPressed("down")){
+            gravity = 30;
+        } else {
+            gravity = 2;
+        }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for(var i=0;i<spikes.length;i++){
