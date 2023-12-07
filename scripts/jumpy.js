@@ -21,6 +21,7 @@ window.addEventListener("load",function (){
     const jumpyHeight = 50;
     const jumpyWidth = 40;
 
+    var gravity = 2;
     var jumpPower = 0;
     var yOffset = 0;
 
@@ -86,7 +87,7 @@ window.addEventListener("load",function (){
     // Main loop
     setInterval(function (){
         if(jumpPower > 0){
-            jumpPower -= 2;
+            jumpPower -= gravity;
         }
         yOffset = lerp(yOffset,-jumpPower,0.1)
 
