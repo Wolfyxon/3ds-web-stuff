@@ -142,7 +142,7 @@ document.onkeyup = prevent;
 // You can't access console logs on the 3DS, so it will show an alert when there's an error
 if(is3DS()){
     window.addEventListener("error", function(e) {
-        alert(e.message);
+        alert(e.filename+":"+e.lineno+" "+e.message);
         return false;
     })
 }
