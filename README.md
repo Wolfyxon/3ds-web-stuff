@@ -4,6 +4,9 @@ A work-in-progress collection of games and other stuff made specifically for the
 **Available at:**
 https://wolfyxon.github.io/3ds-web-stuff
 
+**Or scan the QR code to quickly launch the browser:**  
+![QR code](github/urlQr.png)
+
 ## Available stuff
 ### Games
 - [Jumpy](https://wolfyxon.github.io/3ds-web-stuff/jumpy.html) - jump and avoid spikes. Based on the Chrome dinosaur game. 
