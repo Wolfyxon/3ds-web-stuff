@@ -1,5 +1,6 @@
 # 3DS web stuff
 A work-in-progress collection of games and other stuff made specifically for the Nintendo 3DS web browser.
+Does not require modding or installing additional software.
 
 **Available at:**
 https://wolfyxon.github.io/3ds-web-stuff
