@@ -99,7 +99,7 @@ window.addEventListener("load",function (){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for(var i=0;i<spikes.length;i++){
             const x = spikes[i]
-            if(x < -10){
+            if(x < -30){
                 spikes.splice(i, 1);
                 i--;
             }
