@@ -90,6 +90,7 @@ window.addEventListener("load",function (){
             jumpPower -= gravity;
         }
         yOffset = lerp(yOffset,-jumpPower,0.1)
+        if(yOffset > 0) yOffset = 0;
 
         if(isBtnPressed("a") || isBtnPressed("up")){
             if(resetCooldown) return;
