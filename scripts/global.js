@@ -12,6 +12,10 @@ function lerp(start, end, amt){
     return (1-amt)*start+amt*end
 }
 
+function is3DS(){
+    return includes(window.navigator.userAgent,"Nintendo 3DS") && getGamepad();
+}
+
 // array.includes and string.includes does not work on the 3DS browser
 function includes(container,search){
     if(Array.isArray(container)){
