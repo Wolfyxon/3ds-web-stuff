@@ -73,6 +73,14 @@ function createKeyboard(element) {
         elm.setSelectionRange(cursorPos + 1, cursorPos + 1);
     }
 
+    function erase(){
+        const elm = kb.focusedElement;
+        const cursorPos = elm.selectionStart;
+        if(cursorPos < 1) return;
+        const current = elm.value;
+        elm.value = current.slice(0, cursorPos-1)
+        elm.setSelectionRange(cursorPos - 1, cursorPos - 1);
+    }
 
     function setCaps(enabled){
         kb.caps = enabled
