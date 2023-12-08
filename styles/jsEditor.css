@@ -1,9 +1,7 @@
-#code-input {
-    width: 100%;
+#editor {
     height: 100%;
+    width: 100%;
 }
-
-
 #btn-run {
     background-color: green;
     color: white;
