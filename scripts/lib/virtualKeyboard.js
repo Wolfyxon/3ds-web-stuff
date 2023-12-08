@@ -1,6 +1,7 @@
 // classes don't work on the 3DS browser, so I had to make a workaround with objects
 function createKeyboard(element) {
     var kb = {}
+    kb.caps = false
 
     element.classList.add("virtual-keyboard")
 
@@ -57,6 +58,16 @@ function createKeyboard(element) {
 
     kb.focusElement = function (elm){
         kb.focusedElement = elm;
+    }
+
+    function setCaps(enabled){
+        kb.caps = enabled
+        const charKeys = document.getElementsByClassName("kb-char-key")
+        for(var i=0;i<charKeys.length;i++){
+            const key = charKeys[i]
+            if(enabled) key.innerText = key.innerText.toUpperCase()
+            else key.innerText = key.innerText.toLowerCase()
+        }
     }
 
     function addNewLine(){
