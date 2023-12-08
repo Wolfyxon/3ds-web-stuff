@@ -17,6 +17,8 @@ function createKeyboard(element) {
     registerCharKey("8","*")
     registerCharKey("9","(")
     registerCharKey("0",")")
+    registerCharKey("-","_")
+    registerCharKey("=","+")
     addNewLine();
     registerSpecialCharKey("TAB","\u0009")
     registerCharKey("q")
