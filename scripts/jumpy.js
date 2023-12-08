@@ -87,7 +87,7 @@ window.addEventListener("load",function (){
     var prevSpikeOffset = 0;
     setInterval(function (){
         if(!active) return;
-        addSpike()
+        addSpike(randi(-20,200))
     },2000)
 
     // Main loop
