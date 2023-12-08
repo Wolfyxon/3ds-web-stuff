@@ -1,4 +1,7 @@
 function lerpColor(color, targetColor, amt) {
+    color = parseInt(color);
+    targetColor = parseInt(targetColor);
+
     const r1 = color >> 16 & 255;
     const g1 = color >> 8 & 255;
     const b1 = color & 255;
