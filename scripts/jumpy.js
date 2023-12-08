@@ -89,7 +89,10 @@ window.addEventListener("load",function (){
 
     setInterval(function (){
         if(!active) return;
-        addSpike(randi(-20,200))
+        const offset = randi(-20,200)
+        for(var i=0;i<randi(1,2);i++){
+            addSpike((offset*i)+20*i)
+        }
         speed += 0.1
     },2000)
 
