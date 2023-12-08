@@ -117,6 +117,7 @@ function createKeyboard(element) {
 
         elm.addEventListener("click",function(){
             if(kb.focusedElement){
+                flashBtn(elm)
                 typeChar(normal);
             }
         })
@@ -132,6 +133,7 @@ function createKeyboard(element) {
 
         elm.addEventListener("click",function(){
             if(kb.focusedElement){
+                flashBtn(elm)
                 typeChar(char);
             }
         })
