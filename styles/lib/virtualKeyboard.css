@@ -5,7 +5,8 @@
 .virtual-keyboard button {
     background-color: black;
     color: white;
-    margin: 0.2%;
+    margin: 1px;
+    font-size: 10px;
     border: none;
     border-radius: 3px;
     display: table-cell;
