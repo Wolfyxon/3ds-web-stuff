@@ -96,6 +96,20 @@ function createKeyboard(element) {
         element.appendChild(document.createElement("br"));
     }
 
+    function registerCustomKey(label,callback){
+        const elm = document.createElement("button")
+        elm.classList.add("kb-key")
+        elm.innerText = label
+
+        elm.addEventListener("click",function (){
+            flashBtn(elm)
+            callback()
+        })
+
+        element.appendChild(elm)
+        return elm;
+    }
+
     function registerSwitchKey(label,callback){
         const elm = document.createElement("button")
         elm.classList.add("kb-key","kb-switch-key")
