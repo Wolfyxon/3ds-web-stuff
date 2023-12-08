@@ -62,6 +62,20 @@ function createKeyboard(element) {
         element.appendChild(document.createElement("br"));
     }
 
+    function registerSwitchKey(label,callback){
+        const elm = document.createElement("button")
+        elm.classList.add("kb-key","kb-switch-key")
+        elm.innerText = label;
+        var enabled = false
+        elm.addEventListener("click",function (){
+            enabled = !enabled;
+            if(enabled) elm.style.backgroundColor = ""
+            else elm.style.backgroundColor = "red"
+
+            callback(enabled)
+        })
+    }
+
     function registerCharKey(normal,shift){
         shift = shift | normal.toUpperCase();
         const elm = document.createElement("button")
