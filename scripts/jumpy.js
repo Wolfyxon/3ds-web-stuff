@@ -96,6 +96,8 @@ window.addEventListener("load",function (){
         speed += 0.1
     },2000)
 
+    const hitboxMultiplier = 0.9
+
     // Main loop
     setInterval(function (){
         if(jumpPower > 0){
@@ -123,7 +125,7 @@ window.addEventListener("load",function (){
                 i--;
             }
             if(active){
-                if(x < jumpyWidth && -yOffset<jumpyHeight){
+                if(x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){
                     currentSprite = imgDead
                     active = false;
                     resetCooldown = true;
