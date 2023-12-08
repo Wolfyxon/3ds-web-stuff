@@ -56,6 +56,8 @@ function createKeyboard(element) {
     registerCharKey(",","<")
     registerCharKey(".",">")
     registerCharKey("/","?")
+    addNewLine()
+    registerSpecialCharKey(""," ")
 
     kb.focusElement = function (elm){
         kb.focusedElement = elm;
