@@ -6,7 +6,7 @@ window.addEventListener("load",function (){
     const gamepadTxt = document.getElementById("gamepad")
     const keyTxt = document.getElementById("key")
     const justPressedTxt = document.getElementById("just-pressed")
-
+    const anim = document.getElementById("anim-test")
 
     userAg.innerText = navigator.userAgent;
 
@@ -23,7 +23,7 @@ window.addEventListener("load",function (){
         scrollPos.innerText = "Scroll pos: " + window.scrollX + " " + window.scrollY;
         const zoom = (( window.outerWidth - 10 ) / window.innerWidth) * 100;
         zoomPos.innerText = "Zoom: " + window.outerWidth + " " +window.outerHeight + " " + zoom + "%";
-
+        anim.style.backgroundColor = lerpColor(anim.style.backgroundColor,"#FF0000",0.01)
     })
 
 })
