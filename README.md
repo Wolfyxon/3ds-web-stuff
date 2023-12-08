@@ -5,7 +5,7 @@ Does not require modding or installing additional software.
 **Available at:**
 https://wolfyxon.github.io/3ds-web-stuff
 
-**Or scan the QR code to quickly launch the browser:**  
+**Or scan the QR code to quickly launch the browser on your 3DS:**  
 ![QR code](github/urlQr.png)
 
 ## Available stuff
