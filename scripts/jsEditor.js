@@ -4,7 +4,7 @@ window.addEventListener("load",function(){
     editor.value = "alert(\"Hello World!\")"
     document.getElementById("btn-run").addEventListener("click",function(){
         try{
-            eval(editor.value.replace("\n",";\n")+";");
+            eval(editor.value);
         } catch (e){
             alert(e.line | e.lineNumber)
         }
