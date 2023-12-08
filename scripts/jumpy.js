@@ -103,7 +103,7 @@ window.addEventListener("load",function (){
         speed += 0.1
     },2000)
 
-    const hitboxMultiplier = 0.9
+    const hitboxMultiplier = 0.85
 
     // Main loop
     setInterval(function (){
