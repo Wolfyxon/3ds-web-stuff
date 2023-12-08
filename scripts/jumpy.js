@@ -21,6 +21,8 @@ window.addEventListener("load",function (){
     const jumpyHeight = 50;
     const jumpyWidth = 40;
 
+    const defaultSpeed = 3;
+    var speed = defaultSpeed;
     var gravity = 2;
     var jumpPower = 0;
     var yOffset = 0;
@@ -38,6 +40,7 @@ window.addEventListener("load",function (){
 
     function reset(){
         time = 0;
+        speed = defaultSpeed;
         gameoverTxt.innerText = ""
         spikes = [];
         currentSprite = imgRun1;
@@ -87,6 +90,7 @@ window.addEventListener("load",function (){
     setInterval(function (){
         if(!active) return;
         addSpike(randi(-20,200))
+        speed += 0.1
     },2000)
 
     // Main loop
@@ -126,7 +130,7 @@ window.addEventListener("load",function (){
                     },200)
                 }
 
-                spikes[i] -= 3
+                spikes[i] -= speed
             };
             ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
         }
