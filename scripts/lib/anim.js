@@ -17,23 +17,30 @@ function extractRgb(input){
     }
 }
 
+function hexToRgb(hex){
+    hex = hex.replace("#","")
+    const r = parseInt(hex.substring(1, 3), 16);
+    const g = parseInt(hex.substring(3, 5), 16);
+    const b = parseInt(hex.substring(5, 7), 16);
+
+    if(isNaN(r)) return null;
+    if(isNaN(g)) return null;
+    if(isNaN(b)) return null;
+
+    return {
+        "r": r,
+        "g": g,
+        "b": b
+    }
+}
+
 function lerpColor(color1, color2, amt) {
-    color1 = color1.replace("#","");
-    color2 = color2.replace("#","");
+    const rgb1 = extractRgb(color1) || hexToRgb(color1)
+    const rgb2 = extractRgb(color2) || hexToRgb(color2)
 
-    const r1 = parseInt(color1.substring(1, 3), 16);
-    const g1 = parseInt(color1.substring(3, 5), 16);
-    const b1 = parseInt(color1.substring(5, 7), 16);
+    const r = Math.round(lerp(rgb1.r,rgb2.r,amt));
+    const g = Math.round(lerp(rgb1.g,rgb2.g,amt));
+    const b = Math.round(lerp(rgb1.b,rgb2.b,amt));
 
-    const r2 = parseInt(color2.substring(1, 3), 16);
-    const g2 = parseInt(color2.substring(3, 5), 16);
-    const b2 = parseInt(color2.substring(5, 7), 16);
-
-    const r = Math.round(lerp(r1,r2,amt));
-    const g = Math.round(lerp(g1,g2,amt));
-    const b = Math.round(lerp(b1,b2,amt));
-
-    const hex = rgbToHex(r,g,b)
-    console.log(hex)
-    return hex
+    return rgbToHex(r,g,b)
 }
