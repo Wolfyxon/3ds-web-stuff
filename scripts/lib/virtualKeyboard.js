@@ -82,8 +82,8 @@ function createKeyboard(element) {
         var enabled = false
         elm.addEventListener("click",function (){
             enabled = !enabled;
-            if(enabled) elm.style.backgroundColor = ""
-            else elm.style.backgroundColor = "red"
+            if(enabled) elm.style.backgroundColor = "red"
+            else elm.style.backgroundColor = ""
 
             callback(enabled)
         })
