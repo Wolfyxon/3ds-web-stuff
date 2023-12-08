@@ -1,0 +1,13 @@
+.virtual-keyboard {
+    background-color: grey;
+    text-align: center;
+}
+.virtual-keyboard button {
+    background-color: black;
+    color: white;
+    margin: 0;
+    border: 1px white solid;
+    display: table-cell;
+    height: 30px;
+    min-width: 20px;
+}
