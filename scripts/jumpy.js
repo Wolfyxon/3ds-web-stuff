@@ -23,7 +23,7 @@ window.addEventListener("load",function (){
 
     const defaultSpeed = 3;
     var speed = defaultSpeed;
-    var gravity = 2;
+    var gravity = 2.4;
     var jumpPower = 0;
     var yOffset = 0;
 
@@ -110,7 +110,7 @@ window.addEventListener("load",function (){
         if(jumpPower > 0){
             jumpPower -= gravity;
         }
-        yOffset = lerp(yOffset,-jumpPower,0.1)
+        yOffset = lerp(yOffset,-jumpPower,0.3)
         if(yOffset > 0) yOffset = 0;
 
         if(isBtnPressed("a") || isBtnPressed("up")){
@@ -121,7 +121,7 @@ window.addEventListener("load",function (){
         if(isBtnPressed("down")){
             gravity = 30;
         } else {
-            gravity = 2;
+            gravity = 2.4;
         }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
