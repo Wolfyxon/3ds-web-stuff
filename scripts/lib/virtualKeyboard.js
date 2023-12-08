@@ -91,6 +91,20 @@ function createKeyboard(element) {
         element.appendChild(elm)
     }
 
+    function registerSpecialCharKey(label,char){
+        const elm = document.createElement("button")
+        elm.classList.add("kb-key","kb-special-char-key")
+        elm.innerText = label
+
+        elm.addEventListener("click",function(){
+            if(kb.focusedElement){
+                kb.focusedElement.value += char;
+            }
+        })
+
+        element.appendChild(elm)
+    }
+
     return kb
 }
 
