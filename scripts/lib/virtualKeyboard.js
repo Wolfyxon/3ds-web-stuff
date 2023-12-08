@@ -99,6 +99,7 @@ function createKeyboard(element) {
             callback(enabled)
         })
         element.appendChild(elm)
+        return elm;
     }
 
     function registerCharKey(normal,shift){
@@ -114,6 +115,7 @@ function createKeyboard(element) {
         })
 
         element.appendChild(elm)
+        return elm;
     }
 
     function registerSpecialCharKey(label,char){
@@ -128,6 +130,7 @@ function createKeyboard(element) {
         })
 
         element.appendChild(elm)
+        return elm;
     }
 
     return kb
