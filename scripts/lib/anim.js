@@ -17,22 +17,24 @@ function extractRgb(input){
     }
 }
 
-function hexToRgb(hex){
-    hex = hex.replace("#","")
-    const r = parseInt(hex.substring(1, 3), 16);
-    const g = parseInt(hex.substring(3, 5), 16);
-    const b = parseInt(hex.substring(5, 7), 16);
+function hexToRgb(hex) {
+    const hexRegex = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+    if (!hexRegex.test(hex)) return null;
 
-    if(isNaN(r)) return null;
-    if(isNaN(g)) return null;
-    if(isNaN(b)) return null;
+    hex = hex.replace("#", "");
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    if (isNaN(r) || isNaN(g) || isNaN(b)) return null;
 
     return {
         "r": r,
         "g": g,
         "b": b
-    }
+    };
 }
+
 
 function lerpColor(color1, color2, amt) {
     color1 = colorNameToHex(color1) || color1
