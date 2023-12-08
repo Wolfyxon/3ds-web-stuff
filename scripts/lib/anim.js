@@ -35,8 +35,11 @@ function hexToRgb(hex){
 }
 
 function lerpColor(color1, color2, amt) {
-    const rgb1 = extractRgb(color1) || hexToRgb(color1) || colorNameToHex(color1)
-    const rgb2 = extractRgb(color2) || hexToRgb(color2) || colorNameToHex(color2)
+    color1 = colorNameToHex(color1) || color1
+    color2 = colorNameToHex(color2) || color2
+
+    const rgb1 = extractRgb(color1) || hexToRgb(color1)
+    const rgb2 = extractRgb(color2) || hexToRgb(color2)
 
     const r = Math.round(lerp(rgb1.r,rgb2.r,amt));
     const g = Math.round(lerp(rgb1.g,rgb2.g,amt));
