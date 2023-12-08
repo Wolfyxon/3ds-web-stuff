@@ -33,6 +33,7 @@ function createKeyboard(element) {
     registerCharKey("]","}")
     registerCharKey("\\","|")
     addNewLine()
+    registerSwitchKey("Caps Lock",setCaps)
     registerCharKey("a")
     registerCharKey("s")
     registerCharKey("d")
