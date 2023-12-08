@@ -52,6 +52,11 @@ window.addEventListener("load",function (){
         spikes.push(400+offset)
     }
 
+    function isOnGround(){
+        console.log(yOffset)
+        return yOffset > -1;
+    }
+
     var time = 0;
     var highScore = 0;
 
