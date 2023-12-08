@@ -84,7 +84,6 @@ window.addEventListener("load",function (){
 
     },100)
 
-    var prevSpikeOffset = 0;
     setInterval(function (){
         if(!active) return;
         addSpike(randi(-20,200))
