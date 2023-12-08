@@ -42,6 +42,7 @@ window.addEventListener("load",function (){
         time = 0;
         speed = defaultSpeed;
         gameoverTxt.innerText = ""
+        highScoreText.style.color = ""
         spikes = [];
         currentSprite = imgRun1;
         active = true;
@@ -81,6 +82,9 @@ window.addEventListener("load",function (){
 
         timeText.innerText = "Time: "  + timeValTxt;
         highScoreText.innerText = "High score: " + highTimeValTxt;
+        if(highScore <= time){
+            highScoreText.style.color = "#279A00"
+        }
 
     },1000)
 
