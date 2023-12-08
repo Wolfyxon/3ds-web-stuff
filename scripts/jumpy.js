@@ -57,7 +57,6 @@ window.addEventListener("load",function (){
     }
 
     function isOnGround(){
-        console.log(yOffset)
         return yOffset > -1;
     }
 
