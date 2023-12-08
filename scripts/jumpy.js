@@ -53,7 +53,15 @@ window.addEventListener("load",function (){
 
     function addSpike(offset){
         if(!offset) offset = 0;
-        spikes.push(400+offset)
+        var thisX = 400+offset;
+        const spacing = 200;
+        if (spikes.length > 0) {
+            const x = spikes[spikes.length - 1];
+            if (thisX - x < spacing) {
+                thisX = x + spacing;
+            }
+        }
+        spikes.push(thisX)
     }
 
     function isOnGround(){
