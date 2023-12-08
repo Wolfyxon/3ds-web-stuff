@@ -121,7 +121,7 @@ function createKeyboard(element) {
 
         elm.addEventListener("click",function(){
             if(kb.focusedElement){
-                kb.focusedElement.value += char;
+                typeChar(char);
             }
         })
 
