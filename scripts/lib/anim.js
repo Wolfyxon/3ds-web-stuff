@@ -2,6 +2,21 @@ function rgbToHex(r, g, b) {
     return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
 }
 
+function extractRgb(input){
+    const inner = input.substring(
+        input.indexOf("(") + 1,
+        input.lastIndexOf(")")
+    );
+    const split = inner.split(",")
+    if(split.length !== 3) return null;
+
+    return {
+        "r": split[0],
+        "g": split[1],
+        "b": split[2]
+    }
+}
+
 function lerpColor(color1, color2, amt) {
     color1 = color1.replace("#","");
     color2 = color2.replace("#","");
