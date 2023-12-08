@@ -2,6 +2,8 @@
 function createKeyboard(element) {
     var kb = {}
 
+    element.classList.add("virtual-keyboard")
+
     // QWERTY layout
     registerCharKey("`","~")
     registerCharKey("1","!")
