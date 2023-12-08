@@ -87,6 +87,7 @@ function createKeyboard(element) {
 
             callback(enabled)
         })
+        element.appendChild(elm)
     }
 
     function registerCharKey(normal,shift){
