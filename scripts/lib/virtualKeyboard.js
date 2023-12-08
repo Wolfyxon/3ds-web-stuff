@@ -61,6 +61,11 @@ function createKeyboard(element) {
         kb.focusedElement = elm;
     }
 
+    function typeChar(char){
+        const pos = element.selectionStart;
+        element.value = input.value.substr(0, cursorPos) + char + input.value.substr(cursorPos);
+    }
+
     function setCaps(enabled){
         kb.caps = enabled
         const charKeys = document.getElementsByClassName("kb-char-key")
