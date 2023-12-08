@@ -102,6 +102,13 @@ function createKeyboard(element) {
         return elm;
     }
 
+    function flashBtn(button){
+        button.style.backgroundColor = "#585858"
+        setTimeout(function(){
+            button.style.backgroundColor = ""
+        },100)
+    }
+
     function registerCharKey(normal,shift){
         shift = shift | normal.toUpperCase();
         const elm = document.createElement("button")
