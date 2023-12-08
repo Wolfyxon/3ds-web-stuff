@@ -9,7 +9,7 @@ window.addEventListener("load",function (){
             tabs.children[i].style.display = "none"
         }
         for(var i=0;i<tabBtns.children.length;i++){
-            tabBtns.children[i].style.backgroundColor = "#653198"
+            tabBtns.children[i].targetColor = "#653198"
         }
         tab.style.display = ""
         currentTab = tab
@@ -20,7 +20,7 @@ window.addEventListener("load",function (){
     }
 
     function updateTabBtn(){
-        tabBtns.children[tabIdx].style.backgroundColor = "darkred"
+        tabBtns.children[tabIdx].targetColor = "darkred"
     }
 
     function nextTab(){
@@ -41,7 +41,12 @@ window.addEventListener("load",function (){
     function registerTabBtn(btn){
         tabBtns.children[i].addEventListener("click",function(){
             setTabByName(btn.innerHTML.toLowerCase())
-            btn.style.backgroundColor = "darkred";
+            btn.targetColor = "darkred";
+        })
+        setInterval(function (){
+            const col = btn.targetColor;
+            const current = btn.style.backgroundColor || "#653198"
+            if(col) btn.style.backgroundColor = lerpColor(current,col,0.2)
         })
     }
 
