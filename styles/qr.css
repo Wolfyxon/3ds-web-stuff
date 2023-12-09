@@ -14,3 +14,12 @@
 #bottom-screen {
     text-align: center;
 }
+
+#btn-gen {
+    margin-top: 2%;
+    height: 15%;
+    width: 50%;
+    border: 2px green solid;
+    border-radius: 5px;
+    background-color: limegreen;
+}
