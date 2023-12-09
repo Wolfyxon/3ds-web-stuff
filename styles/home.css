@@ -95,6 +95,9 @@ a {
     color: black;
     border-top: 5px solid black;
 }
+#tab-news a {
+    color: #3b3bee;
+}
 
 #tab-news article h3 {
     color: darkred;
