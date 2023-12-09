@@ -14,6 +14,12 @@ function Vector2(x,y){
         return vec;
     }
 
+    vec.lerp = function(vector,amt){
+        vec.x = lerp(vec.x, vector.x, amt);
+        vec.y = lerp(vec.y, vector.y, amt);
+        return vec;
+    }
+
     return vec;
 }
 
