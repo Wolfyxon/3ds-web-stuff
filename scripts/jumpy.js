@@ -136,7 +136,7 @@ window.addEventListener("load",function (){
                 i--;
             }
             if(active){
-                if(x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){
+                if(x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){ // isTouching(10,100+yOffset,jumpyWidth,jumpyHeight, x, 100)
                     currentSprite = imgDead
                     active = false;
                     resetCooldown = true;
