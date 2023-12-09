@@ -47,6 +47,22 @@ function Area2(vec1, vec2){
         return area.getWidth() * area.getHeight();
     }
 
+    area.getTopLeft = function(){
+        return area.startVec;
+    }
+
+    area.getBottomRight = function(){
+        return area.endVec;
+    }
+
+    area.getTopRight = function(){
+        return Vector2(area.getWidth()+area.startVec.x, area.startVec.y);
+    }
+
+    area.getBottomLeft = function(){
+        return Vector2(area.startVec.x, area.getHeight()+area.startVec.y);
+    }
+
     return area
 }
 
