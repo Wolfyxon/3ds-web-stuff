@@ -174,4 +174,16 @@ if(is3DS()){
         alert(e.filename+":"+e.lineno+" "+e.message);
         return false;
     })
+    window.addEventListener("load",function (){
+        const non3dsLinks = document.getElementsByClassName("non-3ds-link");
+        for(var i=0;i<non3dsLinks.length;i++){
+            const link = non3dsLinks[i];
+            link.onclick = function (e){
+                alert("The 3DS doesn't support that page. Please open \n\n"+link.href+"\n\non a external device (with a modern browser)")
+                e.preventDefault();
+                return false;
+            }
+        }
+    })
 }
+
