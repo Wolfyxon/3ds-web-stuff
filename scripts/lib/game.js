@@ -1,4 +1,4 @@
-function Vector2(x=0,y=0){
+function Vector2(x,y){
     var vec = {
         x: x,
         y: y
@@ -17,7 +17,7 @@ function Vector2(x=0,y=0){
     return vec;
 }
 
-function isTouching(x1, y1, w1, h1, x2, y2, w2=w1, h2=h1) {
+function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
     const left1 = x1;
     const right1 = x1 + w1;
     const top1 = y1;
