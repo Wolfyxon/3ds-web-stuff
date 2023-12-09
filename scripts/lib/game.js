@@ -29,6 +29,27 @@ function Vector2(x,y){
     return vec;
 }
 
+function Area2(vec1, vec2){
+    var area = {
+        startVec: vec1,
+        endVec: vec2
+    }
+
+    area.getWidth = function(){
+        return Math.abs(area.startVec.x - area.endVec.x);
+    }
+
+    area.getHeight = function(){
+        return Math.abs(area.startVec.y - area.endVec.y);
+    }
+
+    area.getField = function(){
+        return area.getWidth() * area.getHeight();
+    }
+
+    return area
+}
+
 function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
     const left1 = x1;
     const right1 = x1 + w1;
