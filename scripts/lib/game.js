@@ -8,7 +8,13 @@ function Vector2(x,y){
         return distanceToXY(vec.x, vec.y ,vector.x, vector.y);
     }
 
-    vec.offset = function(vector){
+    vec.offsetXY = function (x_,y_){
+        vec.x += x_;
+        vec.y += y_;
+        return vec;
+    }
+
+    vec.offsetVec = function(vector){
         vec.x += vector.x;
         vec.y += vector.y;
         return vec;
