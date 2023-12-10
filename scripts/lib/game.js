@@ -20,10 +20,25 @@ function Vector2(x,y){
         return vec;
     }
 
+    vec.getOffsetXY = function (x_,y_){
+        return Vector2(vec.x+x_,vec.y+y_);
+    }
+
+    vec.getOffsetVec = function (vector){
+        return Vector2(vec.x+vector.x,vec.y+vector.y);
+    }
+
     vec.lerp = function(vector,amt){
         vec.x = lerp(vec.x, vector.x, amt);
         vec.y = lerp(vec.y, vector.y, amt);
         return vec;
+    }
+
+    vec.getLerped = function(vector,amt){
+        return Vector2(
+            lerp(vec.x,vector.x,amt),
+            lerp(vec.y,vector.y,amt),
+        )
     }
 
     return vec;
