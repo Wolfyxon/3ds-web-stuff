@@ -6,6 +6,7 @@ window.addEventListener("load",function (){
 
     function setTab(tab){
         for(var i=0;i<tabs.children.length;i++){
+            if(tabs.children[i] === tab) tabIdx = i;
             tabs.children[i].style.display = "none"
         }
         for(var i=0;i<tabBtns.children.length;i++){
