@@ -35,6 +35,13 @@ function Area2(vec1, vec2){
         endVec: vec2
     }
 
+    area.getCenter = function(){
+        return Vector2(
+            area.startVec.x + area.getWidth()/2,
+            area.startVec.y + area.getHeight()/2
+        )
+    }
+
     area.getWidth = function(){
         return Math.abs(area.startVec.x - area.endVec.x);
     }
