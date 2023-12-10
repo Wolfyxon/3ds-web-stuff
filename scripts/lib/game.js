@@ -130,6 +130,10 @@ function Sprite(image,x,y,w,h){
 
 //// Global functions ////
 
+function clearCanvas(canvas){
+    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+}
+
 function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
     const left1 = x1;
     const right1 = x1 + w1;
