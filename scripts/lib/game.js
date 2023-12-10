@@ -70,6 +70,13 @@ function Area2(vec1, vec2){
         return Vector2(area.startVec.x, area.getHeight()+area.startVec.y);
     }
 
+    area.isTouching = function(anotherArea){
+        return isTouching(
+            area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight(),
+            anotherArea.startVec.x,anotherArea.startVec.y,anotherArea.getWidth(),anotherArea.getHeight()
+        )
+    }
+
     return area
 }
 
