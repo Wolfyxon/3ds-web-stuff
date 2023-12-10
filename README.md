@@ -11,6 +11,8 @@ https://wolfyxon.github.io/3ds-web-stuff
 ## Available stuff
 ### Games
 - [x] [Jumpy](https://wolfyxon.github.io/3ds-web-stuff/jumpy.html) - jump and avoid spikes. Based on the Chrome dinosaur game.
+- [ ] Pigeon - fly between pipes avoiding them. Based on Flappy Bird
+- [ ] Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
 - [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/qr.html) - turn text into a QR code.
 
