@@ -39,7 +39,7 @@ window.addEventListener("load",function (){
     }
 
     function registerTabBtn(btn){
-        tabBtns.children[i].addEventListener("click",function(){
+        btn.addEventListener("click",function(){
             setTabByName(btn.innerHTML.toLowerCase())
             btn.targetColor = "darkred";
         })
