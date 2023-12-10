@@ -10,9 +10,9 @@ https://wolfyxon.github.io/3ds-web-stuff
 
 ## Available stuff
 ### Games
-- [Jumpy](https://wolfyxon.github.io/3ds-web-stuff/jumpy.html) - jump and avoid spikes. Based on the Chrome dinosaur game. 
+- [x] [Jumpy](https://wolfyxon.github.io/3ds-web-stuff/jumpy.html) - jump and avoid spikes. Based on the Chrome dinosaur game.
 ### Other
-- [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/qr.html) - turn text into a QR code.
+- [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/qr.html) - turn text into a QR code.
 
 ## Screenshots
 TODO
