@@ -95,6 +95,36 @@ function Area2(vec1, vec2){
     return area
 }
 
+
+function Sprite(image,x,y,w,h){
+    if(!x) x = 0;
+    if(!y) y = 0;
+    if(!w) w = image.clientWidth;
+    if(!h) h = image.clientHeight;
+
+    var tmpVec = Vector2(x,y)
+    var spr = {
+        area: Area2(Vector2(x,y),tmpVec.getOffsetXY(w,h)),
+        image: image
+    }
+
+    spr.getX = function (){
+        return spr.area.startVec.x;
+    }
+
+    spr.getY = function(){
+        return spr.area.startVec.y;
+    }
+
+    spr.render = function(canvas){
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(image, spr.getX(), spr.getY(), spr.area.getWidth(), spr.area.getHeight());
+    }
+
+    return spr;
+}
+
+
 function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
     const left1 = x1;
     const right1 = x1 + w1;
