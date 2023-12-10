@@ -9,6 +9,8 @@ https://wolfyxon.github.io/3ds-web-stuff
 ![QR code](github/urlQr.png)
 
 ## Available stuff
+- [x] Complete
+- [ ] Planned / in progress
 ### Games
 - [x] [Jumpy](https://wolfyxon.github.io/3ds-web-stuff/jumpy.html) - jump and avoid spikes. Based on the Chrome dinosaur game.
 - [ ] Pigeon - fly between pipes avoiding them. Based on Flappy Bird
