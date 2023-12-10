@@ -122,7 +122,7 @@ function Sprite(image,x,y,w,h){
 
     spr.render = function(canvas){
         const ctx = canvas.getContext("2d");
-        ctx.drawImage(image, spr.getX(), spr.getY(), spr.area.getWidth(), spr.area.getHeight());
+        ctx.drawImage(spr.image, spr.getX(), spr.getY(), spr.area.getWidth(), spr.area.getHeight());
     }
 
     return spr;
