@@ -1,3 +1,7 @@
+
+/////// Classes ///////
+// Please note that the 3DS browser does not support the actual JavaScript classes. Using 'class' will result in a reserved keyword error.
+
 function Vector2(x,y){
     var vec = {
         x: x,
@@ -124,6 +128,7 @@ function Sprite(image,x,y,w,h){
     return spr;
 }
 
+//// Global functions ////
 
 function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
     const left1 = x1;
