@@ -41,7 +41,7 @@ function Vector2(x,y){
     vec.getLerped = function(vector,amt){
         return Vector2(
             lerp(vec.x,vector.x,amt),
-            lerp(vec.y,vector.y,amt),
+            lerp(vec.y,vector.y,amt)
         )
     }
 
