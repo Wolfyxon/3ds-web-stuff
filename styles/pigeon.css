@@ -3,5 +3,6 @@
 }
 
 #sprites {
-    display: none;
+    visibility: hidden;
+    max-height: 0;
 }
