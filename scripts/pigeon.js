@@ -35,7 +35,7 @@ window.addEventListener("load",function(){
 
     setInterval(function(){
         addPipes(randi(-30,30))
-    },1000)
+    },2000)
 
     // Main loop
     setInterval(function(){
