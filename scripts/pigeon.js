@@ -33,6 +33,10 @@ window.addEventListener("load",function(){
 
     setInterval(switchSprite,200)
 
+    setInterval(function(){
+        addPipes(randi(-30,30))
+    },1000)
+
     // Main loop
     setInterval(function(){
         clearCanvas(canvas);
