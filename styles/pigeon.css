@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+#canv {
+    width: 100%;
+    height: 100%;
+}
+
 #sprites {
     visibility: hidden;
     max-height: 0;
