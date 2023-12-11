@@ -6,6 +6,10 @@ body {
     background: black;
 }
 
+img, canvas { /* Disable antialiasing to match the 3DS which doesn't have antialiasing */
+    image-rendering: pixelated;
+}
+
 #top-screen {
     background-color: white;
     width: 400px;
