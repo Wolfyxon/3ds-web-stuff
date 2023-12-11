@@ -29,4 +29,5 @@ For more details visit https://en-americas-support.nintendo.com/app/answers/deta
 - Your code has to be human readable, using any obfuscated code is prohibited.
 - Don't make redundant code, the site has already built in libraries to handle things like linear interpolation, animations and easy gamepad input detection.
 - Avoid using external libraries as they are often not compatible with old browsers.
+- Controls have to be indicated with the 3DS system font characters. [Unicode table](https://www.3dbrew.org/wiki/System_Font#Unicode_Private_Use_characters)
 - All pages have to be built on top of [template.html](https://github.com/Wolfyxon/3ds-web-stuff/blob/main/template.html)
