@@ -125,9 +125,10 @@ function Area2(vec1, vec2){
 }
 
 
-function Sprite(image,x,y,w,h){
+function Sprite(image,x,y,rot,w,h){
     if(!x) x = 0;
     if(!y) y = 0;
+    if(!rot) rot = 0;
     if(!w) w = image.clientWidth;
     if(!h) h = image.clientHeight;
 
@@ -135,7 +136,8 @@ function Sprite(image,x,y,w,h){
     var spr = {
         area: Area2(Vector2(x,y),tmpVec.getOffsetXY(w,h)),
         image: image,
-        visible: true
+        visible: true,
+        rotation: rot,
     }
 
     spr.getX = function (){
@@ -158,7 +160,14 @@ function Sprite(image,x,y,w,h){
     spr.render = function(canvas){
         if(!spr.visible) return;
         const ctx = canvas.getContext("2d");
-        ctx.drawImage(spr.image, spr.getX(), spr.getY(), spr.area.getWidth(), spr.area.getHeight());
+        ctx.save();
+
+        ctx.translate(spr.getX() + spr.area.getWidth() / 2, spr.getY() + spr.area.getHeight() / 2);
+        ctx.rotate(spr.rotation);
+
+        ctx.drawImage(spr.image, -spr.area.getWidth() / 2, -spr.area.getHeight() / 2, spr.area.getWidth(), spr.area.getHeight());
+
+        ctx.restore();
     }
 
     return spr;
