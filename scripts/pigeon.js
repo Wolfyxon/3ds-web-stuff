@@ -39,7 +39,10 @@ window.addEventListener("load",function(){
         alive = false;
     }
 
-    setInterval(switchSprite,200)
+    setInterval(function(){
+        if(!alive) return;
+        switchSprite()
+    },200)
 
     setInterval(function(){
         if(!alive) return;
