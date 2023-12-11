@@ -138,6 +138,13 @@ function registerNon3DSlink(a){
     }
 }
 
+// 0ms on the 3DS seems to be equal to 16ms on a modern device. This function ensures parity for modern browsers and the 3DS
+// Please use it only in intervals responsible for rendering, updating position etc.
+// Don't use it for checking isBtnJustPressed() or inputs might be often dropped.
+function optiItv(){
+    if(is3DS()) return 0;
+    return 16;
+}
 
 setInterval(function (){
     window.scrollTo(40,227); // this makes sure the screen is always centered, however it still requires the user to adjust the zoom
