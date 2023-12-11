@@ -52,5 +52,5 @@ window.addEventListener("load",function(){
         }
 
         pigeon.render(canvas);
-    })
+    },optiItv())
 })
