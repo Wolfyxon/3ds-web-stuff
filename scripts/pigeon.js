@@ -73,7 +73,7 @@ window.addEventListener("load",function(){
             const pipe = pipes[i];
             if(alive){
                 pipe.moveXY(-0.8,0);
-                if(pipe.area.isTouching(pigeon.area)){
+                if(pipe.area.isTouching(hitbox)){
                     die();
                 }
             }
