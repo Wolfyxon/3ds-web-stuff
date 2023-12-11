@@ -145,6 +145,10 @@ function Area2D(vec1, vec2){
         ctx.fillStyle = "";
     }
 
+    area.copy = function(){
+        return Area2D(area.startVec.copy(), area.endVec.copy());
+    }
+
     return area
 }
 
