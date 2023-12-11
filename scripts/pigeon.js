@@ -20,7 +20,7 @@ window.addEventListener("load",function(){
     function addPipes(y){
         if(!y) y = -25;
         const gap = 140;
-        const startX = 200
+        const startX = 300
         const scale = 0.5;
         pipes.push(Sprite(imgPipe,startX,y,180).rescale(scale));
         pipes.push(Sprite(imgPipe,startX,y+gap).rescale(scale));
