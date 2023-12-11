@@ -96,6 +96,16 @@ function Area2(vec1, vec2){
         )
     }
 
+    area.offsetXY = function(x,y){
+        area.startVec.offsetXY(x,y);
+        area.endVec.offsetXY(x,y);
+        return area;
+    }
+
+    area.offsetVec = function(vector){
+        return area.offsetXY(vector.x,vector.y)
+    }
+
     area.render = function(canvas){
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "red";
