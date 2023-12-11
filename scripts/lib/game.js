@@ -48,7 +48,7 @@ function Vector2(x,y){
     return vec;
 }
 
-function Area2(vec1, vec2){
+function Area2D(vec1, vec2){
     var area = {
         startVec: vec1,
         endVec: vec2
@@ -96,7 +96,7 @@ function Area2(vec1, vec2){
     }
 
     area.getRescaled = function(scale){
-        const ar = Area2(area.startVec,area.endVec);
+        const ar = Area2D(area.startVec,area.endVec);
         ar.rescale(scale);
         return ar;
     }
@@ -146,7 +146,7 @@ function Sprite(image,x,y,rot,w,h){
 
     var tmpVec = Vector2(x,y)
     var spr = {
-        area: Area2(Vector2(x,y),tmpVec.getOffsetXY(w,h)),
+        area: Area2D(Vector2(x,y),tmpVec.getOffsetXY(w,h)),
         image: image,
         visible: true,
         rotation: rot,
