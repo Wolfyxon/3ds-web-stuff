@@ -43,7 +43,7 @@ window.addEventListener("load",function(){
 
         for(var i=0;i<pipes.length;i++){
             const pipe = pipes[i];
-            pipe.moveXY(-0.2,0);
+            pipe.moveXY(-0.8,0);
             if(pipe.getX() <= -30){
                 pipes.splice(i, 1);
                 i--;
