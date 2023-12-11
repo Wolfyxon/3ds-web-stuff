@@ -48,6 +48,13 @@ a {
     overflow: scroll;
 }
 
+#tabs > *:after {
+    content:"";
+    height: 50px;
+    display: block;
+    white-space: pre;
+}
+
 #tab-btns button {
     float: left;
     width: 25%;
