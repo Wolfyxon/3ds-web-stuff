@@ -59,6 +59,7 @@ window.addEventListener("load",function(){
     setInterval(function(){
         if(isBtnJustPressed("up") || isBtnJustPressed("a")){
             if(!started){
+                document.getElementById("prestart").style.visibility = "hidden";
                 started = true;
             }
             yForce = -1.5;

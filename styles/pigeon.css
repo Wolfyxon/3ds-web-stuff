@@ -20,3 +20,12 @@
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
 }
+
+#prestart {
+    color: limegreen;
+    position: absolute;
+    left: 100px;
+    top: 90px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
