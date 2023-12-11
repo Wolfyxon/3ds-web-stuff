@@ -109,7 +109,8 @@ function Sprite(image,x,y,w,h){
     var tmpVec = Vector2(x,y)
     var spr = {
         area: Area2(Vector2(x,y),tmpVec.getOffsetXY(w,h)),
-        image: image
+        image: image,
+        visible: true
     }
 
     spr.getX = function (){
@@ -121,6 +122,7 @@ function Sprite(image,x,y,w,h){
     }
 
     spr.render = function(canvas){
+        if(!spr.visible) return;
         const ctx = canvas.getContext("2d");
         ctx.drawImage(spr.image, spr.getX(), spr.getY(), spr.area.getWidth(), spr.area.getHeight());
     }
