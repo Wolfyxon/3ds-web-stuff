@@ -163,7 +163,7 @@ function Sprite(image,x,y,rot,w,h){
         ctx.save();
 
         ctx.translate(spr.getX() + spr.area.getWidth() / 2, spr.getY() + spr.area.getHeight() / 2);
-        ctx.rotate(spr.rotation);
+        ctx.rotate(deg2rad(spr.rotation));
 
         ctx.drawImage(spr.image, -spr.area.getWidth() / 2, -spr.area.getHeight() / 2, spr.area.getWidth(), spr.area.getHeight());
 
