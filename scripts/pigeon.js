@@ -15,6 +15,8 @@ window.addEventListener("load",function(){
     var passedPipes = 0;
     var highScore = 0;
 
+    var yForce = 0;
+
     var pipes = []
 
     function addPipes(y){
@@ -37,9 +39,25 @@ window.addEventListener("load",function(){
         addPipes(randi(-50,0));
     },2000)
 
+
+    // Controls loop
+    setInterval(function(){
+        if(isBtnJustPressed("up") || isBtnJustPressed("a")){
+            yForce = -1.5;
+            pigeon.rotation = -20;
+        }
+    })
+
     // Main loop
     setInterval(function(){
         clearCanvas(canvas);
+
+        if(yForce < 3 && pigeon.getY() < 120){
+            yForce += 0.1;
+            pigeon.rotation += 1
+        }
+
+        pigeon.moveXY(0,yForce);
 
         for(var i=0;i<pipes.length;i++){
             const pipe = pipes[i];
