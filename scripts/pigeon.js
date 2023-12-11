@@ -35,6 +35,12 @@ window.addEventListener("load",function(){
     // Main loop
     setInterval(function(){
         clearCanvas(canvas);
+
+        for(var i=0;i<pipes.length;i++){
+            const pipe = pipes[i];
+            pipe.render(canvas);
+        }
+
         pigeon.render(canvas);
     })
 })
