@@ -118,6 +118,14 @@ function Area2D(vec1, vec2){
         return area.offsetXY(vector.x,vector.y)
     }
 
+    area.moveTo = function(vector){
+        const initW = area.getWidth();
+        const initH = area.getHeight();
+
+        area.startVec = vector;
+        area.endVec = vector.getOffsetXY(initW,initH);
+    }
+
     area.render = function(canvas){
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "red";
