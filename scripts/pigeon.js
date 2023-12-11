@@ -17,9 +17,9 @@ window.addEventListener("load",function(){
 
     var pipes = []
 
-    const gap = 242;
     function addPipes(y){
         if(!y) y = -120;
+        const gap = 242;
         const startX = 200
         pipes.push(Sprite(imgPipe,startX,y,180));
         pipes.push(Sprite(imgPipe,startX,y+gap));
