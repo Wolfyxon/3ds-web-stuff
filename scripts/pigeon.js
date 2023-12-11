@@ -9,6 +9,8 @@ window.addEventListener("load",function(){
 
     const pigeon = Sprite(imgWingUp,10,startY);
 
+    var alive = false;
+
     var passedPipes = 0;
     var highScore = 0;
 
