@@ -11,6 +11,7 @@ window.addEventListener("load",function(){
     const pigeon = Sprite(imgWingUp,10,startY);
     const hitbox = pigeon.area.copy();
 
+    var started = false;
     var alive = true;
 
     var passedPipes = 0;
@@ -45,15 +46,17 @@ window.addEventListener("load",function(){
     },200)
 
     setInterval(function(){
-        if(!alive) return;
+        if(!alive || !started) return;
         addPipes(randi(-55,0));
     },2000)
 
 
     // Controls loop
     setInterval(function(){
-        if(!alive) return;
         if(isBtnJustPressed("up") || isBtnJustPressed("a")){
+            if(!started){
+                started = true;
+            }
             yForce = -1.5;
             pigeon.rotation = -20;
         }
@@ -63,7 +66,7 @@ window.addEventListener("load",function(){
     setInterval(function(){
         clearCanvas(canvas);
 
-        if(yForce < 3 && pigeon.getY() < 120){
+        if(yForce < 3 && pigeon.getY() < 120 && started){
             yForce += 0.1;
             pigeon.rotation += 1
         }
