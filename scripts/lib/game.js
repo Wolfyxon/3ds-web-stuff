@@ -196,3 +196,11 @@ function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
 function distanceToXY(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
 }
+
+function deg2rad(degrees){
+    return degrees*Math.PI/180;
+}
+
+function rad2deg(radians){
+    return radians*180/Math.PI;
+}
