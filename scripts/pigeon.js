@@ -18,8 +18,8 @@ window.addEventListener("load",function(){
     var pipes = []
 
     function addPipes(y){
-        if(!y) y = -120;
-        const gap = 242;
+        if(!y) y = -25;
+        const gap = 140;
         const startX = 200
         const scale = 0.5;
         pipes.push(Sprite(imgPipe,startX,y,180).rescale(scale));
