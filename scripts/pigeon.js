@@ -21,9 +21,8 @@ window.addEventListener("load",function(){
     function addPipes(y){
         if(!y) y = 50;
         const startX = 200
-        pipes.push(Sprite(imgPipe,startX,y));
+        pipes.push(Sprite(imgPipe,startX,y,180));
         pipes.push(Sprite(imgPipe,startX,y+gap));
-
     }
 
     function switchSprite(){
