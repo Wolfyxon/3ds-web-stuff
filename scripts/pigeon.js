@@ -9,6 +9,7 @@ window.addEventListener("load",function(){
     const startY = 110;
 
     const pigeon = Sprite(imgWingUp,10,startY);
+    const hitbox = pigeon.area.copy();
 
     var alive = true;
 
@@ -65,6 +66,8 @@ window.addEventListener("load",function(){
         }
 
         pigeon.moveXY(0,yForce);
+        hitbox.startVec = pigeon.area.startVec.copy();
+        hitbox.endVec = pigeon.area.startVec.copy().offsetXY(30,20);
 
         for(var i=0;i<pipes.length;i++){
             const pipe = pipes[i];
@@ -80,7 +83,7 @@ window.addEventListener("load",function(){
             }
             pipe.render(canvas);
         }
-
+        hitbox.render(canvas);
         pigeon.render(canvas);
     },optiItv())
 })
