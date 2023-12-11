@@ -4,6 +4,7 @@ window.addEventListener("load",function(){
 
     const imgWingUp = document.getElementById("img-pigeon1");
     const imgWingDown = document.getElementById("img-pigeon2")
+    const imgPipe = document.getElementById("img-pipe")
 
     const startY = 110;
 
@@ -16,7 +17,12 @@ window.addEventListener("load",function(){
 
     var pipes = []
 
+    const gap = 50;
     function addPipes(y){
+        if(!y) y = 50;
+        const startX = 200
+        pipes.push(Sprite(imgPipe,startX,y));
+        pipes.push(Sprite(imgPipe,startX,y+gap));
 
     }
 
