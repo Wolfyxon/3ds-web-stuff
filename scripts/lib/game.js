@@ -96,6 +96,21 @@ function Area2(vec1, vec2){
         )
     }
 
+    area.render = function(canvas){
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        ctx.fillRect(area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight());
+        ctx.fillStyle = "blue";
+        const w = 4;
+        ctx.fillRect(area.getTopLeft().x,area.getTopLeft().y,w,w)
+        ctx.fillRect(area.getTopRight().x-w,area.getTopRight().y,w,w)
+        ctx.fillRect(area.getBottomLeft().x,area.getBottomLeft().y-w,w,w)
+        ctx.fillRect(area.getBottomRight().x-w,area.getBottomRight().y-w,w,w)
+
+
+        ctx.fillStyle = "";
+    }
+
     return area
 }
 
