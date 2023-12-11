@@ -10,7 +10,7 @@ window.addEventListener("load",function(){
 
     const pigeon = Sprite(imgWingUp,10,startY);
 
-    var alive = false;
+    var alive = true;
 
     var passedPipes = 0;
     var highScore = 0;
@@ -33,15 +33,22 @@ window.addEventListener("load",function(){
         else pigeon.image = imgWingUp;
     }
 
+    function die(){
+        if(!alive) return;
+        alive = false;
+    }
+
     setInterval(switchSprite,200)
 
     setInterval(function(){
+        if(!alive) return;
         addPipes(randi(-55,0));
     },2000)
 
 
     // Controls loop
     setInterval(function(){
+        if(!alive) return;
         if(isBtnJustPressed("up") || isBtnJustPressed("a")){
             yForce = -1.5;
             pigeon.rotation = -20;
@@ -61,7 +68,12 @@ window.addEventListener("load",function(){
 
         for(var i=0;i<pipes.length;i++){
             const pipe = pipes[i];
-            pipe.moveXY(-0.8,0);
+            if(alive){
+                pipe.moveXY(-0.8,0);
+                if(pipe.area.isTouching(pigeon.area)){
+                    die();
+                }
+            }
             if(pipe.getX() <= -30){
                 pipes.splice(i, 1);
                 i--;
