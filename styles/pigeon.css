@@ -12,20 +12,19 @@
     max-height: 0;
 }
 
-#gameover {
-    color: red;
-    position: absolute;
-    left: 100px;
-    top: 70px;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-}
-
-#prestart {
-    color: limegreen;
+.bigtext {
     position: absolute;
     left: 100px;
     top: 90px;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
+}
+
+#gameover {
+    color: red;
+}
+
+#prestart {
+    color: limegreen;
+
 }
