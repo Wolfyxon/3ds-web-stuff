@@ -6,7 +6,7 @@ window.addEventListener("load",function(){
     const imgWingDown = document.getElementById("img-pigeon2")
     const imgPipe = document.getElementById("img-pipe")
 
-    const startY = 110;
+    const startY = 70;
 
     const pigeon = Sprite(imgWingUp,10,startY);
     const hitbox = pigeon.area.copy();
