@@ -67,6 +67,7 @@ window.addEventListener("load",function(){
             yForce += 0.1;
             pigeon.rotation += 1
         }
+        if(!alive) pigeon.rotation += 3;
 
         if(pigeon.getY() > 135 || pigeon.getY() < -20) die()
 
