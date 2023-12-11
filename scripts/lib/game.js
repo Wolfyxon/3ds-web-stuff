@@ -89,6 +89,11 @@ function Area2(vec1, vec2){
         return Vector2(area.startVec.x, area.getHeight()+area.startVec.y);
     }
 
+    area.rescale = function(scale){
+        area.endVec.x -= area.getWidth()*scale;
+        area.endVec.y -= area.getHeight()*scale;
+    }
+
     area.isTouching = function(anotherArea){
         return isTouching(
             area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight(),
