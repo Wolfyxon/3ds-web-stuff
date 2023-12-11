@@ -5,7 +5,9 @@ window.addEventListener("load",function(){
     const imgWingUp = document.getElementById("img-pigeon1");
     const imgWingDown = document.getElementById("img-pigeon2")
 
-    const pigeon = Sprite(imgWingUp,10,90)
+    const startY = 110;
+
+    const pigeon = Sprite(imgWingUp,10,startY);
 
     var passedPipes = 0;
     var highScore = 0;
