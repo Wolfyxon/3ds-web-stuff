@@ -130,6 +130,14 @@ function isBtnJustPressed(name){
     return false;
 }
 
+function registerNon3DSlink(a){
+    a.onclick = function (e){
+        alert("The 3DS doesn't support that page. Please open \n\n"+a.href+"\n\non a external device (with a modern browser)")
+        e.preventDefault();
+        return false;
+    }
+}
+
 
 setInterval(function (){
     window.scrollTo(40,227); // this makes sure the screen is always centered, however it still requires the user to adjust the zoom
@@ -176,14 +184,7 @@ if(is3DS()){
     })
     window.addEventListener("load",function (){
         const non3dsLinks = document.getElementsByClassName("non-3ds-link");
-        for(var i=0;i<non3dsLinks.length;i++){
-            const link = non3dsLinks[i];
-            link.onclick = function (e){
-                alert("The 3DS doesn't support that page. Please open \n\n"+link.href+"\n\non a external device (with a modern browser)")
-                e.preventDefault();
-                return false;
-            }
-        }
+        for(var i=0;i<non3dsLinks.length;i++) registerNon3DSlink(non3dsLinks[i]);
     })
 }
 
