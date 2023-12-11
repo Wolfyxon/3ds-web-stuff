@@ -21,8 +21,9 @@ window.addEventListener("load",function(){
         if(!y) y = -120;
         const gap = 242;
         const startX = 200
-        pipes.push(Sprite(imgPipe,startX,y,180));
-        pipes.push(Sprite(imgPipe,startX,y+gap));
+        const scale = 0.5;
+        pipes.push(Sprite(imgPipe,startX,y,180).rescale(scale));
+        pipes.push(Sprite(imgPipe,startX,y+gap).rescale(scale));
     }
 
     function switchSprite(){
