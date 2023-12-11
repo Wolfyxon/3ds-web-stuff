@@ -168,6 +168,10 @@ function Sprite(image,x,y,rot,w,h){
         spr.area.offsetVec(vector);
     }
 
+    spr.rescale = function(scale){
+        spr.area.rescale(scale);
+        return spr;
+    }
 
     spr.render = function(canvas){
         if(!spr.visible) return;
