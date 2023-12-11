@@ -146,6 +146,15 @@ function Sprite(image,x,y,w,h){
         return spr.area.startVec.y;
     }
 
+    spr.moveXY = function(x_,y_){
+        spr.area.offsetXY(x_,y_);
+    }
+
+    spr.moveVec = function(vector){
+        spr.area.offsetVec(vector);
+    }
+
+
     spr.render = function(canvas){
         if(!spr.visible) return;
         const ctx = canvas.getContext("2d");
