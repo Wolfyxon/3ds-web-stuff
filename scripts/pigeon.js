@@ -83,7 +83,6 @@ window.addEventListener("load",function(){
             }
             pipe.render(canvas);
         }
-        hitbox.render(canvas);
         pigeon.render(canvas);
     },optiItv())
 })
