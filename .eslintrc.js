@@ -3,7 +3,7 @@ module.exports = {
         browser: true,
     },
     parserOptions: {
-        ecmaVersion: 262
+        ecmaVersion: 5
     },
     rules: {
         'no-var': 'error', // disallow let
