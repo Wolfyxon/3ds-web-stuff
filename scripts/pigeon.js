@@ -36,7 +36,7 @@ window.addEventListener("load",function(){
     setInterval(switchSprite,200)
 
     setInterval(function(){
-        addPipes(randi(-50,0));
+        addPipes(randi(-55,0));
     },2000)
 
 
