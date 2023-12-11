@@ -6,6 +6,9 @@ window.addEventListener("load",function(){
     const imgWingDown = document.getElementById("img-pigeon2")
     const imgPipe = document.getElementById("img-pipe")
 
+    const gameover = document.getElementById("gameover");
+    gameover.style.visibility = "hidden";
+
     const startY = 70;
 
     const pigeon = Sprite(imgWingUp,10,startY);
@@ -38,6 +41,7 @@ window.addEventListener("load",function(){
     function die(){
         if(!alive) return;
         alive = false;
+        gameover.style.visibility = "";
     }
 
     setInterval(function(){
