@@ -16,10 +16,6 @@ window.addEventListener("load",function(){
 
     var pipes = []
 
-    let test = () => {
-        
-    };
-
     function addPipes(y){
 
     }
