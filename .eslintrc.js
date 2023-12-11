@@ -6,6 +6,6 @@ module.exports = {
         ecmaVersion: 6
     },
     rules: {
-        'prefer-arrow-callback': 'error' // disallow lambda expressions
+        'func-style': ['error', 'declaration'] // disallow lambda expressions
     },
 };
