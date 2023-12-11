@@ -45,6 +45,10 @@ function Vector2(x,y){
         )
     }
 
+    vec.copy = function(){
+        return Vector2(vec.x, vec.y);
+    }
+
     return vec;
 }
 
