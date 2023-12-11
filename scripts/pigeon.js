@@ -65,6 +65,8 @@ window.addEventListener("load",function(){
             pigeon.rotation += 1
         }
 
+        if(pigeon.getY() > 135 || pigeon.getY() < -20) die()
+
         pigeon.moveXY(0,yForce);
         hitbox.startVec = pigeon.area.startVec.copy();
         hitbox.endVec = pigeon.area.startVec.copy().offsetXY(30,20);
