@@ -1,3 +1,7 @@
 #bottom-screen {
     text-align: center;
 }
+
+#sprites {
+    display: none;
+}
