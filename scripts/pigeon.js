@@ -7,6 +7,7 @@ window.addEventListener("load",function(){
     const imgPipe = document.getElementById("img-pipe")
 
     const txtPipes = document.getElementById("txt-pipes");
+    const txtHighScore = document.getElementById("txt-high-score");
     const gameover = document.getElementById("gameover");
     gameover.style.visibility = "hidden";
 
@@ -59,6 +60,7 @@ window.addEventListener("load",function(){
         gameover.style.visibility = "hidden";
         pigeon.rotation = 0;
         pigeon.area.moveTo(Vector2(pigeon.getX(),startY));
+        txtHighScore.style.color = ""
     }
 
     setInterval(function(){
@@ -125,6 +127,11 @@ window.addEventListener("load",function(){
                 pipe.passed = true;
                  passedPipes += 0.5;
                  txtPipes.innerText = passedPipes;
+                 if(passedPipes > highScore){
+                     highScore = passedPipes;
+                     txtHighScore.innerText = passedPipes;
+                     txtHighScore.style.color = "lime"
+                 }
             }
             if(pipe.getX() <= -30){
                 pipes.splice(i, 1);
