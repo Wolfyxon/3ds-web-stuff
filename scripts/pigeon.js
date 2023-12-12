@@ -70,7 +70,13 @@ window.addEventListener("load",function(){
     })
 
     // Main loop
+    var bgPos = 0;
     setInterval(function(){
+        if(alive){
+            bgPos -= 0.5;
+            canvas.style.backgroundPositionX = bgPos+"px";
+        }
+
         clearCanvas(canvas);
 
         if(yForce < 3 && pigeon.getY() < 120 && started){
