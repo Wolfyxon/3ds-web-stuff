@@ -18,6 +18,7 @@ Your changes should cover:
 Your code must also be tested on a actual Nintendo 3DS, the 3DS browser is very outdated and does not have many of the modern features.  
 Most notable issues:
 - Missing `animation` and `transition` in CSS (alternative: scripts/lib/anim.js)
+- Missing `let`
 - Inability to make lambda expressions ( `() => {}` )
 - Only **D-pad** and **A** buttons are usable. (Other keys have a built in functionality in the browser. They can be detected but can't be disabled)
 - Lack of class functionality. Using `class` will result in a reserved keyword error
