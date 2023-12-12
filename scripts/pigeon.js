@@ -6,6 +6,7 @@ window.addEventListener("load",function(){
     const imgWingDown = document.getElementById("img-pigeon2")
     const imgPipe = document.getElementById("img-pipe")
 
+    const txtPipes = document.getElementById("txt-pipes");
     const gameover = document.getElementById("gameover");
     gameover.style.visibility = "hidden";
 
@@ -118,6 +119,11 @@ window.addEventListener("load",function(){
                 if(pipe.area.isTouching(hitbox)){
                     die();
                 }
+            }
+            if(pipe.getX() <= 10 && !pipe.passed){
+                pipe.passed = true;
+                 passedPipes += 0.5;
+                 txtPipes.innerText = passedPipes;
             }
             if(pipe.getX() <= -30){
                 pipes.splice(i, 1);
