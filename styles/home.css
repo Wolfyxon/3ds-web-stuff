@@ -116,6 +116,11 @@ a {
     padding: 0;
 }
 
+#tab-news article p {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
 #tab-news article {
     margin-top: 1%;
     padding: 2%;
