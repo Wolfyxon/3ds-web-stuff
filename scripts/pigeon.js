@@ -18,6 +18,7 @@ window.addEventListener("load",function(){
 
     var started = false;
     var alive = true;
+    var resetCooldown = false;
 
     var passedPipes = 0;
     var highScore = 0;
@@ -42,8 +43,20 @@ window.addEventListener("load",function(){
 
     function die(){
         if(!alive) return;
+        resetCooldown = true;
         alive = false;
         gameover.style.visibility = "";
+        setTimeout(function(){
+            resetCooldown = false;
+        },200)
+    }
+
+    function reset(){
+        alive = true;
+        pipes = [];
+        gameover.style.visibility = "hidden";
+        pigeon.rotation = 0;
+        pigeon.area.moveTo(Vector2(pigeon.getX(),startY));
     }
 
     setInterval(function(){
@@ -63,6 +76,9 @@ window.addEventListener("load",function(){
             if(!started){
                 document.getElementById("prestart").style.visibility = "hidden";
                 started = true;
+            }
+            if(!alive && !resetCooldown){
+                reset();
             }
             if(alive){
                 yForce = -1.5;
