@@ -11,6 +11,8 @@ window.addEventListener("load",function(){
 
     const startY = 70;
 
+    const moon = Sprite(document.getElementById("img-moon"),230,10);
+
     const pigeon = Sprite(imgWingUp,10,startY);
     const hitbox = pigeon.area.copy();
 
@@ -78,6 +80,8 @@ window.addEventListener("load",function(){
         }
 
         clearCanvas(canvas);
+
+        moon.render(canvas);
 
         if(yForce < 3 && pigeon.getY() < 120 && started){
             yForce += 0.1;
