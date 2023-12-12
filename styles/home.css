@@ -84,6 +84,7 @@ a {
     height: 50px;
     width: 50px;
     background-color: white;
+    border-radius: 3px;
 }
 
 .app-list p {
