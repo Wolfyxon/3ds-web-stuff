@@ -10,9 +10,9 @@ If you want to contribute to the project directly by writing code:
 6. Your code will be tested and reviewed
 
 Your changes should cover:
+- New features
 - Bugfixes
 - Typo and grammar corrections
-- New features
 - Performance improvements
 
 Your code must also be tested on a actual Nintendo 3DS, the 3DS browser is very outdated and does not have many of the modern features.  
