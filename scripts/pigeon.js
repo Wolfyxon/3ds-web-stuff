@@ -89,7 +89,7 @@ window.addEventListener("load",function(){
         }
         if(!alive) pigeon.rotation += 3;
 
-        if(pigeon.getY() > 135 || pigeon.getY() < -20) die()
+        if(pigeon.getY() > 150 || pigeon.getY() < -40) die()
 
         pigeon.moveXY(0,yForce);
         hitbox.startVec = pigeon.area.startVec.copy();
