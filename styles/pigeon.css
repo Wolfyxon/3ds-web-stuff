@@ -29,3 +29,13 @@
     color: yellow;
 
 }
+
+#stats > * img {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+#stats > * span {
+    vertical-align: top;
+}
