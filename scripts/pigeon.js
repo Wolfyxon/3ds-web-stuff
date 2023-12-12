@@ -62,8 +62,10 @@ window.addEventListener("load",function(){
                 document.getElementById("prestart").style.visibility = "hidden";
                 started = true;
             }
-            yForce = -1.5;
-            pigeon.rotation = -20;
+            if(alive){
+                yForce = -1.5;
+                pigeon.rotation = -20;
+            }
         }
     })
 
