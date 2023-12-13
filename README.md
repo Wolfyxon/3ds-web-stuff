@@ -13,6 +13,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [ ] Planned / in progress
 ### Games
 - [x] [Jumpy](https://wolfyxon.github.io/3ds-web-stuff/jumpy.html) - jump and avoid spikes. Based on the Chrome dinosaur game.
+- [x] [Tic Tac Toe](https://wolfyxon.github.io/3ds-web-stuff/ttt.html) - place X and O to make a pattern.
 - [x] [Pigeon](https://wolfyxon.github.io/3ds-web-stuff/pigeon.html) - fly between pipes avoiding them. Based on Flappy Bird
 - [ ] Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
