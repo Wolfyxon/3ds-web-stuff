@@ -15,10 +15,10 @@
 }
 
 #grid {
-    width: 75%;
-    height: 90%;
-    margin-top: 3%;
-    margin-left: 12%;
+    width: 70%;
+    height: 80%;
+    margin-top: 5%;
+    margin-left: 15%;
     background-color: black;
 }
 
@@ -27,5 +27,5 @@
     background-color: white;
     width: 30%;
     height: 30%;
-    font-size: 300%;
+    font-size: 270%;
 }
