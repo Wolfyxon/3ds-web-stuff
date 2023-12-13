@@ -56,6 +56,7 @@ window.addEventListener("load",function(){
     function reset(){
         alive = true;
         passedPipes = 0;
+        txtPipes.innerText = passedPipes;
         pipes = [];
         gameover.style.visibility = "hidden";
         pigeon.rotation = 0;
