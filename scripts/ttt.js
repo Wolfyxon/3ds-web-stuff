@@ -68,17 +68,21 @@ window.addEventListener("load",function(){
             cell.innerText = "";
             cell.style.color = "";
         }
+        cooldown = false;
     }
 
+    var cooldown = false;
     function registerCell(cell,index){
         cell.addEventListener("click",function(){
+            if(cooldown) return;
             if(cell.innerText !== "") return;
 
             cell.innerText = currentPlayer;
             if(testPatterns(currentPlayer)){
+                cooldown = true;
                 winTxt.innerText = currentPlayer + " wins";
                 winTxt.style.display = "block"
-                reset();
+                setTimeout(reset,1500)
             }
             if(currentPlayer === "O"){
                 cell.style.color = "green";
