@@ -48,6 +48,8 @@ window.addEventListener("load",function(){
     ]
 
     var currentPlayer = "X";
+    var winsO = 0;
+    var winsX = 0;
 
     function testPatterns(player){
         for(var pI=0;pI<winningPatterns.length;pI++){
@@ -82,6 +84,13 @@ window.addEventListener("load",function(){
                 cooldown = true;
                 winTxt.innerText = currentPlayer + " wins";
                 winTxt.style.display = "block"
+
+                if(currentPlayer === "O") winsO++;
+                else winsX++;
+
+                document.getElementById("wins-o").innerText = winsO;
+                document.getElementById("wins-x").innerText = winsX;
+
                 setTimeout(reset,1500)
             }
             if(currentPlayer === "O"){
