@@ -104,6 +104,12 @@ window.addEventListener("load",function(){
             }
             winTxt.style.color = cell.style.color;
             plrTxt.innerText = currentPlayer;
+
+            var filled = 0;
+            for(var i=0;i<cells.length;i++){
+                if(cells[i].innerText !== "") filled++;
+            }
+            if(filled >= 9) reset();
         })
     }
 
