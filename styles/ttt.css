@@ -13,6 +13,7 @@
 }
 
 #grid td {
+    user-select: none;
     background-color: white;
     width: 30%;
     height: 30%;
