@@ -131,3 +131,15 @@ a {
 #tab-about {
     font-size: 90%;
 }
+
+.social-link img {
+    display: inline-block;
+    max-width: 20px;
+    max-height: 20px;
+    width: auto;
+    height: auto;
+}
+
+.social-link p {
+    vertical-align: top;
+}
