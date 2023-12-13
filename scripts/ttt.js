@@ -2,6 +2,7 @@ window.addEventListener("load",function(){
     const grid = document.getElementById("grid");
     const cells = grid.getElementsByTagName("td");
     const plrTxt = document.getElementById("plr");
+    const winTxt = document.getElementById("win");
 
     const winningPatterns = [
         [
@@ -61,6 +62,7 @@ window.addEventListener("load",function(){
     }
 
     function reset(){
+        winTxt.style.display = "none";
         for(var i=0;i<cells.length;i++){
             const cell = cells[i];
             cell.innerText = "";
@@ -74,6 +76,8 @@ window.addEventListener("load",function(){
 
             cell.innerText = currentPlayer;
             if(testPatterns(currentPlayer)){
+                winTxt.innerText = currentPlayer + " wins";
+                winTxt.style.display = "block"
                 reset();
             }
             if(currentPlayer === "O"){
@@ -85,6 +89,7 @@ window.addEventListener("load",function(){
                 plrTxt.style.color = "green";
                 currentPlayer = "O";
             }
+            winTxt.style.color = cell.style.color;
             plrTxt.innerText = currentPlayer;
         })
     }
