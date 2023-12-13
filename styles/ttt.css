@@ -1,0 +1,17 @@
+#top-screen, #bottom-screen {
+    background-color: #e8e3c4;
+    text-align: center;
+}
+
+
+#grid {
+    width: 75%;
+    height: 90%;
+    margin-top: 3%;
+    margin-left: 12%;
+    background-color: black;
+}
+
+#grid td {
+    background-color: white;
+}
