@@ -14,4 +14,7 @@
 
 #grid td {
     background-color: white;
+    width: 30%;
+    height: 30%;
+    font-size: 300%;
 }
