@@ -13,134 +13,136 @@
 
 </head>
 <body>
-    <div id="top-screen">
-        <div id="title-zone">
-            <h1>3DS Web stuff</h1>
-            <p>by Wolfyxon</p>
-        </div>
-        <p>
-            A little collection of games and other stuff designed for the Nintendo 3DS online browser.
-        </p>
-        <h4>Gamepad controls</h4>
-        <table id="controls">
-            <tr>
-                <td>&#xE07B;</td><td>Previous Pab</td> <td>&#xE07C;</td><td>Next tab</td>
-            </tr>
-            <tr>
-                <td>&#xE079;</td><td>Scroll up</td> <td>&#xE07A;</td><td>Scroll down</td>
-            </tr>
+  <div id="screens">
+      <div id="top-screen">
+          <div id="title-zone">
+              <h1>3DS Web stuff</h1>
+              <p>by Wolfyxon</p>
+          </div>
+          <p>
+              A little collection of games and other stuff designed for the Nintendo 3DS online browser.
+          </p>
+          <h4>Gamepad controls</h4>
+          <table id="controls">
+              <tr>
+                  <td>&#xE07B;</td><td>Previous Pab</td> <td>&#xE07C;</td><td>Next tab</td>
+              </tr>
+              <tr>
+                  <td>&#xE079;</td><td>Scroll up</td> <td>&#xE07A;</td><td>Scroll down</td>
+              </tr>
 
-        </table>
-    </div>
-    <div id="bottom-screen">
-        <div id="tab-btns">
-            <button>Games</button>
-            <button>Other</button>
-            <button>News</button>
-            <button>About</button>
-        </div>
-        <div id="tabs">
-            <div id="tab-games">
-                <div class="app-list">
+          </table>
+      </div>
+      <div id="bottom-screen">
+          <div id="tab-btns">
+              <button>Games</button>
+              <button>Other</button>
+              <button>News</button>
+              <button>About</button>
+          </div>
+          <div id="tabs">
+              <div id="tab-games">
+                  <div class="app-list">
 
-                    <a href="jumpy.html">
-                        <img class="app-icon" src="img/jumpy/standing.png">
-                        <div class="app-text">
-                            <p class="app-name">Jumpy</p>
-                            <p class="app-description">Jump and avoid spikes</p>
-                        </div>
-                    </a>
-                    <a href="pigeon.html">
-                        <img class="app-icon" src="img/pigeon/wingDown.png">
-                        <div class="app-text">
-                            <p class="app-name">Pigeon</p>
-                            <p class="app-description">Fly between pipes</p>
-                        </div>
-                    </a>
-                    <a href="ttt.html">
-                        <img class="app-icon" src="img/appIcons/ttt.png">
-                        <div class="app-text">
-                            <p class="app-name">Tic-Tac-Toe</p>
-                            <p class="app-description">Place X and O to make a pattern.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div id="tab-other">
-                <div class="app-list">
+                      <a href="jumpy.html">
+                          <img class="app-icon" src="img/jumpy/standing.png">
+                          <div class="app-text">
+                              <p class="app-name">Jumpy</p>
+                              <p class="app-description">Jump and avoid spikes</p>
+                          </div>
+                      </a>
+                      <a href="pigeon.html">
+                          <img class="app-icon" src="img/pigeon/wingDown.png">
+                          <div class="app-text">
+                              <p class="app-name">Pigeon</p>
+                              <p class="app-description">Fly between pipes</p>
+                          </div>
+                      </a>
+                      <a href="ttt.html">
+                          <img class="app-icon" src="img/appIcons/ttt.png">
+                          <div class="app-text">
+                              <p class="app-name">Tic-Tac-Toe</p>
+                              <p class="app-description">Place X and O to make a pattern.</p>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div id="tab-other">
+                  <div class="app-list">
 
-                    <a href="qr.html">
-                        <img class="app-icon" src="img/appIcons/qr.png">
-                        <div class="app-text">
-                            <p class="app-name">QR Code generator</p>
-                            <p class="app-description">Turn text into QR codes</p>
-                        </div>
-                    </a>
+                      <a href="qr.html">
+                          <img class="app-icon" src="img/appIcons/qr.png">
+                          <div class="app-text">
+                              <p class="app-name">QR Code generator</p>
+                              <p class="app-description">Turn text into QR codes</p>
+                          </div>
+                      </a>
 
-                    <a href="debug.html">
-                        <img class="app-icon" src="">
-                        <div class="app-text">
-                            <p class="app-name">Debug</p>
-                            <p class="app-description">Some testing</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div id="tab-news">
-                <article>
-                    <h3>13.12.2023</h3>
-                    <a href="ttt.html">Tic-Tac-Toe</a> released along with some minor fixes in the Pigeon game.
-                </article>
-                <article>
-                    <h3>12.12.2023</h3>
-                    <p>New game based on Flappy Bird is out!</p>
-                    <a href="pigeon.html">Pigeon</a>!
-                    <p>In near future I might add random events to it like things you have to quickly dodge to make it more interesting, but I think it's already good for now.</p>
-                    <p>It relies on the newly written Game.js library, so I was able to properly test, adapt and fix a lot of bugs while seeing it in action.</p>
-                </article>
-                <article>
-                    <h3>05.12.2023</h3>
-                    <p>First game is there! <a href="jumpy.html">Jumpy!</a> </p>
-                    <p>For now the website is going through a lot of technical changes, and I am working on libraries that will allow games to be easily made.</p>
-                    <p>More games and stuff soon!</p>
-                </article>
-                <article>
-                    <h3>03.12.2023</h3>
-                    <p>First functional version of the site is complete</p>
-                </article>
-            </div>
-            <div id="tab-about">
-                <p>
-                    This website is a small collection of browser games made in JavaScript.
-                </p>
-                <p>
-                    Please note that this website uses outdated web standards in order to support the Nintendo 3DS browser.
-                    Also, not many things are possible compared to the modern browsers.
-                    Due to the browser using most buttons to control itself, it's not possible to use them all. They are detectable, but it's not possible to prevent the browser from triggering their default actions, example going to the previous page on &#xE001;.
-                </p>
-                <p>
-                    If you'd like to suggest a game or create your own with JavaScript, feel free to suggest or open pull requests on the GitHub page.
-                </p>
-                <p>
-                    This project is not affiliated with Nintendo, and it's only community driven.
-                </p>
-                <h3>Links & contact</h3>
-                <p class="note">Should be opened on another device</p>
-                <div class="social-link">
-                    <img src="img/logos/github.png">
-                    <a href="https://github.com/Wolfyxon/3ds-web-stuff" class="non-3ds-link">Source code</a>
-                </div>
-                <div class="social-link">
-                    <img src="img/logos/discord.svg">
-                    <a href="https://discord.com/invite/RztUGCK">Discord server</a>
-                </div>
-                <div class="social-link">
-                    <img src="img/logos/gmail.png">
-                    <a href="mailto:wolfyxon@gmail.com" class="non-3ds-link">wolfyxon@gmail.com</a>
-                </div>
+                      <a href="debug.html">
+                          <img class="app-icon" src="">
+                          <div class="app-text">
+                              <p class="app-name">Debug</p>
+                              <p class="app-description">Some testing</p>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div id="tab-news">
+                  <article>
+                      <h3>13.12.2023</h3>
+                      <a href="ttt.html">Tic-Tac-Toe</a> released along with some minor fixes in the Pigeon game.
+                  </article>
+                  <article>
+                      <h3>12.12.2023</h3>
+                      <p>New game based on Flappy Bird is out!</p>
+                      <a href="pigeon.html">Pigeon</a>!
+                      <p>In near future I might add random events to it like things you have to quickly dodge to make it more interesting, but I think it's already good for now.</p>
+                      <p>It relies on the newly written Game.js library, so I was able to properly test, adapt and fix a lot of bugs while seeing it in action.</p>
+                  </article>
+                  <article>
+                      <h3>05.12.2023</h3>
+                      <p>First game is there! <a href="jumpy.html">Jumpy!</a> </p>
+                      <p>For now the website is going through a lot of technical changes, and I am working on libraries that will allow games to be easily made.</p>
+                      <p>More games and stuff soon!</p>
+                  </article>
+                  <article>
+                      <h3>03.12.2023</h3>
+                      <p>First functional version of the site is complete</p>
+                  </article>
+              </div>
+              <div id="tab-about">
+                  <p>
+                      This website is a small collection of browser games made in JavaScript.
+                  </p>
+                  <p>
+                      Please note that this website uses outdated web standards in order to support the Nintendo 3DS browser.
+                      Also, not many things are possible compared to the modern browsers.
+                      Due to the browser using most buttons to control itself, it's not possible to use them all. They are detectable, but it's not possible to prevent the browser from triggering their default actions, example going to the previous page on &#xE001;.
+                  </p>
+                  <p>
+                      If you'd like to suggest a game or create your own with JavaScript, feel free to suggest or open pull requests on the GitHub page.
+                  </p>
+                  <p>
+                      This project is not affiliated with Nintendo, and it's only community driven.
+                  </p>
+                  <h3>Links & contact</h3>
+                  <p class="note">Should be opened on another device</p>
+                  <div class="social-link">
+                      <img src="img/logos/github.png">
+                      <a href="https://github.com/Wolfyxon/3ds-web-stuff" class="non-3ds-link">Source code</a>
+                  </div>
+                  <div class="social-link">
+                      <img src="img/logos/discord.svg">
+                      <a href="https://discord.com/invite/RztUGCK">Discord server</a>
+                  </div>
+                  <div class="social-link">
+                      <img src="img/logos/gmail.png">
+                      <a href="mailto:wolfyxon@gmail.com" class="non-3ds-link">wolfyxon@gmail.com</a>
+                  </div>
 
-            </div>
-        </div>
-    </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </body>
 </html>
