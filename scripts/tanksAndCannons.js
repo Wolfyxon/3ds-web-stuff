@@ -13,7 +13,6 @@ window.addEventListener("load",function(){
         const cannon = Sprite(imgTank1Cannon);
 
         const scale = 0.6;
-        const rmHeight = 20;
 
         base.rescale(scale);
         cannon.rescale(scale);
