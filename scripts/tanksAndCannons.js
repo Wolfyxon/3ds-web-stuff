@@ -1,5 +1,6 @@
 window.addEventListener("load",function(){
     const canvas = document.getElementById("canv");
+    const ctx = canvas.getContext("2d");
 
     const imgTank1Base = document.getElementById("img-tank1-base");
     const imgTank1Cannon = document.getElementById("img-tank1-cannon");
@@ -17,15 +18,14 @@ window.addEventListener("load",function(){
         base.rescale(scale);
         cannon.rescale(scale);
 
-        base.area.endVec.y -= rmHeight;
-        cannon.area.endVec.y -= rmHeight;
-
         tanks.push({
             base: base,
             cannon: cannon
         })
     }
     addTank()
+
+    ctx.scale(1,0.5);
     setInterval(function(){
         clearCanvas(canvas);
 
