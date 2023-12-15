@@ -30,7 +30,7 @@ window.addEventListener("load",function(){
     var pipes = []
 
     function addPipes(y){
-        if(!y) y = -25;
+        if(!y) y = -40;
         const gap = 152;
         const startX = 300
         const scale = 0.5;
@@ -70,8 +70,8 @@ window.addEventListener("load",function(){
     },200)
 
     setInterval(function(){
-        if(!alive || !started) return;
-        addPipes(randi(-55,0));
+        //if(!alive || !started) return;
+        addPipes(randi(-100,-50));
     },2000)
 
 
