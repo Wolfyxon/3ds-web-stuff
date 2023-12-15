@@ -23,3 +23,7 @@
     border-radius: 5px;
     background-color: limegreen;
 }
+
+#btn-gen:active {
+    background: lime;
+}
