@@ -189,6 +189,17 @@ function Sprite(image,x,y,rot,w,h){
         return spr;
     }
 
+    spr.rotateTowardsXY = function(x_, y_) {
+        const deltaX = x_ - spr.getX();
+        const deltaY = y_ - spr.getY();
+        spr.rotation = rad2deg( Math.atan2(deltaY, deltaX) );
+        return spr;
+    }
+
+    spr.rotateTowardsVec = function(vector){
+        return spr.rotateTowardsXY(vector.x,vector.y);
+    }
+
     spr.render = function(canvas){
         if(!spr.visible) return;
         const ctx = canvas.getContext("2d");
