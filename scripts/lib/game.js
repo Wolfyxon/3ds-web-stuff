@@ -176,6 +176,10 @@ function Sprite(image,x,y,rot,w,h){
         return spr.area.startVec.y;
     }
 
+    spr.getCenter = function(){
+        return spr.area.getCenter();
+    }
+
     spr.moveXY = function(x_,y_){
         spr.area.offsetXY(x_,y_);
     }
