@@ -31,6 +31,10 @@ window.addEventListener("load",function(){
             cannon: cannon
         })
     }
+
+    function addCannon(cellIdx){
+        cannons[cellIdx] = Sprite(imgTank1Cannon);
+    }
     addTank()
 
     ctx.scale(1,0.5);
