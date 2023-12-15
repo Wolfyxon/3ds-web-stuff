@@ -57,7 +57,10 @@ window.addEventListener("load",function(){
             ctx.fillRect(x,y,cellSize,cellSize);
 
             const cannon = cannons[i];
-            if(cannon) cannon.render(canvas);
+            if(cannon){
+                cannon.area.moveTo(Vector2(x-cellSize/4,y-cellSize/1.5));
+                cannon.render(canvas);
+            }
         }
 
     },optiItv());
