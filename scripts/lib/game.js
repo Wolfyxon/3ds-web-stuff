@@ -94,8 +94,15 @@ function Area2D(vec1, vec2){
     }
 
     area.rescale = function(scale){
-        area.endVec.x -= area.getWidth()*scale;
-        area.endVec.y -= area.getHeight()*scale;
+        const w = area.getWidth() * scale;
+        const h = area.getHeight() * scale;
+        const deltaW = w - area.getWidth();
+        const deltaH = h - area.getHeight();
+        area.startVec.x -= deltaW / 2;
+        area.startVec.y -= deltaH / 2;
+        area.endVec.x += deltaW / 2;
+        area.endVec.y += deltaH / 2;
+
         return area;
     }
 
