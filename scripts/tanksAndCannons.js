@@ -57,7 +57,7 @@ window.addEventListener("load",function(){
             ctx.fillRect(x,y,cellSize,cellSize);
 
             const cannon = cannons[i];
-            if(cannon) cannon.render();
+            if(cannon) cannon.render(canvas);
         }
 
     },optiItv());
