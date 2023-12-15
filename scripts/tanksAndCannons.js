@@ -13,6 +13,8 @@ window.addEventListener("load",function(){
     const cellSize = 25;
     const cellSpacing = 1.2;
 
+    const rotSpeed = 2;
+
     for(var i=0;i<columns*rows;i++){
         cannons.push(null);
     }
@@ -63,6 +65,9 @@ window.addEventListener("load",function(){
 
             const cannon = cannons[i];
             if(cannon){
+                if(isBtnPressed("left")) cannon.rotation -= rotSpeed;
+                if(isBtnPressed("right")) cannon.rotation += rotSpeed;
+
                 cannon.area.moveTo(Vector2(x-cellSize/4,y-cellSize/1.5));
                 cannon.render(canvas);
             }
