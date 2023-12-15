@@ -8,6 +8,15 @@ window.addEventListener("load",function(){
     var tanks = [];
     var cannons = [];
 
+    const columns = 9;
+    const rows = 5;
+    const cellSize = 25;
+    const cellSpacing = 1.2;
+
+    for(var i=0;i<columns*rows;i++){
+        cannons.push(null);
+    }
+
     function addTank(){
         const base = Sprite(imgTank1Base);
         const cannon = Sprite(imgTank1Cannon);
@@ -32,6 +41,19 @@ window.addEventListener("load",function(){
             const tank = tanks[i];
             tank.base.render(canvas);
             tank.cannon.render(canvas);
+        }
+
+        for(var i=0;i<cannons.length;i++){
+            const colIdx = i % columns;
+            const rowIdx = Math.floor(i / columns);
+
+            var x = (colIdx * cellSize*cellSpacing) + 18;
+            var y = (rowIdx * cellSize*cellSpacing) + 150;
+
+            ctx.fillRect(x,y,cellSize,cellSize);
+
+            const cannon = cannons[i];
+            if(cannon) cannon.render();
         }
 
     },optiItv());
