@@ -195,5 +195,12 @@ window.addEventListener("load",function (){
     if(is3DS()){
         const non3dsLinks = document.getElementsByClassName("non-3ds-link");
         for(var i=0;i<non3dsLinks.length;i++) registerNon3DSlink(non3dsLinks[i]);
+
+    } else {
+        const only3ds = document.getElementsByClassName("only-3ds");
+        for(var i=0;i<only3ds.length;i++){
+            only3ds[i].style.display = "none";
+        }
     }
+
 })
