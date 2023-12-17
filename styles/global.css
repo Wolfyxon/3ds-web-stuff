@@ -36,6 +36,12 @@ img, canvas { /* Disable antialiasing to match the 3DS which doesn't have antial
     width: 320px;
 }
 
+/* Use this class when overlaying absolute elements such as .dual-screen */
+.abs-overlay {
+    position: relative;
+    background: none !important; /* Re-use !important to add background */
+}
+
 .note {
     color: #808080;
     font-size: 90%;
