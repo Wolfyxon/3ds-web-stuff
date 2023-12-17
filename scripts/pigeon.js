@@ -70,7 +70,7 @@ window.addEventListener("load",function(){
     },200)
 
     setInterval(function(){
-        //if(!alive || !started) return;
+        if(!alive || !started) return;
         addPipes(randi(-100,-50));
     },2000)
 
