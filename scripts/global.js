@@ -147,7 +147,7 @@ function optiItv(){
 }
 
 setInterval(function (){
-    window.scrollTo(40,227); // this makes sure the screen is always centered, however it still requires the user to adjust the zoom
+    window.scrollTo(40,227);
 
     const curPressed = getPressedBtns();
     justPressed = []
