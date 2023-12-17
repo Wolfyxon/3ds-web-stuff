@@ -155,7 +155,7 @@ window.addEventListener("load",function (){
         }
         ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
 
-    })
+    },optiItv())
 
     window.addEventListener("click",jump);
 })
