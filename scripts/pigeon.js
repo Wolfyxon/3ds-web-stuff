@@ -146,4 +146,6 @@ window.addEventListener("load",function(){
         }
         pigeon.render(canvas);
     },optiItv())
+
+    window.addEventListener("click",jump);
 })
