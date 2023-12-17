@@ -189,9 +189,11 @@ if(is3DS()){
         alert(e.filename+":"+e.lineno+" "+e.message);
         return false;
     })
-    window.addEventListener("load",function (){
-        const non3dsLinks = document.getElementsByClassName("non-3ds-link");
-        for(var i=0;i<non3dsLinks.length;i++) registerNon3DSlink(non3dsLinks[i]);
-    })
 }
 
+window.addEventListener("load",function (){
+    if(is3DS()){
+        const non3dsLinks = document.getElementsByClassName("non-3ds-link");
+        for(var i=0;i<non3dsLinks.length;i++) registerNon3DSlink(non3dsLinks[i]);
+    }
+})
