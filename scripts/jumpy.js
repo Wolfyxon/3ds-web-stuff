@@ -32,7 +32,8 @@ window.addEventListener("load",function (){
     var resetCooldown = false;
 
     function jump(){
-        if(!active) return;
+        if(resetCooldown) return;
+        if(!active) reset();
         if(jumpPower > 0) return;
         if(!isOnGround()) return;
         jumpPower = 130;
@@ -118,8 +119,6 @@ window.addEventListener("load",function (){
         if(yOffset > 0) yOffset = 0;
 
         if(isBtnPressed("a") || isBtnPressed("up")){
-            if(resetCooldown) return;
-            if(!active) reset()
             jump()
         }
         if(isBtnPressed("down")){
