@@ -110,14 +110,9 @@ window.addEventListener("load",function (){
 
     const hitboxMultiplier = 0.85
 
-    // Main loop
-    setInterval(function (){
-        if(jumpPower > 0){
-            jumpPower -= gravity;
-        }
-        yOffset = lerp(yOffset,-jumpPower,0.3)
-        if(yOffset > 0) yOffset = 0;
 
+    // Controls loop
+    setInterval(function(){
         if(isBtnPressed("a") || isBtnPressed("up")){
             jump()
         }
@@ -126,6 +121,15 @@ window.addEventListener("load",function (){
         } else {
             gravity = 2.4;
         }
+    })
+
+    // Main loop
+    setInterval(function (){
+        if(jumpPower > 0){
+            jumpPower -= gravity;
+        }
+        yOffset = lerp(yOffset,-jumpPower,0.3)
+        if(yOffset > 0) yOffset = 0;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for(var i=0;i<spikes.length;i++){
