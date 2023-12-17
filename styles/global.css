@@ -29,6 +29,13 @@ img, canvas { /* Disable antialiasing to match the 3DS which doesn't have antial
     overflow: hidden;
 }
 
+.dual-screen {
+    position: absolute;
+    margin-left: 39.4667px;
+    height: 460px;
+    width: 320px;
+}
+
 .note {
     color: #808080;
     font-size: 90%;

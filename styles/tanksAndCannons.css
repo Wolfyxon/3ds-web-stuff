@@ -1,7 +1,3 @@
 #canv {
-    position: absolute;
     background: url("../img/tanksAndCannons/bg.png");
-    margin-left: 39.4667px;
-    height: 460px;
-    width: 320px;
 }
