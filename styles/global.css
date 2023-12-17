@@ -32,7 +32,7 @@ img, canvas { /* Disable antialiasing to match the 3DS which doesn't have antial
 .dual-screen {
     position: absolute;
     margin-left: 39.4667px;
-    height: 460px;
+    height: 457px;
     width: 320px;
 }
 
