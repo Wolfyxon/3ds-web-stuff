@@ -64,6 +64,20 @@ window.addEventListener("load",function(){
         txtHighScore.style.color = ""
     }
 
+    function jump(){
+        if(!started){
+            document.getElementById("prestart").style.visibility = "hidden";
+            started = true;
+        }
+        if(!alive && !resetCooldown){
+            reset();
+        }
+        if(alive){
+            yForce = -1.5;
+            pigeon.rotation = -20;
+        }
+    }
+
     setInterval(function(){
         if(!alive) return;
         switchSprite()
@@ -78,17 +92,7 @@ window.addEventListener("load",function(){
     // Controls loop
     setInterval(function(){
         if(isBtnJustPressed("up") || isBtnJustPressed("a")){
-            if(!started){
-                document.getElementById("prestart").style.visibility = "hidden";
-                started = true;
-            }
-            if(!alive && !resetCooldown){
-                reset();
-            }
-            if(alive){
-                yForce = -1.5;
-                pigeon.rotation = -20;
-            }
+            jump()
         }
     })
 
