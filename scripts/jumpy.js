@@ -152,4 +152,6 @@ window.addEventListener("load",function (){
         ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
 
     })
+
+    window.addEventListener("click",jump);
 })
