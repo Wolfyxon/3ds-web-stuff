@@ -24,6 +24,7 @@ window.addEventListener("load",function(){
             setTimeout(function(){
                 proj.remove = true;
             },2000)
+            proj.rotation = plrJet.rotation;
             projectiles.push(proj);
         }
     },100)
@@ -45,7 +46,7 @@ window.addEventListener("load",function(){
 
         for(var i=0;i<projectiles.length;i++){
             const proj = projectiles[i];
-            proj.moveXY(0,-speed*2);
+            proj.moveLocalXY(0,-speed*2);
             proj.render(canvas);
 
             if(proj.remove){
