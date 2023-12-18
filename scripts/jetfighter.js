@@ -10,6 +10,19 @@ window.addEventListener("load",function(){
     plrJet.restrictMovement = true;
     const speed = 5;
 
+    const projectiles = [];
+
+    setInterval(function(){
+        if(isBtnPressed("A")){
+            const proj = Sprite(
+                imgProjectile,
+                plrJet.getX()+plrJet.area.getWidth()/2-2,
+                plrJet.getY()
+            );
+            projectiles.push(proj);
+        }
+    },100)
+
     setInterval(function(){
         clearCanvas(canvas);
 
@@ -18,6 +31,11 @@ window.addEventListener("load",function(){
         if(isBtnPressed("Left")) plrJet.moveXY(-speed,0);
         if(isBtnPressed("Right")) plrJet.moveXY(speed,0);
 
+        for(var i=0;i<projectiles.length;i++){
+            const proj = projectiles[i];
+            proj.moveXY(0,-speed*2);
+            proj.render(canvas);
+        }
 
         plrJet.render(canvas);
     },optiItv());
