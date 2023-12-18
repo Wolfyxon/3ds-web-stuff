@@ -64,7 +64,7 @@ function includes(container,search){
 function getWithout(array,exclude){
     var newArr = [];
     for(var i=0;i<array.length;i++){
-        if(i !== exclude) newArr.push(array[i])
+        if(array[i] !== exclude) newArr.push(array[i])
     }
     return newArr;
 }
