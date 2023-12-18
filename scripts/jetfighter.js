@@ -7,6 +7,7 @@ window.addEventListener("load",function(){
     const imgProjectile = document.getElementById("img-projectile");
 
     const plrJet = Sprite(imgJet,125,350);
+    plrJet.restrictMovement = true;
     const speed = 5;
 
     setInterval(function(){
