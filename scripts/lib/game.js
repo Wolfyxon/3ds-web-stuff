@@ -195,6 +195,13 @@ function Sprite(image,x,y,rot,w,h){
         spr.area.offsetVec(vector);
     }
 
+    spr.moveLocalXY = function(x_, y_){
+        const angle = deg2rad(spr.rotation);
+        const localX = x_ * Math.cos(angle) - y_ * Math.sin(angle);
+        const localY = x_ * Math.sin(angle) + y_ * Math.cos(angle);
+        return spr.moveXY(localX, localY);
+    }
+
     spr.rescale = function(scale){
         spr.area.rescale(scale);
         return spr;
