@@ -198,7 +198,7 @@ function Sprite(image,x,y,rot,w,h){
     }
 
     spr.moveVec = function(vector){
-        spr.area.offsetVec(vector);
+        return spr.moveXY(vector.x, vector.y);
     }
 
     spr.moveLocalXY = function(x_, y_){
