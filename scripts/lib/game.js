@@ -190,7 +190,7 @@ function Sprite(image,x,y,rot,w,h){
     }
 
     spr.moveXY = function(x_,y_){
-        if(spr.lastCanvas){
+        if(spr.lastCanvas && spr.restrictMovement){
             if(spr.getX()+x_ < 0 || spr.getX()+x_ >= spr.lastCanvas.width-spr.area.getWidth()) return;
             if(spr.getY()+y_ < 0 || spr.getY()+y_ >= spr.lastCanvas.height-spr.area.getHeight()) return;
         }
