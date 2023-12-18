@@ -171,6 +171,7 @@ function Sprite(image,x,y,rot,w,h){
     var spr = {
         area: Area2D(Vector2(x,y),tmpVec.getOffsetXY(w,h)),
         image: image,
+        lastCanvas: null,
         visible: true,
         rotation: rot,
     }
@@ -223,6 +224,7 @@ function Sprite(image,x,y,rot,w,h){
     }
 
     spr.render = function(canvas){
+        spr.lastCanvas = canvas;
         if(!spr.visible) return;
         const ctx = canvas.getContext("2d");
         ctx.save();
