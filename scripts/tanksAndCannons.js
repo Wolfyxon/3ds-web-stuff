@@ -44,7 +44,6 @@ window.addEventListener("load",function(){
 
     addTank()
 
-    ctx.scale(1,0.5);
     setInterval(function(){
         clearCanvas(canvas);
 
