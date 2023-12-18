@@ -174,6 +174,7 @@ function Sprite(image,x,y,rot,w,h){
         lastCanvas: null,
         visible: true,
         rotation: rot,
+        restrictMovement: false
     }
 
     spr.getX = function (){
@@ -189,6 +190,10 @@ function Sprite(image,x,y,rot,w,h){
     }
 
     spr.moveXY = function(x_,y_){
+        if(spr.lastCanvas){
+            if(spr.getX()+x_ < 0 || spr.getX()+x_ >= spr.lastCanvas.width-spr.area.getWidth()) return;
+            if(spr.getY()+y_ < 0 || spr.getY()+y_ >= spr.lastCanvas.height-spr.area.getHeight()) return;
+        }
         spr.area.offsetXY(x_,y_);
     }
 
