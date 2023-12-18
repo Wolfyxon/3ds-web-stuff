@@ -202,6 +202,10 @@ function Sprite(image,x,y,rot,w,h){
         return spr.moveXY(localX, localY);
     }
 
+    spr.moveLocalVec = function(vector){
+        return spr.moveLocalXY(vector.x, vector.y);
+    }
+
     spr.rescale = function(scale){
         spr.area.rescale(scale);
         return spr;
