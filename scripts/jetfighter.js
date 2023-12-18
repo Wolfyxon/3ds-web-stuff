@@ -9,6 +9,8 @@ window.addEventListener("load",function(){
     const plrJet = Sprite(imgJet,125,350);
     plrJet.restrictMovement = true;
     const speed = 5;
+    const rotAngle = 20;
+    const rotAmt = 0.2;
 
     const projectiles = [];
 
@@ -31,8 +33,15 @@ window.addEventListener("load",function(){
 
         if(isBtnPressed("Up")) plrJet.moveXY(0,-speed);
         if(isBtnPressed("Down")) plrJet.moveXY(0,speed);
-        if(isBtnPressed("Left")) plrJet.moveXY(-speed,0);
-        if(isBtnPressed("Right")) plrJet.moveXY(speed,0);
+        if(isBtnPressed("Left")) {
+            plrJet.rotation = lerp(plrJet.rotation,-rotAngle,rotAmt);
+            plrJet.moveXY(-speed, 0);
+        }
+        if(isBtnPressed("Right")){
+            plrJet.rotation = lerp(plrJet.rotation,rotAngle,rotAmt);
+            plrJet.moveXY(speed,0);
+        }
+        plrJet.rotation = lerp(plrJet.rotation,0,rotAmt);
 
         for(var i=0;i<projectiles.length;i++){
             const proj = projectiles[i];
