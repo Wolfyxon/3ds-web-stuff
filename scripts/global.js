@@ -167,7 +167,7 @@ window.addEventListener("keydown",function(e){
 })
 
 window.addEventListener("keyup",function(e){
-    pressedKeycodes = []
+    pressedKeycodes = getWithout(pressedKeycodes, e.keyCode);
 })
 
 // This prevents the browser from moving the page using the arrow keys
