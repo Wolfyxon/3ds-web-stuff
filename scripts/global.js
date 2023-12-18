@@ -203,4 +203,13 @@ window.addEventListener("load",function (){
         }
     }
 
+    // This ensures that the canvas isn't stretched
+    const dualScreen = document.getElementsByClassName("dual-screen");
+    for(var i=0;i<dualScreen.length;i++){
+        const elm = dualScreen[i];
+        if(elm.tagName.toLowerCase() === "canvas"){
+            elm.width = 320
+            elm.height = 457
+        }
+    }
 })
