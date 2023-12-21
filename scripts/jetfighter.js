@@ -4,6 +4,9 @@ window.addEventListener("load",function(){
 
     const imgJet = document.getElementById("img-jet");
 
+    const imgHeli = document.getElementById("img-heli");
+    const imgRotor = document.getElementById("img-rotor");
+
     const imgProjectile = document.getElementById("img-projectile");
 
     const plrJet = Sprite(imgJet,125,350);
