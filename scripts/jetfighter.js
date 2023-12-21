@@ -73,6 +73,14 @@ addHelicopter(10,10)
 
             heli.render(canvas);
             heli.rotor.render(canvas);
+
+            for(var ii=0;ii<projectiles.length;ii++){
+                const proj = projectiles[ii];
+                if(proj.area.isTouching(heli.area)){
+                    projectiles.splice(ii, 1);
+                    ii--;
+                }
+            }
         }
 
         plrJet.render(canvas);
