@@ -20,6 +20,12 @@ window.addEventListener("load",function(){
     const projectiles = [];
     const rockets = [];
 
+    function addHelicopter(x,y){
+        const heli = Sprite(imgHeli,x,y,180);
+        heli.rotor = Sprite(imgRotor, x, y);
+        helicopters.push(heli);
+    }
+
     setInterval(function(){
         if(isBtnPressed("A")){
             const proj = Sprite(
