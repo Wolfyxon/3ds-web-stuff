@@ -40,7 +40,7 @@ window.addEventListener("load",function(){
             projectiles.push(proj);
         }
     },100)
-
+addHelicopter(10,10)
     setInterval(function(){
         clearCanvas(canvas);
 
