@@ -45,7 +45,7 @@ function Vector2(x,y){
         )
     }
 
-    vec.moveTowardXY = function (x_, y_, amt) {
+    vec.moveTowardXY = function(x_, y_, amt){
         const angle = Math.atan2(y_ - vec.y, x_ - vec.x);
         vec.x += Math.cos(angle) * amt;
         vec.y += Math.sin(angle) * amt;
