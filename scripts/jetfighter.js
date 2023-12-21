@@ -12,6 +12,8 @@ window.addEventListener("load",function(){
     const rotAngle = 20;
     const rotAmt = 0.2;
 
+    const helicopters = []; // enemies
+
     const projectiles = [];
     const rockets = [];
 
