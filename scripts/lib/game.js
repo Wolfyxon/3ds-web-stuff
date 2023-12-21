@@ -52,6 +52,11 @@ function Vector2(x,y){
         return vec;
     };
 
+    vec.moveTowardVec = function(vector){
+        vec.moveTowardXY(vector.x, vector.y);
+        return vec;
+    }
+
     vec.copy = function(){
         return Vector2(vec.x, vec.y);
     }
