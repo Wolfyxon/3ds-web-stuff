@@ -13,6 +13,7 @@ window.addEventListener("load",function(){
     const rotAmt = 0.2;
 
     const projectiles = [];
+    const rockets = [];
 
     setInterval(function(){
         if(isBtnPressed("A")){
