@@ -21,8 +21,11 @@ window.addEventListener("load",function(){
     const rockets = [];
 
     function addHelicopter(x,y){
+        const scale = 0.8;
         const heli = Sprite(imgHeli,x,y,180);
         heli.rotor = Sprite(imgRotor, x-20, y+10);
+        heli.rotor.rescale(scale)
+        heli.rescale(scale);
         helicopters.push(heli);
     }
 
