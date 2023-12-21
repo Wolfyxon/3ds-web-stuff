@@ -22,7 +22,7 @@ window.addEventListener("load",function(){
 
     function addHelicopter(x,y){
         const heli = Sprite(imgHeli,x,y,180);
-        heli.rotor = Sprite(imgRotor, x, y);
+        heli.rotor = Sprite(imgRotor, x-20, y+10);
         helicopters.push(heli);
     }
 
