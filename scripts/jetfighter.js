@@ -67,6 +67,14 @@ window.addEventListener("load",function(){
             }
         }
 
+        for(var i=0;i<helicopters.length;i++){
+            const heli = helicopters[i];
+            heli.rotor.rotation += 10;
+
+            heli.render(canvas);
+            heli.rotor.render(canvas);
+        }
+
         plrJet.render(canvas);
     },optiItv());
 })
