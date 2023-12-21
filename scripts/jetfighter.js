@@ -73,10 +73,12 @@ addHelicopter(10,10)
 
             heli.render(canvas);
             heli.rotor.render(canvas);
+            heli.rotation = lerp(heli.rotation,180,0.2);
 
             for(var ii=0;ii<projectiles.length;ii++){
                 const proj = projectiles[ii];
                 if(proj.area.isTouching(heli.area)){
+                    heli.rotation += randi(-5,5)
                     projectiles.splice(ii, 1);
                     ii--;
                 }
