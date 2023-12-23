@@ -29,7 +29,7 @@ Inspired by: http://three-ds.atspace.com/ (author unknown)
 
 Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs for helping with adapting to this old browser.
 
-**This project is not affiliated with Nintendo, and it's community driven.**
+**This project is not affiliated with Nintendo, and it's only community driven.**
 
 ### 3rd party
 #### QR code generation API
