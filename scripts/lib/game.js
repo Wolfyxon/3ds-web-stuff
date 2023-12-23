@@ -51,6 +51,10 @@ function Vector2(x,y){
         return rad2deg( Math.atan2(deltaY, deltaX) );
     }
 
+    vec.getRotationToVec = function(vector){
+        return vec.getRotationToXY(vector.x, vector.y);
+    }
+
     vec.moveTowardXY = function(x_, y_, amt){
         const angle = Math.atan2(y_ - vec.y, x_ - vec.x);
         vec.x += Math.cos(angle) * amt;
