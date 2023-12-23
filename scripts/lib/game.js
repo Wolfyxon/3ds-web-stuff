@@ -285,10 +285,10 @@ function clearCanvas(canvas){
     canvas.getContext("2d").clearRect(0, 0, canvas.width*2, canvas.height*2);
 }
 
-function lerpAngle(start, end, weight) {
-    const diff = (end - start) % (2 * Math.PI);
-    var shortAngleDist = ((2 * diff) % (2 * Math.PI)) - diff;
-    return start + shortAngleDist * weight;
+function lerpAngle(startDeg, endDeg, weight) {
+    const diff = (endDeg - startDeg + 180) % 360 - 180;
+    const shortAngleDist = (2 * diff) % 360 - diff;
+    return startDeg + shortAngleDist * weight;
 }
 
 function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
