@@ -23,6 +23,7 @@ window.addEventListener("load",function(){
     function addHelicopter(x,y){
         const scale = 0.8;
         const heli = Sprite(imgHeli,x,y,180);
+        heli.hp = 10;
         heli.rotor = Sprite(imgRotor);
         heli.rotor.rescale(scale)
         heli.rescale(scale);
@@ -82,6 +83,7 @@ addHelicopter(10,10)
             for(var ii=0;ii<projectiles.length;ii++){
                 const proj = projectiles[ii];
                 if(proj.area.isTouching(heli.area)){
+                    heli.hp -= 1;
                     heli.rotation += randi(-5,5)
                     projectiles.splice(ii, 1);
                     ii--;
