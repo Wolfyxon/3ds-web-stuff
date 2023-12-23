@@ -23,7 +23,7 @@ window.addEventListener("load",function(){
     function addHelicopter(x,y){
         const scale = 0.8;
         const heli = Sprite(imgHeli,x,y,180);
-        heli.rotor = Sprite(imgRotor, x-20, y+10);
+        heli.rotor = Sprite(imgRotor);
         heli.rotor.rescale(scale)
         heli.rescale(scale);
         helicopters.push(heli);
@@ -75,6 +75,7 @@ addHelicopter(10,10)
             heli.rotor.rotation += 10;
 
             heli.render(canvas);
+            heli.rotor.area.moveTo(heli.getCenter().offsetXY(-40,-33))
             heli.rotor.render(canvas);
             heli.rotation = lerp(heli.rotation,180,0.2);
 
