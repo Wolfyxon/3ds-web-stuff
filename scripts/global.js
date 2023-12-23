@@ -8,14 +8,14 @@ function randi(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function lerp(start, end, amt){
-    return (1-amt)*start+amt*end
+function lerp(start, end, weight){
+    return (1-weight)*start+weight*end
 }
 
-function lerpAngle(start, end, amt) {
+function lerpAngle(start, end, weight) {
     const diff = (end - start) % (2 * Math.PI);
     var shortAngleDist = ((2 * diff) % (2 * Math.PI)) - diff;
-    return start + shortAngleDist * amt;
+    return start + shortAngleDist * weight;
 }
 
 function colorNameToHex(colour) {

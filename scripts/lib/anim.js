@@ -36,7 +36,7 @@ function hexToRgb(hex) {
 }
 
 
-function lerpColor(color1, color2, amt) {
+function lerpColor(color1, color2, weight) {
     if(color1 === color2) return color1;
 
     color1 = colorNameToHex(color1) || color1
@@ -49,9 +49,9 @@ function lerpColor(color1, color2, amt) {
 
     if(rgb1 === rgb2) return color1;
 
-    const r = Math.round(lerp(rgb1.r,rgb2.r,amt));
-    const g = Math.round(lerp(rgb1.g,rgb2.g,amt));
-    const b = Math.round(lerp(rgb1.b,rgb2.b,amt));
+    const r = Math.round(lerp(rgb1.r,rgb2.r,weight));
+    const g = Math.round(lerp(rgb1.g,rgb2.g,weight));
+    const b = Math.round(lerp(rgb1.b,rgb2.b,weight));
 
     return rgbToHex(r,g,b)
 }

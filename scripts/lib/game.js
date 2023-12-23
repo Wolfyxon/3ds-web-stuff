@@ -44,16 +44,16 @@ function Vector2(x,y){
         return vec.copy().rotate(degrees);
     }
 
-    vec.lerp = function(vector,amt){
-        vec.x = lerp(vec.x, vector.x, amt);
-        vec.y = lerp(vec.y, vector.y, amt);
+    vec.lerp = function(vector, weight){
+        vec.x = lerp(vec.x, vector.x, weight);
+        vec.y = lerp(vec.y, vector.y, weight);
         return vec;
     }
 
-    vec.getLerped = function(vector,amt){
+    vec.getLerped = function(vector, weight){
         return Vector2(
-            lerp(vec.x,vector.x,amt),
-            lerp(vec.y,vector.y,amt)
+            lerp(vec.x,vector.x,weight),
+            lerp(vec.y,vector.y,weight)
         )
     }
 
