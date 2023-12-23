@@ -32,6 +32,14 @@ function Vector2(x,y){
         return Vector2(vec.x+vector.x,vec.y+vector.y);
     }
 
+    vec.rotate = function(degrees) {
+        const rad = deg2rad(degrees);
+        vec.x = vec.x * Math.cos(rad) - vec.y * Math.sin(rad);
+        vec.y = vec.x * Math.sin(rad) + vec.y * Math.cos(rad);
+
+        return vec;
+    }
+
     vec.lerp = function(vector,amt){
         vec.x = lerp(vec.x, vector.x, amt);
         vec.y = lerp(vec.y, vector.y, amt);
