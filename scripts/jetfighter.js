@@ -79,8 +79,7 @@ addHelicopter(100,10)
             heli.rotor.area.moveTo(heli.getCenter().offsetXY(-40,-33))
             heli.rotor.render(canvas);
             const ang = heli.getCenter().getRotationToVec(plrJet.getCenter())+90;
-            heli.rotation = lerpAngle(ang,180, 0.2);
-
+            heli.rotation = lerpAngle(heli.rotation,ang, 0.2);
             if(heli.hp <= 0){
                 helicopters.splice(i,1);
                 i--;
