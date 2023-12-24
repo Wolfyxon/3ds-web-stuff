@@ -73,11 +73,12 @@ addHelicopter(100,10)
 
         for(var i=0;i<helicopters.length;i++){
             const heli = helicopters[i];
-            heli.rotor.rotation += 10;
+            const rotor = heli.rotor;
+            rotor.rotation += 10;
 
             heli.render(canvas);
-            heli.rotor.area.moveTo(heli.getCenter().offsetXY(-40,-33))
-            heli.rotor.render(canvas);
+            rotor.area.moveTo(heli.getCenter().offsetXY(-40,-33))
+            rotor.render(canvas);
             const ang = heli.getCenter().getRotationToVec(plrJet.getCenter())+90;
             heli.rotation = lerpAngle(heli.rotation,ang, 0.2);
             if(heli.hp <= 0){
