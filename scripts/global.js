@@ -12,6 +12,10 @@ function lerp(start, end, weight){
     return (1-weight)*start+weight*end
 }
 
+function fmod(a, b){
+    return Number((a - (Math.floor(a / b) * b)).toPrecision(8));
+}
+
 function colorNameToHex(colour) {
     const colours = {"aliceblue":"#f0f8ff","antiquewhite":"#faebd7","aqua":"#00ffff","aquamarine":"#7fffd4","azure":"#f0ffff",
         "beige":"#f5f5dc","bisque":"#ffe4c4","black":"#000000","blanchedalmond":"#ffebcd","blue":"#0000ff","blueviolet":"#8a2be2","brown":"#a52a2a","burlywood":"#deb887",
