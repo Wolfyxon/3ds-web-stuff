@@ -286,9 +286,13 @@ function clearCanvas(canvas){
 }
 
 function lerpAngle(startDeg, endDeg, weight) {
-    const diff = (endDeg - startDeg + 180) % 360 - 180;
-    const shortAngleDist = (2 * diff) % 360 - diff;
-    return startDeg + shortAngleDist * weight;
+    startDeg = deg2rad(startDeg);
+    endDeg = deg2rad(endDeg);
+
+    const TAU = Math.PI * 2;
+    const diff = fmod(endDeg - startDeg, TAU);
+    const shortest = fmod(2 * diff, TAU) - diff;
+    return rad2deg(startDeg + shortest * weight);
 }
 
 function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
