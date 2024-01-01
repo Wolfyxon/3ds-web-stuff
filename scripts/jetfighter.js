@@ -122,7 +122,7 @@ window.addEventListener("load",function(){
             heli.rotation = lerpAngle(heli.rotation,ang, 0.2);
             heli.area.moveTo(heli.area.startVec.getLerped(heli.targetPos,0.01))
 
-            if(heli.hp <= 0){
+            if(heli.hp <= 0 || heli.remove){
                 clearInterval(heli.fireItv);
                 helicopters.splice(i,1);
                 i--;
