@@ -45,6 +45,10 @@ window.addEventListener("load",function(){
     }
 
     setInterval(function(){
+        if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
+    },3000)
+
+    setInterval(function(){
         if(isBtnPressed("A")){
             const proj = Sprite(
                 imgProjectile,
@@ -58,7 +62,7 @@ window.addEventListener("load",function(){
             projectiles.push(proj);
         }
     },100)
-addHelicopter(100,10)
+
     setInterval(function(){
         clearCanvas(canvas);
 
