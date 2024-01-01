@@ -10,16 +10,18 @@ https://wolfyxon.github.io/3ds-web-stuff
 
 ## Available stuff
 - [x] Complete
-- [ ] Planned / in progress
+- [ ] in progress
+- Planned
 ### Games
 - [x] [Jumpy](https://wolfyxon.github.io/3ds-web-stuff/jumpy.html) - jump and avoid spikes. Based on the Chrome dinosaur game.
 - [x] [Tic Tac Toe](https://wolfyxon.github.io/3ds-web-stuff/ttt.html) - place X and O to make a pattern.
 - [x] [Pigeon](https://wolfyxon.github.io/3ds-web-stuff/pigeon.html) - fly between pipes avoiding them. Based on Flappy Bird
 - [ ] Jet Fighter - Shoot em up game involving jets utilizing the both screens.
 - [ ] Tanks and Cannons - Tower defense game about tanks and cannons.
-- [ ] Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
+- Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
 - [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/qr.html) - turn text into a QR code.
+- Chat Room
 
 ## Screenshots
 TODO
