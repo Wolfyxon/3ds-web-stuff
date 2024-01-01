@@ -45,3 +45,7 @@
     border-radius: 5px;
     width: 30%;
 }
+
+#btn-restart:active {
+    background-color: #ab30ab;
+}
