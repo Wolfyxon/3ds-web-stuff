@@ -21,3 +21,27 @@
     background-color: darkred;
     height: 50%;
 }
+
+#overlay {
+    background-color: black;
+}
+
+#gameover {
+    margin-top: 20%;
+    text-align: center;
+    color: white;
+}
+
+#gameover h1 {
+    color: red;
+    -webkit-text-stroke: 1px black;
+}
+
+#btn-restart {
+    background-color: purple;
+    color: white;
+    border: black;
+    padding: 2%;
+    border-radius: 5px;
+    width: 30%;
+}

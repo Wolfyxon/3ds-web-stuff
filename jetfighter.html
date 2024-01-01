@@ -15,12 +15,19 @@
 <body>
     <div id="screens">
         <canvas id="canv" class="dual-screen"></canvas>
+        <div id="overlay" class="dual-screen" style="opacity: 0.5"></div>
+
         <div id="top-screen">
             <div id="health-bar-container">
                 <div id="health-bar-neg"></div>
             </div>
         </div>
         <div id="bottom-screen">
+            <div class="abs-overlay" id="gameover">
+                <h1>You are dead</h1>
+                <button id="btn-restart">Restart &#xE000;</button>
+                <p>Don't give up!</p>
+            </div>
             <div id="sprites">
                 <img src="img/jetfighter/jet.png" id="img-jet">
                 <img src="img/jetfighter/projectile.png" id="img-projectile">
