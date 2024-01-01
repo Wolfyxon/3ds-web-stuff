@@ -1,9 +1,10 @@
 #canv {
     background-color: #86cde1;
+    border: 3px black solid;
 }
 
 #top-screen {
-    background-color: #7fbfd2;
+    background-color: #484d56;
 }
 
 #health-bar-container {
