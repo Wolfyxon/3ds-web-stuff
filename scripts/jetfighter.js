@@ -65,6 +65,7 @@ window.addEventListener("load",function(){
         }
 
         plrHp = maxPlrHp;
+        updateHpBar();
     }
 
     setInterval(function(){
@@ -89,8 +90,6 @@ window.addEventListener("load",function(){
     setInterval(function(){
         clearCanvas(canvas);
 
-        updateHpBar();
-
         if(isBtnPressed("Up")) plrJet.moveXY(0,-speed);
         if(isBtnPressed("Down")) plrJet.moveXY(0,speed);
         if(isBtnPressed("Left")) {
@@ -113,6 +112,7 @@ window.addEventListener("load",function(){
             if(proj.enemy && plrHp > 0 && proj.area.isTouching(plrJet.area)){
                 plrHp -= 2;
                 proj.remove = true;
+                updateHpBar();
             }
 
             if(proj.remove){
@@ -153,4 +153,6 @@ window.addEventListener("load",function(){
 
         plrJet.render(canvas);
     },optiItv());
+
+    updateHpBar();
 })
