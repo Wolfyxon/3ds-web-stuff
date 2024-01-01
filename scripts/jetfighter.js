@@ -24,6 +24,7 @@ window.addEventListener("load",function(){
     function addHelicopter(x,y){
         const scale = 0.8;
         const heli = Sprite(imgHeli,x,y,180);
+        heli.targetPos = Vector2(x,y);
         heli.hp = 10;
         heli.rotor = Sprite(imgRotor);
         heli.rotor.rescale(scale)
@@ -36,6 +37,11 @@ window.addEventListener("load",function(){
             rocket.enemy = true;
             projectiles.push(rocket)
         },randi(300,2000))
+
+        heli.flyItv = setInterval(function(){
+            const range = 100
+            heli.targetPos = Vector2(randi(0,range),randi(0,range));
+        },1000)
     }
 
     setInterval(function(){
@@ -89,6 +95,8 @@ addHelicopter(100,10)
             rotor.render(canvas);
             const ang = heli.getCenter().getRotationToVec(plrJet.getCenter())+90;
             heli.rotation = lerpAngle(heli.rotation,ang, 0.2);
+            heli.area.moveTo(heli.area.startVec.getLerped(heli.targetPos,0.01))
+
             if(heli.hp <= 0){
                 clearInterval(heli.fireItv);
                 helicopters.splice(i,1);
