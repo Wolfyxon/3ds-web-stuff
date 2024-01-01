@@ -39,7 +39,7 @@ window.addEventListener("load",function(){
         },randi(300,2000))
 
         heli.flyItv = setInterval(function(){
-            const range = 100
+            const range = 320;
             heli.targetPos = Vector2(randi(0,range),randi(0,range));
         },1000)
     }
