@@ -122,9 +122,8 @@ window.addEventListener("load",function(){
     setInterval(function(){
         clearCanvas(canvas);
 
-        if(!alive){
-            overlay.style.opacity = lerp(overlay.style.opacity,0.5,0.4);
-        }
+        if(!alive) overlay.style.opacity = lerp(overlay.style.opacity,0.5,0.4);
+
 
         for(var i=0;i<projectiles.length;i++){
             const proj = projectiles[i];
