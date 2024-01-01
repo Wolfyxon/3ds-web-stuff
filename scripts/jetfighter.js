@@ -73,6 +73,10 @@ window.addEventListener("load",function(){
 
         plrHp = maxPlrHp;
         updateHpBar();
+
+        alive = true;
+        gameover.style.display = "none";
+        overlay.style.opacity = "0";
     }
 
     function die(){
