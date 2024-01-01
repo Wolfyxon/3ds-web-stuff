@@ -8,6 +8,7 @@ window.addEventListener("load",function(){
     const imgRotor = document.getElementById("img-rotor");
 
     const imgProjectile = document.getElementById("img-projectile");
+    const imgRocket = document.getElementById("img-rocket");
 
     const plrJet = Sprite(imgJet,125,350);
     plrJet.restrictMovement = true;
@@ -28,6 +29,13 @@ window.addEventListener("load",function(){
         heli.rotor.rescale(scale)
         heli.rescale(scale);
         helicopters.push(heli);
+
+        heli.fireItv = setInterval(function(){
+            const pos = heli.getCenter();
+            const rocket = Sprite(imgRocket,pos.x,pos.y,heli.rotation);
+            rocket.enemy = true;
+            projectiles.push(rocket)
+        },randi(300,2000))
     }
 
     setInterval(function(){
@@ -82,6 +90,7 @@ addHelicopter(100,10)
             const ang = heli.getCenter().getRotationToVec(plrJet.getCenter())+90;
             heli.rotation = lerpAngle(heli.rotation,ang, 0.2);
             if(heli.hp <= 0){
+                clearInterval(heli.fireItv);
                 helicopters.splice(i,1);
                 i--;
                 continue;
@@ -89,6 +98,7 @@ addHelicopter(100,10)
 
             for(var ii=0;ii<projectiles.length;ii++){
                 const proj = projectiles[ii];
+                if(proj.enemy) continue;
                 if(proj.area.isTouching(heli.area)){
                     heli.hp -= 1;
                     heli.rotation += randi(-5,5)
