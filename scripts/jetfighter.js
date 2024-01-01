@@ -14,6 +14,7 @@ window.addEventListener("load",function(){
 
     const overlay = document.getElementById("overlay");
     const gameover = document.getElementById("gameover");
+    const btnRestart = document.getElementById("btn-restart");
 
     const plrJet = Sprite(imgJet,125,350);
     const maxPlrHp = 100;
@@ -83,6 +84,11 @@ window.addEventListener("load",function(){
         if(!alive) return;
         if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
     },3000)
+
+    // Single press controls loop
+    setInterval(function(){
+        if(!alive && isBtnJustPressed("a")) reset();
+    })
 
     // Firing loop
     setInterval(function(){
@@ -183,4 +189,8 @@ window.addEventListener("load",function(){
     },optiItv());
 
     updateHpBar();
+
+    btnRestart.addEventListener("click",function(){
+        if(!alive) reset();
+    })
 })
