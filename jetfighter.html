@@ -15,7 +15,7 @@
 <body>
     <div id="screens">
         <canvas id="canv" class="dual-screen"></canvas>
-        <div id="overlay" class="dual-screen" style="opacity: 0.5"></div>
+        <div id="overlay" class="dual-screen" style="opacity: 0"></div>
 
         <div id="top-screen">
             <div id="health-bar-container">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div id="bottom-screen">
-            <div class="abs-overlay" id="gameover">
+            <div class="abs-overlay" id="gameover" style="display: none">
                 <h1>You are dead</h1>
                 <button id="btn-restart">Restart &#xE000;</button>
                 <p>Don't give up!</p>
