@@ -10,6 +10,8 @@ window.addEventListener("load",function(){
     const imgProjectile = document.getElementById("img-projectile");
     const imgRocket = document.getElementById("img-rocket");
 
+    const healthBarNeg = document.getElementById("health-bar-neg");
+
     const plrJet = Sprite(imgJet,125,350);
     const maxPlrHp = 100;
     var plrHp = maxPlrHp;
@@ -47,6 +49,10 @@ window.addEventListener("load",function(){
         },1000)
     }
 
+    function updateHpBar(){
+         healthBarNeg.style.height = (maxPlrHp - plrHp)+"px";
+    }
+
     setInterval(function(){
         if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
     },3000)
@@ -68,6 +74,8 @@ window.addEventListener("load",function(){
 
     setInterval(function(){
         clearCanvas(canvas);
+
+        updateHpBar();
 
         if(isBtnPressed("Up")) plrJet.moveXY(0,-speed);
         if(isBtnPressed("Down")) plrJet.moveXY(0,speed);
