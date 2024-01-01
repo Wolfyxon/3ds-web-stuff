@@ -11,6 +11,9 @@ window.addEventListener("load",function(){
     const imgRocket = document.getElementById("img-rocket");
 
     const plrJet = Sprite(imgJet,125,350);
+    const maxPlrHp = 100;
+    var plrHp = maxPlrHp;
+
     plrJet.restrictMovement = true;
     const speed = 5;
     const rotAngle = 20;
