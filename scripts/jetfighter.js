@@ -72,6 +72,7 @@ window.addEventListener("load",function(){
         if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
     },3000)
 
+    // Firing loop
     setInterval(function(){
         if(isBtnPressed("A")){
             const proj = Sprite(
@@ -87,9 +88,8 @@ window.addEventListener("load",function(){
         }
     },100)
 
+    // Movement loop
     setInterval(function(){
-        clearCanvas(canvas);
-
         if(isBtnPressed("Up")) plrJet.moveXY(0,-speed);
         if(isBtnPressed("Down")) plrJet.moveXY(0,speed);
         if(isBtnPressed("Left")) {
@@ -101,6 +101,11 @@ window.addEventListener("load",function(){
             plrJet.moveXY(speed,0);
         }
         plrJet.rotation = lerp(plrJet.rotation,0,rotAmt);
+    },optiItv());
+
+    // Main loop
+    setInterval(function(){
+        clearCanvas(canvas);
 
         for(var i=0;i<projectiles.length;i++){
             const proj = projectiles[i];
