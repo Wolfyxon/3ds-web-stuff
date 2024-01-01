@@ -1,6 +1,6 @@
 #canv {
     background-color: #86cde1;
-    border: 3px black solid;
+    outline: 3px black solid;
 }
 
 #top-screen {
@@ -11,7 +11,7 @@
     background-color: red;
     height: 80%;
     width: 4%;
-    border: 2px #464646 solid;
+    border: 2px #232323 solid;
     border-radius: 5px;
     margin-left: 2.4%;
     margin-top: 4%;
