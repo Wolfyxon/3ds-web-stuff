@@ -39,6 +39,7 @@ window.addEventListener("load",function(){
         heli.fireItv = setInterval(function(){
             const pos = heli.getCenter();
             const rocket = Sprite(imgRocket,pos.x,pos.y,heli.rotation);
+            rocket.rescale(1.3);
             rocket.enemy = true;
             projectiles.push(rocket)
         },randi(300,2000))
