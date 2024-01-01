@@ -143,3 +143,15 @@ a {
 .social-link a {
     vertical-align: top;
 }
+
+.tag {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #688820;
+    color: white;
+    border: #a7f332 2px solid;
+    border-radius: 10px;
+    font-size: 70%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
