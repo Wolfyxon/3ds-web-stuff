@@ -16,7 +16,10 @@ window.addEventListener("load",function(){
     const gameover = document.getElementById("gameover");
     const btnRestart = document.getElementById("btn-restart");
 
-    const plrJet = Sprite(imgJet,125,350);
+    const initX = 135;
+    const initY = 350;
+
+    const plrJet = Sprite(imgJet,initX,initY);
     const maxPlrHp = 100;
     var plrHp = maxPlrHp;
     var alive = true;
@@ -71,6 +74,7 @@ window.addEventListener("load",function(){
             projectiles[i].remove = true;
         }
 
+        plrJet.area.moveTo(Vector2(initX,initY));
         plrHp = maxPlrHp;
         updateHpBar();
 
