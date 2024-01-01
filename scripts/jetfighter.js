@@ -12,6 +12,9 @@ window.addEventListener("load",function(){
 
     const healthBarNeg = document.getElementById("health-bar-neg");
 
+    const overlay = document.getElementById("overlay");
+    const gameover = document.getElementById("gameover");
+
     const plrJet = Sprite(imgJet,125,350);
     const maxPlrHp = 100;
     var plrHp = maxPlrHp;
@@ -71,6 +74,11 @@ window.addEventListener("load",function(){
         updateHpBar();
     }
 
+    function die(){
+        alive = false;
+        gameover.style.display = "";
+    }
+
     setInterval(function(){
         if(!alive) return;
         if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
@@ -113,6 +121,10 @@ window.addEventListener("load",function(){
     // Main loop
     setInterval(function(){
         clearCanvas(canvas);
+
+        if(!alive){
+            overlay.style.opacity = lerp(overlay.style.opacity,0.5,0.4);
+        }
 
         for(var i=0;i<projectiles.length;i++){
             const proj = projectiles[i];
