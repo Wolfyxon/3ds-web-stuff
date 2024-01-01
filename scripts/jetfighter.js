@@ -95,6 +95,11 @@ window.addEventListener("load",function(){
             proj.moveLocalXY(0,-speed*2);
             proj.render(canvas);
 
+            if(proj.enemy && plrHp > 0 && proj.area.isTouching(plrJet.area)){
+                plrHp -= 2;
+                proj.remove = true;
+            }
+
             if(proj.remove){
                 projectiles.splice(i, 1);
                 i--;
