@@ -135,8 +135,7 @@ window.addEventListener("load",function(){
                 if(proj.area.isTouching(heli.area)){
                     heli.hp -= 1;
                     heli.rotation += randi(-5,5)
-                    projectiles.splice(ii, 1);
-                    ii--;
+                    proj.remove = true;
                 }
             }
         }
