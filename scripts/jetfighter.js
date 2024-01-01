@@ -51,7 +51,7 @@ window.addEventListener("load",function(){
     }
 
     function updateHpBar(){
-         healthBarNeg.style.height = (maxPlrHp - plrHp)+"px";
+         healthBarNeg.style.height = (maxPlrHp - plrHp)+"%";
     }
 
     setInterval(function(){
