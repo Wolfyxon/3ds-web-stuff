@@ -92,7 +92,9 @@ window.addEventListener("load",function(){
 
         for(var i=0;i<projectiles.length;i++){
             const proj = projectiles[i];
-            proj.moveLocalXY(0,-speed*2);
+            var sp = -speed*2;
+            if(proj.enemy) sp *= 0.75;
+            proj.moveLocalXY(0,sp);
             proj.render(canvas);
 
             if(proj.enemy && plrHp > 0 && proj.area.isTouching(plrJet.area)){
