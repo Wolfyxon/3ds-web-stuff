@@ -56,6 +56,17 @@ window.addEventListener("load",function(){
          healthBarNeg.style.height = (maxPlrHp - plrHp)+"%";
     }
 
+    function reset(){
+        for(var i=0;i<helicopters.length;i++){
+            helicopters[i].remove = true;
+        }
+        for(var i=0;i<projectiles.length;i++){
+            projectiles[i].remove = true;
+        }
+
+        plrHp = maxPlrHp;
+    }
+
     setInterval(function(){
         if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
     },3000)
