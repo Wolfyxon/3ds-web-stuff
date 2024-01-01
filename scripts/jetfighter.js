@@ -142,6 +142,8 @@ window.addEventListener("load",function(){
                 plrHp -= 2;
                 proj.remove = true;
                 updateHpBar();
+            } else if(plrHp <= 0){
+                die()
             }
 
             if(proj.remove){
