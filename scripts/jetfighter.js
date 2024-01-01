@@ -24,7 +24,6 @@ window.addEventListener("load",function(){
     const helicopters = []; // enemies
 
     const projectiles = [];
-    const rockets = [];
 
     function addHelicopter(x,y){
         const scale = 0.8;
