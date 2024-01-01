@@ -42,6 +42,9 @@ window.addEventListener("load",function(){
             rocket.rescale(1.3);
             rocket.enemy = true;
             projectiles.push(rocket)
+            setTimeout(function(){
+                rocket.remove = true;
+            },2000)
         },randi(500,2500))
 
         heli.flyItv = setInterval(function(){
