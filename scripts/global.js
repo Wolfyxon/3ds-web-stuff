@@ -199,6 +199,8 @@ function prevent(event){
     if(event.keyCode === 8) return true; //backspace
     if(event.keyCode === 116) return true; //f5
 
+    if(event.charCode || (event.key && event.key.length === 1 )) return true; // allow character keys
+
     event.preventDefault();
     return false;
 }
