@@ -4,3 +4,17 @@
     align-items: center;
     text-align: center;
 }
+
+#main-texts {
+    background-color: rgb(255, 93, 93);
+    width: 50%;
+    border-radius: 30px;
+}
+
+#back {
+    background-color: rgb(8, 194, 8);
+    color: white;
+    text-decoration: none;
+    padding: 3%;
+    border-radius: 10%;
+}
