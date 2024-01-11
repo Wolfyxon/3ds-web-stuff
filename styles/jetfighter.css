@@ -7,13 +7,24 @@
     background-color: #484d56;
 }
 
+#top-screen > * {
+    height: 100%;
+    vertical-align: top;
+    width: 9.1%;
+    display: inline-block;
+}
+
+#right {
+    margin-left: 320px;
+}
+
 #health-bar-container {
     background-color: red;
     height: 80%;
-    width: 4%;
+    width: 50%;
     border: 2px #232323 solid;
     border-radius: 5px;
-    margin-left: 2.2%;
+    margin-left: 20%;
     margin-top: 4%;
 }
 
