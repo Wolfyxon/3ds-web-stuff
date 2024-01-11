@@ -187,10 +187,12 @@ window.addEventListener("load",function(){
             rotor.render(canvas);
 
             if(heli.hp <= 0 || heli.remove){
+                if(heli.hp <= 0){
+                    kills++;
+                    updateKills();
+                }
                 clearInterval(heli.fireItv);
                 helicopters.splice(i,1);
-                kills++;
-                updateKills();
                 i--;
                 continue;
             }
