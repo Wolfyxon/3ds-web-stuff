@@ -15,6 +15,7 @@ window.addEventListener("load",function(){
     const overlay = document.getElementById("overlay");
     const gameover = document.getElementById("gameover");
     const btnRestart = document.getElementById("btn-restart");
+    const killsTxt = document.getElementById("kills-amount");
 
     const initX = 135;
     const initY = 350;
@@ -29,9 +30,15 @@ window.addEventListener("load",function(){
     const rotAngle = 20;
     const rotAmt = 0.2;
 
+    var kills = 0;
+
     const helicopters = []; // enemies
 
     const projectiles = [];
+
+    function updateKills(){
+        killsTxt.innerText = kills;
+    }
 
     function addHelicopter(x,y){
         const scale = 0.8;
@@ -77,6 +84,9 @@ window.addEventListener("load",function(){
         plrJet.area.moveTo(Vector2(initX,initY));
         plrHp = maxPlrHp;
         updateHpBar();
+
+        kills = 0;
+        updateKills();
 
         alive = true;
         gameover.style.display = "none";
@@ -179,6 +189,8 @@ window.addEventListener("load",function(){
             if(heli.hp <= 0 || heli.remove){
                 clearInterval(heli.fireItv);
                 helicopters.splice(i,1);
+                kills++;
+                updateKills();
                 i--;
                 continue;
             }
