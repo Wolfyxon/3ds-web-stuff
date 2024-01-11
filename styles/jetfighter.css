@@ -33,6 +33,19 @@
     height: 50%;
 }
 
+#stats {
+    text-align: center;
+    color: white;
+}
+
+#stats p {
+    margin: 10%;
+}
+
+#stats img {
+    width: 80%;
+}
+
 #overlay {
     background-color: black;
 }
