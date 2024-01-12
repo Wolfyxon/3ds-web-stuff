@@ -3,11 +3,20 @@
 }
 
 #main-texts {
-    background-color: rgb(255, 93, 93);
     width: 50%;
     border-radius: 30px;
     margin-left: 25%;
     margin-top: 15%;
+}
+
+#main-texts h1 {
+    color: red;
+}
+
+#main-texts p {
+    background-color: black;
+    border-radius: 10px;
+    color: white;
 }
 
 #back {
@@ -15,5 +24,5 @@
     color: white;
     text-decoration: none;
     padding: 3%;
-    border-radius: 10%;
+    border-radius: 10px;
 }
