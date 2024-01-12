@@ -1,7 +1,4 @@
 #screens > * {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
 }
 
@@ -9,6 +6,8 @@
     background-color: rgb(255, 93, 93);
     width: 50%;
     border-radius: 30px;
+    margin-left: 25%;
+    margin-top: 15%;
 }
 
 #back {
