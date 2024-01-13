@@ -171,7 +171,7 @@ function Area2D(vec1, vec2){
         area.endVec = vector.getOffsetXY(initW,initH);
     }
 
-    area.render = function(canvas){
+    area.renderDebug = function(canvas){
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "red";
         ctx.fillRect(area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight());
