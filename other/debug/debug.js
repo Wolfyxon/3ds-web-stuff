@@ -26,5 +26,9 @@ window.addEventListener("load",function (){
         anim.style.backgroundColor = lerpColor(anim.style.backgroundColor,"#FF0000",0.01)
     })
 
+    // Canvas testing
+    const canvas = document.getElementById("canv");
+
+
 })
 
