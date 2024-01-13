@@ -193,9 +193,9 @@ function Area2D(vec1, vec2){
     return area
 }
 
-function Rect2D(vec1, vec2){
+function Rect2D(pos, w, h){
     var rect = {
-        area: Area2D(vec1, vec2),
+        area: Area2D(pos, Vector2(pos.x+w, pos.y+h)),
         fillStyle: "",
         outlineStyle: "",
         outlineSize: 0
