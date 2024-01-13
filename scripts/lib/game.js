@@ -193,6 +193,35 @@ function Area2D(vec1, vec2){
     return area
 }
 
+function Rect2D(vec1, vec2){
+    var rect = {
+        area: Area2D(vec1, vec2),
+        fillStyle: "",
+        outlineStyle: "",
+        outlineSize: 0
+    }
+
+    rect.render = function(canvas) {
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = rect.fillStyle;
+
+        // Main Rect
+        ctx.fillRect(
+            rect.area.getTopLeft().x,
+            rect.area.getTopLeft().y,
+            rect.area.getWidth(),
+            rect.area.getHeight());
+
+        // TODO: Outline
+        if(rect.outlineSize > 0){
+
+        }
+
+        ctx.fillStyle = "";
+    }
+
+    return rect;
+}
 
 function Sprite(image,x,y,rot,w,h){
     if(!x) x = 0;
