@@ -31,9 +31,12 @@ window.addEventListener("load",function (){
     const rect = Rect2D(Vector2(20,20),70,50);
     rect.outlineSize = 1;
     rect.outlineStyle = "red";
-    rect.rotation = 10;
 
-    rect.render(canvas);
+    setInterval(function(){
+        clearCanvas(canvas);
+        rect.rotation += 1;
+        rect.render(canvas);
+    },optiItv());
 
 })
 
