@@ -24,9 +24,14 @@ window.addEventListener("load",function(){
 
     }
 
-    function bounce(){
-        ball.rotation += 180 + randf(-10,10);
+    function bounce(pad){
+        const cY = pad.getY() + pad.area.getHeight() / 2;
+        const offsetFromCenter = ball.getY() - cY;
+        const normalizedOffset = offsetFromCenter / (pad.area.getHeight() / 2);
+        const bounceAngle = normalizedOffset * 45;
+        ball.rotation = 180 - ball.rotation + 2 * bounceAngle;
     }
+
 
     setInterval(function(){
         clearCanvas(canvas);
@@ -44,8 +49,10 @@ window.addEventListener("load",function(){
         );
 
         ball.moveLocalXY(ballSpeed,0);
-        if(ball.area.isTouching(enemy.area) || ball.area.isTouching(player.area)) bounce();
-        if(ball.getY() <= 0 || ball.getY() >= canvas.height) bounce();
+        if(ball.area.isTouching(enemy.area)) bounce(enemy);
+        if(ball.area.isTouching(player.area)) bounce(player);
+
+        if(ball.getY() <= 0 || ball.getY() >= canvas.height) ball.rotation = -ball.rotation;
 
         ball.render(canvas);
         player.render(canvas);
