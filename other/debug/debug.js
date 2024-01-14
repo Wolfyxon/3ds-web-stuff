@@ -38,5 +38,13 @@ window.addEventListener("load",function (){
         rect.render(canvas);
     },optiItv());
 
+    setInterval(function(){
+        if(rect.fillStyle === "black"){
+            rect.fillStyle = "";
+        } else {
+            rect.fillStyle = "black";
+        }
+    },1000)
+
 })
 
