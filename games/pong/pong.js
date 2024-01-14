@@ -23,6 +23,13 @@ window.addEventListener("load",function(){
     setInterval(function(){
         clearCanvas(canvas);
 
+        if(player.area.getTopLeft().y > 0 && isBtnPressed("up")){
+            player.area.offsetXY(0,-playerSpeed)
+        }
+        if(player.area.getBottomLeft().y < canvas.height && isBtnPressed("down")){
+            player.area.offsetXY(0,playerSpeed);
+        }
+
         player.render(canvas);
         enemy.render(canvas);
     },optiItv());
