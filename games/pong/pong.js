@@ -28,8 +28,12 @@ window.addEventListener("load",function(){
         ball.rotation = 0;
 
         ballSpeed = originalBallSpeed;
-
+        currentStatus = "";
         active = true;
+    }
+
+    function scheduleNextRound(){
+        setTimeout(roundReset,2000)
     }
 
     function bounce(pad){
@@ -74,11 +78,13 @@ window.addEventListener("load",function(){
                 active = false;
                 currentStatus = "AI scored";
                 statusColor = "red";
+                scheduleNextRound();
             }
             if(ball.getX() > canvas.width){
                 active = false;
                 currentStatus = "You scored";
                 statusColor = "lime";
+                scheduleNextRound();
             }
 
         }
