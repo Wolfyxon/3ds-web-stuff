@@ -1,5 +1,6 @@
 window.addEventListener("load",function(){
     const canvas = document.getElementById("canv");
+    const ctx = canvas.getContext("2d");
 
     const ball = Rect2D(Vector2(canvas.width/2.1,canvas.height/2.1),4,4);
     ball.fillStyle = "white";
@@ -39,6 +40,9 @@ window.addEventListener("load",function(){
     }
 
 
+    var currentStatus = "";
+    var statusColor = "";
+
     setInterval(function(){
         clearCanvas(canvas);
 
@@ -69,5 +73,13 @@ window.addEventListener("load",function(){
 
         const lineX = canvas.width/2.015
         drawDashedLine(canvas,Vector2(lineX,0), Vector2(lineX,canvas.height),4,6,"white");
+
+        ctx.textAlign = "center";
+        ctx.font = "20px none";
+        ctx.fillStyle = statusColor;
+        ctx.fillText(currentStatus,canvas.width/2,canvas.height/2);
+
+        ctx.fillStyle = "";
+
     },optiItv());
 });
