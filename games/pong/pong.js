@@ -20,14 +20,13 @@ window.addEventListener("load",function(){
     var enemySpeed = originalEnemySpeed;
 
 
-    function reset(){
+    function roundReset(){
         enemy.area.moveTo(Vector2(enemy.getX(),y));
         player.area.moveTo(Vector2(player.getX(),y));
         ball.area.moveTo(Vector2(canvas.width/2.1,canvas.height/2.1));
         ball.rotation = 0;
 
         ballSpeed = originalBallSpeed;
-        enemySpeed = originalEnemySpeed;
     }
 
     function bounce(pad){
