@@ -199,7 +199,10 @@ function Rect2D(pos, w, h){
         rotation: 0,
         fillStyle: "black",
         outlineStyle: "gray",
-        outlineSize: 0
+        outlineSize: 0,
+        opacity: 1,
+        fillOpacity : 1,
+        outlineOpacity: 1
     }
 
     rect.getX = function (){
@@ -225,15 +228,20 @@ function Rect2D(pos, w, h){
         if(rect.outlineSize > 0){
             ctx.fillStyle = rect.outlineStyle;
             const s  = rect.outlineSize;
+            ctx.globalAlpha = rect.outlineOpacity * rect.opacity;
             ctx.fillRect(-(rect.area.getWidth() / 2)-s, -(rect.area.getHeight() / 2)-s, rect.area.getWidth()+s*2, rect.area.getHeight()+s*2);
+            ctx.globalAlpha = 1;
             ctx.clearRect(-(rect.area.getWidth() / 2), -(rect.area.getHeight() / 2), rect.area.getWidth(), rect.area.getHeight());
         }
 
         ctx.fillStyle = rect.fillStyle;
-        if(rect.fillStyle !== "" && rect.fillStyle !== "none")
+        if(rect.fillStyle !== "" && rect.fillStyle !== "none"){
+            ctx.globalAlpha = rect.fillOpacity * rect.opacity;
             ctx.fillRect(-(rect.area.getWidth() / 2), -(rect.area.getHeight() / 2), rect.area.getWidth(), rect.area.getHeight());
+        }
 
 
+        ctx.globalAlpha = 1;
         ctx.fillStyle = "";
         ctx.restore();
     }
