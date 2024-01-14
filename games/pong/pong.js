@@ -70,6 +70,17 @@ window.addEventListener("load",function(){
                 ballSpeed *= ballAccel;
             }
 
+            if(ball.getX() <= 0){
+                active = false;
+                currentStatus = "AI scored";
+                statusColor = "red";
+            }
+            if(ball.getX() > canvas.width){
+                active = false;
+                currentStatus = "You scored";
+                statusColor = "lime";
+            }
+
         }
 
         ball.render(canvas);
