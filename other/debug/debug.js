@@ -28,7 +28,9 @@ window.addEventListener("load",function (){
 
     // Canvas testing
     const canvas = document.getElementById("canv");
+    const rect = Rect2D(Vector2(20,20),70,50);
 
+    rect.render(canvas);
 
 })
 
