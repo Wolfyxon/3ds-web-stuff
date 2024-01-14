@@ -39,6 +39,11 @@ window.addEventListener("load",function(){
             player.area.offsetXY(0,playerSpeed);
         }
 
+        const enemyPos = enemy.area.getTopLeft();
+        enemy.area.moveTo(
+            enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed)
+        );
+
         ball.moveLocalXY(ballSpeed,0);
         if(ball.area.isTouching(enemy.area)) bounceFromPad(enemy);
         if(ball.area.isTouching(player.area)) bounceFromPad(player);
