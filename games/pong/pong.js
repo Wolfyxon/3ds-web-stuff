@@ -26,7 +26,7 @@ window.addEventListener("load",function(){
     enemy.area.moveTo(Vector2(canvas.width-player.getX()*1.5, y));
     const enemySpeed = 0.01;
 
-    var active = true;
+    var active = false;
 
     function roundReset(){
         enemy.area.moveTo(Vector2(enemy.getX(),y));
@@ -60,6 +60,19 @@ window.addEventListener("load",function(){
 
     var currentStatus = "";
     var statusColor = "";
+
+    const countdown = 3;
+    statusColor = "orange"
+    for(var i=0;i<countdown;i++){
+        const curI = i;
+        setTimeout(function(){
+            currentStatus = (countdown-curI);
+        },(countdown-(countdown-i))*1000);
+    }
+    setTimeout(function(){
+        active = true;
+        currentStatus = "";
+    },countdown*1000);
 
     setInterval(function(){
         clearCanvas(canvas);
