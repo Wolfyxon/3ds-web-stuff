@@ -2,6 +2,12 @@ window.addEventListener("load",function(){
     const canvas = document.getElementById("canv");
     const ctx = canvas.getContext("2d");
 
+    const enemyScoreTxt = document.getElementById("score-enemy");
+    const playerScoreTxt = document.getElementById("score-player");
+
+    var enemyScore = 0;
+    var playerScore = 0;
+
     const ball = Rect2D(Vector2(canvas.width/2.1,canvas.height/2.1),4,4);
     ball.fillStyle = "white";
     const originalBallSpeed = 2;
@@ -45,6 +51,11 @@ window.addEventListener("load",function(){
         ballSpeed *= ballAccel;
     }
 
+    function updateScore(){
+        playerScoreTxt.innerText = playerScore;
+        enemyScoreTxt.innerText = enemyScore;
+    }
+
 
     var currentStatus = "";
     var statusColor = "";
@@ -78,14 +89,18 @@ window.addEventListener("load",function(){
                 active = false;
                 currentStatus = "AI scored";
                 statusColor = "red";
+                enemyScore++;
                 scheduleNextRound();
+                updateScore();
             }
             if(ball.getX() > canvas.width){
                 active = false;
                 currentStatus = "You scored";
                 statusColor = "lime";
+                playerScore++;
                 enemySpeed += 0.02;
                 scheduleNextRound();
+                updateScore();
             }
 
         }
