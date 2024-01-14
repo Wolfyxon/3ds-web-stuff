@@ -30,3 +30,8 @@
 #score-enemy {
     background-color: #a40000;
 }
+
+#level {
+    text-align: center;
+    color: orange;
+}
