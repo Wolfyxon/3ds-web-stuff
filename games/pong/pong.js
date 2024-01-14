@@ -84,6 +84,7 @@ window.addEventListener("load",function(){
                 active = false;
                 currentStatus = "You scored";
                 statusColor = "lime";
+                enemySpeed += 0.02;
                 scheduleNextRound();
             }
 
