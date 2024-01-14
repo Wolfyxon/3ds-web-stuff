@@ -1,6 +1,9 @@
 window.addEventListener("load",function(){
     const canvas = document.getElementById("canv");
 
+    const ball = Rect2D(Vector2(canvas.width/2.1,canvas.height/2.1),4,4);
+    ball.fillStyle = "white";
+
     const y = canvas.height/2.5;
 
     const player = Rect2D(Vector2(10,y), 6,30);
@@ -30,6 +33,7 @@ window.addEventListener("load",function(){
             player.area.offsetXY(0,playerSpeed);
         }
 
+        ball.render(canvas);
         player.render(canvas);
         enemy.render(canvas);
     },optiItv());
