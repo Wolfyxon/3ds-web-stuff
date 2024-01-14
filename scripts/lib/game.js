@@ -217,6 +217,25 @@ function Rect2D(pos, w, h){
         return rect.area.getCenter();
     }
 
+    rect.moveXY = function(x_,y_){
+        rect.area.offsetXY(x_,y_);
+    }
+
+    rect.moveVec = function(vector){
+        return rect.moveXY(vector.x, vector.y);
+    }
+
+    rect.moveLocalXY = function(x_, y_){
+        const angle = deg2rad(rect.rotation);
+        const localX = x_ * Math.cos(angle) - y_ * Math.sin(angle);
+        const localY = x_ * Math.sin(angle) + y_ * Math.cos(angle);
+        return rect.moveXY(localX, localY);
+    }
+
+    rect.moveLocalVec = function(vector){
+        return rect.moveLocalXY(vector.x, vector.y);
+    }
+
     rect.render = function(canvas) {
         const ctx = canvas.getContext("2d");
 
