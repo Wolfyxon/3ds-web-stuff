@@ -246,6 +246,18 @@ function Rect2D(pos, w, h){
         ctx.restore();
     }
 
+    rect.copy = function(){
+        const newRect = Rect2D(rect.area.getTopLeft().copy(), rect.area.getWidth(), rect.area.getHeight());
+        newRect.fillStyle = rect.fillStyle;
+        newRect.fillOpacity = rect.fillOpacity;
+        newRect.outlineSize = rect.outlineSize;
+        newRect.outlineOpacity = rect.outlineOpacity;
+        newRect.opacity = rect.opacity;
+        newRect.rotation = rect.rotation;
+
+        return newRect
+    }
+
     return rect;
 }
 
