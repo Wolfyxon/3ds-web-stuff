@@ -370,6 +370,20 @@ function Sprite(image,x,y,rot,w,h){
 
 //// Global functions ////
 
+function drawDashedLine(canvas, startVec, endVec, width, spacing, color) {
+    const ctx = canvas.getContext("2d");
+    const prevW = ctx.lineWidth;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    ctx.setLineDash([spacing,spacing]);
+    ctx.moveTo(startVec.x, startVec.y);
+    ctx.lineTo(endVec.x, endVec.y);
+    ctx.stroke();
+    ctx.lineWidth = prevW;
+    ctx.strokeStyle = "";
+}
+
 function clearCanvas(canvas){
     canvas.getContext("2d").clearRect(0, 0, canvas.width*2, canvas.height*2);
 }
