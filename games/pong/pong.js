@@ -1,0 +1,29 @@
+window.addEventListener("load",function(){
+    const canvas = document.getElementById("canv");
+
+    const y = canvas.height/2.5;
+
+    const player = Rect2D(Vector2(10,y), 6,30);
+    player.fillStyle = "white"
+    const playerSpeed = 2;
+
+    const enemy = player.copy();
+    enemy.area.moveTo(Vector2(canvas.width-player.getX()*1.5, y));
+    const originalEnemySpeed = 0.5;
+    var enemySpeed = originalEnemySpeed;
+
+
+    function reset(){
+        enemy.area.moveTo(Vector2(enemy.getX(),y));
+        player.area.moveTo(Vector2(player.getX(),y));
+
+    }
+
+
+    setInterval(function(){
+        clearCanvas(canvas);
+
+        player.render(canvas);
+        enemy.render(canvas);
+    },optiItv());
+});
