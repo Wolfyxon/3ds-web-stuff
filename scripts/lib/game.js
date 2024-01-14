@@ -263,7 +263,8 @@ function Sprite(image,x,y,rot,w,h){
         lastCanvas: null,
         visible: true,
         rotation: rot,
-        restrictMovement: false
+        restrictMovement: false,
+        opacity: 1
     }
 
     spr.getX = function (){
@@ -326,7 +327,9 @@ function Sprite(image,x,y,rot,w,h){
         ctx.translate(spr.getX() + spr.area.getWidth() / 2, spr.getY() + spr.area.getHeight() / 2);
         ctx.rotate(deg2rad(spr.rotation));
 
+        ctx.globalAlpha = spr.opacity;
         ctx.drawImage(spr.image, -spr.area.getWidth() / 2, -spr.area.getHeight() / 2, spr.area.getWidth(), spr.area.getHeight());
+        ctx.globalAlpha = 1;
 
         ctx.restore();
     }
