@@ -29,6 +29,9 @@ window.addEventListener("load",function (){
     // Canvas testing
     const canvas = document.getElementById("canv");
     const rect = Rect2D(Vector2(20,20),70,50);
+    rect.outlineSize = 1;
+    rect.outlineStyle = "red";
+    rect.rotation = 10;
 
     rect.render(canvas);
 
