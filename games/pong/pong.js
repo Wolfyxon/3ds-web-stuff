@@ -16,7 +16,7 @@ window.addEventListener("load",function(){
 
     const enemy = player.copy();
     enemy.area.moveTo(Vector2(canvas.width-player.getX()*1.5, y));
-    const originalEnemySpeed = 0.5;
+    const originalEnemySpeed = 0.01;
     var enemySpeed = originalEnemySpeed;
 
     var active = true;
