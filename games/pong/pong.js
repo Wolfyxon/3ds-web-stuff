@@ -45,6 +45,7 @@ window.addEventListener("load",function(){
 
         ball.moveLocalXY(ballSpeed,0);
         if(ball.area.isTouching(enemy.area) || ball.area.isTouching(player.area)) bounce();
+        if(ball.getY() <= 0 || ball.getY() >= canvas.height) bounce();
 
         ball.render(canvas);
         player.render(canvas);
