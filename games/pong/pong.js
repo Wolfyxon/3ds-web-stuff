@@ -24,8 +24,7 @@ window.addEventListener("load",function(){
 
     const enemy = player.copy();
     enemy.area.moveTo(Vector2(canvas.width-player.getX()*1.5, y));
-    const originalEnemySpeed = 0.01;
-    var enemySpeed = originalEnemySpeed;
+    const enemySpeed = 0.01;
 
     var active = true;
 
@@ -75,7 +74,7 @@ window.addEventListener("load",function(){
 
             const enemyPos = enemy.area.getTopLeft();
             enemy.area.moveTo(
-                enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed)
+                enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed*level)
             );
 
             ball.moveLocalXY(ballSpeed,0);
@@ -102,7 +101,6 @@ window.addEventListener("load",function(){
                 playerScore++;
                 level++;
                 levelTxt.innerText = "Level: " + level;
-                enemySpeed += 0.02;
                 scheduleNextRound();
                 updateScore();
             }
