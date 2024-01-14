@@ -202,6 +202,18 @@ function Rect2D(pos, w, h){
         outlineSize: 0
     }
 
+    rect.getX = function (){
+        return rect.area.startVec.x;
+    }
+
+    rect.getY = function(){
+        return rect.area.startVec.y;
+    }
+
+    rect.getCenter = function(){
+        return rect.area.getCenter();
+    }
+
     rect.render = function(canvas) {
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = rect.fillStyle;
