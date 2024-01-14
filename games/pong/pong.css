@@ -1,0 +1,17 @@
+#canv {
+    background: #5700ff;
+    width: 98%;
+    height: 95%;
+    margin: 1% 1%;
+    border-radius: 10px;
+    color: white;
+}
+
+#top-screen {
+    background: #1f1f21;
+}
+
+#bottom-screen {
+    background: #2b2b2e;
+    color: white;
+}
