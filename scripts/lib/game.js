@@ -218,12 +218,12 @@ function Rect2D(pos, w, h){
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = rect.fillStyle;
 
-        // Main Rect
-        ctx.fillRect(
-            rect.area.getTopLeft().x,
-            rect.area.getTopLeft().y,
-            rect.area.getWidth(),
-            rect.area.getHeight());
+        ctx.save();
+
+        ctx.translate(rect.getX() + rect.area.getWidth() / 2, rect.getY() + rect.area.getHeight() / 2);
+        ctx.rotate(deg2rad(rect.rotation));
+
+        ctx.fillRect(-(rect.area.getWidth() / 2), -(rect.area.getHeight() / 2), rect.area.getWidth(), rect.area.getHeight());
 
         // TODO: Outline
         if(rect.outlineSize > 0){
@@ -231,6 +231,7 @@ function Rect2D(pos, w, h){
         }
 
         ctx.fillStyle = "";
+        ctx.restore();
     }
 
     return rect;
