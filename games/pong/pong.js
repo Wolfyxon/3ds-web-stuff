@@ -3,6 +3,8 @@ window.addEventListener("load",function(){
 
     const ball = Rect2D(Vector2(canvas.width/2.1,canvas.height/2.1),4,4);
     ball.fillStyle = "white";
+    const originalBallSpeed = 2;
+    var ballSpeed = originalBallSpeed;
 
     const y = canvas.height/2.5;
 
@@ -22,6 +24,10 @@ window.addEventListener("load",function(){
 
     }
 
+    function bounceFromPad(pad){
+        const area = pad.area;
+        ball.rotation += 180 + randf(-10,10);
+    }
 
     setInterval(function(){
         clearCanvas(canvas);
@@ -32,6 +38,10 @@ window.addEventListener("load",function(){
         if(player.area.getBottomLeft().y < canvas.height && isBtnPressed("down")){
             player.area.offsetXY(0,playerSpeed);
         }
+
+        ball.moveLocalXY(ballSpeed,0);
+        if(ball.area.isTouching(enemy.area)) bounceFromPad(enemy);
+        if(ball.area.isTouching(player.area)) bounceFromPad(player);
 
         ball.render(canvas);
         player.render(canvas);
