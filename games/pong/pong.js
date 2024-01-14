@@ -24,8 +24,7 @@ window.addEventListener("load",function(){
 
     }
 
-    function bounceFromPad(pad){
-        const area = pad.area;
+    function bounce(){
         ball.rotation += 180 + randf(-10,10);
     }
 
@@ -45,8 +44,7 @@ window.addEventListener("load",function(){
         );
 
         ball.moveLocalXY(ballSpeed,0);
-        if(ball.area.isTouching(enemy.area)) bounceFromPad(enemy);
-        if(ball.area.isTouching(player.area)) bounceFromPad(player);
+        if(ball.area.isTouching(enemy.area) || ball.area.isTouching(player.area)) bounce();
 
         ball.render(canvas);
         player.render(canvas);
