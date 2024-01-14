@@ -19,6 +19,7 @@ window.addEventListener("load",function(){
     const originalEnemySpeed = 0.5;
     var enemySpeed = originalEnemySpeed;
 
+    var active = true;
 
     function roundReset(){
         enemy.area.moveTo(Vector2(enemy.getX(),y));
@@ -27,6 +28,8 @@ window.addEventListener("load",function(){
         ball.rotation = 0;
 
         ballSpeed = originalBallSpeed;
+
+        active = true;
     }
 
     function bounce(pad){
@@ -45,25 +48,28 @@ window.addEventListener("load",function(){
     setInterval(function(){
         clearCanvas(canvas);
 
-        if(player.area.getTopLeft().y > 0 && isBtnPressed("up")){
-            player.area.offsetXY(0,-playerSpeed)
-        }
-        if(player.area.getBottomLeft().y < canvas.height && isBtnPressed("down")){
-            player.area.offsetXY(0,playerSpeed);
-        }
+        if(active){
+            if(player.area.getTopLeft().y > 0 && isBtnPressed("up")){
+                player.area.offsetXY(0,-playerSpeed)
+            }
+            if(player.area.getBottomLeft().y < canvas.height && isBtnPressed("down")){
+                player.area.offsetXY(0,playerSpeed);
+            }
 
-        const enemyPos = enemy.area.getTopLeft();
-        enemy.area.moveTo(
-            enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed)
-        );
+            const enemyPos = enemy.area.getTopLeft();
+            enemy.area.moveTo(
+                enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed)
+            );
 
-        ball.moveLocalXY(ballSpeed,0);
-        if(ball.area.isTouching(enemy.area)) bounce(enemy);
-        if(ball.area.isTouching(player.area)) bounce(player);
+            ball.moveLocalXY(ballSpeed,0);
+            if(ball.area.isTouching(enemy.area)) bounce(enemy);
+            if(ball.area.isTouching(player.area)) bounce(player);
 
-        if(ball.getY() <= 0 || ball.getY() >= canvas.height){
-            ball.rotation = -ball.rotation;
-            ballSpeed *= ballAccel;
+            if(ball.getY() <= 0 || ball.getY() >= canvas.height){
+                ball.rotation = -ball.rotation;
+                ballSpeed *= ballAccel;
+            }
+
         }
 
         ball.render(canvas);
