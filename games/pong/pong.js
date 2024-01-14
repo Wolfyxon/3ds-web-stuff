@@ -5,6 +5,7 @@ window.addEventListener("load",function(){
     ball.fillStyle = "white";
     const originalBallSpeed = 2;
     var ballSpeed = originalBallSpeed;
+    const ballAccel = 1.02;
 
     const y = canvas.height/2.5;
 
@@ -34,6 +35,7 @@ window.addEventListener("load",function(){
         const normalizedOffset = offsetFromCenter / (pad.area.getHeight() / 2);
         const bounceAngle = normalizedOffset * 45;
         ball.rotation = 180 - ball.rotation + 2 * bounceAngle;
+        ballSpeed *= ballAccel;
     }
 
 
@@ -56,7 +58,10 @@ window.addEventListener("load",function(){
         if(ball.area.isTouching(enemy.area)) bounce(enemy);
         if(ball.area.isTouching(player.area)) bounce(player);
 
-        if(ball.getY() <= 0 || ball.getY() >= canvas.height) ball.rotation = -ball.rotation;
+        if(ball.getY() <= 0 || ball.getY() >= canvas.height){
+            ball.rotation = -ball.rotation;
+            ballSpeed *= ballAccel;
+        }
 
         ball.render(canvas);
         player.render(canvas);
