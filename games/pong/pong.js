@@ -66,5 +66,7 @@ window.addEventListener("load",function(){
         ball.render(canvas);
         player.render(canvas);
         enemy.render(canvas);
+
+        drawDashedLine(canvas,Vector2(canvas.width/2.05,0), Vector2(canvas.width/2.05,canvas.height),4,6,"white");
     },optiItv());
 });
