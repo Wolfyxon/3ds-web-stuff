@@ -50,6 +50,7 @@ window.addEventListener("load",function(){
         const bounceAngle = normalizedOffset * 45;
         ball.rotation = 180 - ball.rotation + 2 * bounceAngle;
         ballSpeed *= ballAccel;
+        ball.moveLocalXY(ball.area.getWidth(),0);
     }
 
     function updateScore(){
