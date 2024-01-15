@@ -25,7 +25,12 @@ https://wolfyxon.github.io/3ds-web-stuff
 - Chat Room
 
 ## Screenshots
-TODO
+<img alt="Home page" src=".github/screenshots/home.png" width="200px" height="250px">
+<img alt="Pong" src=".github/screenshots/pong.png" width="200px" height="250px">
+<img alt="JetFighter" src=".github/screenshots/jetfighter.png" width="200px" height="250px">
+<img alt="Pigeon" src=".github/screenshots/pigeon.png" width="200px" height="250px">
+<img alt="Jumpy" src=".github/screenshots/jumpy.png" width="200px" height="250px">
+
 
 ## Credits
 Inspired by: http://three-ds.atspace.com/ (author unknown)
