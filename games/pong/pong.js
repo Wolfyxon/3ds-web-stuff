@@ -63,12 +63,17 @@ window.addEventListener("load",function(){
     var statusColor = "";
 
     const countdown = 3;
+
+
+    function registerCountdownUpdate(i){
+        setTimeout(function(){
+            currentStatus = (countdown-i);
+        },(countdown-(countdown-i))*1000);
+    }
+
     statusColor = "orange"
     for(var i=0;i<countdown;i++){
-        const curI = i;
-        setTimeout(function(){
-            currentStatus = (countdown-curI);
-        },(countdown-(countdown-i))*1000);
+        registerCountdownUpdate(i);
     }
     setTimeout(function(){
         active = true;
