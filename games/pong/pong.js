@@ -126,7 +126,7 @@ window.addEventListener("load",function(){
         enemy.render(canvas);
 
         const lineX = canvas.width/2.015
-        drawDashedLine(canvas,Vector2(lineX,0), Vector2(lineX,canvas.height),4,6,"#D6D6D6");
+        drawDashedLine(canvas,Vector2(lineX,5), Vector2(lineX,canvas.height),4,6,"#D6D6D6");
 
         ctx.textAlign = "center";
         ctx.font = "bold 20px none";
