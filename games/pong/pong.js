@@ -128,7 +128,7 @@ window.addEventListener("load",function(){
         drawDashedLine(canvas,Vector2(lineX,0), Vector2(lineX,canvas.height),4,6,"#D6D6D6");
 
         ctx.textAlign = "center";
-        ctx.font = "20px none";
+        ctx.font = "bold 20px none";
         ctx.fillStyle = statusColor;
         ctx.fillText(currentStatus,canvas.width/2,canvas.height/2);
 
