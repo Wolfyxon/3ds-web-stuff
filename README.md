@@ -17,8 +17,8 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Tic Tac Toe](https://wolfyxon.github.io/3ds-web-stuff/games/ttt) - place X and O to make a pattern.
 - [x] [Pigeon](https://wolfyxon.github.io/3ds-web-stuff/games/pigeon) - fly between pipes avoiding them. Based on Flappy Bird
 - [ ] [Jet Fighter](https://wolfyxon.github.io/3ds-web-stuff/games/jetfighter) - Shoot em up game involving jets utilizing the both screens.
+- [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
 - [ ] Tanks and Cannons - Tower defense game about tanks and cannons.
-- [ ] Pong - Basically digital ping-pong. Who doen't know that one?
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
 - [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - turn text into a QR code.
