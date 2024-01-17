@@ -4,8 +4,20 @@ window.addEventListener("load", function(){
     const formula = document.getElementById("formula");
     const result = document.getElementById("result");
 
+    function run(){
+        try {
+            result.innerText = eval(formula.innerText);
+        } catch (e){
+            alert(e)
+        }
+    }
+
     function registerInputBtn(button){
-        if(button.innerText === "=") return;
+        if(button.innerText === "="){
+            button.addEventListener("click",run);
+            return;
+        }
+
         button.addEventListener("click",function(){
             formula.innerText += button.innerText;
         })
