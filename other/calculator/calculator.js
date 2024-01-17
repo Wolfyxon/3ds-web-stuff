@@ -14,4 +14,9 @@ window.addEventListener("load", function(){
     for(var i=0; i<inputBtns.length; i++){
         registerInputBtn(inputBtns[i]);
     }
+
+    document.getElementById("btn-clear").addEventListener("click", function(){
+        result.innerText = "";
+        formula.innerText = "";
+    });
 });
