@@ -36,6 +36,10 @@
 }
 
 
+#pads {
+    height: 90%;
+}
+
 #numpad {
     background-color: #1c1c1e;
     text-align: center;
