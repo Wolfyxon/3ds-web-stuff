@@ -2,3 +2,31 @@
     background-color: #2b2b2e;
     color:white;
 }
+
+#formula {
+    color: lime;
+    background-color: #081c00;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 5px;
+    height: 25%;
+}
+
+#result-container {
+    text-align: center;
+    height: 20%;
+}
+
+#result-container > * {
+    vertical-align: top;
+}
+
+#result {
+    display: inline-block;
+    color: #ff0000;
+    background-color: #1c0000;
+    padding: 2%;
+    border-radius: 5px;
+    width: 60%;
+    height: 30%;
+}
