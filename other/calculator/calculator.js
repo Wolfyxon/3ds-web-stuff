@@ -5,6 +5,8 @@ window.addEventListener("load", function(){
     const result = document.getElementById("result");
 
     function run(){
+        if(result.innerText === "") return;
+
         try {
             result.innerText = eval(formula.innerText);
         } catch (e){
