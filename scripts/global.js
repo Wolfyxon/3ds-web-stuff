@@ -142,6 +142,16 @@ function registerNon3DSlink(a){
     }
 }
 
+function isScrollable(element){
+    const css = window.getComputedStyle(element);
+
+    return (
+        css.overflow === "scroll" ||
+        css.overflowX === "scroll" ||
+        css.overflowY === "scroll"
+    );
+}
+
 // 0ms on the 3DS seems to be equal to 16ms on a modern device. This function ensures parity for modern browsers and the 3DS
 // Please use it only in intervals responsible for rendering, updating position etc.
 // Don't use it for checking isBtnJustPressed() or inputs might be often dropped.
