@@ -218,8 +218,36 @@ if(is3DS()){
 }
 
 // Prevent dragging
+
+var touchStart
+
+document.addEventListener('touchstart', function(e) {
+    touchStart = e.touches[0];
+});
+
 document.addEventListener('touchmove', function(e){
-    if(isScrollableOrDescendantOfScrollable(e.target)) return;
+    const scrollable = findScrollableAncestor(e.target);
+
+    if(scrollable){
+        const css = window.getComputedStyle(scrollable);
+
+        if(css.overflow === "scroll") return;
+
+        const touching = e.touches[0];
+
+        const deltaX = touching.clientX - touchStart.clientX;
+        const deltaY = touching.clientY - touchStart.clientY;
+
+        if(Math.abs(deltaX) > Math.abs(deltaY)){
+            // Horizontal
+            if(css.overflowX === "scroll") return true;
+        }
+        else {
+            // Vertical
+            if(css.overflowY === "scroll") return true;
+        }
+
+    }
 
     e.preventDefault();
 });
