@@ -41,6 +41,7 @@
 }
 
 #toolbar {
+    text-align: right;
     background-color: #16161a;
     border-radius: 20px;
 }
