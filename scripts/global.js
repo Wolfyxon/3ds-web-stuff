@@ -1,13 +1,32 @@
+/**
+ * Generates a random float number within the given range
+ * @param  {Number} min Minimum value
+ * @param {Number} max Maximum value
+ * @return {Number}
+ */
 function randf(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+/**
+ * Generates a random integer within the given range
+ * @param  {Number} min Minimum value
+ * @param {Number} max Maximum value
+ * @return {Number}
+ */
 function randi(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * Performs a linear interpolation between 2 numbers
+ * @param  {Number} start Current number
+ * @param {Number} end Target value
+ * @param {Number} weight Speed of the interpolation
+ * @return {Number}
+ */
 function lerp(start, end, weight){
     return (1-weight)*start+weight*end
 }
@@ -16,6 +35,11 @@ function fmod(a, b){
     return Number((a - (Math.floor(a / b) * b)).toPrecision(8));
 }
 
+/**
+ * Gets a hexadecimal color for the given colour name
+ * @param  {String} colour Name of the colour, example 'red'
+ * @return {String}
+ */
 function colorNameToHex(colour) {
     const colours = {"aliceblue":"#f0f8ff","antiquewhite":"#faebd7","aqua":"#00ffff","aquamarine":"#7fffd4","azure":"#f0ffff",
         "beige":"#f5f5dc","bisque":"#ffe4c4","black":"#000000","blanchedalmond":"#ffebcd","blue":"#0000ff","blueviolet":"#8a2be2","brown":"#a52a2a","burlywood":"#deb887",
@@ -45,11 +69,21 @@ function colorNameToHex(colour) {
     if (typeof colours[colour.toLowerCase()] != 'undefined') return colours[colour.toLowerCase()];
 }
 
+/**
+ * Checks if the user's browser is the Nintendo 3DS browser.
+ * @return {Boolean}
+ */
 function is3DS(){
     return includes(window.navigator.userAgent,"Nintendo 3DS") && getGamepad();
 }
 
 // array.includes and string.includes does not work on the 3DS browser
+/**
+ * Performs a linear interpolation between 2 numbers
+ * @param  {Object, String, Array} container The object you want to search in
+ * @param {*} search Value you want to check if exists
+ * @return {Boolean}
+ */
 function includes(container,search){
     if(Array.isArray(container)){
         for(var i=0;i<container.length;i++){
@@ -65,6 +99,11 @@ function includes(container,search){
     return container[search] !== undefined
 }
 
+/**
+ * Returns the specified array without the specified value
+ * @param  {Array} array The current array
+ * @param  {*} exclude The value you want to exclude
+ */
 function getWithout(array,exclude){
     var newArr = [];
     for(var i=0;i<array.length;i++){
@@ -73,8 +112,12 @@ function getWithout(array,exclude){
     return newArr;
 }
 
+/**
+ * Returns the webkit gamepad for the 3DS. Returns null if not detected.
+ * @return {Gamepad, null}
+ */
 function getGamepad(){
-    if(navigator.webkitGetGamepads === undefined) return; // Unsupported browser (most likely not the 3DS one)
+    if(navigator.webkitGetGamepads === undefined) return null; // Unsupported browser (most likely not the 3DS one)
     return navigator.webkitGetGamepads()[0];
 }
 
@@ -82,6 +125,10 @@ var justPressed = []
 var lastPressed = []
 var pressedKeycodes = [] // for keyboard
 
+/**
+ * Returns an Array of the pressed gamepad buttons as strings.
+ * @return {[String]}
+ */
 function getPressedBtns(){
     const gp = getGamepad();
     var res = [];
@@ -113,6 +160,11 @@ function getPressedBtns(){
     return res;
 }
 
+/**
+ * Checks if a gamepad button is pressed
+ * @param {String} name String name of the button. Any case.
+ * @return {Boolean}
+ */
 function isBtnPressed(name){
     const pressed = getPressedBtns();
 
@@ -124,7 +176,11 @@ function isBtnPressed(name){
     return false;
 }
 
-
+/**
+ * Checks if a gamepad button was pressed and isn't being held
+ * @param {String} name String name of the button. Any case.
+ * @return {Boolean}
+ */
 function isBtnJustPressed(name){
     for(var i=0;i<justPressed.length;i++){
         if(justPressed[i].toLowerCase() === name.toLowerCase()){
@@ -141,7 +197,11 @@ function registerNon3DSlink(a){
         return false;
     }
 }
-
+/**
+ * Checks if an Element is scrollable.
+ * @param {Element} element Element you want to check
+ * @return {Boolean}
+ */
 function isScrollable(element){
     const css = window.getComputedStyle(element);
 
@@ -152,6 +212,11 @@ function isScrollable(element){
     );
 }
 
+/**
+ * Finds the first scrollable ancestor of the specified element or the element itself.
+ * @param {Element} element Element you want to search ancestors of.
+ * @return {Element}
+ */
 function findScrollableAncestor(element) {
     if(isScrollable(element)) return element;
     var parent = element.parentElement;
@@ -162,9 +227,11 @@ function findScrollableAncestor(element) {
     }
 }
 
-// 0ms on the 3DS seems to be equal to 16ms on a modern device. This function ensures parity for modern browsers and the 3DS
-// Please use it only in intervals responsible for rendering, updating position etc.
-// Don't use it for checking isBtnJustPressed() or inputs might be often dropped.
+/**
+ * Returns an optimal delay for intervals to ensure parity for a PC browser and the 3DS browser.
+ * Please don't use it with intervals that check isBtnJustPressed()
+ * @return {Number}
+ */
 function optiItv(){
     if(is3DS()) return 0;
     return 16;

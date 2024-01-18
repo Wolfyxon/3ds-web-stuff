@@ -2,6 +2,12 @@
 /////// Classes ///////
 // Please note that the 3DS browser does not support the actual JavaScript classes. Using 'class' will result in a reserved keyword error.
 
+/**
+ * Creates a 2 dimensional vector from the given XY values
+ * @param {Number} x Horizontal position of the Vector
+ * @param {Number} y Vertical position of the Vector
+ * @return {Object}
+ */
 function Vector2(x,y){
     var vec = {
         x: x,
@@ -86,6 +92,12 @@ function Vector2(x,y){
     return vec;
 }
 
+/**
+ * Creates a 2 dimensional area from 2 Vectors
+ * @param {Object} vec1 Starting point of the area
+ * @param {Object} vec2 Ending point of the area
+ * @return {Object}
+ */
 function Area2D(vec1, vec2){
     var area = {
         startVec: vec1,
@@ -193,6 +205,13 @@ function Area2D(vec1, vec2){
     return area
 }
 
+/**
+ * Creates an extended version of Area2D with rendering capabilities
+ * @param {Object} pos Position vector of the rectangle
+ * @param {number} w Width
+ * @param {number} h Height
+ * @return {Object}
+ */
 function Rect2D(pos, w, h){
     var rect = {
         area: Area2D(pos, Vector2(pos.x+w, pos.y+h)),
@@ -280,6 +299,16 @@ function Rect2D(pos, w, h){
     return rect;
 }
 
+/**
+ * Creates a 2D image renderable on a canvas
+ * @param {HTMLImageElement} image <img> element
+ * @param {number} x Horizontal position of the sprite
+ * @param {number} y Vertical position of the sprite
+ * @param {number} rot Rotation in degrees of the sprite
+ * @param {number} w Sprite width
+ * @param {number} h Sprite height
+ * @return {Object}
+ */
 function Sprite(image,x,y,rot,w,h){
     if(!x) x = 0;
     if(!y) y = 0;
@@ -370,6 +399,16 @@ function Sprite(image,x,y,rot,w,h){
 
 //// Global functions ////
 
+/**
+ * Draws a dashed line across 2 points
+ * @param {HTMLCanvasElement} canvas <canvas> element
+ * @param {Object} startVec Starting point of the line
+ * @param {Object} endVec Ending point of the line
+ * @param {Number} width Width of the line
+ * @param {Number} spacing Space between the dashes
+ * @param {String} color Color of the line
+ * @return {Object}
+ */
 function drawDashedLine(canvas, startVec, endVec, width, spacing, color){
     const ctx = canvas.getContext("2d");
     const prevW = ctx.lineWidth;
@@ -399,10 +438,21 @@ function drawDashedLine(canvas, startVec, endVec, width, spacing, color){
 }
 
 
+/**
+ * Clears a canvas
+ * @param {HTMLCanvasElement} canvas The <canvas> to clear
+ */
 function clearCanvas(canvas){
     canvas.getContext("2d").clearRect(0, 0, canvas.width*2, canvas.height*2);
 }
 
+/**
+ * Performs a linear interpolation between 2 angles in degrees
+ * @param {Number} startDeg Current angle
+ * @param {Number} endDeg Target angle
+ * @param {Number} weight Speed of the interpolation
+ * @return {Number}
+ */
 function lerpAngle(startDeg, endDeg, weight) {
     startDeg = deg2rad(startDeg);
     endDeg = deg2rad(endDeg);
@@ -413,6 +463,18 @@ function lerpAngle(startDeg, endDeg, weight) {
     return rad2deg(startDeg + shortest * weight);
 }
 
+/**
+ * Checks if objects are touching based on their positions and sizes
+ * @param {number} x1 Horizontal position of the 1st object
+ * @param {number} y1 Vertical position of the 1st object
+ * @param {number} w1 Width of the 1st object
+ * @param {number} h1 Height of the 1st object
+ * @param {number} x2 Horizontal position of the 2nd object
+ * @param {number} y2 Vertical position of the 2nd object
+ * @param {number} w2 Width of the 2nd object
+ * @param {number} h2 Height of the 2nd object
+ * @return {Boolean}
+ */
 function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
     const left1 = x1;
     const right1 = x1 + w1;
@@ -427,14 +489,32 @@ function isTouching(x1, y1, w1, h1, x2, y2, w2, h2) {
     return !(left1 > right2 || right1 < left2 || top1 > bottom2 || bottom1 < top2);
 }
 
+/**
+ * Calculates the distance between 2 points
+ * @param {number} x1 Horizontal position of the 1st point
+ * @param {number} y1 Vertical position of the 1st point
+ * @param {number} x2 Horizontal position of the 2nd point
+ * @param {number} y2 Vertical position of the 2nd point
+ * @return {Object}
+ */
 function distanceToXY(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
 }
 
+/**
+ * Converts degrees to radians
+ * @param {number} degrees Angle in degrees
+ * @return {number}
+ */
 function deg2rad(degrees){
     return degrees*Math.PI/180;
 }
 
+/**
+ * Converts radians to degrees
+ * @param {number} radians Angle in radians
+ * @return {number}
+ */
 function rad2deg(radians){
     return radians*180/Math.PI;
 }

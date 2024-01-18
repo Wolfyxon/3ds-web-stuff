@@ -1,3 +1,8 @@
+/**
+ * Performs a GET HTTP request
+ * @param  {String} url URL of the server/website
+ * @param {Function} callback Callback function containing the response code and body
+ */
 function httpGet(url, callback){
     if(!url){
         console.error("No URL specified");
@@ -18,6 +23,13 @@ function httpGet(url, callback){
     xhr.send();
 }
 
+/**
+ * Performs a POST HTTP request
+ * @param  {String} url URL of the server/website
+ * @param  {Object} data Data to send
+ * @param {Function} callback Callback function containing the response code and body
+ * @param {String} [contentType=application/json] Content type
+ */
 function httpPost(url, data, callback, contentType) {
     if(!url) {
         console.error("No URL specified");
