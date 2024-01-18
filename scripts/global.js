@@ -221,12 +221,7 @@ if(is3DS()){
 
 // Prevent dragging
 document.addEventListener('touchmove', function(e){
-    const style = window.getComputedStyle(e.target);
-
-    if(style.overflow === "scroll") return;
-    if(style.overflowX === "scroll") return;
-    if(style.overflowY === "scroll") return;
-
+    if(isScrollableOrDescendantOfScrollable(e.target)) return;
 
     e.preventDefault();
 });
