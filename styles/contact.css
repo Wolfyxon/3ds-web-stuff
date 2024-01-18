@@ -1,0 +1,28 @@
+#top-screen {
+    font-size: 80%;
+}
+
+form {
+    margin: 2%;
+    height: 90%;
+}
+
+label {
+    font-size: 70%;
+}
+
+.full-width {
+    width: 98%;
+}
+
+#content-input {
+    vertical-align: top;
+    height: 45%;
+}
+
+#content-error {
+    color: red;
+    padding: 0;
+    margin: 0;
+    font-size: 70%;
+}
