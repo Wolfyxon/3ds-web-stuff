@@ -27,7 +27,8 @@ window.addEventListener("load",function(){
             content: content
         },function(code){
             if(code === 204){
-                alert("Form submitted successfully! \nIf you specified an email, you should get a reply in up to 24 hours.");
+                alert("Form submitted successfully! \nIf you specified an email, you should get a reply in up to 24 hours.\nReturning to the home page.");
+                window.location.href = "index.html";
             }
             else {
                 alert("Something went wrong. Error: "+code);
