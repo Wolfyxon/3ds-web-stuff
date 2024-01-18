@@ -177,7 +177,7 @@ setInterval(function (){
 
     const curPressed = getPressedBtns();
     justPressed = []
-    yay = false
+
     for(var i=0;i<lastPressed.length;i++){
         const btn = lastPressed[i]
         if(!includes(curPressed,btn)){
