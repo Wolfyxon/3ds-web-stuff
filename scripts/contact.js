@@ -6,7 +6,10 @@ window.addEventListener("load",function(){
 
     const contentError = document.getElementById("content-error");
 
+    var submitted = false;
+
     form.onsubmit = function(){
+        if(submitted) return false;
         const content = contentInput.value;
 
         if(content.replace(" ","") === ""){
@@ -29,6 +32,7 @@ window.addEventListener("load",function(){
             if(code === 204){
                 alert("Form submitted successfully! \nIf you specified an email, you should get a reply in up to 24 hours.\nReturning to the home page.");
                 window.location.href = "index.html";
+                submitted = true;
             }
             else {
                 alert("Something went wrong. Error: "+code);
