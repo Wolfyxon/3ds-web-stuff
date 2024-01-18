@@ -198,6 +198,7 @@ window.addEventListener("keyup",function(e){
 function prevent(event){
     if(event.keyCode === 8) return true; //backspace
     if(event.keyCode === 116) return true; //f5
+    if(event.keyCode === 13) return true; //enter
 
     if(event.charCode || (event.key && event.key.length === 1 )) return true; // allow character keys
 
