@@ -33,4 +33,8 @@ window.addEventListener("load", function(){
         result.innerText = "";
         formula.innerText = "";
     });
+
+    document.getElementById("btn-backspace").addEventListener("click", function(){
+        formula.innerText = formula.innerText.slice(0,-1);
+    });
 });
