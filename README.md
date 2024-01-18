@@ -22,7 +22,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
 - [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - turn text into a QR code.
-- [ ] Calculator
+- [x] [Calculator](https://wolfyxon.github.io/3ds-web-stuff/other/calculator) - just a simple basic calculator.
 - Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
 - Barcode generator - turn text into a barcode.
 - Unit converter - convert between units.
