@@ -238,12 +238,18 @@ document.addEventListener('touchmove', function(e){
         const deltaX = touching.clientX - touchStart.clientX;
         const deltaY = touching.clientY - touchStart.clientY;
 
+        var direction = 1;
+
         if(Math.abs(deltaX) > Math.abs(deltaY)){
             // Horizontal
+            if(deltaX > 0) direction = -1
+
             if(css.overflowX === "scroll") return true;
         }
         else {
             // Vertical
+            if(deltaY < 0) direction = -1
+
             if(css.overflowY === "scroll") return true;
         }
 
