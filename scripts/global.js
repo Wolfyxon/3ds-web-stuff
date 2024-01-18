@@ -152,6 +152,18 @@ function isScrollable(element){
     );
 }
 
+function isScrollableOrDescendantOfScrollable(element) {
+    if(isScrollable(element)) return true;
+    var parent = element.parentElement;
+
+    while (parent) {
+        if (isScrollable(parent)) return true;
+        parent = parent.parentElement;
+    }
+
+    return false;
+}
+
 // 0ms on the 3DS seems to be equal to 16ms on a modern device. This function ensures parity for modern browsers and the 3DS
 // Please use it only in intervals responsible for rendering, updating position etc.
 // Don't use it for checking isBtnJustPressed() or inputs might be often dropped.
@@ -206,6 +218,18 @@ if(is3DS()){
         return false;
     })
 }
+
+// Prevent dragging
+document.addEventListener('touchmove', function(e){
+    const style = window.getComputedStyle(e.target);
+
+    if(style.overflow === "scroll") return;
+    if(style.overflowX === "scroll") return;
+    if(style.overflowY === "scroll") return;
+
+
+    e.preventDefault();
+});
 
 window.addEventListener("load",function (){
     if(is3DS()){
