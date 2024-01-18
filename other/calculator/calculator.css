@@ -46,9 +46,14 @@
 }
 
 #toolbar button {
+    vertical-align: top;
     background-color: orange;
     border: 2px #da8d00 solid;
     border-radius: 10px;
+}
+
+#toolbar button img {
+    height: 18px;
 }
 
 #numpad {
