@@ -152,16 +152,14 @@ function isScrollable(element){
     );
 }
 
-function isScrollableOrDescendantOfScrollable(element) {
-    if(isScrollable(element)) return true;
+function findScrollableAncestor(element) {
+    if(isScrollable(element)) return element;
     var parent = element.parentElement;
 
     while (parent) {
-        if (isScrollable(parent)) return true;
+        if (isScrollable(parent)) return parent;
         parent = parent.parentElement;
     }
-
-    return false;
 }
 
 // 0ms on the 3DS seems to be equal to 16ms on a modern device. This function ensures parity for modern browsers and the 3DS
