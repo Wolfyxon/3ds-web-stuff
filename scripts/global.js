@@ -170,8 +170,10 @@ function optiItv(){
     return 16;
 }
 
+var forcePosition = true;
+
 setInterval(function (){
-    window.scrollTo(40,227);
+    if(forcePosition) window.scrollTo(40,227);
 
     const curPressed = getPressedBtns();
     justPressed = []
