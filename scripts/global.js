@@ -199,7 +199,7 @@ function registerNon3DSlink(a){
 }
 /**
  * Checks if an Element is scrollable.
- * @param {Element} element Element you want to check
+ * @param {HTMLElement} element Element you want to check
  * @return {Boolean}
  */
 function isScrollable(element){
@@ -214,8 +214,8 @@ function isScrollable(element){
 
 /**
  * Finds the first scrollable ancestor of the specified element or the element itself.
- * @param {Element} element Element you want to search ancestors of.
- * @return {Element}
+ * @param {HTMLElement} element Element you want to search ancestors of.
+ * @return {HTMLElement}
  */
 function findScrollableAncestor(element) {
     if(isScrollable(element)) return element;
