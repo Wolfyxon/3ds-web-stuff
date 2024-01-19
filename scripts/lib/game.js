@@ -149,7 +149,7 @@ function Vector2(x,y){
 
     /**
      * Moves the vector toward the target vector
-     * @param {Number} vector The target vector
+     * @param {Object} vector The target vector
      * @param {Number} amt Speed of the movement
      * @return {Object}
      */
