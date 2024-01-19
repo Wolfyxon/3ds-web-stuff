@@ -14,30 +14,62 @@ function Vector2(x,y){
         y: y
     }
 
+    /**
+     * Calculates distance to another Vector2
+     * @param {Object} vector The another vector
+     * @return {Object}
+     */
     vec.distanceTo = function(vector){
         return distanceToXY(vec.x, vec.y ,vector.x, vector.y);
     }
 
+    /**
+     * Offsets the vector by X and Y values
+     * @param {Number} x_ Horizontal offset
+     * @param {Number} y_ Vertical offset
+     * @return {Object}
+     */
     vec.offsetXY = function (x_,y_){
         vec.x += x_;
         vec.y += y_;
         return vec;
     }
 
+    /**
+     * Offsets the vector by another Vector2
+     * @param {Object} vector The another vector
+     * @return {Object}
+     */
     vec.offsetVec = function(vector){
         vec.x += vector.x;
         vec.y += vector.y;
         return vec;
     }
 
+    /**
+     * Returns a copy of this vector offset by X and Y values
+     * @param {Number} x_ Horizontal offset
+     * @param {Number} y_ Vertical offset
+     * @return {Object}
+     */
     vec.getOffsetXY = function (x_,y_){
         return Vector2(vec.x+x_,vec.y+y_);
     }
 
+    /**
+     * Returns a copy of this vector offset by another vector
+     * @param {Object} vector The another vector
+     * @return {Object}
+     */
     vec.getOffsetVec = function (vector){
         return Vector2(vec.x+vector.x,vec.y+vector.y);
     }
 
+    /**
+     * Rotates the vector
+     * @param {Number} degrees Rotation in degrees
+     * @return {Object}
+     */
     vec.rotate = function(degrees){
         const rad = deg2rad(degrees);
         vec.x = vec.x * Math.cos(rad) - vec.y * Math.sin(rad);
@@ -46,16 +78,33 @@ function Vector2(x,y){
         return vec;
     }
 
+    /**
+     * Returns a rotated copy of the vector
+     * @param {Number} degrees Rotation in degrees
+     * @return {Object}
+     */
     vec.getRotated = function(degrees){
         return vec.copy().rotate(degrees);
     }
 
+    /**
+     * Performs a linear interpolation
+     * @param {Object} vector The target Vector2
+     * @param {Number} weight Speed of the interpolation
+     * @return {Object}
+     */
     vec.lerp = function(vector, weight){
         vec.x = lerp(vec.x, vector.x, weight);
         vec.y = lerp(vec.y, vector.y, weight);
         return vec;
     }
 
+    /**
+     * Returns a linearly interpolated copy of this vector
+     * @param {Object} vector The target Vector2
+     * @param {Number} weight Speed of the interpolation
+     * @return {Object}
+     */
     vec.getLerped = function(vector, weight){
         return Vector2(
             lerp(vec.x,vector.x,weight),
@@ -63,16 +112,34 @@ function Vector2(x,y){
         )
     }
 
+    /**
+     * Calculates an angle in degrees to the target point at X and Y values
+     * @param {Number} x_ Horizontal position
+     * @param {Number} y_ Vertical position
+     * @return {Object}
+     */
     vec.getRotationToXY = function(x_, y_){
         const deltaX = x_ - vec.x;
         const deltaY = y_ - vec.y;
         return rad2deg( Math.atan2(deltaY, deltaX) );
     }
 
+    /**
+     * Calculates an angle in degrees to the target Vector2
+     * @param {Object} vector The target Vector2
+     * @return {Object}
+     */
     vec.getRotationToVec = function(vector){
         return vec.getRotationToXY(vector.x, vector.y);
     }
 
+    /**
+     * Moves the vector toward the target point at X and Y values
+     * @param {Number} x_ Horizontal position
+     * @param {Number} y_ Vertical position
+     * @param {Number} amt Speed of the movement
+     * @return {Object}
+     */
     vec.moveTowardXY = function(x_, y_, amt){
         const angle = Math.atan2(y_ - vec.y, x_ - vec.x);
         vec.x += Math.cos(angle) * amt;
@@ -80,11 +147,21 @@ function Vector2(x,y){
         return vec;
     };
 
+    /**
+     * Moves the vector toward the target vector
+     * @param {Number} vector The target vector
+     * @param {Number} amt Speed of the movement
+     * @return {Object}
+     */
     vec.moveTowardVec = function(vector){
         vec.moveTowardXY(vector.x, vector.y);
         return vec;
     }
 
+    /**
+     * Returns an independent copy of this vector
+     * @return {Object}
+     */
     vec.copy = function(){
         return Vector2(vec.x, vec.y);
     }
@@ -104,6 +181,10 @@ function Area2D(vec1, vec2){
         endVec: vec2
     }
 
+    /**
+     * Returns the center Vector2 of the area
+     * @return {Object}
+     */
     area.getCenter = function(){
         return Vector2(
             area.startVec.x + area.getWidth()/2,
@@ -111,34 +192,66 @@ function Area2D(vec1, vec2){
         )
     }
 
+    /**
+     * Returns the area's width
+     * @return {Number}
+     */
     area.getWidth = function(){
         return Math.abs(area.startVec.x - area.endVec.x);
     }
 
+    /**
+     * Returns the area's height
+     * @return {Number}
+     */
     area.getHeight = function(){
         return Math.abs(area.startVec.y - area.endVec.y);
     }
 
+    /**
+     * Returns the area's field
+     * @return {Number}
+     */
     area.getField = function(){
         return area.getWidth() * area.getHeight();
     }
 
+    /**
+     * Returns the area's top left Vector2
+     * @return {Object}
+     */
     area.getTopLeft = function(){
         return area.startVec;
     }
 
+    /**
+     * Returns the area's bottom right Vector2
+     * @return {Object}
+     */
     area.getBottomRight = function(){
         return area.endVec;
     }
 
+    /**
+     * Returns the area's top right Vector2
+     * @return {Object}
+     */
     area.getTopRight = function(){
         return Vector2(area.getWidth()+area.startVec.x, area.startVec.y);
     }
 
+    /**
+     * Returns the area's bottom left Vector2
+     * @return {Object}
+     */
     area.getBottomLeft = function(){
         return Vector2(area.startVec.x, area.getHeight()+area.startVec.y);
     }
 
+    /**
+     * Rescales the area
+     * @return {Object}
+     */
     area.rescale = function(scale){
         const w = area.getWidth() * scale;
         const h = area.getHeight() * scale;
@@ -152,12 +265,21 @@ function Area2D(vec1, vec2){
         return area;
     }
 
+    /**
+     * Returns a rescaled copy of this area
+     * @return {Object}
+     */
     area.getRescaled = function(scale){
         const ar = Area2D(area.startVec,area.endVec);
         ar.rescale(scale);
         return ar;
     }
 
+    /**
+     * Checks if the area is touching another Area2D
+     * @param anotherArea The another Area2D
+     * @return {Boolean}
+     */
     area.isTouching = function(anotherArea){
         return isTouching(
             area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight(),
@@ -165,16 +287,32 @@ function Area2D(vec1, vec2){
         )
     }
 
+    /**
+     * Offsets the area by X and Y values
+     * @param {Number} x Horizontal offset
+     * @param {Number} y Vertical offset
+     * @return {Object}
+     */
     area.offsetXY = function(x,y){
         area.startVec.offsetXY(x,y);
         area.endVec.offsetXY(x,y);
         return area;
     }
 
+    /**
+     * Offsets the area by a Vector2
+     * @param {Object} vector The offset Vector2
+     * @return {Object}
+     */
     area.offsetVec = function(vector){
         return area.offsetXY(vector.x,vector.y)
     }
 
+    /**
+     * Moves the area to a new position
+     * @param {Object} vector The target Vector2
+     * @return {Object}
+     */
     area.moveTo = function(vector){
         const initW = area.getWidth();
         const initH = area.getHeight();
@@ -183,6 +321,10 @@ function Area2D(vec1, vec2){
         area.endVec = vector.getOffsetXY(initW,initH);
     }
 
+    /**
+     * Renders a test rectangle on a canvas to test the area
+     * @param {HTMLCanvasElement} canvas The <canvas> element
+     */
     area.renderDebug = function(canvas){
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "red";
@@ -198,6 +340,10 @@ function Area2D(vec1, vec2){
         ctx.fillStyle = "";
     }
 
+    /**
+     * Returns an independent copy of this area
+     * @return {Object}
+     */
     area.copy = function(){
         return Area2D(area.startVec.copy(), area.endVec.copy());
     }
@@ -224,26 +370,53 @@ function Rect2D(pos, w, h){
         outlineOpacity: 1
     }
 
+    /**
+     * Returns the X position of the rect
+     * @return {Number}
+     */
     rect.getX = function (){
         return rect.area.startVec.x;
     }
 
+    /**
+     * Returns the Y position of the rect
+     * @return {Number}
+     */
     rect.getY = function(){
         return rect.area.startVec.y;
     }
 
+    /**
+     * Returns the center Vector2 of the rect
+     * @return {Object}
+     */
     rect.getCenter = function(){
         return rect.area.getCenter();
     }
 
+    /**
+     * Offsets the rect by X and Y values
+     * @param {Number} x_ Horizontal offset
+     * @param {Number} y_ Vertical offset
+     */
     rect.moveXY = function(x_,y_){
         rect.area.offsetXY(x_,y_);
     }
 
+    /**
+     * Offsets the rect by a Vector2
+     * @param {Object} vector The offset Vector2
+     * @return {Object}
+     */
     rect.moveVec = function(vector){
         return rect.moveXY(vector.x, vector.y);
     }
 
+    /**
+     * Offsets the rect by X and Y values respecting the rotation
+     * @param {Number} x_ Horizontal offset
+     * @param {Number} y_ Vertical offset
+     */
     rect.moveLocalXY = function(x_, y_){
         const angle = deg2rad(rect.rotation);
         const localX = x_ * Math.cos(angle) - y_ * Math.sin(angle);
@@ -251,10 +424,19 @@ function Rect2D(pos, w, h){
         return rect.moveXY(localX, localY);
     }
 
+    /**
+     * Offsets the rect by a Vector2 respecting the rotation
+     * @param {Object} vector The offset Vector2
+     * @return {Object}
+     */
     rect.moveLocalVec = function(vector){
         return rect.moveLocalXY(vector.x, vector.y);
     }
 
+    /**
+     * Renders the rect on a canvas
+     * @param {HTMLCanvasElement} canvas The <canvas> element
+     */
     rect.render = function(canvas) {
         const ctx = canvas.getContext("2d");
 
@@ -284,6 +466,10 @@ function Rect2D(pos, w, h){
         ctx.restore();
     }
 
+    /**
+     * Returns an independent copy of the rect
+     * @return {Object}
+     */
     rect.copy = function(){
         const newRect = Rect2D(rect.area.getTopLeft().copy(), rect.area.getWidth(), rect.area.getHeight());
         newRect.fillStyle = rect.fillStyle;
@@ -327,18 +513,35 @@ function Sprite(image,x,y,rot,w,h){
         opacity: 1
     }
 
+    /**
+     * Returns the X position of the sprite
+     * @return {Number}
+     */
     spr.getX = function (){
         return spr.area.startVec.x;
     }
 
+    /**
+     * Returns the Y position of the sprite
+     * @return {Number}
+     */
     spr.getY = function(){
         return spr.area.startVec.y;
     }
 
+    /**
+     * Returns the center Vector2 of the sprite
+     * @return {Object}
+     */
     spr.getCenter = function(){
         return spr.area.getCenter();
     }
 
+    /**
+     * Offsets the sprite by X and Y values
+     * @param {Number} x_ Horizontal offset
+     * @param {Number} y_ Vertical offset
+     */
     spr.moveXY = function(x_,y_){
         if(spr.lastCanvas && spr.restrictMovement){
             if(spr.getX()+x_ < 0 || spr.getX()+x_ >= spr.lastCanvas.width-spr.area.getWidth()) return;
@@ -347,10 +550,20 @@ function Sprite(image,x,y,rot,w,h){
         spr.area.offsetXY(x_,y_);
     }
 
+    /**
+     * Offsets the sprite by a Vector2
+     * @param {Object} vector The offset Vector2
+     * @return {Object}
+     */
     spr.moveVec = function(vector){
         return spr.moveXY(vector.x, vector.y);
     }
 
+    /**
+     * Offsets the sprite by X and Y values respecting the rotation
+     * @param {Number} x_ Horizontal offset
+     * @param {Number} y_ Vertical offset
+     */
     spr.moveLocalXY = function(x_, y_){
         const angle = deg2rad(spr.rotation);
         const localX = x_ * Math.cos(angle) - y_ * Math.sin(angle);
@@ -358,15 +571,30 @@ function Sprite(image,x,y,rot,w,h){
         return spr.moveXY(localX, localY);
     }
 
+    /**
+     * Offsets the sprite by a Vector2 respecting the rotation
+     * @param {Object} vector The offset Vector2
+     * @return {Object}
+     */
     spr.moveLocalVec = function(vector){
         return spr.moveLocalXY(vector.x, vector.y);
     }
 
+    /**
+     * Scales the sprite to another size
+     * @param {Number} scale Scale amount
+     */
     spr.rescale = function(scale){
         spr.area.rescale(scale);
         return spr;
     }
 
+    /**
+     * Moves the vector toward the target point at X and Y values
+     * @param {Number} x_ Horizontal position
+     * @param {Number} y_ Vertical position
+     * @return {Object}
+     */
     spr.rotateTowardsXY = function(x_, y_) {
         const deltaX = x_ - spr.getX();
         const deltaY = y_ - spr.getY();
@@ -374,10 +602,19 @@ function Sprite(image,x,y,rot,w,h){
         return spr;
     }
 
+    /**
+     * Moves the vector toward the target vector
+     * @param {Number} vector The target vector
+     * @return {Object}
+     */
     spr.rotateTowardsVec = function(vector){
         return spr.rotateTowardsXY(vector.x,vector.y);
     }
 
+    /**
+     * Moves Renders the sprite on a canvas
+     * @param {HTMLCanvasElement} canvas The <canvas> element
+     */
     spr.render = function(canvas){
         spr.lastCanvas = canvas;
         if(!spr.visible) return;
