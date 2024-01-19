@@ -1,6 +1,5 @@
 window.addEventListener("load",function(){
     const canvas = document.getElementById("canv");
-    const ctx = canvas.getContext("2d");
 
     const imgJet = document.getElementById("img-jet");
 
