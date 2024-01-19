@@ -488,11 +488,11 @@ function Rect2D(pos, w, h){
 /**
  * Creates a 2D image renderable on a canvas
  * @param {HTMLImageElement} image <img> element
- * @param {number} x Horizontal position of the sprite
- * @param {number} y Vertical position of the sprite
- * @param {number} rot Rotation in degrees of the sprite
- * @param {number} w Sprite width
- * @param {number} h Sprite height
+ * @param {number} [x=0] Horizontal position of the sprite
+ * @param {number} [y=0] Vertical position of the sprite
+ * @param {number} [rot=0] Rotation in degrees of the sprite
+ * @param {number} [w=auto] Sprite width
+ * @param {number} [h=auto] Sprite height
  * @return {Object}
  */
 function Sprite(image,x,y,rot,w,h){
