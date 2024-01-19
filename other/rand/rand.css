@@ -1,0 +1,41 @@
+#screens > * {
+    text-align: center;
+}
+
+#top-screen{
+    background-color: #41b5d0;
+}
+
+#bottom-screen {
+    background-color: #4194d0;
+}
+
+#settings {
+    margin-top: 20%;
+}
+
+input[type="number"] {
+   width: 90%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+#result {
+    background-color: white;
+    border: 2px solid black;
+    width: 40%;
+    height: 70%;
+    line-height: 10;
+    border-radius: 20px;
+    margin: 7% 30%;
+}
+
+#btn-gen {
+    color: white;
+    background-color: #0f960f;
+    border: 2px lime solid;
+    border-radius: 5px;
+    padding: 1%;
+    margin: 3%;
+}
