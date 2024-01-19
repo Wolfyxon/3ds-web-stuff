@@ -22,13 +22,19 @@ input[type="number"] {
 }
 
 #result {
+    display: table-cell;
+    vertical-align: middle;
+    word-break: break-all;
+}
+
+#result-container {
+    display: table;
     background-color: white;
     border: 2px solid black;
     width: 40%;
     height: 70%;
     border-radius: 20px;
     margin: 7% 30%;
-    word-break: break-all;
 }
 
 #btn-gen {
