@@ -26,9 +26,9 @@ input[type="number"] {
     border: 2px solid black;
     width: 40%;
     height: 70%;
-    line-height: 10;
     border-radius: 20px;
     margin: 7% 30%;
+    word-break: break-all;
 }
 
 #btn-gen {
