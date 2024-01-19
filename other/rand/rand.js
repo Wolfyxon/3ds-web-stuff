@@ -5,7 +5,7 @@ window.addEventListener("load",function(){
     const intChk = document.getElementById("chk-int");
 
     document.getElementById("btn-gen").addEventListener("click",function(){
-        var res = randf(minInput.value, maxInput.value);
+        var res = randf(parseFloat(minInput.value), parseFloat(maxInput.value));
         if(intChk.checked) res = Math.floor(res);
 
         resultTxt.innerText = res;
