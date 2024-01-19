@@ -153,8 +153,8 @@ function Vector2(x,y){
      * @param {Number} amt Speed of the movement
      * @return {Object}
      */
-    vec.moveTowardVec = function(vector){
-        vec.moveTowardXY(vector.x, vector.y);
+    vec.moveTowardVec = function(vector, amt){
+        vec.moveTowardXY(vector.x, vector.y, amt);
         return vec;
     }
 
