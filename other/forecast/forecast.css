@@ -1,0 +1,39 @@
+#top-screen {
+    background-color: #1d1244;
+}
+
+#bottom-screen {
+    background-color: #2b2b2e;
+    text-align: center;
+}
+
+#search-bar {
+    text-align: center;
+    height: 8%;
+    background-color: #000b1c;
+    padding: 1%;
+    width: 90%;
+    margin-left: 4%;
+    border-radius: 10px;
+}
+
+#search-bar > * {
+    vertical-align: top;
+    height: 100%;
+    border-radius: 20px;
+    border: none;
+}
+
+#input-search {
+    font-size: 70%;
+    width: 70%;
+    padding: 0 2%;
+}
+
+#btn-search {
+    border: none;
+}
+
+#btn-search img {
+    height: 100%;
+}
