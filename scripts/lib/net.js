@@ -11,7 +11,7 @@ function getDomain(url){
 
 /**
  * Performs a GET HTTP request
- * @param  {String} domain Checks if HTTP requests can be requested on the specified domain
+ * @param  {String} domain Checks if HTTP requests can be sent to the specified domain
  * @return {boolean}
  */
 function isDomainAllowed(domain){
