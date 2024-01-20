@@ -32,6 +32,11 @@
 
 #btn-search {
     border: none;
+    background-color: #0f960f;
+}
+
+#btn-search:active {
+    background-color: #00be00;
 }
 
 #btn-clear {
