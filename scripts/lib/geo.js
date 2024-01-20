@@ -10,6 +10,7 @@ if(!window.httpGet) throw new Error("net.js not imported!")
  */
 function searchLocations(query, callback){
     const url = "https://geocoding-api.open-meteo.com/v1/search?name="
+    if(!isDomainAllowed(getDomain(url))) throw new Error("Please add 'geocoding-api' to the allowed CORS domains");
     httpGet(url+query, function(code, body){
         const jsonBody = JSON.parse(body);
         var results = [];
