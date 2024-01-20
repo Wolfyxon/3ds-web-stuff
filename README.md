@@ -24,7 +24,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - turn text into a QR code.
 - [x] [Calculator](https://wolfyxon.github.io/3ds-web-stuff/other/calculator) - just a simple basic calculator.
 - [x] [Random number generator](https://wolfyxon.github.io/3ds-web-stuff/other/rand) - generate random numbers in a range
-- Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
+- [ ] Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
 - Timer
 - Barcode generator - turn text into a barcode.
 - Unit converter - convert between units.
