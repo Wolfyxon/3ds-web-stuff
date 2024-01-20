@@ -11,6 +11,16 @@ function getDomain(url){
 
 /**
  * Performs a GET HTTP request
+ * @param  {String} domain Checks if HTTP requests can be requested on the specified domain
+ * @return {boolean}
+ */
+function isDomainAllowed(domain){
+    const content = document.head.getAttribute("content");
+    return document.head.getAttribute("http-equiv") === "Access-Control-Allow-Origin" && (content === "*" || content.indexOf(domain) !== -1);
+}
+
+/**
+ * Performs a GET HTTP request
  * @param  {String} url URL of the server/website
  * @param {Function} callback Callback function containing the response code and body
  */
