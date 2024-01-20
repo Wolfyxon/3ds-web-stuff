@@ -4,7 +4,7 @@ a {
 
 #top-screen {
     color: white;
-    background-color: #605288;
+    background-color: #1d1244;
     text-align: center;
 }
 
@@ -19,7 +19,7 @@ a {
 
 #title-zone {
     border-radius: 20px;
-    background-color: #4a3c85;
+    background-color: #800cc7;
 }
 
 #title-zone * {
@@ -65,7 +65,7 @@ a {
 }
 
 .app-list a {
-    background-color: #4a3c85;
+    background-color: #1a152f;
     border-radius: 3%;
     padding: 1%;
     margin-top: 0.5%;
