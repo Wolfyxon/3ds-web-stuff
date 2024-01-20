@@ -18,3 +18,15 @@ function searchLocations(query, callback){
         callback(results);
     });
 }
+
+/***
+ * Searches for the first real life location with the given query and returns the location data to the callback function
+ * @param {String} query
+ * @param {Function} callback Callback function called with the result array
+ */
+function findFirstLocation(query, callback){
+    searchLocations(query, function(results){
+        if(results.length === 0) callback(null);
+        callback(results[0]);
+    });
+}
