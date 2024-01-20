@@ -7,6 +7,10 @@
     font-size: 80%;
 }
 
+#bottom-screen {
+    overflow-y: scroll;
+}
+
 form {
     margin: 2%;
     height: 90%;
