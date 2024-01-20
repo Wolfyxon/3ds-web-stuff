@@ -1,3 +1,14 @@
+
+/**
+ * Gets the domain name from the given URL
+ * @param  {String} url URL of the server/website
+ * @return {String}
+ */
+function getDomain(url){
+    const protocolSplit = url.split("//");
+    return protocolSplit[protocolSplit.length-1].split("/")[0];
+}
+
 /**
  * Performs a GET HTTP request
  * @param  {String} url URL of the server/website
