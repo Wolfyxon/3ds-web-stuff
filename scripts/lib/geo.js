@@ -1,7 +1,7 @@
 // This library utilizes the free public OpenMeteo API
 // https://open-meteo.com/
 
-if(!httpGet) throw new Error("net.js not imported!")
+if(!window.httpGet) throw new Error("net.js not imported!")
 
 /***
  * Searches for real life locations with the given query and returns the results to the callback function
