@@ -16,6 +16,13 @@ window.addEventListener("load",function (){
         btn.innerText = "Clicked "+clickCount+" times"
     })
 
+    var targetColor = "#FF0000";
+
+    setInterval(function(){
+        if(targetColor === "FF0000") targetColor = "#00FF00";
+        else targetColor = "FF0000";
+    },1000)
+
     setInterval(function (){
         gamepadTxt.innerText = "Pressed: "+getPressedBtns();
         justPressedTxt.innerText = "Just pressed: "+justPressed;
@@ -23,7 +30,7 @@ window.addEventListener("load",function (){
         scrollPos.innerText = "Scroll pos: " + window.scrollX + " " + window.scrollY;
         const zoom = (( window.outerWidth - 10 ) / window.innerWidth) * 100;
         zoomPos.innerText = "Zoom: " + window.outerWidth + " " +window.outerHeight + " " + zoom + "%";
-        anim.style.backgroundColor = lerpColor(anim.style.backgroundColor,"#FF0000",0.01)
+        anim.style.backgroundColor = lerpColor(anim.style.backgroundColor,targetColor,0.01)
     })
 
     // Chart testing
