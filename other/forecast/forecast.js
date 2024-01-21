@@ -8,7 +8,7 @@ window.addEventListener("load", function(){
     }
 
     function addResult(data){
-        const elem = document.createElement("div");
+        const elem = document.createElement("button");
         const name = data["name"] || "";
         const country = data["country"] || "";
         const admin1 = data["admin1"] || "";
