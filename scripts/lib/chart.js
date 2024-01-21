@@ -11,8 +11,10 @@ function drawLineChart(canvas, points, color) {
     const h = canvas.clientHeight;
 
     // Ensure the canvas isn't stretched;
-    canvas.width =  w;
-    canvas.height = h;
+    if(canvas.width !== w || canvas.height !== h){
+        canvas.width =  w;
+        canvas.height = h;
+    }
 
     var minY = 0;
     var maxY = 0;
