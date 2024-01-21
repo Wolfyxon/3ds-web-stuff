@@ -7,6 +7,8 @@ window.addEventListener("load", function(){
     const degreesTxt = document.getElementById("degrees");
     const locationTxt = document.getElementById("location");
 
+    var userPickedLocation = false;
+
     function clearResults(){
         searchResults.innerHTML = "";
     }
@@ -24,6 +26,7 @@ window.addEventListener("load", function(){
         const long = data["longitude"];
 
         elem.addEventListener("click",function(){
+            userPickedLocation = true;
             loadWeather(lat, long, elem.innerText);
         });
     }
@@ -81,6 +84,7 @@ window.addEventListener("load", function(){
     hideResults();
 
     approximateUserLocation(function(data){
+        if(userPickedLocation) return;
         const locStr = data["city"] + ", " + data["regionName"] + ", " + data["country"];
         loadWeather(data["lat"], data["lon"], locStr);
     })
