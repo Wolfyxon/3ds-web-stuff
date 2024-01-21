@@ -2,12 +2,34 @@ window.addEventListener("load", function(){
     const searchResults = document.getElementById("search-results");
     const searchInput = document.getElementById("input-search");
     const btnSearch = document.getElementById("btn-search");
+
     const bottomScreen = document.getElementById("bottom-screen");
+    const topScreen = document.getElementById("top-screen");
 
     const degreesTxt = document.getElementById("degrees");
     const locationTxt = document.getElementById("location");
 
     var userPickedLocation = false;
+
+    function getTemperatureColor(temperature) {
+        const minTemperature = -20;
+        const maxTemperature = 80;
+
+        temperature = Math.max(minTemperature, Math.min(temperature, maxTemperature));
+
+        const minColor = [0, 0, 255]; // Blue
+        const maxColor = [255, 0, 0]; // Red
+
+        const factor = (temperature - minTemperature) / (maxTemperature - minTemperature);
+
+        const interpolatedColor = [
+            Math.round((1 - factor) * minColor[0] + factor * maxColor[0]),
+            Math.round((1 - factor) * minColor[1] + factor * maxColor[1]),
+            Math.round((1 - factor) * minColor[2] + factor * maxColor[2])
+        ];
+
+        return "rgb(" + interpolatedColor.join(",") + ")";
+    }
 
     function clearResults(){
         searchResults.innerHTML = "";
@@ -44,6 +66,10 @@ window.addEventListener("load", function(){
 
             degreesTxt.innerText = jsonBody["current"]["temperature_2m"] + "°C";
             locationTxt.innerText = locationString;
+
+            const color = getTemperatureColor(jsonBody["current"]["temperature_2m"]);
+            topScreen.style.backgroundColor = color;
+            bottomScreen.style.backgroundColor = color;
 
             hideResults();
         });
