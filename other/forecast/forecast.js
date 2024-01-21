@@ -16,6 +16,24 @@ window.addEventListener("load", function(){
 
         elem.innerText = name+", " + admin1 + ", " + country;
         searchResults.appendChild(elem);
+
+        const lat = data["latitude"];
+        const long = data["longitude"];
+
+        elem.addEventListener("click",function(){
+            const url = "http://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+long+"&current=temperature_2m,relative_humidity_2m,rain,wind_speed_10m&hourly=temperature_2m,rain,snowfall,snow_depth,visibility,wind_speed_10m"
+
+            httpGet(url,function(code, body){
+                if(code !== 200){
+                    alert("Something went wrong. Code: "+code);
+                    return;
+                }
+                const jsonBody = JSON.parse(body);
+                console.log(jsonBody);
+                hideResults();
+            });
+
+        });
     }
 
     function showResults(){
