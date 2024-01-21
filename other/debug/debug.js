@@ -26,6 +26,17 @@ window.addEventListener("load",function (){
         anim.style.backgroundColor = lerpColor(anim.style.backgroundColor,"#FF0000",0.01)
     })
 
+    // Chart testing
+    drawLineChart(document.getElementById("chart"),[
+        {y: 10, x: "value 1"},
+        {y: 0, x: "value 2"},
+        {y: 20, x: "value 3"},
+        {y: 14, x: "value 4"},
+        {y: 0, x: "value 5"},
+        {y: -4, x: "value 6"},
+    ])
+
+
     // Canvas testing
     const canvas = document.getElementById("canv");
     const rect = Rect2D(Vector2(20,20),70,50);

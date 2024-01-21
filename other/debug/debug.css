@@ -9,3 +9,9 @@ p {
     margin: 2px;
     padding: 0;
 }
+
+#chart {
+    height: 70px;
+    width: 100%;
+    border: 1px solid black;
+}
