@@ -36,6 +36,9 @@ function drawLineChart(canvas, points, color) {
         const x = xSpacing * i;
         const y = h - (yFactor * h);
 
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+
         ctx.beginPath();
         ctx.arc(x, y, 2, 0, 2 * Math.PI);
         ctx.fill();
@@ -49,6 +52,9 @@ function drawLineChart(canvas, points, color) {
 
         prevX = x;
         prevY = y;
+
+        ctx.strokeStyle = "";
+        ctx.fillStyle = "";
     }
 
 }
