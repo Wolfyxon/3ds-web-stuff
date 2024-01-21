@@ -6,6 +6,19 @@
     background-color: #1d1244;
 }
 
+#charts h3 {
+    padding: 0;
+    margin: 0;
+}
+
+#charts canvas {
+    height: 70px;
+    width: 99.2%;
+    background-color: white;
+    border-radius: 5px;
+    border: black 2px solid;
+}
+
 #bottom-screen {
     background-color: #2b2b2e;
     text-align: center;
