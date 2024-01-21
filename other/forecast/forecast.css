@@ -61,7 +61,7 @@
 #bottom-container > * {
     position: absolute;
     width: 88%;
-    height: 95%;
+    height: 80%;
 }
 
 #search-results {
