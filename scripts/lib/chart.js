@@ -29,15 +29,15 @@ function drawLineChart(canvas, points, color) {
     var prevX = 0;
     var prevY = 0;
 
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+
     for(var i=0;i<points.length;i++){
         const point = points[i];
         const yFactor = (point.y - minY) / (maxY - minY);
 
         const x = xSpacing * i;
         const y = h - (yFactor * h);
-
-        ctx.strokeStyle = color;
-        ctx.fillStyle = color;
 
         ctx.beginPath();
         ctx.arc(x, y, 2, 0, 2 * Math.PI);
@@ -52,10 +52,9 @@ function drawLineChart(canvas, points, color) {
 
         prevX = x;
         prevY = y;
-
-        ctx.strokeStyle = "";
-        ctx.fillStyle = "";
     }
 
+    ctx.strokeStyle = "";
+    ctx.fillStyle = "";
 }
 // I hate math, please end me
