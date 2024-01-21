@@ -62,9 +62,11 @@
 }
 
 #search-results > * {
+    width: 100%;
     background-color: #f5ffcb;
     padding: 1%;
     margin-bottom: 2px;
     border-radius: 3px;
+    border: none;
     border-left: 5px orange solid;
 }
