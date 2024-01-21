@@ -4,6 +4,9 @@ window.addEventListener("load", function(){
     const btnSearch = document.getElementById("btn-search");
     const bottomScreen = document.getElementById("bottom-screen");
 
+    const degreesTxt = document.getElementById("degrees");
+    const locationTxt = document.getElementById("location");
+
     function clearResults(){
         searchResults.innerHTML = "";
     }
@@ -30,6 +33,10 @@ window.addEventListener("load", function(){
                 }
                 const jsonBody = JSON.parse(body);
                 console.log(jsonBody);
+
+                degreesTxt.innerText = jsonBody["current"]["temperature_2m"] + "°C";
+                locationTxt.innerText = elem.innerText;
+
                 hideResults();
             });
 
