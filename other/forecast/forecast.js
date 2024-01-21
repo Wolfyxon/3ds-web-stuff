@@ -73,5 +73,6 @@ window.addEventListener("load", function(){
     });
     searchInput.addEventListener("focusin",showResults);
 
-    //clearResults();
+    clearResults();
+    hideResults();
 });
