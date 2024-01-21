@@ -54,7 +54,9 @@ window.addEventListener("load", function(){
     }
 
     function loadWeather(lat, long, locationString){
-        const url = "http://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+long+"&current=temperature_2m,relative_humidity_2m,rain,wind_speed_10m&hourly=temperature_2m,rain,snowfall,snow_depth,visibility,wind_speed_10m"
+        const currentFlags = ["temperature_2m","relative_humidity_2m","rain","wind_speed_10m"];
+        const hourlyFlags = ["temperature_2m","rain","snowfall","snow_depth","visibility","wind_speed_10m"];
+        const url = "http://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+long+"&current="+currentFlags.join(",")+"&hourly="+hourlyFlags.join(",");
 
         httpGet(url,function(code, body){
             if(code !== 200){
