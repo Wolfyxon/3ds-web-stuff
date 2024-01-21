@@ -31,7 +31,7 @@ function drawLineChart(canvas, points, color) {
 
     for(var i=0;i<points.length;i++){
         const point = points[i];
-        const yFactor = point.y / maxY;
+        const yFactor = (point.y - minY) / (maxY - minY);
 
         const x = xSpacing * i;
         const y = h - (yFactor * h);
