@@ -31,3 +31,17 @@ function findFirstLocation(query, callback){
         callback(results[0]);
     });
 }
+
+/***
+ * Finds the approximate user's geolocation based on their IP address.
+ * @param {Function} callback Callback function called with the result JSON object
+ */
+function approximateUserLocation(callback){
+    const url = "http://ip-api.com/json";
+    if(!isDomainAllowed(getDomain(url))) throw new Error("Please add 'ip-api.co' to the allowed CORS domains");
+
+    httpGet(url,function(code, body){
+        const jsonBody = JSON.parse(body);
+        callback(body);
+    });
+}
