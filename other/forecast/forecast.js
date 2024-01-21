@@ -79,4 +79,9 @@ window.addEventListener("load", function(){
 
     clearResults();
     hideResults();
+
+    approximateUserLocation(function(data){
+        const locStr = data["city"] + ", " + data["regionName"] + ", " + data["country"];
+        loadWeather(data["lat"], data["lon"], locStr);
+    })
 });
