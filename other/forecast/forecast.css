@@ -69,6 +69,7 @@
     background-color: #ffffff;
     padding: 1%;
     overflow-y: scroll;
+    z-index: 2;
 }
 
 #search-results > * {
