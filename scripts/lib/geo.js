@@ -1,5 +1,6 @@
-// This library utilizes the free public OpenMeteo API
+// This library utilizes these public APIs:
 // https://open-meteo.com/
+// https://ip-api.co/
 
 if(!window.httpGet) throw new Error("net.js not imported!")
 
