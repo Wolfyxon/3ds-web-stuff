@@ -43,6 +43,6 @@ function approximateUserLocation(callback){
 
     httpGet(url,function(code, body){
         const jsonBody = JSON.parse(body);
-        callback(body);
+        callback(jsonBody);
     });
 }
