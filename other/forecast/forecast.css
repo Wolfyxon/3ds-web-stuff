@@ -53,8 +53,15 @@
 }
 
 #bottom-container {
+    position: relative;
     padding: 2% 5%;
     height: 80%;
+}
+
+#bottom-container > * {
+    position: absolute;
+    width: 88%;
+    height: 95%;
 }
 
 #search-results {
@@ -62,7 +69,6 @@
     background-color: #ffffff;
     padding: 1%;
     overflow-y: scroll;
-    height: 100%;
 }
 
 #search-results > * {
