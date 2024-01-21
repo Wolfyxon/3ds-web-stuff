@@ -27,15 +27,21 @@ window.addEventListener("load",function (){
     })
 
     // Chart testing
-    drawLineChart(document.getElementById("chart"),[
-        {y: 10, x: "value 1"},
-        {y: 0, x: "value 2"},
-        {y: 20, x: "value 3"},
-        {y: 14, x: "value 4"},
-        {y: 0, x: "value 5"},
-        {y: -4, x: "value 6"},
-    ])
-
+    const chart = document.getElementById("chart");
+    drawLineChart(chart,[
+        {x: "value 1", y: 10},
+        {x: "value 2", y: 50},
+        {x: "value 3", y: 0},
+        {x: "value 4", y: 20},
+        {x: "value 5", y: -10},
+    ]);
+    drawLineChart(chart,[
+        {x: "value 1", y: -10},
+        {x: "value 2", y: 20},
+        {x: "value 3", y: 5},
+        {x: "value 4", y: -20},
+        {x: "value 5", y: 0},
+    ],"blue")
 
     // Canvas testing
     const canvas = document.getElementById("canv");
