@@ -82,6 +82,7 @@
 #search-results {
     text-align: left;
     background-color: #ffffff;
+    border: 1px solid black;
     padding: 1%;
     overflow-y: scroll;
     z-index: 2;
