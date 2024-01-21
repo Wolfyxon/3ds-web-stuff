@@ -1,3 +1,7 @@
+#screens > * {
+    color: white;
+}
+
 #top-screen {
     background-color: #1d1244;
 }
