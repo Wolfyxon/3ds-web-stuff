@@ -23,8 +23,9 @@ function isDomainAllowed(domain){
  * Performs a GET HTTP request
  * @param  {String} url URL of the server/website
  * @param {Function} callback Callback function containing the response code and body
+ * @param {Boolean} [allowInsecure=false] Allows the raw usage of HTTP. Please only use HTTP instead of HTTPS if the request can't be made with HTTPS.
  */
-function httpGet(url, callback){
+function httpGet(url, callback, allowInsecure){
     if(!url){
         console.error("No URL specified");
         return;
@@ -33,6 +34,8 @@ function httpGet(url, callback){
         console.error("No callback function specified");
         return;
     }
+
+    if(!is3DS() && !allowInsecure) url = url.replace("http://","https://");
 
     const xhr = new XMLHttpRequest();
 
