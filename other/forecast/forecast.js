@@ -113,6 +113,12 @@ window.addEventListener("load", function(){
 
     approximateUserLocation(function(data){
         if(userPickedLocation) return;
+
+        if(data["status"] !== "success"){
+            console.error("API returned  " + data["status"] + " status. Message: " + data["message"]);
+            return;
+        }
+
         if(!data["lat"]){
             console.error("Missing lat");
             return;
