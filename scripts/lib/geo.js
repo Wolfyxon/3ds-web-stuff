@@ -38,11 +38,11 @@ function findFirstLocation(query, callback){
  * @param {Function} callback Callback function called with the result JSON object
  */
 function approximateUserLocation(callback){
-    const url = "http://ip-api.com/json";
+    const url = "http://ip-api.com/json"; // Free tier of this API doesn't support SSL (so no HTTPS)
     if(!isDomainAllowed(getDomain(url))) throw new Error("Please add 'ip-api.co' to the allowed CORS domains");
 
     httpGet(url,function(code, body){
         const jsonBody = JSON.parse(body);
         callback(jsonBody);
-    });
+    }, true);
 }
