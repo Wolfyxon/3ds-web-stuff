@@ -113,6 +113,15 @@ window.addEventListener("load", function(){
 
     approximateUserLocation(function(data){
         if(userPickedLocation) return;
+        if(!data["lat"]){
+            console.error("Missing lat");
+            return;
+        }
+        if(!data["lan"]){
+            console.error("Missing lon");
+            return;
+        }
+
         const locStr = data["city"] + ", " + data["regionName"] + ", " + data["country"];
         loadWeather(data["lat"], data["lon"], locStr);
     })
