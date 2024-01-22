@@ -123,7 +123,7 @@ window.addEventListener("load", function(){
             console.error("Missing lat");
             return;
         }
-        if(!data["lan"]){
+        if(!data["lon"]){
             console.error("Missing lon");
             return;
         }
