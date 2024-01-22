@@ -60,7 +60,7 @@ window.addEventListener("load", function(){
 
         httpGet(url,function(code, body){
             if(code !== 200){
-                alert("Something went wrong. Code: "+code);
+                alert("Failed to load weather. Code: "+code);
                 return;
             }
             const jsonBody = JSON.parse(body);
