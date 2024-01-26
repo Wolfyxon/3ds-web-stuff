@@ -6,7 +6,17 @@ a {
     color: white;
     background-color: #1d1244;
     text-align: center;
+    position: relative;
 }
+
+#pet {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 64px;
+    height: 64px;
+}
+
 
 #bottom-screen {
     color: white;
