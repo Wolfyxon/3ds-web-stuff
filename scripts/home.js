@@ -12,9 +12,18 @@ window.addEventListener("load",function (){
     animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon2.png");
     animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon1.png");
 
+    const animMaxwell = Animation(petImg);
+    animMaxwell.looped = true;
+    animMaxwell.spacing = 0.1;
+    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell1.png");
+    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell2.png",0.1);
+    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell3.png");
+    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell2.png");
+
 
     const petAnimations = [
-        animPigeon
+        animPigeon,
+        animMaxwell
     ]
 
     pickRandom(petAnimations).play();
