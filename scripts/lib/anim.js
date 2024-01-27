@@ -1,3 +1,66 @@
+function Animation(element){
+    var anim = {
+        looped: true,
+        speedScale: 1,
+        spacing: 1,
+        loopDelay: 0,
+        playing: false,
+        keyframes: {}
+    };
+
+    var loopItv = null;
+
+    anim.addKeyframe = function(property, value, timeOffset){
+        anim.keyframes.push({
+            property: property,
+            value: value,
+            timeOffset: timeOffset || 0
+        })
+    }
+
+    anim.getDuration = function(){
+        var dur = 0;
+        for(var i=0; i<anim.keyframes.length; i++) {
+            const frame = anim.keyframes[i];
+            dur += (anim.spacing + frame.timeOffset) * (1 / anim.speedScale);
+        }
+
+        return dur;
+    }
+
+    function set(property, value){ element[property] = value; }
+
+    anim.playOnce = function(){
+        anim.playing = true;
+        if(anim.speedScale === 0) return;
+
+        for(var i=0; i<anim.keyframes.length; i++){
+            if(!anim.playing) break;
+
+            const frame = anim.keyframes[i];
+            setTimeout(function(){
+                set(frame.property, frame.value);
+            },( (anim.spacing + frame.timeOffset) * (1 / anim.speedScale) ) * 1000 );
+        }
+    }
+
+    anim.play = function(){
+        if(anim.looped){
+            loopItv = setInterval(anim.playOnce, anim.getDuration()*1000);
+        } else {
+            anim.playOnce();
+        }
+    }
+
+    anim.stop = function(){
+        anim.playing = false;
+        if(loopItv) clearInterval(loopItv);
+    }
+
+    return anim;
+}
+
+
 /**
  * Converts RGB into a hexadecimal color.
  * @param {number} r red
