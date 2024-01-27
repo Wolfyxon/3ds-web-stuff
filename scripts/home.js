@@ -3,12 +3,21 @@ window.addEventListener("load",function (){
     const petImg = document.getElementById("pet");
 
     const petRoot = "img/pets/";
-    const pets = ["maxwell", "pigeon"];
 
-    // TODO: Animated pets
-    const currentPet = pickRandom(pets);
-    petImg.src = petRoot + currentPet + "/" + currentPet + "1.png";
+    const animPigeon = Animation(petImg);
+    animPigeon.looped = true;
+    animPigeon.loopDelay = 3;
+    animPigeon.spacing = 0.2;
+    animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon1.png");
+    animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon2.png");
+    animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon1.png");
 
+
+    const petAnimations = [
+        animPigeon
+    ]
+
+    pickRandom(petAnimations).play();
 
     const tabBtns = document.getElementById("tab-btns")
     const tabs = document.getElementById("tabs")
