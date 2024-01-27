@@ -5,7 +5,7 @@ function Animation(element){
         spacing: 1,
         loopDelay: 0,
         playing: false,
-        keyframes: {}
+        keyframes: []
     };
 
     var loopItv = null;
