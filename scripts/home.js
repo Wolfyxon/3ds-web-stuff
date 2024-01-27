@@ -1,4 +1,15 @@
 window.addEventListener("load",function (){
+
+    const petImg = document.getElementById("pet");
+
+    const petRoot = "img/pets/";
+    const pets = ["maxwell", "pigeon"];
+
+    // TODO: Animated pets
+    const currentPet = pickRandom(pets);
+    petImg.src = petRoot + currentPet + "/" + currentPet + "1.png";
+
+
     const tabBtns = document.getElementById("tab-btns")
     const tabs = document.getElementById("tabs")
     var tabIdx = 0;
