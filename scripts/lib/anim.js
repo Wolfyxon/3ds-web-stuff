@@ -44,7 +44,12 @@ function Animation(element){
         return dur;
     }
 
-    function set(property, value){ element[property] = value; }
+    function scheduleSet(i){
+        const frame = anim.keyframes[i];
+        setTimeout(function(){
+            element[frame.property] = frame.value
+        },( (anim.spacing + frame.timeOffset) * (1 / anim.speedScale) ) * 1000 * i );
+    }
 
     /***
      * Plays the animation once
@@ -55,11 +60,7 @@ function Animation(element){
 
         for(var i=0; i<anim.keyframes.length; i++){
             if(!anim.playing) break;
-
-            const frame = anim.keyframes[i];
-            setTimeout(function(){
-                set(frame.property, frame.value);
-            },( (anim.spacing + frame.timeOffset) * (1 / anim.speedScale) ) * 1000 * i );
+            scheduleSet(i);
         }
     }
 
