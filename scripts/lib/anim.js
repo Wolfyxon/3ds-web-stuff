@@ -38,9 +38,10 @@ function Animation(element){
             if(!anim.playing) break;
 
             const frame = anim.keyframes[i];
+            console.log(frame)
             setTimeout(function(){
                 set(frame.property, frame.value);
-            },( (anim.spacing + frame.timeOffset) * (1 / anim.speedScale) ) * 1000 );
+            },( (anim.spacing + frame.timeOffset) * (1 / anim.speedScale) ) * 1000 * i );
         }
     }
 
