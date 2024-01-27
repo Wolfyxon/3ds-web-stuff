@@ -46,7 +46,7 @@ function Animation(element){
 
     anim.play = function(){
         anim.playOnce();
-        if(anim.looped) loopItv = setInterval(anim.playOnce, anim.getDuration() + anim.loopDelay *1000);
+        if(anim.looped) loopItv = setInterval(anim.playOnce, (anim.getDuration() + anim.loopDelay) * 1000);
     }
 
     anim.stop = function(){
