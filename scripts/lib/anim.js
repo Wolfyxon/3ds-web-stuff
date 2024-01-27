@@ -1,3 +1,9 @@
+/***
+ * Creates an Animation class
+ * @param {Object} element Object to apply animation to
+ * @return {Object}
+ * @constructor
+ */
 function Animation(element){
     var anim = {
         looped: true,
@@ -10,6 +16,12 @@ function Animation(element){
 
     var loopItv = null;
 
+    /***
+     * Adds a step to the animation
+     * @param {String} property Name of the property
+     * @param value Value of the property
+     * @param {Number} [timeOffset=0] Extra delay for the keyframe. Negative values are supported.
+     */
     anim.addKeyframe = function(property, value, timeOffset){
         anim.keyframes.push({
             property: property,
@@ -18,6 +30,10 @@ function Animation(element){
         })
     }
 
+    /***
+     * Calculates the duration in second for the animation to play
+     * @return {number}
+     */
     anim.getDuration = function(){
         var dur = 0;
         for(var i=0; i<anim.keyframes.length; i++) {
@@ -30,6 +46,9 @@ function Animation(element){
 
     function set(property, value){ element[property] = value; }
 
+    /***
+     * Plays the animation once
+     */
     anim.playOnce = function(){
         anim.playing = true;
         if(anim.speedScale === 0) return;
@@ -44,11 +63,17 @@ function Animation(element){
         }
     }
 
+    /***
+     * Plays the animation once or infinitely (depending on the 'looped' property).
+     */
     anim.play = function(){
         anim.playOnce();
         if(anim.looped) loopItv = setInterval(anim.playOnce, (anim.getDuration() + anim.loopDelay) * 1000);
     }
 
+    /***
+     * Stops the animation.
+     */
     anim.stop = function(){
         anim.playing = false;
         if(loopItv) clearInterval(loopItv);
