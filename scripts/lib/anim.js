@@ -1,7 +1,19 @@
+/**
+ * Converts RGB into a hexadecimal color.
+ * @param {number} r red
+ * @param {number} g green
+ * @param {number} b blue
+ * @return {string}
+ */
 function rgbToHex(r, g, b) {
     return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
 }
 
+/**
+ * Extracts RGB values from an RGB string.
+ * @param {String} input RGB string
+ * @return {null|{r: string, b: string, g: string}}
+ */
 function extractRgb(input){
     const inner = input.substring(
         input.indexOf("(") + 1,
@@ -17,6 +29,11 @@ function extractRgb(input){
     }
 }
 
+/**
+ * Converts a hexadecimal color into RGB
+ * @param {String} hex The hexadecimal color
+ * @return {{r: number, b: number, g: number}|null}
+ */
 function hexToRgb(hex) {
     const hexRegex = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
     if (!hexRegex.test(hex)) return null;
@@ -36,6 +53,13 @@ function hexToRgb(hex) {
 }
 
 
+/**
+ * Performs a linear interpolation between 2 colors
+ * @param {String} color1 Current color
+ * @param {String} color2 Target color
+ * @param {number} weight Speed of the interpolation
+ * @return {String|string|*}
+ */
 function lerpColor(color1, color2, weight) {
     if(color1 === color2) return color1;
 
