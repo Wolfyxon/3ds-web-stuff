@@ -21,6 +21,15 @@ function randi(min, max) {
 }
 
 /**
+ * Returns a random element of the specified array
+ * @param {Array} array
+ * @return {*}
+ */
+function pickRandom(array){
+    return array[randi(0, array.length - 1 )];
+}
+
+/**
  * Performs a linear interpolation between 2 numbers
  * @param  {Number} start Current number
  * @param {Number} end Target value
