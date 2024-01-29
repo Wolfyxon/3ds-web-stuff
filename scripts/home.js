@@ -36,6 +36,7 @@ window.addEventListener("load",function (){
     animCat.looped = true;
     animCat.spacing = 0.4;
     animCat.addKeyframe("src", petRoot+"cat/cat1.png");
+    animCat.addKeyframe("src", petRoot+"cat/cat0.png");
     animCat.addKeyframe("src", petRoot+"cat/cat2.png");
     animCat.addKeyframe("src", petRoot+"cat/cat3.png");
     animCat.addKeyframe("src", petRoot+"cat/cat2.png");
