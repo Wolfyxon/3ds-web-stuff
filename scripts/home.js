@@ -32,11 +32,20 @@ window.addEventListener("load",function (){
     animChicken.addKeyframe("src", petRoot+"chicken/chicken2.png");
     animChicken.addKeyframe("src", petRoot+"chicken/chicken1.png");
 
+    const animCat = Animation(petImg);
+    animCat.looped = true;
+    animCat.spacing = 0.4;
+    animCat.addKeyframe("src", petRoot+"cat/cat1.png");
+    animCat.addKeyframe("src", petRoot+"cat/cat2.png");
+    animCat.addKeyframe("src", petRoot+"cat/cat3.png");
+    animCat.addKeyframe("src", petRoot+"cat/cat2.png");
+
 
     const petAnimations = [
         animPigeon,
         animMaxwell,
-        animChicken
+        animChicken,
+        animCat,
     ]
 
     pickRandom(petAnimations).play();
