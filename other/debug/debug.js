@@ -58,7 +58,18 @@ window.addEventListener("load",function (){
     rect.outlineSize = 5;
     rect.outlineStyle = "red";
 
+    var prevFrameTime = Date.now();
+
+    const deltaTxt = document.getElementById("itv-time");
+    const fpsTxt = document.getElementById("itv-fps");
+
     setInterval(function(){
+        const delta = Date.now() - prevFrameTime;
+        deltaTxt.innerText = "Current delta: " +  delta / 1000;
+        fpsTxt.innerText = "FPS: " + (1000 / delta).toFixed(2);
+
+        prevFrameTime = Date.now();
+
         clearCanvas(canvas);
         rect.rotation += 1;
         rect.render(canvas);
@@ -71,6 +82,7 @@ window.addEventListener("load",function (){
             rect.fillStyle = "black";
         }
     },1000)
+
 
 })
 
