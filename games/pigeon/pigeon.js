@@ -38,6 +38,10 @@ window.addEventListener("load",function(){
         pipes.push(Sprite(imgPipe,startX,y+gap).rescale(scale));
     }
 
+    function spawnPipes(){
+        addPipes(randi(-100,-50));
+    }
+
     function switchSprite(){
         if(pigeon.image === imgWingUp) pigeon.image = imgWingDown;
         else pigeon.image = imgWingUp;
@@ -83,11 +87,6 @@ window.addEventListener("load",function(){
         switchSprite()
     },200)
 
-    setInterval(function(){
-        if(!alive || !started) return;
-        addPipes(randi(-100,-50));
-    },2000)
-
 
     // Controls loop
     setInterval(function(){
@@ -102,6 +101,16 @@ window.addEventListener("load",function(){
         if(alive){
             bgPos -= 0.5;
             canvas.style.backgroundPositionX = bgPos+"px";
+
+            if(started){
+                if(pipes.length > 0){
+                    const lastPipe = pipes[pipes.length - 1];
+                    if(lastPipe.getX() < 220) spawnPipes();
+                } else {
+                    spawnPipes();
+                }
+
+            }
         }
 
         clearCanvas(canvas);
