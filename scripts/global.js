@@ -83,7 +83,7 @@ function colorNameToHex(colour) {
  * @return {Boolean}
  */
 function is3DS(){
-    return includes(window.navigator.userAgent,"Nintendo 3DS") && getGamepad();
+    return includes(window.navigator.userAgent,"Nintendo 3DS");
 }
 
 // array.includes and string.includes does not work on the 3DS browser
