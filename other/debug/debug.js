@@ -9,6 +9,7 @@ window.addEventListener("load",function (){
     const anim = document.getElementById("anim-test")
 
     userAg.innerText = navigator.userAgent;
+    document.getElementById("is-3ds").innerText = "Is 3DS: " + is3DS();
 
     var clickCount = 0;
     btn.addEventListener("click",function (){
