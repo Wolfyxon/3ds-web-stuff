@@ -99,7 +99,7 @@ window.addEventListener("load",function(){
     var bgPos = 0;
     var prevFrameTime = Date.now();
     setInterval(function(){
-        const delta = (Date.now() - prevFrameTime) / (optiItv()+0.01);
+        const delta = (Date.now() - prevFrameTime) / 16;
         prevFrameTime = Date.now();
 
         if(alive){
