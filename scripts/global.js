@@ -101,8 +101,7 @@ function includes(container,search){
         return false;
     }
     if(typeof container === "string"){
-        const regex = new RegExp(search, 'i');
-        return  regex.test(container)
+        return container.indexOf(search) !== -1;
     }
 
     return container[search] !== undefined
