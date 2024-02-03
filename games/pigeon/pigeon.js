@@ -97,9 +97,13 @@ window.addEventListener("load",function(){
 
     // Main loop
     var bgPos = 0;
+    var prevFrameTime = Date.now();
     setInterval(function(){
+        const delta = (Date.now() - prevFrameTime) / (optiItv()+0.01);
+        prevFrameTime = Date.now();
+
         if(alive){
-            bgPos -= 0.5;
+            bgPos -= 0.5 * delta;
             canvas.style.backgroundPositionX = bgPos+"px";
 
             if(started){
@@ -118,21 +122,21 @@ window.addEventListener("load",function(){
         moon.render(canvas);
 
         if(yForce < 3 && pigeon.getY() < 120 && started){
-            yForce += 0.1;
-            pigeon.rotation += 1
+            yForce += 0.1 * delta;
+            pigeon.rotation += delta;
         }
-        if(!alive) pigeon.rotation += 3;
+        if(!alive) pigeon.rotation += 3 * delta;
 
         if(pigeon.getY() > 150 || pigeon.getY() < -40) die()
 
-        pigeon.moveXY(0,yForce);
+        pigeon.moveXY(0,yForce * delta);
         hitbox.startVec = pigeon.area.startVec.copy();
         hitbox.endVec = pigeon.area.startVec.copy().offsetXY(30,20);
 
         for(var i=0;i<pipes.length;i++){
             const pipe = pipes[i];
             if(alive){
-                pipe.moveXY(-0.8,0);
+                pipe.moveXY(-0.8 * delta,0);
                 if(pipe.area.isTouching(hitbox)){
                     die();
                 }
@@ -154,7 +158,7 @@ window.addEventListener("load",function(){
             pipe.render(canvas);
         }
         pigeon.render(canvas);
-    },optiItv())
+    }) // ,optiItv()
 
     window.addEventListener("click",jump);
 })
