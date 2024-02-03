@@ -10,6 +10,7 @@ window.addEventListener("load",function (){
 
     userAg.innerText = navigator.userAgent;
     document.getElementById("is-3ds").innerText = "Is 3DS: " + is3DS();
+    document.getElementById("opti-tv").innerText = "Optimal interval: " + optiItv();
 
     var clickCount = 0;
     btn.addEventListener("click",function (){
