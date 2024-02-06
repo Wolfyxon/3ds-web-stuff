@@ -272,6 +272,10 @@ window.addEventListener("keyup",function(e){
     pressedKeycodes = getWithout(pressedKeycodes, e.keyCode);
 })
 
+window.addEventListener("blur", function (e){
+    pressedKeycodes = [];
+})
+
 // This prevents the browser from moving the page using the arrow keys
 function prevent(event){
     if(event.keyCode === 8) return true; //backspace
@@ -305,6 +309,7 @@ document.addEventListener('touchstart', function(e) {
 });
 
 document.addEventListener('touchmove', function(e){
+    pressedKeycodes = [];
     const scrollable = findScrollableAncestor(e.target);
 
     if(scrollable){
