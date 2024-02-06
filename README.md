@@ -21,6 +21,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [ ] Tanks and Cannons - Tower defense game about tanks and cannons.
 - Intercepter - take down the incoming missiles
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
+- Maze - basically a randomly generated maze you have to find an exit of. It would contain different floors and some perks would be found inside the maze.
 - Platformer - basically a jumping 2D game, however this would require creating some internal tools for map creation and loading.
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
