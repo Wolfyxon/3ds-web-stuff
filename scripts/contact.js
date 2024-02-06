@@ -9,7 +9,6 @@ window.addEventListener("load",function(){
     var submitted = false;
     var processing = false;
     var noEmailSeen = false;
-
     document.getElementById("btn-submit").addEventListener("click", function(){
         if(submitted) return false;
         if(processing) return false;
@@ -36,12 +35,14 @@ window.addEventListener("load",function(){
         }
         processing = true;
 
+        contentInput.setAttribute("disabled",true);
         const url = "https://discord.com/api/webhooks/1197557152047444111/o0jJdbX2BFgE2v6-mjy51HfLTEwPW2g6qIZXsYvERAmKXQDbwdUPDDulftGFg6f2ieoU";
         httpPost(url,{
             username: email,
             content: content
         },function(code){
             processing = false;
+            contentInput.setAttribute("disabled",false);
             if(code === 204){
                 alert("Form submitted successfully! \nIf you specified an email, you should get a reply in up to 24 hours.\nReturning to the home page.");
                 window.location.href = "index.html";
