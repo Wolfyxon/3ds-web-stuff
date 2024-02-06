@@ -124,11 +124,15 @@ window.addEventListener("load",function (){
     })
 
     // Main loop
+    var prevFrameTime = Date.now();
     setInterval(function (){
+        const delta = (Date.now() - prevFrameTime) / 16;
+        prevFrameTime = Date.now();
+
         if(jumpPower > 0){
-            jumpPower -= gravity;
+            jumpPower -= gravity * delta;
         }
-        yOffset = lerp(yOffset,-jumpPower,0.3)
+        yOffset = lerp(yOffset,-jumpPower,0.3 * delta)
         if(yOffset > 0) yOffset = 0;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -149,13 +153,13 @@ window.addEventListener("load",function (){
                     },200)
                 }
 
-                spikes[i] -= speed
+                spikes[i] -= speed * delta
             };
             ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
         }
         ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
 
-    },optiItv())
+    })
 
     window.addEventListener("click",jump);
 })
