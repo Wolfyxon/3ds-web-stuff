@@ -52,6 +52,13 @@ Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.c
 
 **This project is not affiliated with Nintendo, and it's only community driven.**
 
+## TODO
+Besides from planned games:
+- [ ] Fix compatibility issues on Old 3DS/2DS
+- [ ] Remake the home page and make it behave more like the home menu
+- [ ] Make a camera system for the game.js library
+- [ ] Create a map creator and loader for games
+
 ### 3rd party
 #### QR code generation API
 Docs: http://goqr.me/api/doc/  
