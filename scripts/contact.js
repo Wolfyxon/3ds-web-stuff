@@ -10,7 +10,7 @@ window.addEventListener("load",function(){
     var processing = false;
     var noEmailSeen = false;
 
-    form.onsubmit = function(){
+    document.getElementById("btn-submit").addEventListener("click", function(){
         if(submitted) return false;
         if(processing) return false;
         const content = contentInput.value;
@@ -53,7 +53,7 @@ window.addEventListener("load",function(){
         });
 
         return false;
-    }
+    });
 
     contentInput.addEventListener("focusin",function(){
         forcePosition = false;

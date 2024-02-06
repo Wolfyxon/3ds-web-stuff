@@ -12,7 +12,7 @@
     overflow-y: scroll;
 }
 
-form {
+#form {
     margin: 2%;
     height: 90%;
 }
