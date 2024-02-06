@@ -20,6 +20,8 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
 - [ ] Tanks and Cannons - Tower defense game about tanks and cannons.
 - Intercepter - take down the incoming missiles
+- Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
+- Platformer - basically a jumping 2D game, however this would require creating some internal tools for map creation and loading.
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
 - [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - turn text into a QR code.
