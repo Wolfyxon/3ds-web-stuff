@@ -143,7 +143,7 @@ window.addEventListener("load",function (){
                 i--;
             }
             if(active){
-                if(x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){ // isTouching(10,100+yOffset,jumpyWidth,jumpyHeight, x, 100)
+                if(x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){
                     currentSprite = imgDead
                     active = false;
                     resetCooldown = true;
@@ -154,7 +154,7 @@ window.addEventListener("load",function (){
                 }
 
                 spikes[i] -= speed * delta
-            };
+            }
             ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
         }
         ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
