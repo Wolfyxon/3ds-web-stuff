@@ -8,6 +8,7 @@ window.addEventListener("load",function(){
 
     var submitted = false;
     var processing = false;
+    var noEmailSeen = false;
 
     form.onsubmit = function(){
         if(submitted) return false;
@@ -24,8 +25,15 @@ window.addEventListener("load",function(){
         }
 
         var email = emailInput.value;
-        if(email.replace(" ","") === "") email = "No email specified";
-
+        if(email.replace(" ","") === "") {
+            if(!noEmailSeen) {
+                noEmailSeen = true;
+                alert("Would be nice if you specified your email address in case I need to ask you more questions =)\n\nIf you still want to be anonymous ignore this message and click submit again");
+                return;
+            } else {
+                email = "No email specified";
+            }
+        }
         processing = true;
 
         const url = "https://discord.com/api/webhooks/1197557152047444111/o0jJdbX2BFgE2v6-mjy51HfLTEwPW2g6qIZXsYvERAmKXQDbwdUPDDulftGFg6f2ieoU";
