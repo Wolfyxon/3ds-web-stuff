@@ -125,34 +125,40 @@ window.addEventListener("load",function(){
     },100)
 
     // Movement loop
+    var prevMoveFrameTime = 0;
     setInterval(function(){
         if(!alive) return;
+        const delta = (Date.now() - prevMoveFrameTime) / 16;
+        prevMoveFrameTime = Date.now();
 
-        if(isBtnPressed("Up")) plrJet.moveXY(0,-speed);
-        if(isBtnPressed("Down")) plrJet.moveXY(0,speed);
+        if(isBtnPressed("Up")) plrJet.moveXY(0,-speed * delta);
+        if(isBtnPressed("Down")) plrJet.moveXY(0,speed * delta);
         if(isBtnPressed("Left")) {
-            plrJet.rotation = lerp(plrJet.rotation,-rotAngle,rotAmt);
-            plrJet.moveXY(-speed, 0);
+            plrJet.rotation = lerp(plrJet.rotation,-rotAngle,rotAmt * delta);
+            plrJet.moveXY(-speed * delta, 0);
         }
         if(isBtnPressed("Right")){
-            plrJet.rotation = lerp(plrJet.rotation,rotAngle,rotAmt);
-            plrJet.moveXY(speed,0);
+            plrJet.rotation = lerp(plrJet.rotation,rotAngle,rotAmt * delta);
+            plrJet.moveXY(speed * delta,0);
         }
-        plrJet.rotation = lerp(plrJet.rotation,0,rotAmt);
-    },optiItv());
+        plrJet.rotation = lerp(plrJet.rotation,0,rotAmt * delta);
+    });
 
     // Main loop
+    var prevMainFrameTime = 0;
     setInterval(function(){
-        clearCanvas(canvas);
+        const delta = (Date.now() - prevMainFrameTime) / 16;
+        prevMainFrameTime = Date.now();
 
-        if(!alive) overlay.style.opacity = lerp(overlay.style.opacity,0.5,0.4);
+        clearCanvas(canvas);
+        if(!alive) overlay.style.opacity = lerp(overlay.style.opacity,0.5,0.4 * delta);
 
 
         for(var i=0;i<projectiles.length;i++){
             const proj = projectiles[i];
             var sp = -speed*2;
             if(proj.enemy) sp *= 0.75;
-            if(alive) proj.moveLocalXY(0,sp);
+            if(alive) proj.moveLocalXY(0,sp * delta);
             proj.render(canvas);
 
             if(alive && proj.enemy && plrHp > 0 && proj.area.isTouching(plrJet.area)){
@@ -176,10 +182,10 @@ window.addEventListener("load",function(){
             rotor.area.moveTo(heli.getCenter().offsetXY(-40,-33))
 
             if(alive){
-                rotor.rotation += 10;
-                heli.area.moveTo(heli.area.startVec.getLerped(heli.targetPos,0.01))
+                rotor.rotation += 10 * delta;
+                heli.area.moveTo(heli.area.startVec.getLerped(heli.targetPos,0.01 * delta))
                 const ang = heli.getCenter().getRotationToVec(plrJet.getCenter())+90;
-                heli.rotation = lerpAngle(heli.rotation,ang, 0.2);
+                heli.rotation = lerpAngle(heli.rotation,ang, 0.2 * delta);
             }
 
             heli.render(canvas);
@@ -201,7 +207,7 @@ window.addEventListener("load",function(){
                     if(proj.enemy) continue;
                     if(proj.area.isTouching(heli.area)){
                         heli.hp -= 1;
-                        heli.rotation += randi(-5,5)
+                        heli.rotation += randi(-5,5) * delta
                         proj.remove = true;
                     }
                 }
@@ -209,7 +215,7 @@ window.addEventListener("load",function(){
         }
 
         plrJet.render(canvas);
-    },optiItv());
+    });
 
     updateHpBar();
 
