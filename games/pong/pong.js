@@ -80,23 +80,26 @@ window.addEventListener("load",function(){
         currentStatus = "";
     },countdown*1000);
 
+    var prevFrameTime = Date.now();
     setInterval(function(){
+        const delta = (Date.now() - prevFrameTime) / 16;
+        prevFrameTime = Date.now();
         clearCanvas(canvas);
 
         if(active){
             if(player.area.getTopLeft().y > 0 && isBtnPressed("up")){
-                player.area.offsetXY(0,-playerSpeed)
+                player.area.offsetXY(0,-playerSpeed * delta)
             }
             if(player.area.getBottomLeft().y < canvas.height && isBtnPressed("down")){
-                player.area.offsetXY(0,playerSpeed);
+                player.area.offsetXY(0,playerSpeed * delta);
             }
 
             const enemyPos = enemy.area.getTopLeft();
             enemy.area.moveTo(
-                enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed*level)
+                enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed*level*delta)
             );
 
-            ball.moveLocalXY(ballSpeed,0);
+            ball.moveLocalXY(ballSpeed*delta,0);
             if(ball.area.isTouching(enemy.area)) bounce(enemy);
             if(ball.area.isTouching(player.area)) bounce(player);
 
@@ -140,5 +143,5 @@ window.addEventListener("load",function(){
 
         ctx.fillStyle = "";
 
-    },optiItv());
+    });
 });
