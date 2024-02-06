@@ -77,7 +77,7 @@ window.addEventListener("load",function(){
             reset();
         }
         if(alive){
-            yForce = -1.5;
+            yForce = -2;
             pigeon.rotation = -20;
         }
     }
