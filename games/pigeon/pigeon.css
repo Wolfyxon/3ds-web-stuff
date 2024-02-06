@@ -17,6 +17,7 @@
 
 .bigtext {
     position: absolute;
+    width: 500px;
     left: 100px;
     top: 90px;
 }
