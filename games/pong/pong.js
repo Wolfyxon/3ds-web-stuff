@@ -14,7 +14,7 @@ window.addEventListener("load",function(){
     ball.fillStyle = "white";
     const originalBallSpeed = 2;
     var ballSpeed = originalBallSpeed;
-    const ballAccel = 1.02;
+    const ballAccel = 1.06;
 
     const y = canvas.height/2.5;
 
