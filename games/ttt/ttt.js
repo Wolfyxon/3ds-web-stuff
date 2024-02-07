@@ -80,8 +80,10 @@ window.addEventListener("load",function(){
             if(cell.innerText !== "") return;
 
             cell.innerText = currentPlayer;
+            var win = false;
             if(testPatterns(currentPlayer)){
                 cooldown = true;
+                win = true;
                 winTxt.innerText = currentPlayer + " wins";
                 winTxt.style.display = "block"
 
@@ -105,11 +107,13 @@ window.addEventListener("load",function(){
             winTxt.style.color = cell.style.color;
             plrTxt.innerText = currentPlayer;
 
-            var filled = 0;
-            for(var i=0;i<cells.length;i++){
-                if(cells[i].innerText !== "") filled++;
+            if(!win) {
+                var filled = 0;
+                for(var i=0;i<cells.length;i++){
+                    if(cells[i].innerText !== "") filled++;
+                }
+                if(filled >= 9) reset();
             }
-            if(filled >= 9) reset();
         })
     }
 
