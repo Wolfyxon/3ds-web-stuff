@@ -17,6 +17,24 @@ window.addEventListener("load", function(){
         ctx.fillRect(x - brushSize/2, y - brushSize/2, brushSize, brushSize);
     }
 
+    function drawLine(x1, y1, x2, y2) {
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const steps = Math.ceil(distance);
+
+        const stepX = dx / steps;
+        const stepY = dy / steps;
+
+        for (let i=0; i<=steps; i++) {
+            const x = x1 + stepX * i;
+            const y = y1 + stepY * i;
+            justDraw(x, y);
+        }
+    }
+
+
     function drawMouse(e) {
         if(e.buttons === 0) return;
         const rect = canvas.getBoundingClientRect();
