@@ -20,6 +20,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
 - [ ] Tanks and Cannons - Tower defense game about tanks and cannons.
 - Intercepter - take down the incoming missiles
+- Clicker - a Cookie Clicker clone
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
 - Maze - basically a randomly generated maze you have to find an exit of. It would contain different floors and some perks would be found inside the maze.
 - Platformer - basically a jumping 2D game, however this would require creating some internal tools for map creation and loading.
@@ -56,10 +57,11 @@ Thanks to Trickii for amazing game ideas and bug reports.
 
 ## TODO
 Besides from planned games:
-- [ ] Fix compatibility issues on Old 3DS/2DS
+- [ ] Fix compatibility and performance issues on Old 3DS/2DS
 - [ ] Remake the home page and make it behave more like the home menu
 - [ ] Make a camera system for the game.js library
 - [ ] Create a map creator and loader for games
+- [ ] Create a 3D rendering library
 
 ### 3rd party
 #### QR code generation API
