@@ -2,6 +2,8 @@ window.addEventListener("load", function(){
     const canvas = document.getElementById("canv");
     const ctx = canvas.getContext("2d");
 
+    const brushSizeSlider = document.getElementById("brush-size");
+
     var brushSize = 10;
 
     var prevX = 0;
@@ -64,8 +66,14 @@ window.addEventListener("load", function(){
         draw(x,y);
     }
 
+    function updateBrushSize() {
+        brushSize = brushSizeSlider.value;
+    }
+    updateBrushSize();
+
     canvas.addEventListener("mousemove", drawMouse);
     canvas.addEventListener("touchmove",drawTouch);
     canvas.addEventListener("mousedown", drawMouse);
 
+    brushSizeSlider.addEventListener("change", updateBrushSize);
 });
