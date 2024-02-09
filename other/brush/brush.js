@@ -7,7 +7,15 @@ window.addEventListener("load", function(){
     var prevX = 0;
     var prevY = 0;
 
+    var lastDraw = 0;
+
     function draw(x, y) {
+        const now = Date.now();
+
+        if(now - lastDraw < 100){
+            drawLine(prevX, prevY, x, y);
+        }
+        lastDraw = now;
         prevX = x;
         prevY = y;
         justDraw(x, y);
