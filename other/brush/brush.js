@@ -4,7 +4,16 @@ window.addEventListener("load", function(){
 
     var brushSize = 10;
 
+    var prevX = 0;
+    var prevY = 0;
+
     function draw(x, y) {
+        prevX = x;
+        prevY = y;
+        justDraw(x, y);
+    }
+
+    function justDraw(x, y) {
         ctx.fillRect(x - brushSize/2, y - brushSize/2, brushSize, brushSize);
     }
 
