@@ -110,14 +110,16 @@ window.addEventListener("load",function (){
     setTab(tabs.children[tabIdx])
     updateTabBtn()
 
+    var prevFrameTime = Date.now();
     setInterval(function (){
-
+        const delta = (Date.now() - prevFrameTime);
+        prevFrameTime = Date.now();
         if(currentTab){
-            const scrollAmt = 5
+            const scrollAmt = 1;
             if(isBtnPressed("down")){
-                currentTab.scrollTop += scrollAmt
+                currentTab.scrollTop += scrollAmt * delta;
             } else if(isBtnPressed("up")){
-                currentTab.scrollTop -= scrollAmt
+                currentTab.scrollTop -= scrollAmt * delta;
             }
         }
 
