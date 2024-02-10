@@ -37,6 +37,7 @@ function pickRandom(array){
  * @return {Number}
  */
 function lerp(start, end, speed){
+    if(speed >= 1) return end;
     return (1-speed)*start+speed*end
 }
 
