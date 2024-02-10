@@ -134,14 +134,14 @@ window.addEventListener("load",function(){
         if(isBtnPressed("Up")) plrJet.moveXY(0,-speed * delta);
         if(isBtnPressed("Down")) plrJet.moveXY(0,speed * delta);
         if(isBtnPressed("Left")) {
-            plrJet.rotation = lerp(plrJet.rotation,-rotAngle,rotAmt * delta);
+            plrJet.rotation = lerpAngle(plrJet.rotation,-rotAngle,rotAmt * delta);
             plrJet.moveXY(-speed * delta, 0);
         }
         if(isBtnPressed("Right")){
-            plrJet.rotation = lerp(plrJet.rotation,rotAngle,rotAmt * delta);
+            plrJet.rotation = lerpAngle(plrJet.rotation,rotAngle,rotAmt * delta);
             plrJet.moveXY(speed * delta,0);
         }
-        plrJet.rotation = lerp(plrJet.rotation,0,rotAmt * delta);
+        plrJet.rotation = lerpAngle(plrJet.rotation,0,rotAmt * delta);
     });
 
     // Main loop
