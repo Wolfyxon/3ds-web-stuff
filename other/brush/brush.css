@@ -33,6 +33,7 @@ canvas {
     height: 100%;
     background: none;
     border: none;
+    border-radius: 20px;
 }
 
 #toolbar button img {
