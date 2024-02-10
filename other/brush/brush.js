@@ -2,6 +2,9 @@ window.addEventListener("load", function(){
     const canvas = document.getElementById("canv");
     const ctx = canvas.getContext("2d");
 
+    const menuContainer = document.getElementById("menu-container");
+    const menu = document.getElementById("menu");
+
     const brushSizeSlider = document.getElementById("brush-size");
 
     const btnEraser = document.getElementById("btn-erase");
@@ -101,4 +104,8 @@ window.addEventListener("load", function(){
         eraser = !eraser;
         setButtonState(btnEraser, eraser);
     })
+
+    if(is3DS()) {
+        menu.style.height = "100%";
+    }
 });
