@@ -33,11 +33,11 @@ function pickRandom(array){
  * Performs a linear interpolation between 2 numbers
  * @param  {Number} start Current number
  * @param {Number} end Target value
- * @param {Number} weight Speed of the interpolation
+ * @param {Number} speed Speed of the interpolation
  * @return {Number}
  */
-function lerp(start, end, weight){
-    return (1-weight)*start+weight*end
+function lerp(start, end, speed){
+    return (1-speed)*start+speed*end
 }
 
 function fmod(a, b){
