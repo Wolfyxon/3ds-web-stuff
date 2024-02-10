@@ -6,6 +6,7 @@ window.addEventListener("load", function(){
 
     // draw, line, picker
     var currentTool = "draw";
+    var eraser = false;
 
     var brushSize = 10;
 
@@ -27,7 +28,13 @@ window.addEventListener("load", function(){
     }
 
     function justDraw(x, y) {
-        ctx.fillRect(x - brushSize/2, y - brushSize/2, brushSize, brushSize);
+        const rX = x - brushSize/2;
+        const rY = y - brushSize/2;
+        if(eraser) {
+            ctx.clearRect(rX, rY, brushSize, brushSize);
+        } else {
+            ctx.fillRect(rX, rY, brushSize, brushSize);
+        }
     }
 
     function drawLine(x1, y1, x2, y2) {
