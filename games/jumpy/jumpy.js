@@ -144,7 +144,7 @@ window.addEventListener("load",function (){
                 continue;
             }
             if(active){
-                if(x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){
+                if( x > 2 && x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){
                     currentSprite = imgDead
                     active = false;
                     resetCooldown = true;
