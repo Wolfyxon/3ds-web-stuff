@@ -182,7 +182,7 @@ window.addEventListener("load",function(){
             rotor.area.moveTo(heli.getCenter().offsetXY(-40,-33))
 
             if(alive){
-                rotor.rotation += 10 * delta;
+                rotor.rotation += 10;
                 heli.area.moveTo(heli.area.startVec.getLerped(heli.targetPos,0.01 * delta))
                 const ang = heli.getCenter().getRotationToVec(plrJet.getCenter())+90;
                 heli.rotation = lerpAngle(heli.rotation,ang, 0.2 * delta);
@@ -207,7 +207,7 @@ window.addEventListener("load",function(){
                     if(proj.enemy) continue;
                     if(proj.area.isTouching(heli.area)){
                         heli.hp -= 1;
-                        heli.rotation += randi(-5,5) * delta
+                        heli.rotation += randi(-5,5);
                         proj.remove = true;
                     }
                 }
