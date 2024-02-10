@@ -111,6 +111,8 @@ function getPressedBtns(){
 
    // checkAndAdd(0,"B",66)
     checkAndAdd(1,"A",65)
+    checkAndAdd(1,"A",13)
+
     //checkAndAdd(2,"Y",89)
     //checkAndAdd(3,"X",88)
     /*
