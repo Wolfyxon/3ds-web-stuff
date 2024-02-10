@@ -61,13 +61,7 @@ function is3DS(){
  * @return {Boolean}
  */
 function includes(container,search){
-    if(Array.isArray(container)){
-        for(var i=0;i<container.length;i++){
-            if(container[i] === search) return true;
-        }
-        return false;
-    }
-    if(typeof container === "string"){
+    if(typeof container === "string" || Array.isArray(container)){
         return container.indexOf(search) !== -1;
     }
 
