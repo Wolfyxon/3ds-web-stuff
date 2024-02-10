@@ -49,7 +49,7 @@ window.addEventListener("load", function(){
         const stepX = dx / steps;
         const stepY = dy / steps;
 
-        for (let i=0; i<=steps; i++) {
+        for (var i=0; i<=steps; i++) {
             const x = x1 + stepX * i;
             const y = y1 + stepY * i;
             justDraw(x, y);
