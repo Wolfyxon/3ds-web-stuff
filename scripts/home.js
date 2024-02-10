@@ -126,12 +126,22 @@ window.addEventListener("load",function (){
                 currentTab.scrollTop -= scrollAmt * delta;
             }
         }
-
+        /*
         if(isBtnJustPressed("left")){
             prevTab()
         }
         else if(isBtnJustPressed("right")){
             nextTab()
-        }
+        }*/
+    })
+
+    var lastKeyPress = 0;
+    window.addEventListener("keydown", function (e){
+        const now = Date.now();
+        if(now < lastKeyPress + 200) return;
+        lastKeyPress = now;
+
+        if(e.keyCode === 39) nextTab();
+        if(e.keyCode === 37) prevTab();
     })
 })
