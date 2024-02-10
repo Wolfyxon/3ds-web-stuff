@@ -88,11 +88,16 @@ window.addEventListener("load",function(){
     },200)
 
 
-    // Controls loop
-    setInterval(function(){
-        if(isBtnJustPressed("up") || isBtnJustPressed("a")){
-            jump()
-        }
+    const jumpCodes = [65, 13, 38];
+    var jumpHeld = false;
+    window.addEventListener("keydown", function (e){
+        if(jumpHeld) return;
+        jumpHeld = true;
+        if(includes(jumpCodes, e.keyCode)) jump();
+    });
+
+    window.addEventListener("keyup", function (e){
+        if(includes(jumpCodes, e.keyCode)) jumpHeld = false;
     })
 
     // Main loop
