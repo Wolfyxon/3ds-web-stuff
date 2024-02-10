@@ -144,12 +144,14 @@ function getPressedBtns(){
             res.push(name)
         }
     }
-    
-    checkAndAdd(0,"B",66)
-    checkAndAdd(1,"A",65)
-    checkAndAdd(2,"Y",89)
-    checkAndAdd(3,"X",88)
 
+    // Only arrows and the A key are usable, other buttons have builtin functions for the browser and cannot be disabled
+
+   // checkAndAdd(0,"B",66)
+    checkAndAdd(1,"A",65)
+    //checkAndAdd(2,"Y",89)
+    //checkAndAdd(3,"X",88)
+    /*
     checkAndAdd(4,"L")
     checkAndAdd(5,"R")
     checkAndAdd(6,"ZL")
@@ -157,7 +159,7 @@ function getPressedBtns(){
 
     checkAndAdd(8,"START")
     checkAndAdd(9,"SELECT")
-
+    */
     checkAndAdd(12,"Up",38)
     checkAndAdd(13,"Down",40)
     checkAndAdd(14,"Left",37)
