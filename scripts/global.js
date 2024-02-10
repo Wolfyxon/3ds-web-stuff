@@ -53,13 +53,6 @@ function is3DS(){
     return includes(window.navigator.userAgent,"Nintendo 3DS");
 }
 
-/**
- * Checks if the user's 3DS is a New 3DS. Will return true if the user isn't using a 3DS at all. Useful for determining limits for better performance.
- * @return {Boolean}
- */
-function isNew(){
-    return includes(window.navigator.userAgent, "New Nintendo 3DS") || !is3DS();
-}
 
 // array.includes and string.includes does not work on the 3DS browser
 /**
