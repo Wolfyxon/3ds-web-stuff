@@ -141,6 +141,7 @@ window.addEventListener("load",function (){
             if(x < -30){
                 spikes.splice(i, 1);
                 i--;
+                continue;
             }
             if(active){
                 if(x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){
