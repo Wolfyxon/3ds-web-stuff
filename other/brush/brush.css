@@ -55,3 +55,75 @@ canvas {
     border-radius: 20px;
     background: #4d4d4d;
 }
+
+#menu-container {
+    height: 100%;
+}
+
+#menu {
+    width: 100%;
+    background-color: #c0c4de;
+    height: 36%;
+    margin-top: 1%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#color-selection {
+    height: 100%;
+    width: 50%;
+    background-color: #444444;
+    border-radius: 2px;
+    padding: 1%;
+    text-align: center;
+    display: inline-block;
+}
+
+#color-selector-gradients {
+    height: 60%;
+    width: 100%;
+}
+
+#square-color-select {
+    width: 80%;
+    height: 100%;
+    background-color: black;
+    display: inline-block;
+}
+
+#rect-color-select {
+    height: 100%;
+    width: 15%;
+    background-color: black;
+    display: inline-block;
+}
+
+#text-color {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    border-radius: 5px;
+}
+
+#result-color {
+    width: 50%;
+    background-color: black;
+    height: 10%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+#menu-right {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 46%;
+}
+
+#menu-right button {
+    display: block;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
