@@ -691,6 +691,8 @@ function clearCanvas(canvas){
  * @return {Number}
  */
 function lerpAngle(startDeg, endDeg, speed) {
+    if(speed >= 1) return endDeg;
+
     startDeg = deg2rad(startDeg);
     endDeg = deg2rad(endDeg);
 
