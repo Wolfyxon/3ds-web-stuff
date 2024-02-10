@@ -13,6 +13,8 @@ window.addEventListener("load", function(){
     var currentTool = "draw";
     var eraser = false;
 
+    var hueColor = "#ff0000";
+
     var brushSize = 10;
 
     var prevX = 0;
@@ -93,6 +95,25 @@ window.addEventListener("load", function(){
             button.style.backgroundColor = "";
         }
     }
+
+    function drawColorSelector() {
+        const canv =  document.getElementById("square-color-select");
+        const colorCtx = canv.getContext("2d");
+
+        const gH = colorCtx.createLinearGradient(0, 0, canv.width, 0);
+        gH.addColorStop(0, '#fff');
+        gH.addColorStop(1, hueColor);
+        colorCtx.fillStyle = gH;
+        colorCtx.fillRect(0, 0, canv.width, canv.height);
+
+        const gV = colorCtx.createLinearGradient(0, 0, 0, canv.height);
+        gV.addColorStop(0, "rgba(0,0,0,0)");
+        gV.addColorStop(1, "#000");
+        colorCtx.fillStyle = gV;
+        colorCtx.fillRect(0, 0, canv.width, canv.height);
+
+    }
+    drawColorSelector();
 
     canvas.addEventListener("mousemove", drawMouse);
     canvas.addEventListener("touchmove",drawTouch);
