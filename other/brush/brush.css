@@ -13,7 +13,7 @@
 
 #toolbar {
     position: absolute;
-    bottom: 0;
+    top: 0;
     width: 100%;
     background-color: grey;
     height: 7%;
