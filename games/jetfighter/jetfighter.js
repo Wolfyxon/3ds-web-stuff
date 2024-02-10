@@ -106,7 +106,6 @@ window.addEventListener("load",function(){
     setInterval(function(){
         if(!alive && isBtnJustPressed("a")) reset();
     })
-
     // Firing loop
     setInterval(function(){
         if(!alive) return;
@@ -124,12 +123,18 @@ window.addEventListener("load",function(){
         }
     },100)
 
+    var bgPos = 0;
+
     // Movement loop
     var prevMoveFrameTime = 0;
     setInterval(function(){
         if(!alive) return;
         const delta = (Date.now() - prevMoveFrameTime) / 16;
         prevMoveFrameTime = Date.now();
+
+        bgPos += 5 * delta;
+        if(bgPos > 4096) bgPos = 0;
+        canvas.style.backgroundPositionY = bgPos+"px";
 
         if(isBtnPressed("Up")) plrJet.moveXY(0,-speed * delta);
         if(isBtnPressed("Down")) plrJet.moveXY(0,speed * delta);

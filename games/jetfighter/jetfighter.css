@@ -1,5 +1,6 @@
 #canv {
     background-color: #86cde1;
+    background-image: url("img/background.png");
     outline: 3px black solid;
 }
 
