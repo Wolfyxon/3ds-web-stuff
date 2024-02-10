@@ -113,11 +113,9 @@ function includes(container,search){
  * @param  {*} exclude The value you want to exclude
  */
 function getWithout(array,exclude){
-    var newArr = [];
-    for(var i=0;i<array.length;i++){
-        if(array[i] !== exclude) newArr.push(array[i])
-    }
-    return newArr;
+    return array.filter(function (item) {
+        return item !== exclude;
+    });
 }
 
 /**
