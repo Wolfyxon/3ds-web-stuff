@@ -210,7 +210,9 @@ function optiItv(){
 var forcePosition = true;
 
 setInterval(function (){
-    if(forcePosition) window.scrollTo(40,227);
+    const x = 40;
+    const y = 227;
+    if(forcePosition && (window.scrollX !== x || window.scrollY !== y) ) window.scrollTo(x,y);
 
     const curPressed = getPressedBtns();
     justPressed = []
