@@ -4,6 +4,9 @@ window.addEventListener("load", function(){
 
     const brushSizeSlider = document.getElementById("brush-size");
 
+    // draw, line, picker
+    var currentTool = "draw";
+
     var brushSize = 10;
 
     var prevX = 0;
