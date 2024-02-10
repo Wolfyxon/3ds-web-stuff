@@ -4,6 +4,8 @@ window.addEventListener("load", function(){
 
     const brushSizeSlider = document.getElementById("brush-size");
 
+    const btnEraser = document.getElementById("btn-erase");
+
     // draw, line, picker
     var currentTool = "draw";
     var eraser = false;
@@ -81,9 +83,22 @@ window.addEventListener("load", function(){
     }
     updateBrushSize();
 
+    function setButtonState(button, state) {
+        if(state) {
+            button.style.backgroundColor = "#797979";
+        } else {
+            button.style.backgroundColor = "";
+        }
+    }
+
     canvas.addEventListener("mousemove", drawMouse);
     canvas.addEventListener("touchmove",drawTouch);
     canvas.addEventListener("mousedown", drawMouse);
 
     brushSizeSlider.addEventListener("change", updateBrushSize);
+
+    btnEraser.addEventListener("click", function (){
+        eraser = !eraser;
+        setButtonState(btnEraser, eraser);
+    })
 });
