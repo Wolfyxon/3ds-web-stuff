@@ -119,7 +119,7 @@ window.addEventListener("load",function (){
         const delta = (Date.now() - prevFrameTime);
         prevFrameTime = Date.now();
         if(currentTab){
-            const scrollAmt = 1;
+            const scrollAmt = 0.5;
             if(isBtnPressed("down")){
                 currentTab.scrollTop += scrollAmt * delta;
             } else if(isBtnPressed("up")){
