@@ -687,17 +687,17 @@ function clearCanvas(canvas){
  * Performs a linear interpolation between 2 angles in degrees
  * @param {Number} startDeg Current angle
  * @param {Number} endDeg Target angle
- * @param {Number} weight Speed of the interpolation
+ * @param {Number} speed Speed of the interpolation
  * @return {Number}
  */
-function lerpAngle(startDeg, endDeg, weight) {
+function lerpAngle(startDeg, endDeg, speed) {
     startDeg = deg2rad(startDeg);
     endDeg = deg2rad(endDeg);
 
     const TAU = Math.PI * 2;
     const diff = fmod(endDeg - startDeg, TAU);
     const shortest = fmod(2 * diff, TAU) - diff;
-    return rad2deg(startDeg + shortest * weight);
+    return rad2deg(startDeg + shortest * speed);
 }
 
 /**
