@@ -115,6 +115,25 @@ window.addEventListener("load", function(){
     }
     drawColorSelector();
 
+    function drawHueSelector() {
+        const canv = document.getElementById("rect-color-select");
+        const hueCtx = canv.getContext("2d");
+
+        const grad = hueCtx.createLinearGradient(0, 0, 0, canv.height);
+        const steps = 7;
+        grad.addColorStop(0, "red");
+        grad.addColorStop(2/steps, "yellow");
+        grad.addColorStop(3/steps, "#00ff00");
+        grad.addColorStop(4/steps, "cyan");
+        grad.addColorStop(5/steps, "blue");
+        grad.addColorStop(6/steps, "magenta");
+        grad.addColorStop(7/steps, "red");
+
+        hueCtx.fillStyle = grad;
+        hueCtx.fillRect(0, 0, canv.width, canv.height);
+    }
+    drawHueSelector();
+
     canvas.addEventListener("mousemove", drawMouse);
     canvas.addEventListener("touchmove",drawTouch);
     canvas.addEventListener("mousedown", drawMouse);
