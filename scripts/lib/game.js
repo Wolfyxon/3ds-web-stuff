@@ -616,6 +616,8 @@ function Sprite(image,x,y,rot,w,h){
      * @param {HTMLCanvasElement} canvas The <canvas> element
      */
     spr.render = function(canvas){
+        if(spr.area.getWidth() < 0 || spr.area.getHeight() < 0) return;
+
         spr.lastCanvas = canvas;
         if(!spr.visible) return;
         const ctx = canvas.getContext("2d");
