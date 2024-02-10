@@ -7,6 +7,10 @@ canvas {
     position: relative;
 }
 
+#top-screen {
+    background-color: #515157;
+}
+
 #toolbar {
     position: absolute;
     bottom: 0;
