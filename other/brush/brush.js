@@ -9,6 +9,10 @@ window.addEventListener("load", function(){
 
     const btnEraser = document.getElementById("btn-erase");
 
+    const btnClear = document.getElementById("btn-clear");
+    const btnExport = document.getElementById("btn-export");
+    const btnSave = document.getElementById("btn-save");
+
     // draw, line, picker
     var currentTool = "draw";
     var eraser = false;
