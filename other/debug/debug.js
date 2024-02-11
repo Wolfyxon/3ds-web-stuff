@@ -4,8 +4,6 @@ window.addEventListener("load",function (){
     const userAg = document.getElementById("user-agent")
     const btn = document.getElementById("btn")
     const gamepadTxt = document.getElementById("gamepad")
-    const keyTxt = document.getElementById("key")
-    const justPressedTxt = document.getElementById("just-pressed")
     const anim = document.getElementById("anim-test")
 
     userAg.innerText = navigator.userAgent;
@@ -27,8 +25,6 @@ window.addEventListener("load",function (){
 
     setInterval(function (){
         gamepadTxt.innerText = "Pressed: "+getPressedBtns();
-        justPressedTxt.innerText = "Just pressed: "+justPressed;
-        keyTxt.innerText = "Key code: "+pressedKeycodes;
         scrollPos.innerText = "Scroll pos: " + window.scrollX + " " + window.scrollY;
         const zoom = (( window.outerWidth - 10 ) / window.innerWidth) * 100;
         zoomPos.innerText = "Zoom: " + window.outerWidth + " " +window.outerHeight + " " + zoom + "%";

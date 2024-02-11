@@ -102,10 +102,11 @@ window.addEventListener("load",function(){
         if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
     },3000)
 
-    // Single press controls loop
-    setInterval(function(){
-        if(!alive && isBtnJustPressed("a")) reset();
-    })
+
+    onBtnJustPressed("A",function(){
+        if(!alive) reset();
+    });
+
     // Firing loop
     setInterval(function(){
         if(!alive) return;
