@@ -169,6 +169,12 @@ window.addEventListener("load", function(){
         setButtonState(btnEraser, eraser);
     })
 
+    btnClear.addEventListener("click", function (){
+        if(confirm("Are you sure you want to clear the canvas?\nYour drawing will be gone.")) {
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+        }
+    });
+
     if(is3DS()) {
         menu.style.height = "100%";
     }
