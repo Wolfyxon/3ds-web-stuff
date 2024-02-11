@@ -91,6 +91,28 @@ function getGamepad(){
 }
 
 var pressStates = {}
+var pressCallbacks = {
+    "Left": [],
+    "Up": [],
+    "Right": [],
+    "Down": [],
+    "A": []
+}
+
+/**
+ * Triggers a callback when a button is pressed once.
+ * @param {String} name Name of the button
+ * @param {Function} callback Function to call when the button is pressed
+ */
+function onBtnJustPressed(name, callback){
+    const keys = Object.keys(pressCallbacks);
+    for(var i=0; i<keys.length; i++) {
+        const key = keys[i];
+        if(key.toLowerCase() === name.toLowerCase()) {
+            pressCallbacks[key].push(callback);
+        }
+    }
+}
 
 /**
  * Returns an Array of the pressed gamepad buttons as strings.
@@ -189,6 +211,12 @@ const keycodes = {
 window.addEventListener("keydown",function(e){
     const name = keycodes[e.keyCode];
     if(name) {
+        if(!pressStates[name]) {
+            const callbacks = pressCallbacks[name];
+            for(var i=0; i<callbacks.length; i++) {
+                callbacks[i]();
+            }
+        }
         pressStates[name] = true;
     }
 })
