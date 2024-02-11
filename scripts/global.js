@@ -269,6 +269,7 @@ var touchStart
 
 document.addEventListener('touchstart', function(e) {
     touchStart = e.touches[0];
+    if(e.target.classList.contains("drag-protection")) e.preventDefault(); // this can't be applied globally since it breaks click events
 });
 
 document.addEventListener('touchmove', function(e){
