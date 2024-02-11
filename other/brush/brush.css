@@ -62,9 +62,12 @@
 
 #menu-container {
     height: 100%;
+    pointer-events: none;
+    z-index: 5;
 }
 
 #menu {
+    pointer-events: all;
     width: 100%;
     background-color: #666972;
     height: 36%;
