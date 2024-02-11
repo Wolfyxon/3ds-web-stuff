@@ -90,46 +90,19 @@ function getGamepad(){
     return navigator.webkitGetGamepads()[0];
 }
 
-var justPressed = []
-var lastPressed = []
-var pressedKeycodes = [] // for keyboard
+var pressStates = {}
 
 /**
  * Returns an Array of the pressed gamepad buttons as strings.
  * @return {[String]}
  */
 function getPressedBtns(){
-    //const gp = getGamepad();
+    const keys = Object.keys(pressStates);
     var res = [];
-
-    function checkAndAdd(index, name, altKeyCode){
-        if( (altKeyCode && includes(pressedKeycodes,altKeyCode)) /* || (gp && gp.buttons[index] === 1) */ ){
-            res.push(name)
-        }
+    for(var i=0; i<keys.length; i++) {
+        const key = keys[i];
+        if(pressStates[key]) res.push(key);
     }
-
-    // Only arrows and the A key are usable, other buttons have builtin functions for the browser and cannot be disabled
-
-   // checkAndAdd(0,"B",66)
-    checkAndAdd(1,"A",65)
-    checkAndAdd(1,"A",13)
-
-    //checkAndAdd(2,"Y",89)
-    //checkAndAdd(3,"X",88)
-    /*
-    checkAndAdd(4,"L")
-    checkAndAdd(5,"R")
-    checkAndAdd(6,"ZL")
-    checkAndAdd(7,"ZR")
-
-    checkAndAdd(8,"START")
-    checkAndAdd(9,"SELECT")
-    */
-    checkAndAdd(12,"Up",38)
-    checkAndAdd(13,"Down",40)
-    checkAndAdd(14,"Left",37)
-    checkAndAdd(15,"Right",39)
-
     return res;
 }
 
@@ -139,30 +112,14 @@ function getPressedBtns(){
  * @return {Boolean}
  */
 function isBtnPressed(name){
-    const pressed = getPressedBtns();
-
-    for(var i=0;i<pressed.length;i++){
-        if(pressed[i].toLowerCase() === name.toLowerCase()){
-            return true
-        }
+    const keys = Object.keys(pressStates);
+    for(var i=0; i<keys.length; i++) {
+        const key = keys[i];
+        if(pressStates[key] && name.toLowerCase() === key.toLowerCase()) return true;
     }
     return false;
 }
 
-/**
- * Checks if a gamepad button was pressed and isn't being held
- * @deprecated
- * @param {String} name String name of the button. Any case.
- * @return {Boolean}
- */
-function isBtnJustPressed(name){
-    for(var i=0;i<justPressed.length;i++){
-        if(justPressed[i].toLowerCase() === name.toLowerCase()){
-            return true
-        }
-    }
-    return false;
-}
 
 function registerNon3DSlink(a){
     a.onclick = function (e){
@@ -218,30 +175,33 @@ setInterval(function (){
     const x = 40;
     const y = 227;
     if(forcePosition && (window.scrollX !== x || window.scrollY !== y) ) window.scrollTo(x,y);
+});
 
-    const curPressed = getPressedBtns();
-    justPressed = []
-
-    for(var i=0;i<lastPressed.length;i++){
-        const btn = lastPressed[i]
-        if(!includes(curPressed,btn)){
-            justPressed.push(btn)
-        }
-    }
-    lastPressed = curPressed
-})
+const keycodes = {
+    13: "A",
+    65: "A",
+    37: "Left",
+    38: "Up",
+    39: "Right",
+    40: "Down"
+};
 
 window.addEventListener("keydown",function(e){
-    if(includes(pressedKeycodes,e.keyCode)) return;
-    pressedKeycodes.push(e.keyCode)
+    const name = keycodes[e.keyCode];
+    if(name) {
+        pressStates[name] = true;
+    }
 })
 
 window.addEventListener("keyup",function(e){
-    pressedKeycodes = getWithout(pressedKeycodes, e.keyCode);
+    const name = keycodes[e.keyCode];
+    if(name) {
+        pressStates[name] = false;
+    }
 })
 
-window.addEventListener("blur", function (e){
-    pressedKeycodes = [];
+window.addEventListener("blur", function (){
+    pressStates = {};
 })
 
 // This prevents the browser from moving the page using the arrow keys
@@ -277,7 +237,6 @@ document.addEventListener('touchstart', function(e) {
 });
 
 document.addEventListener('touchmove', function(e){
-    pressedKeycodes = [];
     const scrollable = findScrollableAncestor(e.target);
 
     if(scrollable){
