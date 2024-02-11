@@ -193,11 +193,18 @@ function optiItv(){
 
 var forcePosition = true;
 
-setInterval(function (){
+/**
+ * Moves the user's camera to an optimal position.
+ */
+function centerScreen() {
+    if(!forcePosition) return;
     const x = 40;
     const y = 227;
-    if(forcePosition && (window.scrollX !== x || window.scrollY !== y) ) window.scrollTo(x,y);
-});
+    if(window.scrollX === x && window.scrollY === y) return;
+    window.scrollTo(x,y);
+}
+
+setInterval(centerScreen);
 
 const keycodes = {
     13: "A",
