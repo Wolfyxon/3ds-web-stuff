@@ -69,7 +69,7 @@
 #menu {
     pointer-events: all;
     width: 100%;
-    background-color: #666972;
+    background-color: rgba(59, 59, 59, 0.2);
     height: 36%;
     margin-top: 1%;
     border-radius: 8px;
@@ -79,7 +79,7 @@
 #color-selection {
     height: 100%;
     width: 50%;
-    background-color: #444444;
+    background-color: rgba(21, 21, 21, 0.2);
     border-radius: 2px;
     padding: 1%;
     text-align: center;
