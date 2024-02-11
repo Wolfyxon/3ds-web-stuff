@@ -151,6 +151,7 @@ function isBtnPressed(name){
 
 /**
  * Checks if a gamepad button was pressed and isn't being held
+ * @deprecated
  * @param {String} name String name of the button. Any case.
  * @return {Boolean}
  */
