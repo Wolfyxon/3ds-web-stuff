@@ -45,6 +45,7 @@ window.addEventListener("load",function(){
     addTank()
 
     setInterval(function(){
+        // TODO: use delta time
         clearCanvas(canvas);
 
         for(var i=0;i<tanks.length;i++){
@@ -72,5 +73,5 @@ window.addEventListener("load",function(){
             }
         }
 
-    },optiItv());
+    });
 })
