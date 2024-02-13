@@ -66,7 +66,7 @@ window.addEventListener("load",function (){
         prevFrameTime = Date.now();
 
         clearCanvas(canvas);
-        rect.rotation += 1;
+        rect.rotation += 0.05 * delta;
         rect.render(canvas);
     });
 
