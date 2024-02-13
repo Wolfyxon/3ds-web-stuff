@@ -180,17 +180,6 @@ function findScrollableAncestor(element) {
     }
 }
 
-/**
- * Returns an optimal delay for intervals to ensure parity for a PC browser and the 3DS browser.
- * Please don't use it with intervals that check isBtnJustPressed()
- * @deprecated Please use calculate delta times between frames instead
- * @return {Number}
- */
-function optiItv(){
-    if(is3DS()) return 0;
-    return 16;
-}
-
 var forcePosition = true;
 
 /**
