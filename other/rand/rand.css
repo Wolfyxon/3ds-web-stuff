@@ -3,11 +3,12 @@
 }
 
 #top-screen{
-    background-color: #41b5d0;
+    background-color: #48335b;
 }
 
 #bottom-screen {
-    background-color: #4194d0;
+    color: white;
+    background-color: #2e1886;
 }
 
 #settings {
