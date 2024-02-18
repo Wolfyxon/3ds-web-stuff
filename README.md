@@ -18,12 +18,12 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Pigeon](https://wolfyxon.github.io/3ds-web-stuff/games/pigeon) - fly between pipes avoiding them. Based on Flappy Bird
 - [ ] [Jet Fighter](https://wolfyxon.github.io/3ds-web-stuff/games/jetfighter) - Shoot em up game involving jets utilizing the both screens.
 - [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
-- [ ] Tanks and Cannons - Tower defense game about tanks and cannons.
 - Intercepter - take down the incoming missiles. Based on Missile Command
 - Clicker - a Cookie Clicker clone
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
 - Maze - basically a randomly generated maze you have to find an exit of. It would contain different floors and some perks would be found inside the maze.
 - Platformer - basically a jumping 2D game, however this would require creating some internal tools for map creation and loading.
+- Tanks and Cannons - Tower defense game about tanks and cannons.
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
 - [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - turn text into a QR code.
