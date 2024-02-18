@@ -19,7 +19,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [ ] [Jet Fighter](https://wolfyxon.github.io/3ds-web-stuff/games/jetfighter) - Shoot em up game involving jets utilizing the both screens.
 - [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
 - [ ] Tanks and Cannons - Tower defense game about tanks and cannons.
-- Intercepter - take down the incoming missiles
+- Intercepter - take down the incoming missiles. Based on Missile Command
 - Clicker - a Cookie Clicker clone
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
 - Maze - basically a randomly generated maze you have to find an exit of. It would contain different floors and some perks would be found inside the maze.
