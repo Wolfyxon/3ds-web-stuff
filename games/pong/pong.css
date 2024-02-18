@@ -16,19 +16,28 @@
     color: white;
 }
 
-#score > * {
-    display: inline-block;
-    width: 49%;
-    border-radius: 20px;
+#score {
     text-align: center;
 }
 
+#score > * {
+    border: 2px solid black;
+    background-color: #bdbdbd;
+    display: inline-block;
+    width: 20%;
+    padding: 5%;
+    margin: 5% 2% 2%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 120%;
+}
+
 #score-player {
-    background-color: #0f960f;
+    color: #0f960f;
 }
 
 #score-enemy {
-    background-color: #a40000;
+    color: #a40000;
 }
 
 #level {
