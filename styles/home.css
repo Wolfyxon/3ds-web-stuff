@@ -5,8 +5,8 @@ a {
 #top-screen {
     color: white;
     background-color: #1d1244;
-    background-image: url("../img/mountains.png");
-    background-size: cover;
+    /*background-image: url("../img/mountains.png");
+    background-size: cover;*/
     text-align: center;
     position: relative;
 }
