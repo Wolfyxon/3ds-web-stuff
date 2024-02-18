@@ -135,9 +135,10 @@ function getPressedBtns(){
  */
 function isBtnPressed(name){
     const keys = Object.keys(pressStates);
+    name = name.toLowerCase();
     for(var i=0; i<keys.length; i++) {
         const key = keys[i];
-        if(pressStates[key] && name.toLowerCase() === key.toLowerCase()) return true;
+        if(pressStates[key] && name === key.toLowerCase()) return true;
     }
     return false;
 }
