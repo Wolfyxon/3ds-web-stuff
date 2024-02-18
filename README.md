@@ -56,7 +56,7 @@ Thanks to Trickii for amazing game ideas and bug reports.
 **This project is not affiliated with Nintendo, and it's only community driven.**
 
 ## TODO
-Besides from planned games:
+Besides, from planned games:
 - [ ] Fix compatibility and performance issues on Old 3DS/2DS
 - [ ] Remake the home page and make it behave more like the home menu
 - [ ] Make a camera system for the game.js library
