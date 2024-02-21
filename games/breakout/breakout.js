@@ -42,6 +42,16 @@ window.addEventListener("load", function() {
         }
     }
 
+    function bounce(rect){
+        const cY = rect.getY() + rect.area.getHeight() / 2;
+        const offsetFromCenter = ball.getY() - cY;
+        const normalizedOffset = offsetFromCenter / (rect.area.getHeight() / 2);
+        const bounceAngle = normalizedOffset * 45;
+        ball.rotation = -180 - ball.rotation + 2 * bounceAngle;
+        ballSpeed *= ballAccel;
+        ball.moveLocalXY(ball.area.getWidth(),0);
+    }
+
     createBlocks(10,10);
 
     var prevFrameTime = Date.now();
@@ -54,8 +64,22 @@ window.addEventListener("load", function() {
         player.render(canvas);
         ball.render(canvas);
 
+        ball.moveLocalXY(0, -ballSpeed);
+
+        if(ball.getY() <= 0 || ball.getX() <= 0 || ball.getX() >= canvas.width) {
+            ball.rotation = -ball.rotation;
+            ballSpeed *= ballAccel;
+        }
+
         for(var i=0; i < blocks.length; i++) {
             const block = blocks[i];
+
+            if(ball.area.isTouching(block.area)) {
+                bounce(block);
+                blocks.splice(i,1);
+                i--;
+            }
+
             block.render(canvas);
         }
 
