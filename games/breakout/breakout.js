@@ -13,6 +13,7 @@ window.addEventListener("load", function() {
     const ballInitSpeed = 0.5;
     var ballSpeed = ballInitSpeed;
     const ball = Rect2D(Vector2(canvas.width/2 - ballSize/2,canvas.height/2 - ballSize/2),ballSize, ballSize);
+    ball.rotation = 180;
     ball.fillStyle = "white";
 
     var blocks = [];
