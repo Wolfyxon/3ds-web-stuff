@@ -71,6 +71,8 @@ window.addEventListener("load", function() {
             ballSpeed *= ballAccel;
         }
 
+        if(ball.area.isTouching(player.area)) bounce(player);
+
         for(var i=0; i < blocks.length; i++) {
             const block = blocks[i];
 
