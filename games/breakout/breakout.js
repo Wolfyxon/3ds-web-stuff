@@ -4,6 +4,7 @@ window.addEventListener("load", function() {
     const plrY = 390;
     const plrH = 5;
     const plrW = 30;
+    const plrButtonSpeed = 0.3;
     const player = Rect2D(Vector2(canvas.width/2 - plrW/2, plrY), plrW, plrH);
     player.fillStyle = "#8C7BFF";
 
@@ -54,5 +55,9 @@ window.addEventListener("load", function() {
             const block = blocks[i];
             block.render(canvas);
         }
+
+        if(isBtnPressed("left") && player.getX() > 0) player.area.offsetXY(-plrButtonSpeed * delta, 0)
+        if(isBtnPressed("right") && (player.getX() + plrW ) < canvas.width) player.area.offsetXY(plrButtonSpeed * delta, 0)
+
     });
 });
