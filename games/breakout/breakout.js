@@ -18,6 +18,17 @@ window.addEventListener("load", function() {
 
     var blocks = [];
 
+    const rowColors = [
+        "red",
+        "orange",
+        "yellow",
+        "lime",
+        "cyan",
+        "blue",
+        "purple",
+        "magenta"
+    ]
+
     function createBlocks(columns, rows) {
         blocks = [];
         const padding = 2;
@@ -33,7 +44,7 @@ window.addEventListener("load", function() {
                 const y = row * (h + spacing) + padding;
 
                 const block = Rect2D(Vector2(x, y), w, h);
-                block.fillStyle = "red";
+                block.fillStyle = rowColors[row];
                 block.outlineSize = 1;
                 block.outlineOpacity = 0.5;
                 block.outlineStyle = block.fillStyle;
