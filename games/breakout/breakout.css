@@ -24,8 +24,9 @@
 
 #lives img {
     display: block;
-    width: 50%;
-    margin-top: 30%;
+    width: 12px;
+    height: 12px;
+    margin-top: 24%;
     padding: 10% 0;
     margin-left: 35%;
 }
