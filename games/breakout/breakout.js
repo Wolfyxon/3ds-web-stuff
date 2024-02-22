@@ -77,7 +77,19 @@ window.addEventListener("load", function() {
         ball.rotation = 180;
     }
 
+    var lastBounce = 0;
+    const bounceCooldown = 100;
+
+    function preBounce(){
+        const now = Date.now();
+        if(now < lastBounce+bounceCooldown) return false;
+        lastBounce = now;
+        return true;
+    }
+
     function bounce(rect){
+        if(!preBounce()) return;
+
         const cY = rect.getY() + rect.area.getHeight() / 2;
         const offsetFromCenter = ball.getY() - cY;
         const normalizedOffset = offsetFromCenter / (rect.area.getHeight() / 2);
@@ -118,7 +130,7 @@ window.addEventListener("load", function() {
         const bY = ball.getY();
         const bX = ball.getX();
 
-        if(bY <= 0 || bX <= 0 || bX >= canvas.width) {
+        if( (bY <= 0 || bX <= 0 || bX >= canvas.width) && preBounce()) {
             if(bY <= 0) {
                 // The ball refuses to properly bounce from the top the screen and starts glitching outside the screen
                 ball.rotation += 180; // Temporary fix!
