@@ -14,6 +14,7 @@ window.addEventListener("load", function() {
     const ballSize = 4;
     const ballAccel = 1.02;
     const ballInitSpeed = 0.15;
+    const ballMaxSped = 1;
     var ballSpeed = ballInitSpeed;
     const ball = Rect2D(Vector2(canvas.width/2 - ballSize/2,canvas.height/2 - ballSize/2),ballSize, ballSize);
     const initBallPos = ball.area.startVec.copy();
@@ -83,6 +84,7 @@ window.addEventListener("load", function() {
         const bounceAngle = normalizedOffset * 45;
         ball.rotation = -180 - ball.rotation + 2 * bounceAngle;
         ballSpeed *= ballAccel;
+        ballSpeed = clamp(ballSpeed, 0, ballMaxSped);
         ball.moveLocalXY(0,-ball.area.getHeight() * 1.5);
     }
 
@@ -113,6 +115,7 @@ window.addEventListener("load", function() {
                 ball.rotation = -ball.rotation;
             }
             ballSpeed *= ballAccel;
+            ballSpeed = clamp(ballSpeed, 0, ballMaxSped);
         }
 
         if(bY >= canvas.height) {
