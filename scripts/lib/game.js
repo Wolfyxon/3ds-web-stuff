@@ -258,7 +258,7 @@ function Area2D(vec1, vec2){
     area.getLeftCenter = function(){
         return Vector2(
             area.startVec.x,
-            area.startVec.y + area.getHeight()/2,
+            area.startVec.y + area.getHeight()/2
         )
     }
 
@@ -270,7 +270,7 @@ function Area2D(vec1, vec2){
     area.getRightCenter = function(){
         return Vector2(
             area.startVec.x + area.getWidth(),
-            area.startVec.y + area.getHeight()/2,
+            area.startVec.y + area.getHeight()/2
         )
     }
 
