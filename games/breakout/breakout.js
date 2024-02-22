@@ -86,7 +86,7 @@ window.addEventListener("load", function() {
         ball.moveLocalXY(0,-ball.area.getHeight() * 1.5);
     }
 
-    createBlocks(10,10);
+    createBlocks(8,5);
 
     var prevFrameTime = Date.now();
     setInterval(function() {
