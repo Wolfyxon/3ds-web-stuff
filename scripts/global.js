@@ -45,6 +45,20 @@ function fmod(a, b){
     return Number((a - (Math.floor(a / b) * b)).toPrecision(8));
 }
 
+/**
+ * Limits a number to the specified range
+ * @param {Number} value
+ * @param {Number} min Minimum value
+ * @param {Number} max Maximum value
+ * @return {Number}
+ */
+function clamp(value, min, max){
+    if(value > max) value = max;
+    if(value < min) value = min;
+
+    return value;
+}
+
 
 /**
  * Checks if the user's browser is the Nintendo 3DS browser.
