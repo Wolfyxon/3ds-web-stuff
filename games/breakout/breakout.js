@@ -71,7 +71,7 @@ window.addEventListener("load", function() {
         ball.moveLocalXY(0,-ball.area.getHeight());
     }
 
-    createBlocks(10,10);
+    //createBlocks(10,10);
 
     var prevFrameTime = Date.now();
     setInterval(function() {
@@ -89,7 +89,13 @@ window.addEventListener("load", function() {
         const bX = ball.getX();
 
         if(bY <= 0 || bX <= 0 || bX >= canvas.width) {
-            ball.rotation = -ball.rotation;
+            if(bY <= 0) {
+                // The ball refuses to properly bounce from the top the screen and starts glitching outside the screen
+                ball.rotation += 180; // Temporary fix!
+                // TODO: Find a universal calculation
+            } else {
+                ball.rotation = -ball.rotation;
+            }
             ballSpeed *= ballAccel;
         }
 
