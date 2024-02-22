@@ -59,6 +59,25 @@ function clamp(value, min, max){
     return value;
 }
 
+/**
+ * Performs a "to the power of" calculation. The ** symbol doesn't work on the 3DS
+ * @param base
+ * @param exponent
+ * @return {number}
+ */
+function powerOf(base, exponent) {
+    if (exponent === 0) return 1;
+
+    let result = 1;
+    for (var i=0; i < Math.abs(exponent); i++){
+        result *= base;
+    }
+    if (exponent < 0) {
+        return 1 / result;
+    } else {
+        return result;
+    }
+}
 
 /**
  * Checks if the user's browser is the Nintendo 3DS browser.
