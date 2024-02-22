@@ -83,7 +83,7 @@ window.addEventListener("load", function() {
         const bounceAngle = normalizedOffset * 45;
         ball.rotation = -180 - ball.rotation + 2 * bounceAngle;
         ballSpeed *= ballAccel;
-        ball.moveLocalXY(0,-ball.area.getHeight());
+        ball.moveLocalXY(0,-ball.area.getHeight() * 1.5);
     }
 
     createBlocks(10,10);
@@ -98,7 +98,8 @@ window.addEventListener("load", function() {
         player.render(canvas);
         ball.render(canvas);
 
-        ball.moveLocalXY(0, -ballSpeed * delta);
+        const currentSpeed = -ballSpeed * delta;
+        ball.moveLocalXY(0, currentSpeed);
 
         const bY = ball.getY();
         const bX = ball.getX();
@@ -118,7 +119,7 @@ window.addEventListener("load", function() {
             resetBall();
         }
 
-        if(ball.area.isTouching(player.area)) bounce(player);
+        if(ball.area.isTouching(player.area) || ball.area.isInTheWay(player.area, Vector2(0, currentSpeed), ball.rotation, 6)) bounce(player);
 
         for(var i=0; i < blocks.length; i++) {
             const block = blocks[i];
