@@ -1,6 +1,9 @@
 window.addEventListener("load", function() {
     const canvas = document.getElementById("canv");
 
+    const hearts = document.getElementById("lives").children;
+    var lives = hearts.length;
+
     const plrY = 390;
     const plrH = 5;
     const plrW = 30;
@@ -54,6 +57,18 @@ window.addEventListener("load", function() {
             }
         }
     }
+
+    function updateHearts() {
+        for(var i=0; i<hearts.length; i++) {
+            const heart = hearts[i];
+            if(i >= lives) {
+                heart.src = "img/noLife.png";
+            } else {
+                heart.src = "img/life.png";
+            }
+        }
+    }
+    updateHearts()
 
     function resetBall(){
         ball.area.moveTo(initBallPos.copy());
