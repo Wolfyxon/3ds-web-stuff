@@ -252,6 +252,29 @@ function Area2D(vec1, vec2){
     }
 
     /**
+     * Returns the bottom center Vector2 of the area
+     * @return {Object}
+     */
+    area.getLeftCenter = function(){
+        return Vector2(
+            area.startVec.x,
+            area.startVec.y + area.getHeight()/2,
+        )
+    }
+
+
+    /**
+     * Returns the bottom center Vector2 of the area
+     * @return {Object}
+     */
+    area.getRightCenter = function(){
+        return Vector2(
+            area.startVec.x + area.getWidth(),
+            area.startVec.y + area.getHeight()/2,
+        )
+    }
+
+    /**
      * Returns the area's width
      * @return {Number}
      */
