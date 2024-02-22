@@ -68,7 +68,7 @@ function clamp(value, min, max){
 function powerOf(base, exponent) {
     if (exponent === 0) return 1;
 
-    let result = 1;
+    var result = 1;
     for (var i=0; i < Math.abs(exponent); i++){
         result *= base;
     }
