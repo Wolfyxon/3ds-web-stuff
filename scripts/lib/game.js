@@ -41,8 +41,7 @@ function Vector2(x,y){
      * @return {Object}
      */
     vec.offsetVec = function(vector){
-        vec.x += vector.x;
-        vec.y += vector.y;
+        vec.offsetXY(vector.x, vector.y);
         return vec;
     }
 
