@@ -386,7 +386,8 @@ function Area2D(vec1, vec2){
             distanceToLine(area.getTopLeft(), forwardArea.getTopLeft(), anotherArea.getTopLeft()),
             distanceToLine(area.getTopRight(), forwardArea.getTopRight(), anotherArea.getTopRight()),
             distanceToLine(area.getBottomLeft(), forwardArea.getBottomLeft(), anotherArea.getBottomLeft()),
-            distanceToLine(area.getBottomRight(), forwardArea.getBottomRight(), anotherArea.getBottomRight())
+            distanceToLine(area.getBottomRight(), forwardArea.getBottomRight(), anotherArea.getBottomRight()),
+            distanceToLine(area.getCenter(), forwardArea.getCenter(), anotherArea.getCenter()),
         ];
 
         for(var i=0; i<distances.length; i++){
