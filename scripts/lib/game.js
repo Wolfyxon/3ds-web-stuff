@@ -61,6 +61,29 @@ function Vector2(x,y){
     }
 
     /**
+     * Offsets the vector respecting the given rotation
+     * @param {Number} x_ X amount to offset
+     * @param {Number} y_ Y amount to offset
+     * @param {Number} rotation Rotation in degrees
+     */
+    vec.offsetRotatedXY = function(x_, y_, rotation){
+        const angle = deg2rad(rotation);
+        const localX = x_ * Math.cos(angle) - y_ * Math.sin(angle);
+        const localY = x_ * Math.sin(angle) + y_ * Math.cos(angle);
+        vec.offsetXY(localX, localY);
+        return vec;
+    }
+
+    /**
+     * Offsets the vector respecting the given rotation
+     * @param {Object} vector Offset vector
+     * @param {Number} rotation Rotation in degrees
+     */
+    vec.offsetRotatedVec = function(vector, rotation){
+        return vec.offsetRotatedXY(vector.x, vector.y, rotation);
+    }
+
+    /**
      * Returns a copy of this vector offset by X and Y values
      * @param {Number} x_ Horizontal offset
      * @param {Number} y_ Vertical offset
