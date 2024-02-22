@@ -373,7 +373,7 @@ function Area2D(vec1, vec2){
      * @param {Object} anotherArea Another area, ex. an area of a wall.
      * @param {Object} velocityVec Velocity vector2
      * @param {Number} rotation Rotation of the moving object in degrees
-     * @param {Number} threshold
+     * @param {Number} [threshold=0.5]
      * @return {boolean}
      */
     area.isInTheWay = function(anotherArea, velocityVec, rotation, threshold){
