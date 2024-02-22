@@ -160,6 +160,7 @@ window.addEventListener("load", function(){
 
     canvas.addEventListener("mousemove", drawMouse);
     canvas.addEventListener("touchmove",drawTouch);
+    canvas.addEventListener("touchstart",drawTouch);
     canvas.addEventListener("mousedown", drawMouse);
 
     brushSizeSlider.addEventListener("change", updateBrushSize);
