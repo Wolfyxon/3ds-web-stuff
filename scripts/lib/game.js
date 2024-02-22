@@ -453,25 +453,29 @@ function Rect2D(pos, w, h){
      */
     rect.render = function(canvas) {
         const ctx = canvas.getContext("2d");
+        const x = rect.getX();
+        const y = rect.getY();
+        const width = rect.area.getWidth();
+        const height = rect.area.getHeight();
 
         ctx.save();
 
-        ctx.translate(rect.getX() + rect.area.getWidth() / 2, rect.getY() + rect.area.getHeight() / 2);
+        ctx.translate(x + width / 2, y + height / 2);
         ctx.rotate(deg2rad(rect.rotation));
 
         if(rect.outlineSize > 0){
             ctx.fillStyle = rect.outlineStyle;
             const s  = rect.outlineSize;
             ctx.globalAlpha = rect.outlineOpacity * rect.opacity;
-            ctx.fillRect(-(rect.area.getWidth() / 2)-s, -(rect.area.getHeight() / 2)-s, rect.area.getWidth()+s*2, rect.area.getHeight()+s*2);
+            ctx.fillRect(-(width / 2)-s, -(height / 2)-s, width+s*2, height +s*2);
             ctx.globalAlpha = 1;
-            ctx.clearRect(-(rect.area.getWidth() / 2), -(rect.area.getHeight() / 2), rect.area.getWidth(), rect.area.getHeight());
+            ctx.clearRect(-(width / 2), -(height / 2), width, height);
         }
 
         ctx.fillStyle = rect.fillStyle;
         if(rect.fillStyle !== "" && rect.fillStyle !== "none"){
             ctx.globalAlpha = rect.fillOpacity * rect.opacity;
-            ctx.fillRect(-(rect.area.getWidth() / 2), -(rect.area.getHeight() / 2), rect.area.getWidth(), rect.area.getHeight());
+            ctx.fillRect(-(width / 2), -(height / 2), width, height);
         }
 
 
