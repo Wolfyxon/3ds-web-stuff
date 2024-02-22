@@ -865,7 +865,7 @@ function distanceToLine(lineStart, lineEnd, point) {
     const dy1 = point.y - lineStart.y;
 
     const dx2 = lineEnd.x - lineStart.x;
-    const dy2 = lineEnd.x - lineStart.x;
+    const dy2 = lineEnd.y - lineStart.y;
 
     const dotProduct = dx1 * dx2 + dy1 * dy2;
     const segmentLengthSquared = dx2 * dx2 + dy2 * dy2;
