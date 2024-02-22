@@ -45,7 +45,7 @@ window.addEventListener("load", function() {
         for(var row=0; row < rows; row++) {
             for(var col=0; col < columns; col++) {
                 const x = (canvas.width - (columns * (w + spacing) - spacing)) / 2 + col * (w + spacing);
-                const y = row * (h + spacing) + padding;
+                const y = row * (h + spacing) + padding + 10;
 
                 const block = Rect2D(Vector2(x, y), w, h);
                 block.fillStyle = rowColors[row % rowColors.length];
