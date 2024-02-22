@@ -83,7 +83,7 @@ window.addEventListener("load", function() {
         player.render(canvas);
         ball.render(canvas);
 
-        ball.moveLocalXY(0, -ballSpeed);
+        ball.moveLocalXY(0, -ballSpeed * delta);
 
         if(ball.getY() <= 0 || ball.getX() <= 0 || ball.getX() >= canvas.width) {
             ball.rotation = -ball.rotation;
