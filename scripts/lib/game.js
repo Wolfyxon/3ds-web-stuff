@@ -6,7 +6,7 @@
  * Creates a 2 dimensional vector from the given XY values
  * @param {Number} x Horizontal position of the Vector
  * @param {Number} y Vertical position of the Vector
- * @return {Object}
+ * @constructor
  */
 function Vector2(x,y){
     var vec = {
@@ -210,7 +210,7 @@ function Vector2(x,y){
  * Creates a 2 dimensional area from 2 Vectors
  * @param {Object} vec1 Starting point of the area
  * @param {Object} vec2 Ending point of the area
- * @return {Object}
+ * @constructor
  */
 function Area2D(vec1, vec2){
     var area = {
@@ -496,7 +496,7 @@ function Area2D(vec1, vec2){
  * @param {Object} pos Position vector of the rectangle
  * @param {number} w Width
  * @param {number} h Height
- * @return {Object}
+ * @constructor
  */
 function Rect2D(pos, w, h){
     var rect = {
@@ -637,7 +637,7 @@ function Rect2D(pos, w, h){
  * @param {number} [rot=0] Rotation in degrees of the sprite
  * @param {number} [w=auto] Sprite width
  * @param {number} [h=auto] Sprite height
- * @return {Object}
+ * @constructor
  */
 function Sprite(image,x,y,rot,w,h){
     if(!x) x = 0;
@@ -790,7 +790,7 @@ function Sprite(image,x,y,rot,w,h){
  * @param {Number} width Width of the line
  * @param {Number} spacing Space between the dashes
  * @param {String} color Color of the line
- * @return {Object}
+ * @constructor
  */
 function drawDashedLine(canvas, startVec, endVec, width, spacing, color){
     const ctx = canvas.getContext("2d");
