@@ -369,6 +369,34 @@ function Area2D(vec1, vec2){
     }
 
     /**
+     * Checks if another area is on the way of this area if it's moving. Basically a raycast, useful in checking collisions of fast moving objects.
+     * @param {Object} anotherArea Another area, ex. an area of a wall.
+     * @param {Object} velocityVec Velocity vector2
+     * @param {Number} rotation Rotation of the moving object in degrees
+     * @param {Number} threshold
+     * @return {boolean}
+     */
+    area.isInTheWay = function(anotherArea, velocityVec, rotation, threshold){
+        rotation = rotation || 0;
+        threshold = threshold || 0.5;
+
+        const forwardArea = area.copy().offsetRotatedXY(velocityVec.x, velocityVec.y, rotation);
+
+        const distances = [
+            distanceToLine(area.getTopLeft(), forwardArea.getTopLeft(), anotherArea.getTopLeft()),
+            distanceToLine(area.getTopRight(), forwardArea.getTopRight(), anotherArea.getTopRight()),
+            distanceToLine(area.getBottomLeft(), forwardArea.getBottomLeft(), anotherArea.getBottomLeft()),
+            distanceToLine(area.getBottomRight(), forwardArea.getBottomRight(), anotherArea.getBottomRight())
+        ];
+
+        for(var i=0; i<distances.length; i++){
+            if(distances[i] < threshold) return true;
+        }
+
+        return false
+    }
+
+    /**
      * Moves the area to a new position
      * @param {Object} vector The target Vector2
      * @return {Object}
