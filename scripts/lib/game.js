@@ -11,7 +11,13 @@
 function Vector2(x,y){
     var vec = {
         x: x,
-        y: y
+        y: y,
+
+        limitsEnabled: false,
+        minX: 0,
+        maxX: 0,
+        minY: 0,
+        maxY: 0
     }
 
     /**
@@ -30,8 +36,17 @@ function Vector2(x,y){
      * @return {Object}
      */
     vec.offsetXY = function (x_,y_){
-        vec.x += x_;
-        vec.y += y_;
+        var newX = vec.x + x_;
+        var newY = vec.y + y_;
+
+        if(vec.limitsEnabled) {
+            newX = clamp(newX, vec.minX, vec.maxX);
+            newY = clamp(newY, vec.minY, vec.maxY);
+        }
+
+        vec.x = newX;
+        vec.y = newY;
+
         return vec;
     }
 
