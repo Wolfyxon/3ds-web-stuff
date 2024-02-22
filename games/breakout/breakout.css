@@ -1,5 +1,4 @@
 #screens > * {
-    text-align: center;
     color: white;
     background-color: #000b1c;
 }
@@ -8,5 +7,25 @@
     background-color: #868686;
     width: 323px;
     height: 100%;
-    margin-left: 37.4667px;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+#lives {
+    padding: 0;
+    margin: 0;
+    width: 33.4667px;
+    height: 100%;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+}
+
+#lives img {
+    display: block;
+    width: 50%;
+    margin-top: 30%;
+    padding: 10% 0;
+    margin-left: 35%;
 }
