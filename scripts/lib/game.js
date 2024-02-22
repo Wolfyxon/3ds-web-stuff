@@ -777,3 +777,43 @@ function deg2rad(degrees){
 function rad2deg(radians){
     return radians*180/Math.PI;
 }
+
+/**
+ * Calculates the distance of a Vector2 from a line
+ * @param {Object} lineStart Starting position of the line
+ * @param {Object} lineEnd Ending position of the line
+ * @param {Object} point Position of the point
+ * @return {number}
+ */
+function distanceToLine(lineStart, lineEnd, point) {
+    const dx1 = point.x - lineStart.x;
+    const dy1 = point.y - lineStart.y;
+
+    const dx2 = lineEnd.x - lineStart.x;
+    const dy2 = lineEnd.x - lineStart.x;
+
+    const dotProduct = dx1 * dx2 + dy1 * dy2;
+    const segmentLengthSquared = dx2 * dx2 + dy2 * dy2;
+
+    var parametricValue = -1;
+
+    if (segmentLengthSquared !== 0) {
+        parametricValue = dotProduct / segmentLengthSquared;
+    }
+
+    var closestX;
+    var closestY;
+
+    if (parametricValue < 0) {
+        closestX = lineStart.x;
+        closestY = lineStart.y;
+    } else if (parametricValue > 1) {
+        closestX = lineEnd.x;
+        closestY = lineEnd.y;
+    } else {
+        closestX = lineStart.x + parametricValue * dx2;
+        closestY = lineStart.y + parametricValue * dy2;
+    }
+
+    return Math.sqrt(powerOf(point.x - closestX, 2) + powerOf(point.y - closestY,2));
+}
