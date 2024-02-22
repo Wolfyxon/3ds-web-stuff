@@ -252,7 +252,7 @@ function Area2D(vec1, vec2){
     }
 
     /**
-     * Returns the bottom center Vector2 of the area
+     * Returns the left center Vector2 of the area
      * @return {Object}
      */
     area.getLeftCenter = function(){
@@ -264,7 +264,7 @@ function Area2D(vec1, vec2){
 
 
     /**
-     * Returns the bottom center Vector2 of the area
+     * Returns the right center Vector2 of the area
      * @return {Object}
      */
     area.getRightCenter = function(){
