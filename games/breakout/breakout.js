@@ -95,6 +95,7 @@ window.addEventListener("load", function() {
         const normalizedOffset = offsetFromCenter / (rect.area.getHeight() / 2);
         const bounceAngle = normalizedOffset * 45;
         ball.rotation = -180 - ball.rotation + 2 * bounceAngle;
+        ball.moveLocalXY(0,ball.area.getHeight() * 1.5);
         ballSpeed *= ballAccel;
         ballSpeed = clamp(ballSpeed, 0, ballMaxSped);
         ball.moveLocalXY(0,-ball.area.getHeight() * 1.5);
