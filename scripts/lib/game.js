@@ -402,6 +402,8 @@ function Area2D(vec1, vec2){
         rotation = rotation || 0;
         threshold = threshold || 0.5;
 
+        if(area.isTouching(anotherArea)) return true;
+
         const forwardArea = area.copy().offsetRotatedXY(velocityVec.x, velocityVec.y, rotation);
 
         const distances = [
