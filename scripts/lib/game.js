@@ -346,6 +346,29 @@ function Area2D(vec1, vec2){
     }
 
     /**
+     * Offsets the area based on the given X, Y values and rotation
+     * @param x offset X
+     * @param y Offset Y
+     * @param rotation Rotation in degrees
+     * @return {Object}
+     */
+    area.offsetRotatedXY = function(x, y, rotation){
+        area.startVec.offsetRotatedXY(x, y, rotation);
+        area.endVec.offsetRotatedXY(x, y, rotation);
+        return area
+    }
+
+    /**
+     * Offsets the area based on the given Vector2 and rotation
+     * @param {Object} vector
+     * @param {Number} rotation Rotation in degrees
+     * @return {Object}
+     */
+    area.offsetRotatedVec = function(vector, rotation){
+        return area.offsetRotatedXY(vector.x, vector.y, rotation);
+    }
+
+    /**
      * Moves the area to a new position
      * @param {Object} vector The target Vector2
      * @return {Object}
