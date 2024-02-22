@@ -3,3 +3,10 @@
     color: white;
     background-color: #000b1c;
 }
+
+#top-border {
+    background-color: #868686;
+    width: 323px;
+    height: 100%;
+    margin-left: 37.4667px;
+}
