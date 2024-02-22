@@ -134,12 +134,16 @@ window.addEventListener("load", function() {
             resetBall();
         }
 
-        if(ball.area.isTouching(player.area) || ball.area.isInTheWay(player.area, new Vector2(0, currentSpeed), ball.rotation, 6)) bounce(player);
+        if(bY > 100) {
+            if(ball.area.isTouching(player.area) || ball.area.isInTheWay(player.area, new Vector2(0, currentSpeed), ball.rotation, 6)) {
+                bounce(player);
+            }
+        }
 
         for(var i=0; i < blocks.length; i++) {
             const block = blocks[i];
 
-            if(ball.area.isTouching(block.area)) {
+            if(bY < 100 && ball.area.isTouching(block.area)) {
                 bounce(block);
                 blocks.splice(i,1);
                 i--;
