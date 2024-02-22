@@ -88,6 +88,18 @@ window.addEventListener("load", function() {
         ball.moveLocalXY(0,-ball.area.getHeight() * 1.5);
     }
 
+    function touchMove(e){
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        //const scaleY = canvas.height / rect.height;
+        const touch = e.touches[0];
+        const x = (touch.clientX - rect.left) * scaleX;
+        //const y = (touch.clientY - rect.top) * scaleY;
+
+        e.preventDefault();
+        player.area.moveTo(Vector2(x, plrY));
+    }
+
     createBlocks(8,5);
 
     var prevFrameTime = Date.now();
@@ -139,5 +151,7 @@ window.addEventListener("load", function() {
         if(isBtnPressed("left") && player.getX() > 0) player.area.offsetXY(-plrButtonSpeed * delta, 0)
         if(isBtnPressed("right") && (player.getX() + plrW ) < canvas.width) player.area.offsetXY(plrButtonSpeed * delta, 0)
 
+        window.addEventListener("touchmove", touchMove);
+        window.addEventListener("touchstart", touchMove);
     });
 });
