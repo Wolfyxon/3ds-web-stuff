@@ -4,7 +4,7 @@ window.addEventListener("load",function (){
 
     const petRoot = "img/pets/";
 
-    const animPigeon = Animation(petImg);
+    const animPigeon = new Animation(petImg);
     animPigeon.looped = true;
     animPigeon.loopDelay = 3;
     animPigeon.spacing = 0.2;
@@ -12,7 +12,7 @@ window.addEventListener("load",function (){
     animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon2.png");
     animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon1.png");
 
-    const animMaxwell = Animation(petImg);
+    const animMaxwell = new Animation(petImg);
     animMaxwell.looped = true;
     animMaxwell.spacing = 0.1;
     animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell1.png");
@@ -20,7 +20,7 @@ window.addEventListener("load",function (){
     animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell3.png");
     animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell2.png");
 
-    const animChicken = Animation(petImg);
+    const animChicken = new Animation(petImg);
     animChicken.looped = true;
     animChicken.spacing = 0.1;
     animChicken.loopDelay = 3;
@@ -32,7 +32,7 @@ window.addEventListener("load",function (){
     animChicken.addKeyframe("src", petRoot+"chicken/chicken2.png");
     animChicken.addKeyframe("src", petRoot+"chicken/chicken1.png");
 
-    const animCat = Animation(petImg);
+    const animCat = new Animation(petImg);
     animCat.looped = true;
     animCat.spacing = 0.4;
     animCat.addKeyframe("src", petRoot+"cat/cat1.png");
