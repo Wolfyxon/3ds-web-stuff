@@ -85,12 +85,15 @@ window.addEventListener("load", function() {
 
         ball.moveLocalXY(0, -ballSpeed * delta);
 
-        if(ball.getY() <= 0 || ball.getX() <= 0 || ball.getX() >= canvas.width) {
+        const bY = ball.getY();
+        const bX = ball.getX();
+
+        if(bY <= 0 || bX <= 0 || bX >= canvas.width) {
             ball.rotation = -ball.rotation;
             ballSpeed *= ballAccel;
         }
 
-        if(ball.getY() >= canvas.height) {
+        if(bY >= canvas.height) {
             resetBall();
         }
 
