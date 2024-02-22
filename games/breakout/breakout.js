@@ -71,7 +71,7 @@ window.addEventListener("load", function() {
         ball.moveLocalXY(0,-ball.area.getHeight());
     }
 
-    //createBlocks(10,10);
+    createBlocks(10,10);
 
     var prevFrameTime = Date.now();
     setInterval(function() {
