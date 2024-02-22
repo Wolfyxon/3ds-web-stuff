@@ -56,7 +56,7 @@ window.addEventListener("load", function() {
     }
 
     function resetBall(){
-        ball.area.moveTo(initBallPos);
+        ball.area.moveTo(initBallPos.copy());
         ballSpeed = ballInitSpeed;
         ball.rotation = 180;
     }
@@ -88,6 +88,10 @@ window.addEventListener("load", function() {
         if(ball.getY() <= 0 || ball.getX() <= 0 || ball.getX() >= canvas.width) {
             ball.rotation = -ball.rotation;
             ballSpeed *= ballAccel;
+        }
+
+        if(ball.getY() >= canvas.height) {
+            resetBall();
         }
 
         if(ball.area.isTouching(player.area)) bounce(player);
