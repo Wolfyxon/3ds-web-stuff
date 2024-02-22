@@ -19,7 +19,7 @@ window.addEventListener("load",function(){
     const initX = 135;
     const initY = 350;
 
-    const plrJet = Sprite(imgJet,initX,initY);
+    const plrJet = new Sprite(imgJet,initX,initY);
     const maxPlrHp = 100;
     var plrHp = maxPlrHp;
     var alive = true;
@@ -41,10 +41,10 @@ window.addEventListener("load",function(){
 
     function addHelicopter(x,y){
         const scale = 0.8;
-        const heli = Sprite(imgHeli,x,y,180);
-        heli.targetPos = Vector2(x,y);
+        const heli = new Sprite(imgHeli,x,y,180);
+        heli.targetPos = new Vector2(x,y);
         heli.hp = 10;
-        heli.rotor = Sprite(imgRotor);
+        heli.rotor = new Sprite(imgRotor);
         heli.rotor.rescale(scale)
         heli.rescale(scale);
         helicopters.push(heli);
@@ -52,7 +52,7 @@ window.addEventListener("load",function(){
         heli.fireItv = setInterval(function(){
             if(!alive) return;
             const pos = heli.getCenter();
-            const rocket = Sprite(imgRocket,pos.x,pos.y,heli.rotation);
+            const rocket = new Sprite(imgRocket,pos.x,pos.y,heli.rotation);
             rocket.rescale(1.3);
             rocket.enemy = true;
             projectiles.push(rocket)
@@ -64,7 +64,7 @@ window.addEventListener("load",function(){
         heli.flyItv = setInterval(function(){
             if(!alive) return;
             const range = 320;
-            heli.targetPos = Vector2(randi(0,range),randi(0,range));
+            heli.targetPos = new Vector2(randi(0,range),randi(0,range));
         },1000)
     }
 
@@ -80,7 +80,7 @@ window.addEventListener("load",function(){
             projectiles[i].remove = true;
         }
 
-        plrJet.area.moveTo(Vector2(initX,initY));
+        plrJet.area.moveTo(new Vector2(initX,initY));
         plrHp = maxPlrHp;
         updateHpBar();
 
@@ -111,7 +111,7 @@ window.addEventListener("load",function(){
     setInterval(function(){
         if(!alive) return;
         if(isBtnPressed("A")){
-            const proj = Sprite(
+            const proj = new Sprite(
                 imgProjectile,
                 plrJet.getX()+plrJet.area.getWidth()/2-2,
                 plrJet.getY()

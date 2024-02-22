@@ -13,9 +13,9 @@ window.addEventListener("load",function(){
 
     const startY = 70;
 
-    const moon = Sprite(document.getElementById("img-moon"),230,10);
+    const moon = new Sprite(document.getElementById("img-moon"),230,10);
 
-    const pigeon = Sprite(imgWingUp,10,startY);
+    const pigeon = new Sprite(imgWingUp,10,startY);
     const hitbox = pigeon.area.copy();
 
     var started = false;
@@ -34,8 +34,8 @@ window.addEventListener("load",function(){
         const gap = 152;
         const startX = 300
         const scale = 0.5;
-        pipes.push(Sprite(imgPipe,startX,y,180).rescale(scale));
-        pipes.push(Sprite(imgPipe,startX,y+gap).rescale(scale));
+        pipes.push(new Sprite(imgPipe,startX,y,180).rescale(scale));
+        pipes.push(new Sprite(imgPipe,startX,y+gap).rescale(scale));
     }
 
     function spawnPipes(){
@@ -64,7 +64,7 @@ window.addEventListener("load",function(){
         pipes = [];
         gameover.style.visibility = "hidden";
         pigeon.rotation = 0;
-        pigeon.area.moveTo(Vector2(pigeon.getX(),startY));
+        pigeon.area.moveTo(new Vector2(pigeon.getX(),startY));
         txtHighScore.style.color = ""
     }
 

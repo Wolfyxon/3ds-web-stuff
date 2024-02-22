@@ -8,7 +8,7 @@ window.addEventListener("load", function() {
     const plrH = 5;
     const plrW = 30;
     const plrButtonSpeed = 0.3;
-    const player = Rect2D(Vector2(canvas.width/2 - plrW/2, plrY), plrW, plrH);
+    const player = new Rect2D(new Vector2(canvas.width/2 - plrW/2, plrY), plrW, plrH);
     player.fillStyle = "#8C7BFF";
 
     const ballSize = 4;
@@ -16,7 +16,7 @@ window.addEventListener("load", function() {
     const ballInitSpeed = 0.15;
     const ballMaxSped = 0.5;
     var ballSpeed = ballInitSpeed;
-    const ball = Rect2D(Vector2(canvas.width/2 - ballSize/2,canvas.height/2 - ballSize/2),ballSize, ballSize);
+    const ball = new Rect2D(new Vector2(canvas.width/2 - ballSize/2,canvas.height/2 - ballSize/2),ballSize, ballSize);
     const initBallPos = ball.area.startVec.copy();
     ball.rotation = 180;
     ball.fillStyle = "white";
@@ -48,7 +48,7 @@ window.addEventListener("load", function() {
                 const x = (canvas.width - (columns * (w + spacing) - spacing)) / 2 + col * (w + spacing);
                 const y = row * (h + spacing) + padding + 10;
 
-                const block = Rect2D(Vector2(x, y), w, h);
+                const block = new Rect2D(new Vector2(x, y), w, h);
                 block.fillStyle = rowColors[row % rowColors.length];
                 block.outlineSize = 1;
                 block.outlineOpacity = 0.5;
@@ -97,7 +97,7 @@ window.addEventListener("load", function() {
         //const y = (touch.clientY - rect.top) * scaleY;
 
         e.preventDefault();
-        player.area.moveTo(Vector2(x, plrY));
+        player.area.moveTo(new Vector2(x, plrY));
     }
 
     createBlocks(8,5);
@@ -134,7 +134,7 @@ window.addEventListener("load", function() {
             resetBall();
         }
 
-        if(ball.area.isTouching(player.area) || ball.area.isInTheWay(player.area, Vector2(0, currentSpeed), ball.rotation, 6)) bounce(player);
+        if(ball.area.isTouching(player.area) || ball.area.isInTheWay(player.area, new Vector2(0, currentSpeed), ball.rotation, 6)) bounce(player);
 
         for(var i=0; i < blocks.length; i++) {
             const block = blocks[i];

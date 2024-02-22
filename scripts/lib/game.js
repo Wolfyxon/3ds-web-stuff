@@ -90,7 +90,7 @@ function Vector2(x,y){
      * @return {Object}
      */
     vec.getOffsetXY = function (x_,y_){
-        return Vector2(vec.x+x_,vec.y+y_);
+        return new Vector2(vec.x+x_,vec.y+y_);
     }
 
     /**
@@ -99,7 +99,7 @@ function Vector2(x,y){
      * @return {Object}
      */
     vec.getOffsetVec = function (vector){
-        return Vector2(vec.x+vector.x,vec.y+vector.y);
+        return new Vector2(vec.x+vector.x,vec.y+vector.y);
     }
 
     /**
@@ -143,7 +143,7 @@ function Vector2(x,y){
      * @return {Object}
      */
     vec.getLerped = function(vector, weight){
-        return Vector2(
+        return new Vector2(
             lerp(vec.x,vector.x,weight),
             lerp(vec.y,vector.y,weight)
         )
@@ -200,7 +200,7 @@ function Vector2(x,y){
      * @return {Object}
      */
     vec.copy = function(){
-        return Vector2(vec.x, vec.y);
+        return new Vector2(vec.x, vec.y);
     }
 
     return vec;
@@ -223,7 +223,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getCenter = function(){
-        return Vector2(
+        return new Vector2(
             area.startVec.x + area.getWidth()/2,
             area.startVec.y + area.getHeight()/2
         )
@@ -234,7 +234,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getTopCenter = function(){
-        return Vector2(
+        return new Vector2(
             area.startVec.x + area.getWidth()/2,
             area.startVec.y
         )
@@ -245,7 +245,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getBottomCenter = function(){
-        return Vector2(
+        return new Vector2(
             area.startVec.x + area.getWidth()/2,
             area.startVec.y + area.getHeight()
         )
@@ -256,7 +256,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getLeftCenter = function(){
-        return Vector2(
+        return new Vector2(
             area.startVec.x,
             area.startVec.y + area.getHeight()/2
         )
@@ -268,7 +268,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getRightCenter = function(){
-        return Vector2(
+        return new Vector2(
             area.startVec.x + area.getWidth(),
             area.startVec.y + area.getHeight()/2
         )
@@ -319,7 +319,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getTopRight = function(){
-        return Vector2(area.getWidth()+area.startVec.x, area.startVec.y);
+        return new Vector2(area.getWidth()+area.startVec.x, area.startVec.y);
     }
 
     /**
@@ -327,7 +327,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getBottomLeft = function(){
-        return Vector2(area.startVec.x, area.getHeight()+area.startVec.y);
+        return new Vector2(area.startVec.x, area.getHeight()+area.startVec.y);
     }
 
     /**
@@ -352,7 +352,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.getRescaled = function(scale){
-        const ar = Area2D(area.startVec,area.endVec);
+        const ar = new Area2D(area.startVec,area.endVec);
         ar.rescale(scale);
         return ar;
     }
@@ -485,7 +485,7 @@ function Area2D(vec1, vec2){
      * @return {Object}
      */
     area.copy = function(){
-        return Area2D(area.startVec.copy(), area.endVec.copy());
+        return new Area2D(area.startVec.copy(), area.endVec.copy());
     }
 
     return area
@@ -500,7 +500,7 @@ function Area2D(vec1, vec2){
  */
 function Rect2D(pos, w, h){
     var rect = {
-        area: Area2D(pos, Vector2(pos.x+w, pos.y+h)),
+        area: new Area2D(pos, new Vector2(pos.x+w, pos.y+h)),
         rotation: 0,
         fillStyle: "black",
         outlineStyle: "gray",
@@ -615,7 +615,7 @@ function Rect2D(pos, w, h){
      * @return {Object}
      */
     rect.copy = function(){
-        const newRect = Rect2D(rect.area.getTopLeft().copy(), rect.area.getWidth(), rect.area.getHeight());
+        const newRect = new Rect2D(rect.area.getTopLeft().copy(), rect.area.getWidth(), rect.area.getHeight());
         newRect.fillStyle = rect.fillStyle;
         newRect.fillOpacity = rect.fillOpacity;
         newRect.outlineSize = rect.outlineSize;
@@ -646,9 +646,9 @@ function Sprite(image,x,y,rot,w,h){
     if(!w) w = image.clientWidth;
     if(!h) h = image.clientHeight;
 
-    var tmpVec = Vector2(x,y)
+    var tmpVec = new Vector2(x,y)
     var spr = {
-        area: Area2D(Vector2(x,y),tmpVec.getOffsetXY(w,h)),
+        area: new Area2D(new Vector2(x,y),tmpVec.getOffsetXY(w,h)),
         image: image,
         lastCanvas: null,
         visible: true,

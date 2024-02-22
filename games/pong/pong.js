@@ -10,7 +10,7 @@ window.addEventListener("load",function(){
     var playerScore = 0;
     var level = 1;
 
-    const ball = Rect2D(Vector2(canvas.width/2.1,canvas.height/2.1),4,4);
+    const ball = new Rect2D(new Vector2(canvas.width/2.1,canvas.height/2.1),4,4);
     ball.fillStyle = "white";
     const originalBallSpeed = 2;
     var ballSpeed = originalBallSpeed;
@@ -18,20 +18,20 @@ window.addEventListener("load",function(){
 
     const y = canvas.height/2.5;
 
-    const player = Rect2D(Vector2(10,y), 6,30);
+    const player = new Rect2D(new Vector2(10,y), 6,30);
     player.fillStyle = "white"
     const playerSpeed = 2;
 
     const enemy = player.copy();
-    enemy.area.moveTo(Vector2(canvas.width-player.getX()*1.5, y));
+    enemy.area.moveTo(new Vector2(canvas.width-player.getX()*1.5, y));
     const enemySpeed = 0.01;
 
     var active = false;
 
     function roundReset(){
-        enemy.area.moveTo(Vector2(enemy.getX(),y));
-        player.area.moveTo(Vector2(player.getX(),y));
-        ball.area.moveTo(Vector2(canvas.width/2.1,canvas.height/2.1));
+        enemy.area.moveTo(new Vector2(enemy.getX(),y));
+        player.area.moveTo(new Vector2(player.getX(),y));
+        ball.area.moveTo(new Vector2(canvas.width/2.1,canvas.height/2.1));
         ball.rotation = 0;
 
         ballSpeed = originalBallSpeed;
@@ -96,7 +96,7 @@ window.addEventListener("load",function(){
 
             const enemyPos = enemy.area.getTopLeft();
             enemy.area.moveTo(
-                enemy.area.startVec.getLerped(Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed*level*delta)
+                enemy.area.startVec.getLerped(new Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed*level*delta)
             );
 
             ball.moveLocalXY(ballSpeed*delta,0);
@@ -134,7 +134,7 @@ window.addEventListener("load",function(){
         enemy.render(canvas);
 
         const lineX = canvas.width/2.015
-        drawDashedLine(canvas,Vector2(lineX,5), Vector2(lineX,canvas.height),4,6,"#D6D6D6");
+        new drawDashedLine(canvas,new Vector2(lineX,5), new Vector2(lineX,canvas.height),4,6,"#D6D6D6");
 
         ctx.textAlign = "center";
         ctx.font = "bold 20px none";
