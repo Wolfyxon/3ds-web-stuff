@@ -44,7 +44,7 @@ window.addEventListener("load", function() {
                 const y = row * (h + spacing) + padding;
 
                 const block = Rect2D(Vector2(x, y), w, h);
-                block.fillStyle = rowColors[row];
+                block.fillStyle = rowColors[row % rowColors.length];
                 block.outlineSize = 1;
                 block.outlineOpacity = 0.5;
                 block.outlineStyle = block.fillStyle;
