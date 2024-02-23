@@ -143,6 +143,7 @@ window.addEventListener("load", function() {
 
     function start() {
         if(!active) {
+            lives = hearts.length;
             hideOverlay();
             resetBall();
             active = true;
