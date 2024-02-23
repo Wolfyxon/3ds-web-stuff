@@ -58,3 +58,12 @@
 #tip {
     font-size: 70%;
 }
+
+#btn-start {
+    color: white;
+    background-color: black;
+    border: 2px lime solid;
+    outline: none;
+    padding: 1% 5%;
+    border-radius: 20px;
+}
