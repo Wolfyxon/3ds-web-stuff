@@ -228,7 +228,10 @@ window.addEventListener("load", function() {
         if(active) {
             if(isBtnPressed("left") && player.getX() > 0) player.area.offsetXY(-plrButtonSpeed * delta, 0)
             if(isBtnPressed("right") && (player.getX() + plrW ) < canvas.width) player.area.offsetXY(plrButtonSpeed * delta, 0)
+        } else {
+            player.area.moveTo(new Vector2(ball.getCenter().x - plrW/2, plrY));
         }
+
     });
 
     onBtnJustPressed("a", start);
