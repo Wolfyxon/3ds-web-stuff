@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
 
     overlay.targetOpaticy = 1;
 
-    const plrY = 390;
+    const plrY = 370;
     const plrH = 5;
     const plrW = 30;
     const plrInitPos = new Vector2(canvas.width/2 - plrW/2, plrY);
