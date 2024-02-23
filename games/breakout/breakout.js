@@ -186,7 +186,16 @@ window.addEventListener("load", function() {
             if(active) {
                 lives -= 1;
                 updateHearts();
-                resetBall();
+
+                if(lives <= 0) {
+                    active = false;
+                    showOverlay();
+                    overlayTitle.style.display = "none";
+                    overlayGameover.style.display = "";
+                } else {
+                    resetBall();
+                }
+
             } else {
                 ball.rotation = 180 -  ball.rotation;
             }
