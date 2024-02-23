@@ -158,6 +158,8 @@ window.addEventListener("load", function() {
         }
 
         if(bY >= canvas.height) {
+            lives -= 1;
+            updateHearts();
             resetBall();
         }
 
