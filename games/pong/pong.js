@@ -44,11 +44,16 @@ window.addEventListener("load",function(){
     }
 
     function bounce(pad){
-        const cY = pad.getY() + pad.area.getHeight() / 2;
+        /*const cY = pad.getY() + pad.area.getHeight() / 2;
         const offsetFromCenter = ball.getY() - cY;
         const normalizedOffset = offsetFromCenter / (pad.area.getHeight() / 2);
         const bounceAngle = normalizedOffset * 45;
-        ball.rotation = 180 - ball.rotation + 2 * bounceAngle;
+        ball.rotation = 180 - ball.rotation + 2 * bounceAngle;*/
+        if(ball.rotation === 0) {
+            ball.rotation = randi(1,10);
+            if(randi(0,1) === 1) ball.rotation *= -1;
+        }
+        ball.rotation = 180 - ball.rotation;
         ballSpeed *= ballAccel;
         ball.moveLocalXY(ball.area.getWidth(),0);
     }
