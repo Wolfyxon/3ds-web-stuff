@@ -97,7 +97,7 @@ window.addEventListener("load", function() {
         ball.rotation = -180 - ball.rotation + 2 * bounceAngle;
         ball.moveLocalXY(0,ball.area.getHeight() * 1.5);
         ballSpeed *= ballAccel;
-        ballSpeed = clamp(ballSpeed, 0, ballMaxSpded);
+        ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
         ball.moveLocalXY(0,-ball.area.getHeight() * 1.5);
     }
 
