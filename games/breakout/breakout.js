@@ -18,8 +18,8 @@ window.addEventListener("load", function() {
     var ballSpeed = ballInitSpeed;
     const ball = new Rect2D(new Vector2(canvas.width/2 - ballSize/2,canvas.height/2 - ballSize/2),ballSize, ballSize);
     const initBallPos = ball.area.startVec.copy();
-    ball.rotation = 180;
     ball.fillStyle = "white";
+    resetBall();
 
     var blocks = [];
 
@@ -74,7 +74,9 @@ window.addEventListener("load", function() {
     function resetBall(){
         ball.area.moveTo(initBallPos.copy());
         ballSpeed = ballInitSpeed;
-        ball.rotation = 180;
+        var offset = randf(5,20);
+        if(randi(0,1) === 1) offset *= -1;
+        ball.rotation = 180 + offset;
     }
 
     var lastBounce = 0;
@@ -89,6 +91,7 @@ window.addEventListener("load", function() {
 
     function bounce(rect){
         if(!preBounce()) return;
+        /*
 
         const cX = rect.getX() + rect.area.getWidth() / 2;
         const offsetFromCenter = ball.getX() - cX;
@@ -98,7 +101,11 @@ window.addEventListener("load", function() {
         ball.moveLocalXY(ball.area.getWidth() * 1.5, 0);
         ballSpeed *= ballAccel;
         ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
-        ball.moveLocalXY(-ball.area.getWidth() * 1.5, 0);
+        ball.moveLocalXY(-ball.area.getWidth() * 1.5, 0);*/
+
+        if(ball.rotation === 0) ball.rotation += 1;
+        ball.rotation = 180 - ball.rotation;
+        ball.moveLocalXY(0, -ball.area.getHeight());
     }
 
     function touchMove(e){
