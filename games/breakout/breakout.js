@@ -90,15 +90,15 @@ window.addEventListener("load", function() {
     function bounce(rect){
         if(!preBounce()) return;
 
-        const cY = rect.getY() + rect.area.getHeight() / 2;
-        const offsetFromCenter = ball.getY() - cY;
-        const normalizedOffset = offsetFromCenter / (rect.area.getHeight() / 2);
+        const cX = rect.getX() + rect.area.getWidth() / 2;
+        const offsetFromCenter = ball.getX() - cX;
+        const normalizedOffset = offsetFromCenter / (rect.area.getWidth() / 2);
         const bounceAngle = normalizedOffset * 45;
         ball.rotation = -180 - ball.rotation + 2 * bounceAngle;
-        ball.moveLocalXY(0,ball.area.getHeight() * 1.5);
+        ball.moveLocalXY(ball.area.getWidth() * 1.5, 0);
         ballSpeed *= ballAccel;
         ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
-        ball.moveLocalXY(0,-ball.area.getHeight() * 1.5);
+        ball.moveLocalXY(-ball.area.getWidth() * 1.5, 0);
     }
 
     function touchMove(e){
@@ -170,5 +170,5 @@ window.addEventListener("load", function() {
 
         window.addEventListener("touchmove", touchMove);
         window.addEventListener("touchstart", touchMove);
-    });
+    }, 100);
 });
