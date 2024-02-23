@@ -44,12 +44,11 @@
     height: 217px;
 }
 
-#gameover {
-    margin-top: 30%;
-}
 
 #gameover h1 {
+    height: 100%;
     color: red;
+    -webkit-text-stroke: 1px darkred;
 }
 
 #bottom-overlay {
