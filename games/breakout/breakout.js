@@ -4,6 +4,12 @@ window.addEventListener("load", function() {
     const hearts = document.getElementById("lives").children;
     var lives = hearts.length;
 
+    const overlay = document.getElementById("overlay");
+    const overlayTitle = document.getElementById("title");
+    const overlayGameover = document.getElementById("gameover");
+
+    overlay.targetOpaticy = 1;
+
     const plrY = 390;
     const plrH = 5;
     const plrW = 30;
@@ -20,6 +26,8 @@ window.addEventListener("load", function() {
     const initBallPos = ball.area.startVec.copy();
     ball.fillStyle = "white";
     resetBall();
+
+    var active = false;
 
     var blocks = [];
 
@@ -58,6 +66,10 @@ window.addEventListener("load", function() {
             }
         }
     }
+
+    function showOverlay() { overlay.targetOpaticy = 1; }
+    function hideOverlay() { overlay.targetOpaticy = 0; }
+
 
     function updateHearts() {
         for(var i=0; i<hearts.length; i++) {
@@ -109,6 +121,7 @@ window.addEventListener("load", function() {
     }
 
     function touchMove(e){
+        if(!active) return;
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
         const touch = e.touches[0];
@@ -119,12 +132,21 @@ window.addEventListener("load", function() {
     }
 
     function mouseMove(e){
+        if(!active) return;
         if(e.buttons === 0) return;
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
         const x = (e.clientX - rect.left) * scaleX;
 
         player.area.moveTo(new Vector2(x, plrY));
+    }
+
+    function start() {
+        if(!active) {
+            hideOverlay();
+            resetBall();
+            active = true;
+        }
     }
 
     createBlocks(8,5);
@@ -153,14 +175,20 @@ window.addEventListener("load", function() {
             } else {
                 ball.rotation = -ball.rotation;
             }
-            ballSpeed *= ballAccel;
-            ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
+            if(active) {
+                ballSpeed *= ballAccel;
+                ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
+            }
         }
 
         if(bY >= canvas.height) {
-            lives -= 1;
-            updateHearts();
-            resetBall();
+            if(active) {
+                lives -= 1;
+                updateHearts();
+                resetBall();
+            } else {
+                ball.rotation = 180 -  ball.rotation;
+            }
         }
 
         if(bY > 100) {
@@ -174,17 +202,26 @@ window.addEventListener("load", function() {
 
             if(bY < 100 && ball.area.isTouching(block.area)) {
                 bounce(block);
-                blocks.splice(i,1);
-                i--;
+                if(active) {
+                    blocks.splice(i,1);
+                    i--;
+                }
             }
 
             block.render(canvas);
         }
 
-        if(isBtnPressed("left") && player.getX() > 0) player.area.offsetXY(-plrButtonSpeed * delta, 0)
-        if(isBtnPressed("right") && (player.getX() + plrW ) < canvas.width) player.area.offsetXY(plrButtonSpeed * delta, 0)
 
+        overlay.style.opacity = lerp(overlay.style.opacity, overlay.targetOpaticy, 0.01 * delta);
+
+        if(active) {
+            if(isBtnPressed("left") && player.getX() > 0) player.area.offsetXY(-plrButtonSpeed * delta, 0)
+            if(isBtnPressed("right") && (player.getX() + plrW ) < canvas.width) player.area.offsetXY(plrButtonSpeed * delta, 0)
+        }
     });
+
+    onBtnJustPressed("a", start);
+    document.getElementById("btn-start").addEventListener("click", start);
 
     window.addEventListener("touchmove", touchMove);
     window.addEventListener("touchstart", touchMove);
