@@ -101,7 +101,7 @@ window.addEventListener("load", function() {
         return true;
     }
 
-    function bounce(rect){
+    function bounce(){
         if(!preBounce()) return;
         /*
 
@@ -204,7 +204,7 @@ window.addEventListener("load", function() {
 
         if(bY > 100) {
             if(ball.area.isTouching(player.area) || ball.area.isInTheWay(player.area, new Vector2(0, currentSpeed), ball.rotation, 6)) {
-                bounce(player);
+                bounce();
             }
         }
 
@@ -212,7 +212,7 @@ window.addEventListener("load", function() {
             const block = blocks[i];
 
             if(bY < 100 && ball.area.isTouching(block.area)) {
-                bounce(block);
+                bounce();
                 if(active) {
                     blocks.splice(i,1);
                     i--;
