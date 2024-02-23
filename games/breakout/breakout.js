@@ -45,7 +45,7 @@ window.addEventListener("load", function() {
 
     function createBlocks(columns, rows) {
         blocks = [];
-        const padding = 2;
+        const padding = 5;
         const spacing = 4;
 
         const totalSpacing = spacing * (columns - 1);
