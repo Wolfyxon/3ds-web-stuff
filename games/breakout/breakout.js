@@ -144,6 +144,7 @@ window.addEventListener("load", function() {
     function start() {
         if(!active) {
             lives = hearts.length;
+            updateHearts();
             hideOverlay();
             resetBall();
             active = true;
