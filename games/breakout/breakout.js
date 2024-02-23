@@ -13,7 +13,7 @@ window.addEventListener("load", function() {
 
     const ballSize = 4;
     const ballAccel = 1.02;
-    const ballInitSpeed = 0.15;
+    const ballInitSpeed = 0.1;
     const ballMaxSpeed = 0.5;
     var ballSpeed = ballInitSpeed;
     const ball = new Rect2D(new Vector2(canvas.width/2 - ballSize/2,canvas.height/2 - 100 - ballSize/2),ballSize, ballSize);
