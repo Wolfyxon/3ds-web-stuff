@@ -36,6 +36,10 @@
     pointer-events: none;
 }
 
+#overlay button {
+    pointer-events: all;
+}
+
 #top-overlay {
     height: 217px;
 }
