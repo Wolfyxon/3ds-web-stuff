@@ -104,10 +104,8 @@ window.addEventListener("load", function() {
     function touchMove(e){
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
-        //const scaleY = canvas.height / rect.height;
         const touch = e.touches[0];
         const x = (touch.clientX - rect.left) * scaleX;
-        //const y = (touch.clientY - rect.top) * scaleY;
 
         e.preventDefault();
         player.area.moveTo(new Vector2(x, plrY));
@@ -117,9 +115,7 @@ window.addEventListener("load", function() {
         if(e.buttons === 0) return;
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
-        //const scaleY = canvas.height / rect.height;
         const x = (e.clientX - rect.left) * scaleX;
-        //const y = (e.clientY - rect.top) * scaleY;
 
         player.area.moveTo(new Vector2(x, plrY));
     }
