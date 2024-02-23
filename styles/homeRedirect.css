@@ -1,0 +1,16 @@
+#screens > * {
+    text-align: center;
+}
+
+#main-txt {
+    margin-top: 25%;
+}
+
+a {
+    margin-top: 35%;
+    display: block;
+    text-decoration: none;
+    border: 1px blue solid;
+    border-radius: 20px;
+    padding: 2%;
+}
