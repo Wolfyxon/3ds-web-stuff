@@ -61,7 +61,7 @@ window.addEventListener("load", function() {
 
     function updateHearts() {
         for(var i=0; i<hearts.length; i++) {
-            const heart = hearts[i];
+            const heart = hearts[hearts.length - 1 - i];
             if(i >= lives) {
                 heart.src = "img/noLife.png";
             } else {
