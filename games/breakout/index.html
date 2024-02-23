@@ -16,6 +16,21 @@
 <body>
     <div id="screens">
         <canvas class="dual-screen" id="canv"></canvas>
+        <div class="dual-screen" id="overlay" style="background-color: rgba(0,0,0, 0.5)">
+            <div id="top-overlay">
+                <div id="title">
+                    <h1>Breakout</h1>
+                    <h3>A clone of the Atari Breakout</h3>
+                </div>
+                <div id="gameover" style="display: none">
+                    <h1>GAME OVER</h1>
+                </div>
+            </div>
+            <div id="bottom-overlay">
+                <p id="tip">Destroy all the blocks and don't let the ball fall.</p>
+                <button id="btn-start">Start &#xE000;</button>
+            </div>
+        </div>
         <div id="top-screen">
             <div id="lives">
                 <img src="img/life.png">

@@ -30,3 +30,28 @@
     padding: 10% 0;
     margin-left: 35%;
 }
+
+#overlay {
+    text-align: center;
+    pointer-events: none;
+}
+
+#top-overlay {
+    height: 217px;
+}
+
+#gameover {
+    margin-top: 30%;
+}
+
+#gameover h1 {
+    color: red;
+}
+
+#bottom-overlay {
+    padding: 15% 0;
+}
+
+#tip {
+    font-size: 70%;
+}
