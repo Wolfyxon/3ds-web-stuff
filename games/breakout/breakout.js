@@ -168,7 +168,7 @@ window.addEventListener("load", function() {
         if(isBtnPressed("left") && player.getX() > 0) player.area.offsetXY(-plrButtonSpeed * delta, 0)
         if(isBtnPressed("right") && (player.getX() + plrW ) < canvas.width) player.area.offsetXY(plrButtonSpeed * delta, 0)
 
-    }, 100);
+    });
 
     window.addEventListener("touchmove", touchMove);
     window.addEventListener("touchstart", touchMove);
