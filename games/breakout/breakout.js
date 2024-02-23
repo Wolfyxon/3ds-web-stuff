@@ -13,8 +13,9 @@ window.addEventListener("load", function() {
     const plrY = 390;
     const plrH = 5;
     const plrW = 30;
+    const plrInitPos = new Vector2(canvas.width/2 - plrW/2, plrY);
     const plrButtonSpeed = 0.3;
-    const player = new Rect2D(new Vector2(canvas.width/2 - plrW/2, plrY), plrW, plrH);
+    const player = new Rect2D(plrInitPos.copy(), plrW, plrH);
     player.fillStyle = "#8C7BFF";
 
     const ballSize = 4;
@@ -147,6 +148,7 @@ window.addEventListener("load", function() {
             updateHearts();
             hideOverlay();
             resetBall();
+            player.area.moveTo(plrInitPos.copy());
             active = true;
         }
     }
