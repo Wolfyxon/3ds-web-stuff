@@ -113,6 +113,17 @@ window.addEventListener("load", function() {
         player.area.moveTo(new Vector2(x, plrY));
     }
 
+    function mouseMove(e){
+        if(e.buttons === 0) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        //const scaleY = canvas.height / rect.height;
+        const x = (e.clientX - rect.left) * scaleX;
+        //const y = (e.clientY - rect.top) * scaleY;
+
+        player.area.moveTo(new Vector2(x, plrY));
+    }
+
     createBlocks(8,5);
 
     var prevFrameTime = Date.now();
@@ -172,4 +183,6 @@ window.addEventListener("load", function() {
 
     window.addEventListener("touchmove", touchMove);
     window.addEventListener("touchstart", touchMove);
+    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousedown", mouseMove);
 });
