@@ -19,7 +19,7 @@ window.addEventListener("load", function() {
     player.fillStyle = "#8C7BFF";
 
     const ballSize = 4;
-    const ballAccel = 1.05;
+    const ballAccel = 1.02;
     const ballInitSpeed = 0.15;
     const ballMaxSpeed = 0.5;
     var ballSpeed = ballInitSpeed;
