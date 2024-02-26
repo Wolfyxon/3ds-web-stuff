@@ -49,7 +49,7 @@ window.addEventListener("load", function() {
         const spacing = 4;
 
         const totalSpacing = spacing * (columns - 1);
-        const w = (canvas.width - totalSpacing) / columns - padding/2;
+        const w = clamp((canvas.width - totalSpacing) / columns - padding/2, 0, 60);
         const h = 8;
 
         for(var row=0; row < rows; row++) {
