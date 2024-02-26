@@ -173,9 +173,7 @@ window.addEventListener("load", function() {
 
         if( (bY <= 0 || bX <= 0 || bX >= canvas.width) && preBounce()) {
             if(bY <= 0) {
-                // The ball refuses to properly bounce from the top the screen and starts glitching outside the screen
-                ball.rotation += 180; // Temporary fix!
-                // TODO: Find a universal calculation
+                ball.rotation = 180 - ball.rotation;
             } else {
                 ball.rotation = -ball.rotation;
             }
