@@ -119,6 +119,11 @@ window.addEventListener("load", function() {
         if(ball.rotation === 0) ball.rotation += 1;
         ball.rotation = 180 - ball.rotation;
         ball.moveLocalXY(0, -ball.area.getHeight());
+
+        if(active) {
+            ballSpeed *= ballAccel;
+            ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
+        }
     }
 
     function touchMove(e){
