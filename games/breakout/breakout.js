@@ -104,17 +104,6 @@ window.addEventListener("load", function() {
 
     function bounce(){
         if(!preBounce()) return;
-        /*
-
-        const cX = rect.getX() + rect.area.getWidth() / 2;
-        const offsetFromCenter = ball.getX() - cX;
-        const normalizedOffset = offsetFromCenter / (rect.area.getWidth() / 2);
-        const bounceAngle = normalizedOffset * 45;
-        ball.rotation = -180 - ball.rotation + 2 * bounceAngle;
-        ball.moveLocalXY(ball.area.getWidth() * 1.5, 0);
-        ballSpeed *= ballAccel;
-        ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
-        ball.moveLocalXY(-ball.area.getWidth() * 1.5, 0);*/
 
         if(ball.rotation === 0) ball.rotation += 1;
         ball.rotation = 180 - ball.rotation;
