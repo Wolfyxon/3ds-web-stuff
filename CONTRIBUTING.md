@@ -23,7 +23,8 @@ Most notable issues:
 - Only **D-pad** and **A** buttons are usable. (Other keys have a built in functionality in the browser. They can be detected but can't be disabled)
 - Lack of class functionality. Using `class` will result in a reserved keyword error
 
-For more details visit https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs
+For more details visit https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs  
+Also see https://developer.mozilla.org/ whenever you need to check if a property or a function is supported on the 3DS, check the compatibility for Safari and the year it was added. Features up to 2015 should work.
 
 ### Rules
 - Your code must work on both PC/mobile browser and the 3DS browser.
@@ -31,4 +32,23 @@ For more details visit https://en-americas-support.nintendo.com/app/answers/deta
 - Don't make redundant code, the site has already built in libraries to handle things like linear interpolation, animations and easy gamepad input detection.
 - Avoid using external libraries as they are often not compatible with old browsers.
 - Controls have to be indicated with the 3DS system font characters. [Unicode table](https://www.3dbrew.org/wiki/System_Font#Unicode_Private_Use_characters)
-- All pages have to be built on top of [template.html](https://github.com/Wolfyxon/3ds-web-stuff/blob/main/template.html)
+- All pages have to be built on top of [template.html](https://github.com/Wolfyxon/3ds-web-stuff/blob/main/template.html), unless they have no visual functionality (example: redirect page)
+- Follow this file structure:
+```
+games
+|_ gameName
+  |_ gameName.js
+  |_ gameName.css
+  |_ index.html
+
+other
+|_ appName
+  |_ appName.js
+  |_ appName.css
+  |_ index.html
+```
+
+## Bugs and suggestions
+If you found a bug or want to suggest something, go to [issues](https://github.com/Wolfyxon/3ds-web-stuff/issues/).
+
+If you are reporting a bug, fully explain it. *Doesn't work*, *Broken*, *Glitchy*, *Buggy* are not valid bug reports.
