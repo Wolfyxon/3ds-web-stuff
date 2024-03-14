@@ -131,7 +131,6 @@ window.addEventListener('load', function() {
 
         // Reset if first click is a bomb
         if (first && cell.textContent === 'o') {
-            alert('First click was a bomb');
             generate(column, row);
             cell = field.rows[row].cells[column];
         }
