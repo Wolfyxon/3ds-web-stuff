@@ -1,17 +1,40 @@
 /* Originally made by magiczocker10 */
 
-#top-screen, #bottom-screen {
-    background-color: #1F4D93;
-}
-#top-screen h2, #bottom-screen {
+#top-screen  {
+    color: white;
+    background-color: #51c045;
     text-align: center;
 }
+
+#bottom-screen {
+    background-color: #71ff61;
+    text-align: center;
+}
+
+#top-screen h2 {
+    background-color: #3d3d3d;
+    padding: 4%;
+    width: 60%;
+    border: white solid 1px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#stats {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 #field {
     border-top: #808080 2px solid;
     border-left: #808080 2px solid;
     border-right: #fff 2px solid;
     border-bottom: #fff 2px solid;
     border-spacing: 0;
+    border-radius: 5px;
     margin-left: 20%;
     margin-top: 5%;
 }
