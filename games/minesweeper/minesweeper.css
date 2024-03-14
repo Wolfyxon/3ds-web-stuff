@@ -65,3 +65,9 @@
     height: 18px;
     width: 18px;
 }
+
+.mine.open {
+    font-size: 0;
+    background-size: 100%;
+    background-image: url("img/bomb.png");
+}
