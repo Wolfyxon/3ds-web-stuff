@@ -52,9 +52,12 @@ Inspired by: http://three-ds.atspace.com/ (author unknown)
 
 Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs for helping with adapting to this old browser.
 
-Thanks to Trickii for amazing game ideas and bug reports.
-
 **This project is not affiliated with Nintendo, and it's only community driven.**
+
+### People
+- @magiczocker10 : huge code improvements
+- @Trickygamers : amazing game ideas and detailed bug reports
+- @iHeolity : testing
 
 ## TODO
 Besides, from planned games:
