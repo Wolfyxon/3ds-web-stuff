@@ -55,6 +55,7 @@ Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.c
 **This project is not affiliated with Nintendo, and it's only community driven.**
 
 ### People
+- @Wolfyxon : programming, site design, sprites
 - @magiczocker10 : huge code improvements
 - @Trickygamers : amazing game ideas and detailed bug reports
 - @iHeolity : testing
