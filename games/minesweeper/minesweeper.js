@@ -53,7 +53,7 @@ window.addEventListener('load', function() {
 
         /* place bombs */
         for (var i=0; i<mines; i++) {
-            var index = getRandomInt(cells.length);
+            const index = getRandomInt(cells.length);
             cells[index].textContent = 'o';
             cells[index].className += ' mine';
             cells.splice(index, 1);
@@ -83,8 +83,6 @@ window.addEventListener('load', function() {
     }
 
     function open(x, y) {
-        if(!x || !y) return;
-
         const curType = field.rows[y].cells[x].textContent;
         field.rows[y].cells[x].className += ' open';
         if (curType !== '') return;
@@ -126,7 +124,7 @@ window.addEventListener('load', function() {
     timeout = setTimeout(updateTime, 1000);
 
     field.addEventListener('click', function(event) {
-        if (won || lost) return;
+        if (won || lost || event.target.nodeName !== 'TD') return;
         var cell = event.target;
         const row = cell.parentElement.rowIndex,
             column = cell.cellIndex;
