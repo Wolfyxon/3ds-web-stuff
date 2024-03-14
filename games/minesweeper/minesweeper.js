@@ -83,6 +83,8 @@ window.addEventListener('load', function() {
     }
 
     function open(x, y) {
+        if(!x || !y) return;
+
         const curType = field.rows[y].cells[x].textContent;
         field.rows[y].cells[x].className += ' open';
         if (curType !== '') return;
