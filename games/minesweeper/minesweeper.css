@@ -1,0 +1,43 @@
+/* Originally made by magiczocker10 */
+
+#top-screen, #bottom-screen {
+    background-color: #1F4D93;
+}
+#top-screen h2, #bottom-screen {
+    text-align: center;
+}
+#field {
+    border-top: #808080 2px solid;
+    border-left: #808080 2px solid;
+    border-right: #fff 2px solid;
+    border-bottom: #fff 2px solid;
+    border-spacing: 0;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+#field td {
+    background-color: #C0C0C0;
+    border-bottom: #808080 2px solid;
+    border-left: #fff 2px solid;
+    border-right: #808080 2px solid;
+    border-top: #fff 2px solid;
+    font-weight: bold;
+    height: 16px;
+    line-height: 1;
+    user-select: none;
+    width: 16px;
+}
+#field td:not(.open) {
+    color: transparent !important;
+    cursor: pointer;
+}
+#field td.open {
+    border: #909090 1px solid;
+    height: 18px;
+    width: 18px;
+}
+#field td[data-flag="1"]::before {
+    content: 'X';
+    height: 18px;
+    width: 18px;
+}
