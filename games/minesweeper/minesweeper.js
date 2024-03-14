@@ -4,6 +4,7 @@ window.addEventListener('load', function() {
     const field = document.getElementById('field'),
         minesDisplay = document.getElementById('mines'),
         timeDisplay = document.getElementById('time'),
+        restartMsg = document.getElementById('restart-msg'),
         width = 9,
         height = 9,
         mines = 10,
@@ -108,6 +109,7 @@ window.addEventListener('load', function() {
         time = 0;
         minesDisplay.textContent = mines;
         timeDisplay.textContent = '0 sec';
+        restartMsg.style.visibility = '';
         generate();
         field.style.display = '';
     }
@@ -140,6 +142,7 @@ window.addEventListener('load', function() {
         cell.className += ' open';
         if (cell.textContent === 'o') {
             alert('You lost!');
+            restartMsg.style.visibility = "visible";
             cell.style.backgroundColor = '#EA3323';
             cell.style.borderColor = '#CD372E';
             lost = true;
@@ -156,4 +159,8 @@ window.addEventListener('load', function() {
             won = true;
         }
     });
+
+    onBtnJustPressed("a", function() {
+        if(lost) reset();
+    })
 })
