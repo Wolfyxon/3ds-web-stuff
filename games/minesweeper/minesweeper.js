@@ -2,7 +2,6 @@
 
 window.addEventListener('load', function() {
     const button = document.getElementById('new'),
-        input = document.getElementById('input'),
         field = document.getElementById('field'),
         minesDisplay = document.getElementById('mines'),
         timeDisplay = document.getElementById('time'),
