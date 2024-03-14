@@ -71,3 +71,8 @@
     background-size: 100%;
     background-image: url("img/bomb.png");
 }
+
+#restart-msg {
+    color: red;
+    visibility: hidden;
+}
