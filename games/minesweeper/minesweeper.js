@@ -143,7 +143,6 @@ window.addEventListener('load', function() {
         first = false;
         cell.className += ' open';
         if (cell.textContent === 'o') {
-            alert('You lost!');
             restartMsg.style.visibility = "visible";
             cell.style.backgroundColor = '#EA3323';
             cell.style.borderColor = '#CD372E';
