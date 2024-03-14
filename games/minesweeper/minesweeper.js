@@ -111,6 +111,8 @@ window.addEventListener('load', function() {
         minesDisplay.textContent = mines;
         timeDisplay.textContent = '0 sec';
         generate();
+        this.style.display = 'none';
+        field.style.display = '';
     }
 
     function updateTime() {
@@ -121,11 +123,7 @@ window.addEventListener('load', function() {
     }
     timeout = setTimeout(updateTime, 1000);
 
-    button.addEventListener('click', function() {
-        reset();
-        this.style.display = 'none';
-        field.style.display = '';
-    });
+    button.addEventListener('click', reset);
 
     field.addEventListener('click', function(event) {
         if (won || lost) return;
