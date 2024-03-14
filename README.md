@@ -18,6 +18,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Pigeon](https://wolfyxon.github.io/3ds-web-stuff/games/pigeon) - fly between pipes avoiding them. Based on Flappy Bird
 - [ ] [Jet Fighter](https://wolfyxon.github.io/3ds-web-stuff/games/jetfighter) - Shoot em up game involving jets utilizing the both screens.
 - [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
+- [ ] [Minesweeper](https://wolfyxon.github.io/3ds-web-stuff/games/minesweeper) - Uncover tiles and watch out for the mines!
 - [ ] Breakout - a Atari Breakout clone
 - Intercepter - take down the incoming missiles. Based on Missile Command
 - Clicker - a Cookie Clicker clone
