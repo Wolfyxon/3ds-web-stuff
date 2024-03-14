@@ -1,8 +1,7 @@
 // Originally made by magiczocker10
 
 window.addEventListener('load', function() {
-    const button = document.getElementById('new'),
-        field = document.getElementById('field'),
+    const field = document.getElementById('field'),
         minesDisplay = document.getElementById('mines'),
         timeDisplay = document.getElementById('time'),
         width = 9,
@@ -110,9 +109,9 @@ window.addEventListener('load', function() {
         minesDisplay.textContent = mines;
         timeDisplay.textContent = '0 sec';
         generate();
-        this.style.display = 'none';
         field.style.display = '';
     }
+    reset();
 
     function updateTime() {
         if (first || won || lost) return setTimeout(updateTime, 1000);
@@ -121,8 +120,6 @@ window.addEventListener('load', function() {
         timeout = setTimeout(updateTime, 1000);
     }
     timeout = setTimeout(updateTime, 1000);
-
-    button.addEventListener('click', reset);
 
     field.addEventListener('click', function(event) {
         if (won || lost) return;
