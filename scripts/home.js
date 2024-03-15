@@ -1,147 +1,67 @@
-window.addEventListener("load",function (){
+window.addEventListener('load', function() {
 
-    const petImg = document.getElementById("pet");
+	var id = 0,
+		lastKeyPress = 0,
+		prevFrameTime = Date.now();
+	const petImg = document.getElementById('pet'),
+		tabBtns = document.getElementById('tab-btns'),
+		tabs = document.getElementById('tabs'),
+		petRoot = 'img/pets/',
+		animations = [ // name, delay, spacing, frames
+			[ 'pigeon', 3, 0.2, [1, 2, 1] ],
+			[ 'maxwell', 0, 0.1, [1, 2, 3, 2] ],
+			[ 'chicken', 3, 0.1, [1, 2, 3, 2, 3, 2, 1] ],
+			[ 'cat', 0, 0.4, [1, 0, 2, 3, 2] ]
+		],
+		aName = pickRandom(animations),
+		anim = new Animation(petImg);
 
-    const petRoot = "img/pets/";
+	anim.looped = true;
+	anim.loopDelay = aName[1];
+	anim.spacing = aName[2];
+	for (var f=0; f<aName[3].length; f++) {
+		anim.addKeyframe('src', petRoot + aName[0] + '/' + aName[0] + aName[3][f] + '.png');		
+	}
+	anim.play();
 
-    const animPigeon = new Animation(petImg);
-    animPigeon.looped = true;
-    animPigeon.loopDelay = 3;
-    animPigeon.spacing = 0.2;
-    animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon1.png");
-    animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon2.png");
-    animPigeon.addKeyframe("src", petRoot+"pigeon/pigeon1.png");
+	function setTab(newId) {
+		tabs.children[id].style.display = 'none';
+		tabBtns.children[id].style.backgroundColor = '#653198';
+		id = newId;
+		tabs.children[id].style.display = '';
+		tabBtns.children[id].style.backgroundColor = 'darkred';
+	}
 
-    const animMaxwell = new Animation(petImg);
-    animMaxwell.looped = true;
-    animMaxwell.spacing = 0.1;
-    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell1.png");
-    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell2.png",0.1);
-    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell3.png");
-    animMaxwell.addKeyframe("src", petRoot+"maxwell/maxwell2.png");
+	for (var t=0; t<tabs.children.length; t++) {
+		tabs.children[t].style.display = 'none';
+	}
+	setTab(id);
 
-    const animChicken = new Animation(petImg);
-    animChicken.looped = true;
-    animChicken.spacing = 0.1;
-    animChicken.loopDelay = 3;
-    animChicken.addKeyframe("src", petRoot+"chicken/chicken1.png");
-    animChicken.addKeyframe("src", petRoot+"chicken/chicken2.png");
-    animChicken.addKeyframe("src", petRoot+"chicken/chicken3.png");
-    animChicken.addKeyframe("src", petRoot+"chicken/chicken2.png");
-    animChicken.addKeyframe("src", petRoot+"chicken/chicken3.png");
-    animChicken.addKeyframe("src", petRoot+"chicken/chicken2.png");
-    animChicken.addKeyframe("src", petRoot+"chicken/chicken1.png");
+	tabBtns.addEventListener('click', function(e) {
+		if (e.target.nodeName === 'BUTTON') setTab(e.target.getAttribute('data-id'));
+	});
 
-    const animCat = new Animation(petImg);
-    animCat.looped = true;
-    animCat.spacing = 0.4;
-    animCat.addKeyframe("src", petRoot+"cat/cat1.png");
-    animCat.addKeyframe("src", petRoot+"cat/cat0.png");
-    animCat.addKeyframe("src", petRoot+"cat/cat2.png");
-    animCat.addKeyframe("src", petRoot+"cat/cat3.png");
-    animCat.addKeyframe("src", petRoot+"cat/cat2.png");
+	setInterval(function() {
+		const delta = (Date.now() - prevFrameTime);
+		prevFrameTime = Date.now();
+		const scrollAmt = 0.5;
+		if (isBtnPressed('down')) tabs.children[id].scrollTop += scrollAmt * delta;
+		if (isBtnPressed('up')) tabs.children[id].scrollTop -= scrollAmt * delta;
+	});
 
+	window.addEventListener('keydown', function(e) {
+		const now = Date.now();
+		if (now < lastKeyPress + 200) return;
+		lastKeyPress = now;
 
-    const petAnimations = [
-        animPigeon,
-        animMaxwell,
-        animChicken,
-        animCat,
-    ]
-
-    pickRandom(petAnimations).play();
-
-    const tabBtns = document.getElementById("tab-btns")
-    const tabs = document.getElementById("tabs")
-    var tabIdx = 0;
-    var currentTab = null;
-
-    function setTab(tab){
-        for(var i=0;i<tabs.children.length;i++){
-            if(tabs.children[i] === tab) tabIdx = i;
-            tabs.children[i].style.display = "none"
-        }
-        for(var i=0;i<tabBtns.children.length;i++){
-            //tabBtns.children[i].targetColor = "#653198"
-            tabBtns.children[i].style.backgroundColor = "#653198"
-
-        }
-        tab.style.display = ""
-        currentTab = tab
-    }
-
-    function setTabByName(name){
-        setTab(document.getElementById("tab-"+name.toLowerCase()))
-    }
-
-    function updateTabBtn(){
-        //tabBtns.children[tabIdx].targetColor = "darkred"
-        tabBtns.children[tabIdx].style.backgroundColor = "darkred"
-    }
-
-    function nextTab(){
-        if(currentTab === null) return;
-        if(tabIdx >= tabs.children.length-1) tabIdx = 0;
-        else tabIdx++;
-        setTab(tabs.children[tabIdx])
-        updateTabBtn()
-    }
-    function prevTab(){
-        if(currentTab === null) return;
-        if(tabIdx <= 0) tabIdx = tabs.children.length-1;
-        else tabIdx--;
-        setTab(tabs.children[tabIdx])
-        updateTabBtn()
-    }
-
-    function registerTabBtn(btn){
-        btn.addEventListener("click",function(){
-            setTabByName(btn.innerHTML.toLowerCase())
-            //btn.targetColor = "darkred";
-            btn.style.backgroundColor = "darkred";
-        })/*
-        setInterval(function (){
-            const col = btn.targetColor;
-            const current = btn.style.backgroundColor || "#653198"
-            if(col) btn.style.backgroundColor = lerpColor(current,col,0.2)
-        })*/
-    }
-
-    for(var i=0;i<tabBtns.children.length;i++){
-        registerTabBtn(tabBtns.children[i])
-    }
-
-    setTab(tabs.children[tabIdx])
-    updateTabBtn()
-
-    var prevFrameTime = Date.now();
-    setInterval(function (){
-        const delta = (Date.now() - prevFrameTime);
-        prevFrameTime = Date.now();
-        if(currentTab){
-            const scrollAmt = 0.5;
-            if(isBtnPressed("down")){
-                currentTab.scrollTop += scrollAmt * delta;
-            } else if(isBtnPressed("up")){
-                currentTab.scrollTop -= scrollAmt * delta;
-            }
-        }
-        /*
-        if(isBtnJustPressed("left")){
-            prevTab()
-        }
-        else if(isBtnJustPressed("right")){
-            nextTab()
-        }*/
-    })
-
-    var lastKeyPress = 0;
-    window.addEventListener("keydown", function (e){
-        const now = Date.now();
-        if(now < lastKeyPress + 200) return;
-        lastKeyPress = now;
-
-        if(e.keyCode === 39) nextTab();
-        if(e.keyCode === 37) prevTab();
-    })
-})
+		var newId = id;
+		if (e.keyCode === 39) {
+			newId++;
+			if (newId > tabs.children.length-1) newId = 0;
+		} else if (e.keyCode === 37) {
+			newId--;
+			if (newId < 0) newId = tabs.children.length-1;
+		}
+		setTab(newId);
+	});
+});
