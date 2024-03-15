@@ -47,6 +47,7 @@ other
   |_ appName.css
   |_ index.html
 ```
+- Avoid using absolute paths such as `/styles/global.css` so the site can run without a server (ex. when just opening HTML file locally in your browser). Use `../../styles/global.css` instead. Absolute paths should only be used if the same page can be accessed from multiple URLs (such as the 404 page).
 
 ## Bugs and suggestions
 If you found a bug or want to suggest something, go to [issues](https://github.com/Wolfyxon/3ds-web-stuff/issues/).
