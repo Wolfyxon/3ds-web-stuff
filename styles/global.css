@@ -10,6 +10,10 @@ img, canvas { /* Disable antialiasing to match the 3DS which doesn't have antial
     image-rendering: pixelated;
 }
 
+article {
+    display: block;
+}
+
 #screens {
     display: inline-block;
 }
