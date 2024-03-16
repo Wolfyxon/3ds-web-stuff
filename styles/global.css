@@ -46,3 +46,7 @@ img, canvas { /* Disable antialiasing to match the 3DS which doesn't have antial
     color: #808080;
     font-size: 90%;
 }
+
+.animated > *:not([data-animated="1"]) {
+	display: none;
+}

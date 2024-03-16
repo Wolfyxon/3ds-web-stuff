@@ -16,9 +16,9 @@ window.addEventListener('load', function() {
 		aName = pickRandom(animations),
 		anim = new Animation(petImg);
 
-	anim.looped = true;
-	anim.loopDelay = aName[1];
-	anim.spacing = aName[2];
+	anim.setLooped(true);
+	anim.setDelay(aName[1]);
+	anim.setSpacing(aName[2]);
 	for (var f=0; f<aName[3].length; f++) {
 		anim.addKeyframe('src', petRoot + aName[0] + '/' + aName[0] + aName[3][f] + '.png');		
 	}

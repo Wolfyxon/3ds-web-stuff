@@ -11,7 +11,7 @@ a {
     position: relative;
 }
 
-#pet {
+#pet, #pet>img {
     position: absolute;
     bottom: 0;
     left: 0;

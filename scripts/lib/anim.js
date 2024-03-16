@@ -1,86 +1,64 @@
-/***
- * Creates an Animation class
- * @param {Object} element Object to apply animation to
- * @return {Object}
- * @constructor
- */
-function Animation(element){
-    var anim = {
-        looped: true,
-        speedScale: 1,
-        spacing: 1,
-        loopDelay: 0,
-        playing: false,
-        keyframes: []
-    };
+function advanceFrame(ele) {
+	var curFrame = ele.querySelector( '[data-animated="1"]' );
+	if (curFrame) curFrame.removeAttribute('data-animated');
+	var nextFrame = curFrame && curFrame.nextElementSibling || ele.firstElementChild;
+	nextFrame.setAttribute('data-animated', '1');
+	return nextFrame === ele.lastElementChild;
+}
+function stopAnim(v) {
+	clearInterval(v);
+}
+function startAnim(data) {
+	return setInterval(function() {
+		if (!data.playing) return;
+		var last = advanceFrame(data.element);
+		if (!data.looped && last) data.playing = false;
+		if (last && data.loopDelay > 0) {
+			data.playing = false;
+			setTimeout(function() {
+				data.playing = true;
+			}, data.loopDelay * 1000);
+		}
+	}, data.spacing * 1000)
+}
 
-    var loopItv = null;
+Animation = function(element){
+	this.element = element;
+	this.looped = false;
+	this.spacing = 1;
+	this.loopDelay = 0;
+	this.playing = false;
+    this.loopItv = startAnim(this);
+};
+Animation.prototype = {
+	addKeyframe: function(property, value, timeOffset) {
+		this.element.innerHTML += '<img src="' + value + '" alt=" ">';
+	},
 
-    /***
-     * Adds a step to the animation
-     * @param {String} property Name of the property
-     * @param value Value of the property
-     * @param {Number} [timeOffset=0] Extra delay for the keyframe. Negative values are supported.
-     */
-    anim.addKeyframe = function(property, value, timeOffset){
-        anim.keyframes.push({
-            property: property,
-            value: value,
-            timeOffset: timeOffset || 0
-        })
-    }
+	setDelay: function(v) {
+		if (typeof(v) !== 'number') return;
+		this.loopDelay = v;
+	},
 
-    /***
-     * Calculates the duration in second for the animation to play
-     * @return {number}
-     */
-    anim.getDuration = function(){
-        var dur = 0;
-        for(var i=0; i<anim.keyframes.length; i++) {
-            const frame = anim.keyframes[i];
-            dur += (anim.spacing + frame.timeOffset) * (1 / anim.speedScale);
-        }
+	setLooped: function(v) {
+		if (typeof(v) !== 'boolean') return;
+		this.looped = v;
+	},
 
-        return dur;
-    }
+	setSpacing: function(v) {
+		if (typeof(v) !== 'number') return;
+		stopAnim(this.loopItv);
+		this.spacing = v;
+		startAnim(this);
+	},
 
-    function scheduleSet(i){
-        const frame = anim.keyframes[i];
-        setTimeout(function(){
-            element[frame.property] = frame.value
-        },( (anim.spacing + frame.timeOffset) * (1 / anim.speedScale) ) * 1000 * i );
-    }
+	play: function() {
+		this.playing = true;
+	},
 
-    /***
-     * Plays the animation once
-     */
-    anim.playOnce = function(){
-        anim.playing = true;
-        if(anim.speedScale === 0) return;
-
-        for(var i=0; i<anim.keyframes.length; i++){
-            if(!anim.playing) break;
-            scheduleSet(i);
-        }
-    }
-
-    /***
-     * Plays the animation once or infinitely (depending on the 'looped' property).
-     */
-    anim.play = function(){
-        anim.playOnce();
-        if(anim.looped) loopItv = setInterval(anim.playOnce, (anim.getDuration() + anim.loopDelay) * 1000);
-    }
-
-    /***
-     * Stops the animation.
-     */
-    anim.stop = function(){
-        anim.playing = false;
-        if(loopItv) clearInterval(loopItv);
-    }
-
-    return anim;
+	stop: function() {
+		this.playing = false;
+	}
 }
 
 
