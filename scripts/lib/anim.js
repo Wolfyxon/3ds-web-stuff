@@ -28,7 +28,7 @@ Animation = function(element){
 	this.spacing = 1;
 	this.loopDelay = 0;
 	this.playing = false;
-    this.loopItv = startAnim(this);
+	this.loopItv = startAnim(this);
 };
 Animation.prototype = {
 	addKeyframe: function(property, value, timeOffset) {
@@ -49,7 +49,7 @@ Animation.prototype = {
 		if (typeof(v) !== 'number') return;
 		stopAnim(this.loopItv);
 		this.spacing = v;
-		startAnim(this);
+		this.loopItv = startAnim(this);
 	},
 
 	play: function() {
