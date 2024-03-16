@@ -50,3 +50,7 @@ article {
     color: #808080;
     font-size: 90%;
 }
+
+.animated > *:not([data-animated="1"]) {
+	display: none;
+}
