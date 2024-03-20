@@ -760,18 +760,24 @@ function Sprite(image,x,y,rot,w,h){
      * @param {HTMLCanvasElement} canvas The <canvas> element
      */
     spr.render = function(canvas){
-        if(spr.area.getWidth() < 0 || spr.area.getHeight() < 0) return;
+        const w = spr.area.getWidth();
+        const h = spr.area.getHeight();
+
+        if(w < 0 || h < 0) return;
+
+        const centerW = w / 2;
+        const centerH = h / 2;
 
         spr.lastCanvas = canvas;
         if(!spr.visible) return;
         const ctx = canvas.getContext("2d");
         ctx.save();
 
-        ctx.translate(spr.getX() + spr.area.getWidth() / 2, spr.getY() + spr.area.getHeight() / 2);
+        ctx.translate(spr.getX() + centerW, spr.getY() + centerH);
         ctx.rotate(deg2rad(spr.rotation));
 
         ctx.globalAlpha = spr.opacity;
-        ctx.drawImage(spr.image, -spr.area.getWidth() / 2, -spr.area.getHeight() / 2, spr.area.getWidth(), spr.area.getHeight());
+        ctx.drawImage(spr.image, -centerW, -centerH, w, h);
         ctx.globalAlpha = 1;
 
         ctx.restore();
