@@ -78,7 +78,7 @@ window.addEventListener('load', function() {
 			if (randi(0, 1) === 1) ball.rot *= -1;
 		}
 		ball.rot = 180 - ball.rot;
-		ball.speed *= ball.accel;
+		ball.speed *= ball.accel + (level * 0.01);
 
 		const bNew = moveLocalXY(ball.w, 0);
 		ball.x += bNew[0];
