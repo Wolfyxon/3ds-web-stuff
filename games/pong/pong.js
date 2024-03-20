@@ -60,10 +60,6 @@ window.addEventListener('load', function() {
 		setTimeout(roundReset, 2000);
 	}
 
-	function lerp(a, b, alpha) {
-		return a + alpha * ( b - a )
-	}
-
 	function moveLocalXY(x_, y_) {
 		const angle = deg2rad(ball.rot);
 		const localX = x_ * Math.cos(angle) - y_ * Math.sin(angle);
