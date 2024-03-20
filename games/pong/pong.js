@@ -1,152 +1,175 @@
-window.addEventListener("load",function(){
-    const canvas = document.getElementById("canv");
-    const ctx = canvas.getContext("2d");
+window.addEventListener('load', function() {
+	const field = document.getElementById('field'),
+		width = field.offsetWidth,
+		height = field.offsetHeight,
 
-    const enemyScoreTxt = document.getElementById("score-enemy");
-    const playerScoreTxt = document.getElementById("score-player");
-    const levelTxt = document.getElementById("level");
+		enemyScoreTxt = document.getElementById('score-enemy'),
+		playerScoreTxt = document.getElementById('score-player'),
+		levelTxt = document.getElementById('level'),
+		text = document.getElementById('text'),
+		y = height * 0.4,
+		countdown = 3,
+		originalBallSpeed = 2;
 
-    var enemyScore = 0;
-    var playerScore = 0;
-    var level = 1;
+	var level = 1,
+		active = false,
+		ball = {
+			ele: document.getElementById('ball'),
+			x: width / 2.1,
+			y: height / 2.1,
+			w: 4,
+			h: 4,
+			rot: 0,
+			speed: originalBallSpeed,
+			accel: 1.06
+		},
+		player = {
+			ele: document.getElementById('player'),
+			x: 18,
+			y: y,
+			w: 8,
+			h: 43,
+			speed: 2,
+			score: 0
+		},
+		enemy = {
+			ele: document.getElementById('enemy'),
+			x: width - 26,
+			y: y,
+			w: 8,
+			h: 43,
+			speed: 0.01,
+			score: 0
+		};
 
-    const ball = new Rect2D(new Vector2(canvas.width/2.1,canvas.height/2.1),4,4);
-    ball.fillStyle = "white";
-    const originalBallSpeed = 2;
-    var ballSpeed = originalBallSpeed;
-    const ballAccel = 1.06;
+		enemy.rect = new Rect2D(new Vector2(width - player.x * 1.5, y), enemy.w, enemy.h);
+	
+	function roundReset() {
+		enemy.y = y;
+		player.y = y;
+		ball.x = width / 2.1;
+		ball.y = height / 2.1;
+		ball.rot = 0;
 
-    const y = canvas.height/2.5;
+		ball.speed = originalBallSpeed;
+		text.innerText = '';
+		active = true;
+	}
 
-    const player = new Rect2D(new Vector2(10,y), 6,30);
-    player.fillStyle = "white"
-    const playerSpeed = 2;
+	function scheduleNextRound() {
+		setTimeout(roundReset, 2000);
+	}
 
-    const enemy = player.copy();
-    enemy.area.moveTo(new Vector2(canvas.width-player.getX()*1.5, y));
-    const enemySpeed = 0.01;
+	function lerp(a, b, alpha) {
+		return a + alpha * ( b - a )
+	}
 
-    var active = false;
+	function moveLocalXY(x_, y_) {
+		const angle = deg2rad(ball.rot);
+		const localX = x_ * Math.cos(angle) - y_ * Math.sin(angle);
+		const localY = x_ * Math.sin(angle) + y_ * Math.cos(angle);
+		return [localX, localY];
+	}
 
-    function roundReset(){
-        enemy.area.moveTo(new Vector2(enemy.getX(),y));
-        player.area.moveTo(new Vector2(player.getX(),y));
-        ball.area.moveTo(new Vector2(canvas.width/2.1,canvas.height/2.1));
-        ball.rotation = 0;
-
-        ballSpeed = originalBallSpeed;
-        currentStatus = "";
-        active = true;
-    }
-
-    function scheduleNextRound(){
-        setTimeout(roundReset,2000)
-    }
-
-    function bounce(pad){
-        /*const cY = pad.getY() + pad.area.getHeight() / 2;
-        const offsetFromCenter = ball.getY() - cY;
-        const normalizedOffset = offsetFromCenter / (pad.area.getHeight() / 2);
+	function bounce(pad) {
+		/*const cY = (pad.y + pad.h) / 2;
+        const offsetFromCenter = ball.y - cY;
+        const normalizedOffset = offsetFromCenter / ((pad.y + pad.h) / 2);
         const bounceAngle = normalizedOffset * 45;
-        ball.rotation = 180 - ball.rotation + 2 * bounceAngle;*/
-        if(ball.rotation === 0) {
-            ball.rotation = randi(1,10);
-            if(randi(0,1) === 1) ball.rotation *= -1;
-        }
-        ball.rotation = 180 - ball.rotation;
-        ballSpeed *= ballAccel;
-        ball.moveLocalXY(ball.area.getWidth(),0);
-    }
+        ballRotation = 180 - ball.rot + 2 * bounceAngle);*/
+		if (ball.rot === 0) {
+			ball.rot = randi(1, 10);
+			if (randi(0, 1) === 1) ball.rot *= -1;
+		}
+		ball.rot = 180 - ball.rot;
+		ball.speed *= ball.accel;
 
-    function updateScore(){
-        playerScoreTxt.innerText = playerScore;
-        enemyScoreTxt.innerText = enemyScore;
-    }
+		const bNew = moveLocalXY(ball.w, 0);
+		ball.x += bNew[0];
+		ball.y += bNew[1];
+	}
 
+	function updateScore() {
+		playerScoreTxt.innerText = player.score;
+		enemyScoreTxt.innerText = enemy.score;
+	}
 
-    var currentStatus = "";
-    var statusColor = "";
+	function isTouching(target) {
+		return !(ball.x > (target.x + target.w) ||
+				 (ball.x + ball.w) < target.x ||
+				 ball.y > (target.y + target.h) ||
+				 (ball.y + ball.h) < target.y);
+	}
 
-    const countdown = 3;
+	function registerCountdownUpdate(i) {
+		text.style.color = 'orange';
+		setTimeout(function() {
+			text.innerText = (countdown-i);
+		}, (countdown-(countdown-i)) * 1000);
+	}
 
+	for (var i=0; i<countdown; i++) {
+		registerCountdownUpdate(i);
+	}
+	setTimeout(function() {
+		active = true;
+		text.innerText = '';
+	}, countdown * 1000);
 
-    function registerCountdownUpdate(i){
-        setTimeout(function(){
-            currentStatus = (countdown-i);
-        },(countdown-(countdown-i))*1000);
-    }
+	var prevFrameTime = Date.now();
+	setInterval(function() {
+		const delta = (Date.now() - prevFrameTime) / 16;
+		prevFrameTime = Date.now();
 
-    statusColor = "orange"
-    for(var i=0;i<countdown;i++){
-        registerCountdownUpdate(i);
-    }
-    setTimeout(function(){
-        active = true;
-        currentStatus = "";
-    },countdown*1000);
+		if (active) {
+			if (player.y > 0 && isBtnPressed('up')) {
+				player.y += -player.speed * delta;
+			}
+			if ((player.y + player.h) < height && isBtnPressed('down')) {
+				player.y += player.speed * delta;
+			}
+			enemy.rect.area.moveTo(
+				enemy.rect.area.startVec.getLerped(new Vector2(enemy.x, ball.y - enemy.h * 0.5), enemy.speed * level * delta)
+			);
+			var gTL = enemy.rect.area.getTopLeft();
+			enemy.x = gTL.x;
+			enemy.y = gTL.y;
 
-    var prevFrameTime = Date.now();
-    setInterval(function(){
-        const delta = (Date.now() - prevFrameTime) / 16;
-        prevFrameTime = Date.now();
-        clearCanvas(canvas);
+			const bNew = moveLocalXY(ball.speed * delta, 0);
+			ball.x += bNew[0];
+			ball.y += bNew[1];
 
-        if(active){
-            if(player.area.getTopLeft().y > 0 && isBtnPressed("up")){
-                player.area.offsetXY(0,-playerSpeed * delta)
-            }
-            if(player.area.getBottomLeft().y < canvas.height && isBtnPressed("down")){
-                player.area.offsetXY(0,playerSpeed * delta);
-            }
+			if (isTouching(enemy)) bounce(enemy);
+			if (isTouching(player)) bounce(player);
 
-            const enemyPos = enemy.area.getTopLeft();
-            enemy.area.moveTo(
-                enemy.area.startVec.getLerped(new Vector2(enemyPos.x, ball.getY()-enemy.area.getHeight()/2),enemySpeed*level*delta)
-            );
+			if (ball.y <= 0 || ball.y >= height) {
+				ball.rot = -ball.rot;
+				ball.speed *= ball.accel;
+			}
 
-            ball.moveLocalXY(ballSpeed*delta,0);
-            if(ball.area.isTouching(enemy.area)) bounce(enemy);
-            if(ball.area.isTouching(player.area)) bounce(player);
+			if (ball.x <= 0) {
+				active = false;
+				text.innerText = 'AI scored';
+				text.style.color = 'red';
+				enemy.score++;
+				scheduleNextRound();
+				updateScore();
+			} else if (ball.x > width) {
+				active = false;
+				text.innerText = 'You scored';
+				text.style.color = 'lime';
+				player.score++;
+				level++;
+				levelTxt.innerText = 'Level: ' + level;
+				scheduleNextRound();
+				updateScore();
+			}
 
-            if(ball.getY() <= 0 || ball.getY() >= canvas.height){
-                ball.rotation = -ball.rotation;
-                ballSpeed *= ballAccel;
-            }
+		}
 
-            if(ball.getX() <= 0){
-                active = false;
-                currentStatus = "AI scored";
-                statusColor = "red";
-                enemyScore++;
-                scheduleNextRound();
-                updateScore();
-            }
-            if(ball.getX() > canvas.width){
-                active = false;
-                currentStatus = "You scored";
-                statusColor = "lime";
-                playerScore++;
-                level++;
-                levelTxt.innerText = "Level: " + level;
-                scheduleNextRound();
-                updateScore();
-            }
-
-        }
-
-        ball.render(canvas);
-        player.render(canvas);
-        enemy.render(canvas);
-
-        const lineX = canvas.width/2.015
-        new drawDashedLine(canvas,new Vector2(lineX,5), new Vector2(lineX,canvas.height),4,6,"#D6D6D6");
-
-        ctx.textAlign = "center";
-        ctx.font = "bold 20px none";
-        ctx.fillStyle = statusColor;
-        ctx.fillText(currentStatus,canvas.width/2,canvas.height/2);
-
-        ctx.fillStyle = "";
-
-    });
+		player.ele.style.top = Math.floor(player.y) + 'px';
+		enemy.ele.style.top = Math.floor(enemy.y) + 'px';
+		ball.ele.style.left = Math.floor(ball.x) + 'px';
+		ball.ele.style.top = Math.floor(ball.y) + 'px';
+	});
 });
