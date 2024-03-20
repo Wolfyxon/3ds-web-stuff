@@ -2,6 +2,7 @@ window.addEventListener('load', function() {
 	const field = document.getElementById('field'),
 		width = field.offsetWidth,
 		height = field.offsetHeight,
+
 		enemyScoreTxt = document.getElementById('score-enemy'),
 		playerScoreTxt = document.getElementById('score-player'),
 		levelTxt = document.getElementById('level'),
@@ -41,12 +42,15 @@ window.addEventListener('load', function() {
 			score: 0
 		};
 
+		enemy.rect = new Rect2D(new Vector2(width - player.x * 1.5, y), enemy.w, enemy.h);
+	
 	function roundReset() {
 		enemy.y = y;
 		player.y = y;
 		ball.x = width / 2.1;
 		ball.y = height / 2.1;
 		ball.rot = 0;
+
 		ball.speed = originalBallSpeed;
 		text.innerText = '';
 		active = true;
@@ -124,8 +128,12 @@ window.addEventListener('load', function() {
 			if ((player.y + player.h) < height && isBtnPressed('down')) {
 				player.y += player.speed * delta;
 			}
-
-			enemy.y = lerp(Math.min(enemy.y, ball.y), Math.max(ball.y, enemy.y - enemy.h * 0.5), enemy.speed * level * delta);
+			enemy.rect.area.moveTo(
+				enemy.rect.area.startVec.getLerped(new Vector2(enemy.x, ball.y - enemy.h * 0.5), enemy.speed * level * delta)
+			);
+			var gTL = enemy.rect.area.getTopLeft();
+			enemy.x = gTL.x;
+			enemy.y = gTL.y;
 
 			const bNew = moveLocalXY(ball.speed * delta, 0);
 			ball.x += bNew[0];
