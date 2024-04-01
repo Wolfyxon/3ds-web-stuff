@@ -49,7 +49,7 @@ window.addEventListener("load", function() {
 
     setInterval(function () {
         const cols = 6;
-        const rows = 20;
+        const rows = 30;
 
         var html = "";
         for(var row = 0; row < rows; row++) {
