@@ -100,8 +100,7 @@ window.addEventListener("load", function() {
     setInterval(genBars, 500);
 
 
-
-    setInterval(function () {
+    function genNums() {
         const cols = 6;
         const rows = 30;
 
@@ -112,12 +111,14 @@ window.addEventListener("load", function() {
                 html += randi(0, 64) + " ";
             }
 
-           html += "<br>";
+            html += "<br>";
         }
 
         numbers.innerHTML = html;
 
-    }, 20);
+    }
+    genNums();
+    setInterval(genNums, 20);
 
     var prevFrameTime = Date.now();
     setInterval(function (){
