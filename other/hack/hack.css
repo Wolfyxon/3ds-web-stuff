@@ -29,6 +29,7 @@
     background-color: #002a00;
     width: 85px;
     height: 85px;
+    border: 1px solid green;
     border-radius: 100%;
 }
 
