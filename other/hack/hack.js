@@ -48,19 +48,20 @@ window.addEventListener("load", function() {
     terminalLoop();
 
     setInterval(function () {
-        numbers.innerHTML = "";
-
         const cols = 6;
         const rows = 20;
 
+        var html = "";
         for(var row = 0; row < rows; row++) {
 
             for(var col = 0; col < cols; col++) {
-                numbers.innerHTML += randi(0, 64) + " ";
+                html += randi(0, 64) + " ";
             }
 
-            numbers.innerHTML += "<br>";
+           html += "<br>";
         }
+
+        numbers.innerHTML = html;
 
     }, 20);
 });
