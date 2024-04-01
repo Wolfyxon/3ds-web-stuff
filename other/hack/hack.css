@@ -5,12 +5,15 @@
     padding-right: 1%;
 }
 
-#top-screen > * {
+#screens > * > * {
     border: 1px #003800 solid;
     background-color: black;
     display: inline-block;
-    height: 100%;
     vertical-align: top;
+}
+
+#top-screen > * {
+    height: 100%;
 }
 
 #terminal {
