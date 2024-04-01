@@ -28,6 +28,13 @@
     width: 15%;
 }
 
+#banner {
+    display: block;
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #radar {
     background-color: #002a00;
     width: 85px;
