@@ -43,7 +43,7 @@ window.addEventListener("load", function() {
 
     function terminalLoop() {
         echo( terminalTexts[randi(0, terminalTexts.length-1)] );
-        setTimeout(terminalLoop, randi(1,300));
+        setTimeout(terminalLoop, randi(1,50));
     }
     terminalLoop();
 
