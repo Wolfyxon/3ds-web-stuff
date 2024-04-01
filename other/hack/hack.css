@@ -1,8 +1,6 @@
 #screens > * {
     background-color: #121215;
     color: #01c401;
-    padding-left: 1%;
-    padding-right: 1%;
 }
 
 #screens > * > * {
@@ -10,6 +8,11 @@
     background-color: black;
     display: inline-block;
     vertical-align: top;
+}
+
+#top-screen {
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 #top-screen > * {
