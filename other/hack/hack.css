@@ -4,11 +4,21 @@
     padding: 1%;
 }
 
-#terminal {
+#top-screen > * {
+    border: 1px #003800 solid;
     background-color: black;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+
+#terminal {
     height: 100%;
     width: 80%;
     font-size: 60%;
-    border: 1px green solid;
     padding-left: 4px;
+}
+
+#numbers {
+    width: 17%;
 }
