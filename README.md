@@ -19,7 +19,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [ ] [Jet Fighter](https://wolfyxon.github.io/3ds-web-stuff/games/jetfighter) - Shoot em up game involving jets utilizing the both screens.
 - [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
 - [x] [Minesweeper](https://wolfyxon.github.io/3ds-web-stuff/games/minesweeper) - Uncover tiles and watch out for the mines!
-- [ ] Breakout - a Atari Breakout clone
+- [ ] [Breakout](https://wolfyxon.github.io/3ds-web-stuff/games/breakout) - a Atari Breakout clone
 - Intercepter - take down the incoming missiles. Based on Missile Command
 - Clicker - a Cookie Clicker clone
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
