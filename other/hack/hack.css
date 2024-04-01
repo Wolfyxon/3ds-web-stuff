@@ -68,3 +68,13 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#bars {
+    margin-top: 1%;
+    display: block;
+    height: 45%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 60%;
+}

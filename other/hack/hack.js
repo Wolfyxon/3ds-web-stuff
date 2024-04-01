@@ -35,6 +35,8 @@ window.addEventListener("load", function() {
 
     const tileTbl = document.getElementById("tiles");
 
+    const bars = document.getElementById("bars");
+
     function echo(text) {
         const line = document.createElement("div");
         line.innerText = text;
@@ -75,8 +77,29 @@ window.addEventListener("load", function() {
         }
     }
     genTiles();
-
     setInterval(genTiles, 1000);
+
+    function genBars() {
+        const lines = 9;
+
+        bars.innerHTML = "";
+
+        for(var ln = 0; ln < lines; ln++) {
+            const line = document.createElement("div");
+
+            var barTxt = "";
+            for(var i = 0; i < randi(1, 200); i++) {
+                barTxt += "|";
+            }
+
+            line.innerText = ln + " ) " + barTxt;
+            bars.appendChild(line);
+        }
+    }
+    genBars();
+    setInterval(genBars, 500);
+
+
 
     setInterval(function () {
         const cols = 6;
