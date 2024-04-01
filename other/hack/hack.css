@@ -1,0 +1,14 @@
+#screens > * {
+    background-color: #121215;
+    color: #01c401;
+    padding: 1%;
+}
+
+#terminal {
+    background-color: black;
+    height: 100%;
+    width: 80%;
+    font-size: 60%;
+    border: 1px green solid;
+    padding-left: 4px;
+}
