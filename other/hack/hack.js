@@ -33,6 +33,8 @@ window.addEventListener("load", function() {
     const radarScan = document.getElementById("scan");
     var scanRot = 0;
 
+    const tileTbl = document.getElementById("tiles");
+
     function echo(text) {
         const line = document.createElement("div");
         line.innerText = text;
@@ -49,6 +51,32 @@ window.addEventListener("load", function() {
         setTimeout(terminalLoop, randi(1,50));
     }
     terminalLoop();
+
+    function genTiles() {
+        const cols = 16;
+        const rows = 16;
+
+        tileTbl.innerHTML = "";
+
+        for(var row = 0; row < rows; row++) {
+            const tr = document.createElement("tr");
+
+            for(var col = 0; col < cols; col++) {
+                const td = document.createElement("td");
+
+                if(randi(0,1) === 0) {
+                    td.style.backgroundColor = "black";
+                }
+
+                tr.appendChild(td);
+            }
+
+            tileTbl.appendChild(tr);
+        }
+    }
+    genTiles();
+
+    setInterval(genTiles, 1000);
 
     setInterval(function () {
         const cols = 6;

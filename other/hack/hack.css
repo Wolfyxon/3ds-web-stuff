@@ -38,7 +38,22 @@
     margin-right: auto;
 }
 
+#tiles {
+    vertical-align: top;
+    width: 70%;
+    height: 100%;
+    display: inline-block;
+    margin-top: 1%;
+}
+
+#tiles td {
+    background-color: #0f960f;
+    width: 10px;
+    height: 1px;
+}
+
 #radar {
+    display: inline-block;
     background-color: #002a00;
     width: 85px;
     height: 85px;
