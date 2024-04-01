@@ -30,6 +30,9 @@ window.addEventListener("load", function() {
     const terminal = document.getElementById("terminal");
     const numbers = document.getElementById("numbers");
 
+    const radarScan = document.getElementById("scan");
+    var scanRot = 0;
+
     function echo(text) {
         const line = document.createElement("div");
         line.innerText = text;
@@ -64,4 +67,13 @@ window.addEventListener("load", function() {
         numbers.innerHTML = html;
 
     }, 20);
+
+    var prevFrameTime = Date.now();
+    setInterval(function (){
+        const delta = (Date.now() - prevFrameTime) / 16;
+        prevFrameTime = Date.now();
+
+        scanRot += delta * 5;
+        radarScan.style.webkitTransform = "rotate(" + scanRot + "deg)";
+    });
 });
