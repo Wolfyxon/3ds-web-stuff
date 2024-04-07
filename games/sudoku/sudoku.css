@@ -1,0 +1,123 @@
+#top-screen,
+#bottom-screen {
+	background-color: #262626;
+	color: #f6f6f6;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	text-align: center;
+}
+#top-screen {
+	font-size: 100px;
+	line-height: 217px;
+}
+#bottom-screen {
+	position: relative;
+}
+
+/* Board */
+#board {
+	background-color: #767676;
+	border: 2px solid #767676;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
+	border-spacing: 0;
+	left: 15px;
+	position: absolute;
+	top: 15px;
+}
+#board td {
+	background-color: #c7c7c7;
+	border: 1px solid #767676;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
+	color: #262626;
+	height: 40px;
+	line-height: 0;
+	width: 40px;
+}
+#board[data-size="6"] td {
+	height: 27px;
+	width: 27px;
+}
+#board[data-size="9"] td {
+	height: 17px;
+	width: 17px;
+}
+#board td.input {
+	color: red;
+	cursor: pointer;
+}
+#board td.input.selected {
+	background-color: #eaebf0;
+}
+#board[data-size="4"] tr:nth-child(2) td,
+#board[data-size="6"] tr:nth-child(2) td,
+#board[data-size="6"] tr:nth-child(4) td,
+#board[data-size="9"] tr:nth-child(3) td,
+#board[data-size="9"] tr:nth-child(6) td {
+	border-bottom: 3px solid #767676;
+}
+#board[data-size="4"] td:nth-child(2),
+#board[data-size="6"] td:nth-child(3),
+#board[data-size="9"] td:nth-child(3),
+#board[data-size="9"] td:nth-child(6) {
+	border-right: 3px solid #767676;
+}
+
+/* Input*/
+#input {
+	background-color: #272727;
+	border-bottom: 2px solid #393c3e;
+	border-left: 2px solid #393c3e;
+	border-top: 2px solid #393c3e;
+	-webkit-border-bottom-left-radius: 5px;
+	   -moz-border-radius-bottomleft: 5px;
+	        border-bottom-left-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	   -moz-border-radius-topleft: 5px;
+	        border-top-left-radius: 5px;
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 35px;
+}
+#input td {
+	cursor: pointer;
+	height: 15px;
+	line-height: 0;
+	width: 15px;
+}
+
+/* Settings */
+#settings {
+	background-color: #262626;
+	display: none;
+	height: 100%;
+	left: 0;
+	padding: 15px;
+	position: absolute;
+	text-align: left;
+	top: 0;
+	width: 100%;
+}
+#open {
+	background-color: #272727;
+	border-left: 2px solid #393c3e;
+	border-bottom: 2px solid #393c3e;
+	-webkit-border-bottom-left-radius: 5px;
+	   -moz-border-radius-bottomleft: 5px;
+	        border-bottom-left-radius: 5px;
+	color: #f1f2f6;
+	cursor: pointer;
+	height: 15px;
+	right: 0;
+	text-align: center;
+	top: 0;
+	padding: 3px;
+	position: absolute;
+	width: 15px;
+}
