@@ -67,13 +67,16 @@ a {
     white-space: pre;
 }
 
-#tab-btns button {
-    float: left;
-    width: 25%;
-    color: white;
-    border: 1px solid black;
-    border-radius: 5%;
-    background-color: #653198;
+#tab-btns span {
+	display: inline-block;
+	width: 25%;
+	color: white;
+	border: 1px solid black;
+	border-radius: 5%;
+	background-color: #653198;
+	text-align: center;
+	margin-right: -7px;
+	cursor: pointer;
 }
 
 .app-list a {
