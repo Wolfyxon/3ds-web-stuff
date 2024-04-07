@@ -16,7 +16,9 @@
     padding: 4%;
     width: 60%;
     border: white solid 1px;
-    border-radius: 20px;
+    -webkit-border-radius: 20px;
+       -moz-border-radius: 20px;
+            border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -34,7 +36,9 @@
     border-right: #fff 2px solid;
     border-bottom: #fff 2px solid;
     border-spacing: 0;
-    border-radius: 5px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
@@ -48,7 +52,10 @@
     font-weight: bold;
     height: 16px;
     line-height: 1;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     width: 16px;
 }
 #field td:not(.open) {
@@ -68,7 +75,10 @@
 
 .mine.open {
     font-size: 0;
-    background-size: 100%;
+    -webkit-background-size: 100% 100%;
+       -moz-background-size: 100%;
+         -o-background-size: 100%;
+            background-size: 100%;
     background-image: url("img/bomb.png");
 }
 
