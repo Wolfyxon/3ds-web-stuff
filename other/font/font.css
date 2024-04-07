@@ -1,0 +1,13 @@
+#table {
+	border-spacing: 0;
+	margin: auto;
+	margin-top: 5%;
+	text-align: center;
+}
+#table thead td {
+	background-color: #eaecf0;
+}
+#table td {
+	border: 1px solid #a2a9b1;
+	line-height: 1;
+}
