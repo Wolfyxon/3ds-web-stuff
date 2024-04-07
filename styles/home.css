@@ -72,11 +72,18 @@ a {
 	width: 25%;
 	color: white;
 	border: 1px solid black;
-	border-radius: 5%;
+	-webkit-border-radius: 5%;
+	   -moz-border-radius: 5%;
+	        border-radius: 5%;
 	background-color: #653198;
 	text-align: center;
-	margin-right: -7px;
 	cursor: pointer;
+	font-size: 13.3px;
+	padding: 1px 6px;
+	float: left;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 
 .app-list a {
