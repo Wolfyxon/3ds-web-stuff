@@ -64,22 +64,22 @@
 
 /* Input*/
 #input {
-    background-color: #272727;
-    border-bottom: 2px solid #393c3e;
-    border-left: 2px solid #393c3e;
-    border-top: 2px solid #393c3e;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    float: right;
-    position: absolute;
-    right: 0;
-    top: 35px;
+	background-color: #272727;
+	border-bottom: 2px solid #393c3e;
+	border-left: 2px solid #393c3e;
+	border-top: 2px solid #393c3e;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 35px;
 }
 #input td {
 	cursor: pointer;
-    height: 15px;
-    line-height: 0;
-    width: 15px;
+	height: 15px;
+	line-height: 0;
+	width: 15px;
 }
 
 /* Settings */
