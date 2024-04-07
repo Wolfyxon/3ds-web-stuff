@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
 	setTab(id);
 
 	tabBtns.addEventListener('click', function(e) {
-		if (e.target.nodeName === 'BUTTON') setTab(e.target.getAttribute('data-id'));
+		if (e.target.nodeName === 'SPAN') setTab(e.target.getAttribute('data-id'));
 	});
 
 	setInterval(function() {
