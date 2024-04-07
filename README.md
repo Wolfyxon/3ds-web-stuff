@@ -20,6 +20,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Pong](https://wolfyxon.github.io/3ds-web-stuff/games/pong) - Play ping-pong with an AI.
 - [x] [Minesweeper](https://wolfyxon.github.io/3ds-web-stuff/games/minesweeper) - Uncover tiles and watch out for the mines!
 - [ ] [Breakout](https://wolfyxon.github.io/3ds-web-stuff/games/breakout) - a Atari Breakout clone
+- [x] [Sudoku](https://wolfyxon.github.io/3ds-web-stuff/games/sudoku) - Fill the table with numbers
 - Intercepter - take down the incoming missiles. Based on Missile Command
 - Clicker - a Cookie Clicker clone
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
