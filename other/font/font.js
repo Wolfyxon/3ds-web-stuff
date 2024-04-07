@@ -18,7 +18,7 @@ window.addEventListener('load', function() {
 	hRow.insertCell().textContent = 'U+';
 	for (var x=0; x<16; x++) {
 		const hCell = hRow.insertCell(hRow.cells.length);
-		hCell.textContent = (x).toString(16).toUpperCase();;
+		hCell.textContent = (x).toString(16).toUpperCase();
 	}
 });
 
