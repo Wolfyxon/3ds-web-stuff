@@ -2,7 +2,10 @@
 #bottom-screen {
 	background-color: #262626;
 	color: #f6f6f6;
-	user-select: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 	text-align: center;
 }
 #top-screen {
@@ -17,7 +20,9 @@
 #board {
 	background-color: #767676;
 	border: 2px solid #767676;
-	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
 	border-spacing: 0;
 	left: 15px;
 	position: absolute;
@@ -26,11 +31,12 @@
 #board td {
 	background-color: #c7c7c7;
 	border: 1px solid #767676;
-	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
 	color: #262626;
 	height: 40px;
 	line-height: 0;
-	user-select: none;
 	width: 40px;
 }
 #board[data-size="6"] td {
@@ -68,8 +74,12 @@
 	border-bottom: 2px solid #393c3e;
 	border-left: 2px solid #393c3e;
 	border-top: 2px solid #393c3e;
-	border-bottom-left-radius: 5px;
-	border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	   -moz-border-radius-bottomleft: 5px;
+	        border-bottom-left-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	   -moz-border-radius-topleft: 5px;
+	        border-top-left-radius: 5px;
 	float: right;
 	position: absolute;
 	right: 0;
@@ -98,7 +108,9 @@
 	background-color: #272727;
 	border-left: 2px solid #393c3e;
 	border-bottom: 2px solid #393c3e;
-	border-bottom-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	   -moz-border-radius-bottomleft: 5px;
+	        border-bottom-left-radius: 5px;
 	color: #f1f2f6;
 	cursor: pointer;
 	height: 15px;
