@@ -14,7 +14,6 @@ window.addEventListener('load', function() {
 	function checkWin(x, y) {
 		for (var n=0; n<4; n++) {
 			const t = getType(n, y);
-			const t2 = getType(x, n);
 
 			// horizontal
 			if ((t === getType(n + 1, y)) &&
@@ -25,6 +24,8 @@ window.addEventListener('load', function() {
 			}
 
 			if (n === 3) break;
+
+			const t2 = getType(x, n);
 
 			// vertical
 			if ((t2 === getType(x, n + 1)) &&
