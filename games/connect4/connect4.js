@@ -83,7 +83,7 @@ window.addEventListener('load', function() {
 	input.addEventListener('click', function(e) {
 		if (won || e.target.tagName !== 'TH') return;
 
-		const column = e.target.cellIndex;
+		const column = e.target.cellIndex,
 			row = Number(e.target.getAttribute('data-index'));
 
 		if (row < 0) return;
