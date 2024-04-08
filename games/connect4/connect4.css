@@ -1,0 +1,83 @@
+#top-screen,
+#bottom-screen {
+	background-color: #262626;
+	color: #f6f6f6;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	text-align: center;
+}
+
+/* Board */
+#field {
+	background-color: #767676;
+	border: 2px solid #767676;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
+	border-spacing: 0;
+	margin: auto;
+	margin-bottom: 10px;
+}
+#field td {
+	background-color: #c7c7c7;
+	border: 1px solid #767676;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px;
+	color: #262626;
+	height: 20px;
+	line-height: 0;
+	width: 20px;
+}
+#field td[data-player="1"] {
+	color: red;
+}
+#field td[data-player="0"] {
+	color: blue;
+}
+
+/* Input arrows */
+#input {
+	border-spacing: 0;
+	margin: auto;
+}
+#input th {
+	border: 1px solid transparent;
+	height: 20px;
+	line-height: 0;
+	width: 20px;
+}
+
+/* Player score */
+#points {
+	top: 88px;
+	position: relative;
+	font-size: 30px;
+	line-height: 40px;
+}
+#pointsB,
+#pointsR {
+	background-color: #c7c7c7;
+	border: 3px solid #c7c7c7;
+	-webkit-border-radius: 10px;
+	   -moz-border-radius: 10px;
+	        border-radius: 10px;
+	color: #262626;
+	height: 40px;
+	width: 40px;
+	display: inline-block;
+}
+#pointsB.current {
+	border-color: blue;	
+}
+#pointsR.current {
+	border-color: red;
+}
+#pointsB {
+    color: blue;
+}
+#pointsR {
+    color: red;
+}
