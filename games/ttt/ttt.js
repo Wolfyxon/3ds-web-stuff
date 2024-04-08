@@ -16,30 +16,23 @@ window.addEventListener('load', function() {
 		// horizontal
 		if ((getType(0, y) === getType(1, y)) &&
 			(getType(0, y) === getType(2, y)) &&
-			(getType(0, y).length)) {
-			return true;
-		} else
+			(getType(0, y).length)) return true;
 
 		// vertical
 		if ((getType(x, 0) === getType(x, 1)) &&
 			(getType(x, 0) === getType(x, 2)) &&
-			(getType(x, 0).length)) {
-			return true;
-		} else
+			(getType(x, 0).length)) return true;
 
 		// diagonal \
 		if ((getType(0, 0) === getType(1, 1)) &&
 			(getType(1, 1) === getType(2, 2)) &&
-			(getType(0, 0).length)) {
-			return true;
-		} else
+			(getType(0, 0).length)) return true;
 
 		// diagonal /
 		if ((getType(2, 0) === getType(1, 1)) &&
 			(getType(1, 1) === getType(0, 2)) &&
-			(getType(2, 0).length)) {
-			return true;
-		}
+			(getType(2, 0).length)) return true;
+
 		return false;
 	}
 
