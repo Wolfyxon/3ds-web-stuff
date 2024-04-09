@@ -31,9 +31,6 @@
 #board td {
 	background-color: #c7c7c7;
 	border: 1px solid #767676;
-	-webkit-border-radius: 5px;
-	   -moz-border-radius: 5px;
-	        border-radius: 5px;
 	color: #262626;
 	height: 40px;
 	line-height: 0;
