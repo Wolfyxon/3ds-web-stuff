@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-    const button = document.getElementById('button'),
+    const button = document.getElementById('btn-reset'),
         keyboard = document.getElementById('keyboard'),
         wordDisplay = document.getElementById('display'),
         canvas = document.getElementById('canvas'),
