@@ -53,3 +53,10 @@
     color: black;
     font-size: x-large;
 }
+
+#btn-reset {
+    background-color: orange;
+    padding: 1% 5%;
+    border: 2px yellow solid;
+    border-radius: 10px;
+}
