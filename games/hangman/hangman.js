@@ -21,7 +21,31 @@ window.addEventListener('load', function() {
             'Hangman',
             'Magiczocker',
             'Wolfyxon',
-            'Nintendo'
+            'Nintendo',
+            'Mario',
+            'Luigi',
+            'Waluigi',
+            'Wario',
+            'Peach',
+            'Toad',
+            'Daisy',
+            'Bowser',
+            'Yoshi',
+            'Toadette',
+            'DonkeyKong',
+            'Rosalina',
+            'Luma',
+            'Blooey',
+            'Kirby',
+            'Boolossus',
+            'Kart',
+            'Ware',
+            'Tomodachi',
+            'Badge',
+            'Switch',
+            'GameBoy',
+            'VirtualBoy',
+            'GameCube'
         ];
     var mistakes, gameOver;
     ctx.strokeStyle = '#f6f6f6';
