@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
             'Magiczocker',
             'Wolfyxon',
             'Nintendo'
-        ];;
+        ];
     var mistakes, gameOver;
     ctx.strokeStyle = '#f6f6f6';
 
