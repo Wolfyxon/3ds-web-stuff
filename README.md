@@ -49,6 +49,9 @@ https://wolfyxon.github.io/3ds-web-stuff
   <img alt="JetFighter" src=".github/screenshots/jetfighter.png" width="200px" height="250px">
   <img alt="Pigeon" src=".github/screenshots/pigeon.png" width="200px" height="250px">
   <img alt="Jumpy" src=".github/screenshots/jumpy.png" width="200px" height="250px">
+  <img alt="Hangman" src=".github/screenshots/hangman.png" width="200px" height="250px">
+  <img alt="Calculator" src=".github/screenshots/calculator.png" width="200px" height="250px">
+  <img alt="Calculator" src=".github/screenshots/connect4.png" width="200px" height="250px">
 </p>
 
 
