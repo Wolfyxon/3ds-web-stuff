@@ -1,6 +1,6 @@
 #top-screen,
 #bottom-screen {
-    background-color: #262626;
+    background-color: #e3efc2;
     color: #f6f6f6;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -12,9 +12,9 @@
     margin: 20px 0;
 }
 #keyboard span {
-    background-color: #c7c7c7;
-    border: 1px solid #c7c7c7;
-    border-radius: 10px;
+    background-color: #fff47b;
+    border: 1px solid #ffc500;
+    border-radius: 5px;
     color: #262626;
     display: inline-block;
     height: 20px;
@@ -28,7 +28,11 @@
 
 #canvas {
     display: block;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 5px;
 }
 
 #display {
@@ -42,10 +46,10 @@
 }
 
 #display span.success {
-    color: #0F0;
+    color: #00c700;
 }
 
 #display span {
-    color: #FAF0E6;
+    color: black;
     font-size: x-large;
 }

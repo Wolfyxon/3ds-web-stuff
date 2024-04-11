@@ -48,7 +48,7 @@ window.addEventListener('load', function() {
             'GameCube'
         ];
     var mistakes, gameOver;
-    ctx.strokeStyle = '#f6f6f6';
+    //ctx.strokeStyle = '#f6f6f6';
 
     function draw() {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
