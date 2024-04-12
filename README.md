@@ -51,7 +51,7 @@ https://wolfyxon.github.io/3ds-web-stuff
   <img alt="Jumpy" src=".github/screenshots/jumpy.png" width="200px" height="250px">
   <img alt="Hangman" src=".github/screenshots/hangman.png" width="200px" height="250px">
   <img alt="Calculator" src=".github/screenshots/calculator.png" width="200px" height="250px">
-  <img alt="Calculator" src=".github/screenshots/connect4.png" width="200px" height="250px">
+  <img alt="Connect 4" src=".github/screenshots/connect4.png" width="200px" height="250px">
 </p>
 
 
