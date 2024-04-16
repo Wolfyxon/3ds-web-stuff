@@ -1,6 +1,7 @@
 window.addEventListener("load",function (){
     const canvas = document.getElementById("canv")
     const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
 
     const gameoverTxt = document.getElementById("gameover")
     const timeText = document.getElementById("time")
