@@ -837,6 +837,22 @@ function clearCanvas(canvas){
     canvas.getContext("2d").clearRect(0, 0, canvas.width*2, canvas.height*2);
 }
 
+
+var ctxCache = {}
+/**
+ * Returns the 2D context of a canvas. Uses caching to maximize performance
+ * @param {HTMLCanvasElement} canvas The <canvas> element
+ * @returns CanvasRenderingContext2D
+ */
+function getCtx(canvas){
+    const cached = ctxCache[canvas];
+    if(cached) return cached;
+
+    const ctx = canvas.getContext("2d", {alpha: alphaEnabled});
+    ctxCache[canvas] = ctx;
+    return ctx;
+}
+
 /**
  * Performs a linear interpolation between 2 angles in degrees
  * @param {Number} startDeg Current angle
