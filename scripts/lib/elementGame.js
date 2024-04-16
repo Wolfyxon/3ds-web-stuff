@@ -8,5 +8,6 @@
 function Scene(element) {
     this.element = element;
 }
+Scene.prototype = Object.create(Node.prototype);
 
 // TODO: Implement the rest
