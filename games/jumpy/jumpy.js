@@ -1,166 +1,158 @@
-window.addEventListener("load",function (){
-    const canvas = document.getElementById("canv")
-    const ctx = canvas.getContext("2d");
+window.addEventListener('load', function() {
+	const gameoverTxt = document.getElementById('gameover'),
+		timeText = document.getElementById('time'),
+		highScoreText = document.getElementById('high-score'),
+		topScreen = document.getElementById('top-screen'),
+		imgStanding = document.getElementById('img-standing'),
+		imgDead = document.getElementById('img-dead'),
+		imgRun1 = document.getElementById('img-run1'),
+		imgRun2 = document.getElementById('img-run2'),
+		imgSpike = document.getElementById('img-spike'),
+		jumpyHeight = 52,
+		jumpyWidth = 36,
+		defaultSpeed = 3,
+		hitboxMultiplier = 0.85;
 
-    const gameoverTxt = document.getElementById("gameover")
-    const timeText = document.getElementById("time")
-    const highScoreText = document.getElementById("high-score")
+	var speed = defaultSpeed,
+		gravity = 2.4,
+		jumpPower = 0,
+		yOffset = 0,
+		time = 0,
+		highScore = 0,
+		spikes = [
+			// [x, ele]
+		],
+		jumpyRun1 = false,
+		active = false,
+		resetCooldown = false,
+		playerSprite = document.getElementById('player'),
+		playerctx = playerSprite.getContext('2d');
+	playerSprite.style.top = (167 + yOffset) + 'px';
+	playerSprite.style.left = '10px';
+	playerctx.imageSmoothingEnabled = false;
+	playerctx.drawImage(imgStanding, 0, 0, playerSprite.width, playerSprite.height);
 
+	function jump() {
+		if (resetCooldown) return;
+		if (!active) reset();
+		if (jumpPower > 0 || !isOnGround()) return;
+		jumpPower = 130;
+	}
 
-    const imgStanding = document.getElementById("img-standing")
-    const imgDead = document.getElementById("img-dead")
-    const imgRun1 = document.getElementById("img-run1")
-    const imgRun2 = document.getElementById("img-run2")
-    const imgSpike = document.getElementById("img-spike")
+	function reset() {
+		time = 0;
+		speed = defaultSpeed;
+		gameoverTxt.innerText = '';
+		highScoreText.style.color = '';
+		for (var i=0; i<spikes.length; i++) {
+			topScreen.removeChild(spikes[i][1]);
+		}
+		playerctx.clearRect(0, 0, playerSprite.width, playerSprite.height);
+		playerctx.drawImage(imgStanding, 0, 0, playerSprite.width, playerSprite.height);
+		spikes = [];
+		active = true;
+	}
 
-    var currentSprite = imgStanding;
+	function addSpike(offset) {
+		var thisX = 400 + (offset || 0);
+		const spacing = 200;
+		if (spikes.length > 0) {
+			const x = spikes[spikes.length - 1][0];
+			if (thisX - x < spacing) {
+				thisX = x + spacing;
+			}
+		}
+		const e = document.createElement('canvas');
+		e.width = 9;
+		e.height = 17;
+		e.className = 'spike';
+		e.style.visibility = 'hidden';
+		const ctx = e.getContext('2d');
+		ctx.imageSmoothingEnabled = false;
+		ctx.drawImage(imgSpike, 0, 0, e.width, e.height);
+		spikes.push([thisX, e]);
+		topScreen.appendChild(e);
+	}
 
-    const spikeHeight = 50;
-    const spikeWidth = 40;
+	function isOnGround() {
+		return yOffset > -1;
+	}
 
-    const jumpyHeight = 50;
-    const jumpyWidth = 40;
+	setInterval(function() {
+		if (!active) return;
+		time++;
+		if (time > highScore) highScore = time;
 
-    const defaultSpeed = 3;
-    var speed = defaultSpeed;
-    var gravity = 2.4;
-    var jumpPower = 0;
-    var yOffset = 0;
+		const timeValTxt = new Date(time * 1000).toISOString().slice(11,19),
+			highTimeValTxt = new Date(highScore * 1000).toISOString().slice(11,19);
 
-    var jumpyRun1 = false;
-    var active = false;
-    var resetCooldown = false;
+		timeText.innerText = 'Time: '  + timeValTxt;
+		highScoreText.innerText = 'High score: ' + highTimeValTxt;
+		if (highScore <= time) {
+			highScoreText.style.color = '#279A00';
+		}
 
-    function jump(){
-        if(resetCooldown) return;
-        if(!active) reset();
-        if(jumpPower > 0) return;
-        if(!isOnGround()) return;
-        jumpPower = 130;
-    }
+		if (time%2) {
+			const offset = randi(-20, 200);
+			for (var i = 0; i < randi(1, 2); i++){
+				addSpike(offset * i);
+			}
+			speed += 0.1;
+		}
+	}, 1000);
 
-    function reset(){
-        time = 0;
-        speed = defaultSpeed;
-        gameoverTxt.innerText = ""
-        highScoreText.style.color = ""
-        spikes = [];
-        currentSprite = imgRun1;
-        active = true;
-    }
+	// Sprite updating
+	setInterval(function() {
+		if (!active || jumpPower > 0) return;
+		jumpyRun1 = !jumpyRun1;
+		playerctx.clearRect(0, 0, playerSprite.width, playerSprite.height);
+		playerctx.drawImage((jumpyRun1 && imgRun1 || imgRun2), 0, 0, playerSprite.width, playerSprite.height);
 
-    var spikes = [
-        // x
-    ]
+	}, 100);
 
-    function addSpike(offset){
-        if(!offset) offset = 0;
-        var thisX = 400+offset;
-        const spacing = 200;
-        if (spikes.length > 0) {
-            const x = spikes[spikes.length - 1];
-            if (thisX - x < spacing) {
-                thisX = x + spacing;
-            }
-        }
-        spikes.push(thisX)
-    }
+	// Controls and main loop
+	var prevFrameTime = Date.now();
+	setInterval(function() {
+		if (isBtnPressed('a') || isBtnPressed('up')) jump();
 
-    function isOnGround(){
-        return yOffset > -1;
-    }
+		gravity = isBtnPressed('down') ? 30 : 2.4;
 
-    var time = 0;
-    var highScore = 0;
+		const delta = (Date.now() - prevFrameTime) * 0.0625;
+		prevFrameTime = Date.now();
 
-    setInterval(function (){
-        if(!active) return;
-        time += 1;
-        if(time > highScore) highScore = time;
+		if (jumpPower > 0) jumpPower -= gravity * delta;
 
-        const timeValTxt = new Date(time * 1000).toISOString().slice(11,19);
-        const highTimeValTxt = new Date(highScore * 1000).toISOString().slice(11,19);
+		yOffset = lerp(yOffset, -jumpPower, 0.3 * delta);
+		if (yOffset > 0) yOffset = 0;
 
-        timeText.innerText = "Time: "  + timeValTxt;
-        highScoreText.innerText = "High score: " + highTimeValTxt;
-        if(highScore <= time){
-            highScoreText.style.color = "#279A00"
-        }
+		for (var i=0; i<spikes.length; i++){
+			const x = spikes[i][0];
+			if(x < -30){
+				topScreen.removeChild(spikes[i][1]);
+				spikes.splice(i, 1);
+				i--;
+				continue;
+			}
+			if (active) {
+				if( x > 2 && x < jumpyWidth * hitboxMultiplier && -yOffset < jumpyHeight * hitboxMultiplier){
+					playerctx.clearRect(0, 0, playerSprite.width, playerSprite.height);
+					playerctx.drawImage(imgDead, 0, 0, playerSprite.width, playerSprite.height);
+					active = false;
+					resetCooldown = true;
+					gameoverTxt.innerText = 'GAME OVER';
+					setTimeout(function() {
+						resetCooldown = false;
+					}, 200);
+				}
 
-    },1000)
+				spikes[i][0] -= speed * delta;
+			}
+			spikes[i][1].style.visibility = '';
+			spikes[i][1].style.left = x + 'px';
+		}
+		playerSprite.style.top = (167 + yOffset) + 'px';
 
-    // Sprite updating
-    setInterval(function (){
-        if(!active) return;
-        if(jumpPower > 0) return;
-        jumpyRun1 = !jumpyRun1;
-        if(jumpyRun1) currentSprite = imgRun1;
-        else currentSprite = imgRun2
+	});
 
-    },100)
-
-    setInterval(function (){
-        if(!active) return;
-        const offset = randi(-20,200)
-        for(var i=0;i<randi(1,2);i++){
-            addSpike(offset*i)
-        }
-        speed += 0.1
-    },2000)
-
-    const hitboxMultiplier = 0.85
-
-
-    // Controls loop
-    setInterval(function(){
-        if(isBtnPressed("a") || isBtnPressed("up")){
-            jump()
-        }
-        if(isBtnPressed("down")){
-            gravity = 30;
-        } else {
-            gravity = 2.4;
-        }
-    })
-
-    // Main loop
-    var prevFrameTime = Date.now();
-    setInterval(function (){
-        const delta = (Date.now() - prevFrameTime) / 16;
-        prevFrameTime = Date.now();
-
-        if(jumpPower > 0){
-            jumpPower -= gravity * delta;
-        }
-        yOffset = lerp(yOffset,-jumpPower,0.3 * delta)
-        if(yOffset > 0) yOffset = 0;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for(var i=0;i<spikes.length;i++){
-            const x = spikes[i]
-            if(x < -30){
-                spikes.splice(i, 1);
-                i--;
-                continue;
-            }
-            if(active){
-                if( x > 2 && x < jumpyWidth*hitboxMultiplier && -yOffset<jumpyHeight*hitboxMultiplier){
-                    currentSprite = imgDead
-                    active = false;
-                    resetCooldown = true;
-                    gameoverTxt.innerText = "GAME OVER"
-                    setTimeout(function (){
-                        resetCooldown = false;
-                    },200)
-                }
-
-                spikes[i] -= speed * delta
-            }
-            ctx.drawImage(imgSpike,x,100, spikeWidth, spikeHeight)
-        }
-        ctx.drawImage(currentSprite,10,100+yOffset, jumpyWidth, jumpyHeight)
-
-    })
-
-    window.addEventListener("click",jump);
-})
+	window.addEventListener('click', jump);
+});
