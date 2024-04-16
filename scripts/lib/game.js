@@ -1,4 +1,6 @@
 
+var alphaEnabled = false;
+
 /////// Classes ///////
 // Please note that the 3DS browser does not support the actual JavaScript classes. Using 'class' will result in a reserved keyword error.
 
@@ -466,7 +468,7 @@ function Area2D(vec1, vec2){
      * @param {HTMLCanvasElement} canvas The <canvas> element
      */
     area.renderDebug = function(canvas){
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext("2d", {alpha: alphaEnabled});
         ctx.fillStyle = "red";
         ctx.fillRect(area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight());
         ctx.fillStyle = "blue";
@@ -578,7 +580,7 @@ function Rect2D(pos, w, h){
      * @param {HTMLCanvasElement} canvas The <canvas> element
      */
     rect.render = function(canvas) {
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext("2d", {alpha: alphaEnabled});
         const x = rect.getX();
         const y = rect.getY();
         const width = rect.area.getWidth();
@@ -770,7 +772,7 @@ function Sprite(image,x,y,rot,w,h){
 
         spr.lastCanvas = canvas;
         if(!spr.visible) return;
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext("2d", {alpha: alphaEnabled});
         ctx.save();
 
         ctx.translate(spr.getX() + centerW, spr.getY() + centerH);
@@ -799,7 +801,7 @@ function Sprite(image,x,y,rot,w,h){
  * @constructor
  */
 function drawDashedLine(canvas, startVec, endVec, width, spacing, color){
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", {alpha: false});
     const prevW = ctx.lineWidth;
     const deltaX = endVec.x - startVec.x;
     const deltaY = endVec.y - startVec.y;
