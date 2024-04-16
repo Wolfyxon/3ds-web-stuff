@@ -8,6 +8,7 @@ window.addEventListener("load",function(){
 
     const txtPipes = document.getElementById("txt-pipes");
     const txtHighScore = document.getElementById("txt-high-score");
+    const txtFps = document.getElementById("txt-fps");
     const gameover = document.getElementById("gameover");
     gameover.style.visibility = "hidden";
 
@@ -106,6 +107,8 @@ window.addEventListener("load",function(){
     setInterval(function(){
         const delta = (Date.now() - prevFrameTime) / 16;
         prevFrameTime = Date.now();
+
+        txtFps.innerText = (1000 / (delta * 16)).toFixed(2);
 
         if(alive){
             bgPos -= 0.5 * delta;
