@@ -45,3 +45,7 @@
 #stats > * span {
     vertical-align: top;
 }
+
+#fps-container {
+    font-size: 50%;
+}

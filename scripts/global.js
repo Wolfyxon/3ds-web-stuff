@@ -349,11 +349,14 @@ window.addEventListener("load",function (){
         }
     }
 
-    // This ensures that the canvas isn't stretched
+    // This ensures that the canvas isn't stretched and blured
     const dualScreen = document.getElementsByClassName("dual-screen");
     for(var i=0;i<dualScreen.length;i++){
         const elm = dualScreen[i];
         if(elm.tagName.toLowerCase() === "canvas"){
+            const ctx = elm.getContext("2d");
+            ctx.imageSmoothingEnabled = false;
+
             elm.width = 320
             elm.height = 457
         }
