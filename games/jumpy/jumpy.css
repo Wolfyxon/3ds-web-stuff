@@ -1,17 +1,31 @@
-#canv {
-    width: 100%;
-    height: 100%;
+#top-screen {
+	position: relative;
 }
-
-#gameover {
-    color: red;
-    position: absolute;
-    left: 100px;
-    top: 70px;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-}
-
 #bottom-screen {
-    text-align: center;
+	text-align: center;
+}
+#gameover {
+	color: red;
+	position: absolute;
+	left: 100px;
+	top: 70px;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: black;
+}
+#player {
+	background-image: url('img/jumpy.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 65px;
+	image-rendering: pixelated;
+	left: 10px;
+	position: absolute;
+	top: 152px;
+	width: 45px;
+}
+.spike {
+	height: 51px;
+	position: absolute;
+	top: 167px;
+	width: 27px;
 }
