@@ -55,8 +55,6 @@
     background-image: url("img/bg.png");
     -webkit-animation: scrollText 1.2s infinite linear;
     animation: scrollText 1.2s infinite linear;
-    animation-play-state: paused;
-    -webkit-animation-play-state: paused;
 }
 
 #sprites {

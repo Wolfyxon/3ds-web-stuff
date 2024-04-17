@@ -168,7 +168,5 @@ window.addEventListener("load",function(){
         pigeon.render(canvas);
     }) // ,optiItv()
 
-    startBgAnim();
-
     window.addEventListener("click",jump);
 })
