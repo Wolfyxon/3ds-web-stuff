@@ -13,9 +13,15 @@
 	-webkit-text-stroke-color: black;
 }
 #player {
-	height: 52px;
+	background-image: url('img/jumpy.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 65px;
+	image-rendering: pixelated;
+	left: 10px;
 	position: absolute;
-	width: 36px;
+	top: 152px;
+	width: 45px;
 }
 .spike {
 	height: 51px;

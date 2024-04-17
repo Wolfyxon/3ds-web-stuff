@@ -3,13 +3,10 @@ window.addEventListener('load', function() {
 		timeText = document.getElementById('time'),
 		highScoreText = document.getElementById('high-score'),
 		topScreen = document.getElementById('top-screen'),
-		imgStanding = document.getElementById('img-standing'),
-		imgDead = document.getElementById('img-dead'),
-		imgRun1 = document.getElementById('img-run1'),
-		imgRun2 = document.getElementById('img-run2'),
+		player = document.getElementById('player'),
 		imgSpike = document.getElementById('img-spike'),
-		jumpyHeight = 52,
-		jumpyWidth = 36,
+		jumpyHeight = 65,
+		jumpyWidth = 45,
 		defaultSpeed = 3,
 		hitboxMultiplier = 0.85;
 
@@ -24,13 +21,7 @@ window.addEventListener('load', function() {
 		],
 		jumpyRun1 = false,
 		active = false,
-		resetCooldown = false,
-		playerSprite = document.getElementById('player'),
-		playerctx = playerSprite.getContext('2d');
-	playerSprite.style.top = (167 + yOffset) + 'px';
-	playerSprite.style.left = '10px';
-	playerctx.imageSmoothingEnabled = false;
-	playerctx.drawImage(imgStanding, 0, 0, playerSprite.width, playerSprite.height);
+		resetCooldown = false;
 
 	function jump() {
 		if (resetCooldown) return;
@@ -47,8 +38,7 @@ window.addEventListener('load', function() {
 		for (var i=0; i<spikes.length; i++) {
 			topScreen.removeChild(spikes[i][1]);
 		}
-		playerctx.clearRect(0, 0, playerSprite.width, playerSprite.height);
-		playerctx.drawImage(imgStanding, 0, 0, playerSprite.width, playerSprite.height);
+		player.style.backgroundPositionX = '';
 		spikes = [];
 		active = true;
 	}
@@ -105,9 +95,7 @@ window.addEventListener('load', function() {
 	setInterval(function() {
 		if (!active || jumpPower > 0) return;
 		jumpyRun1 = !jumpyRun1;
-		playerctx.clearRect(0, 0, playerSprite.width, playerSprite.height);
-		playerctx.drawImage((jumpyRun1 && imgRun1 || imgRun2), 0, 0, playerSprite.width, playerSprite.height);
-
+		player.style.backgroundPositionX = jumpyRun1 ? '-45px' : '-90px';
 	}, 100);
 
 	// Controls and main loop
@@ -135,8 +123,7 @@ window.addEventListener('load', function() {
 			}
 			if (active) {
 				if( x > 2 && x < jumpyWidth * hitboxMultiplier && -yOffset < jumpyHeight * hitboxMultiplier){
-					playerctx.clearRect(0, 0, playerSprite.width, playerSprite.height);
-					playerctx.drawImage(imgDead, 0, 0, playerSprite.width, playerSprite.height);
+					player.style.backgroundPositionX = '-135px';
 					active = false;
 					resetCooldown = true;
 					gameoverTxt.innerText = 'GAME OVER';
@@ -150,7 +137,7 @@ window.addEventListener('load', function() {
 			spikes[i][1].style.visibility = '';
 			spikes[i][1].style.left = x + 'px';
 		}
-		playerSprite.style.top = (167 + yOffset) + 'px';
+		player.style.top = (152 + yOffset) + 'px';
 
 	});
 
