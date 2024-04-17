@@ -29,13 +29,11 @@ const terminalTexts = [
 window.addEventListener('load', function() {
     const terminal = document.getElementById('terminal'),
         numbers = document.getElementById('numbers'),
-        radarScan = document.getElementById('scan'),
         tileTbl = document.getElementById('tiles'),
         bars = document.getElementById('bars'),
         termLength = terminalTexts.length,
         barLength = 30;
-    var scanRot = 0,
-        tiles = [],
+    var tiles = [],
         lines = [],
         barTxt = '',
         tileLength;
@@ -109,15 +107,6 @@ window.addEventListener('load', function() {
 
         numbers.innerHTML = html;
     }
-
-    var prevFrameTime = Date.now();
-    setInterval(function (){
-        const delta = (Date.now() - prevFrameTime) / 16;
-        prevFrameTime = Date.now();
-
-        scanRot += delta * 5;
-        radarScan.style.webkitTransform = 'rotate(' + scanRot + 'deg)';
-    });
 
     init();
     echo();
