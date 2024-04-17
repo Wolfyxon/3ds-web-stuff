@@ -849,6 +849,7 @@ function getCtx(canvas){
     if(cached) return cached;
 
     const ctx = canvas.getContext("2d", {alpha: alphaEnabled});
+    ctx.imageSmoothingEnabled = false;
     ctxCache[canvas] = ctx;
     return ctx;
 }
