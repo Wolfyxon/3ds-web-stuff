@@ -67,6 +67,10 @@ window.addEventListener("load",function(){
         pigeon.rotation = 0;
         pigeon.area.moveTo(new Vector2(pigeon.getX(),startY));
         txtHighScore.style.color = ""
+        startBgAnim()
+    }
+
+    function startBgAnim(){
         bgEle.style.animationPlayState = 'running';
         bgEle.style.webkitAnimationPlayState = 'running';
     }
@@ -163,6 +167,8 @@ window.addEventListener("load",function(){
         }
         pigeon.render(canvas);
     }) // ,optiItv()
+
+    startBgAnim();
 
     window.addEventListener("click",jump);
 })
