@@ -71,10 +71,11 @@ Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.c
 ## TODO
 Besides, from planned games:
 - [ ] Fix compatibility and performance issues on Old 3DS/2DS
-- [ ] Remake the home page and make it behave more like the home menu
-- [ ] Make a camera system for the game.js library
-- [ ] Create a map creator and loader for games
-- [ ] Create a 3D rendering library
+- [ ] Create a faster rendering library
+- Migrate all games using canvasGame.js to the new rendering library
+- Remake the home page and make it behave more like the home menu
+- Create a map creator and loader for games
+- Create a 3D rendering library
 
 ### 3rd party
 #### QR code generation API
