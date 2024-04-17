@@ -1,7 +1,7 @@
 window.addEventListener("load",function(){
+    const bgEle = document.getElementById("bg");
     const canvas = document.getElementById("canv");
-    const ctx = canvas.getContext("2d");
-
+    
     const imgWingUp = document.getElementById("img-pigeon1");
     const imgWingDown = document.getElementById("img-pigeon2")
     const imgPipe = document.getElementById("img-pipe")
@@ -13,8 +13,6 @@ window.addEventListener("load",function(){
     gameover.style.visibility = "hidden";
 
     const startY = 70;
-
-    const moon = new Sprite(document.getElementById("img-moon"),230,10);
 
     const pigeon = new Sprite(imgWingUp,10,startY);
     const hitbox = pigeon.area.copy();
@@ -50,6 +48,8 @@ window.addEventListener("load",function(){
 
     function die(){
         if(!alive) return;
+        bgEle.style.animationPlayState = 'paused';
+        bgEle.style.webkitAnimationPlayState = 'paused';
         resetCooldown = true;
         alive = false;
         gameover.style.visibility = "";
@@ -67,11 +67,15 @@ window.addEventListener("load",function(){
         pigeon.rotation = 0;
         pigeon.area.moveTo(new Vector2(pigeon.getX(),startY));
         txtHighScore.style.color = ""
+        bgEle.style.animationPlayState = 'running';
+        bgEle.style.webkitAnimationPlayState = 'running';
     }
 
     function jump(){
         if(!started){
             document.getElementById("prestart").style.visibility = "hidden";
+            bgEle.style.animationPlayState = 'running';
+            bgEle.style.webkitAnimationPlayState = 'running';
             started = true;
         }
         if(!alive && !resetCooldown){
@@ -110,24 +114,16 @@ window.addEventListener("load",function(){
 
         txtFps.innerText = (1000 / (delta * 16)).toFixed(2);
 
-        if(alive){
-            bgPos -= 0.5 * delta;
-            canvas.style.backgroundPositionX = bgPos+"px";
-
-            if(started){
-                if(pipes.length > 0){
-                    const lastPipe = pipes[pipes.length - 1];
-                    if(lastPipe.getX() < 220) spawnPipes();
-                } else {
-                    spawnPipes();
-                }
-
+        if(alive && started){
+            if(pipes.length > 0){
+                const lastPipe = pipes[pipes.length - 1];
+                if(lastPipe.getX() < 220) spawnPipes();
+            } else {
+                spawnPipes();
             }
         }
 
-        clearCanvas(canvas);
-
-        moon.render(canvas);
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 
         if(yForce < 3 && pigeon.getY() < 120 && started){
             yForce += 0.1 * delta;

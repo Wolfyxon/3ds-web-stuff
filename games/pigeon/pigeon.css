@@ -4,10 +4,59 @@
     color: white;
 }
 
+@-webkit-keyframes scrollText {
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -40px;
+    }
+}
+
+@keyframes scrollText {
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -40px;
+    }
+}
+
+.bigtext {
+    margin-top: 10px;
+}
+
+#top-screen {
+    position: relative;
+}
+
 #canv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#moon {
+    position: absolute;
+    top: 10px;
+    left: 300px;
+    width: 90px;
+    height: 90px;
+}
+
+#bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-image: url("img/bg.png");
+    -webkit-animation: scrollText 1.2s infinite linear;
+    animation: scrollText 1.2s infinite linear;
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
 }
 
 #sprites {
