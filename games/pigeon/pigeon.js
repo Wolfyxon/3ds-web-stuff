@@ -1,3 +1,5 @@
+depend("canvasGame");
+
 window.addEventListener("load",function(){
     const bgEle = document.getElementById("bg");
     const canvas = document.getElementById("canv");

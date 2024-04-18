@@ -1,3 +1,5 @@
+depend("canvasGame");
+
 window.addEventListener("load",function(){
     const canvas = document.getElementById("canv");
     const ctx = canvas.getContext("2d");

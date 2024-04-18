@@ -3,8 +3,7 @@
 // https://ip-api.com/
 
 libName("geo");
-
-if(!window.httpGet) throw new Error("net.js not imported!")
+depend("net");
 
 /***
  * Searches for real life locations with the given query and returns the results to the callback function
