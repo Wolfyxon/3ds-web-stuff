@@ -53,5 +53,21 @@ function Scene(element) {
 }
 Scene.prototype = Object.create(SceneNode.prototype);
 
+/**
+ * 2D image for Scenes
+ * @param {String} imageUrl
+ * @constructor
+ */
+function Sprite(imageUrl) {
+    const img = document.createElement("img");
+    img.src = imageUrl;
+
+    this.element = img;
+    img.style.position = "absolute";
+
+    this._rotation = 0;
+    this._pos = new Vector2(0, 0);
+}
+Sprite.prototype = Object.create(SceneNode.prototype);
 
 // TODO: Implement the rest
