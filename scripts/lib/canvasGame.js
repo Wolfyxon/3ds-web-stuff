@@ -1,5 +1,5 @@
 libName("canvasGame");
-
+depend("gameBase");
 
 var alphaEnabled = false;
 

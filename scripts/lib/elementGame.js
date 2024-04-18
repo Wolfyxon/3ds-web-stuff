@@ -1,6 +1,7 @@
 // Alternative to canvasGame that utilizes DOM elements instead of drawing on canvases
 
 libName("elementGame");
+depend("gameBase");
 
 /**
  * 2D position
