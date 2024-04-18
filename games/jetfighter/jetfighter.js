@@ -1,20 +1,20 @@
-window.addEventListener("load",function(){
-    const canvas = document.getElementById("canv");
+window.addEventListener('load',function(){
+    const canvas = document.getElementById('canv');
 
-    const imgJet = document.getElementById("img-jet");
+    const imgJet = document.getElementById('img-jet');
 
-    const imgHeli = document.getElementById("img-heli");
-    const imgRotor = document.getElementById("img-rotor");
+    const imgHeli = document.getElementById('img-heli');
+    const imgRotor = document.getElementById('img-rotor');
 
-    const imgProjectile = document.getElementById("img-projectile");
-    const imgRocket = document.getElementById("img-rocket");
+    const imgProjectile = document.getElementById('img-projectile');
+    const imgRocket = document.getElementById('img-rocket');
 
-    const healthBarNeg = document.getElementById("health-bar-neg");
+    const healthBarNeg = document.getElementById('health-bar-neg');
 
-    const overlay = document.getElementById("overlay");
-    const gameover = document.getElementById("gameover");
-    const btnRestart = document.getElementById("btn-restart");
-    const killsTxt = document.getElementById("kills-amount");
+    const overlay = document.getElementById('overlay');
+    const gameover = document.getElementById('gameover');
+    const btnRestart = document.getElementById('btn-restart');
+    const killsTxt = document.getElementById('kills-amount');
 
     const initX = 135;
     const initY = 350;
@@ -69,7 +69,7 @@ window.addEventListener("load",function(){
     }
 
     function updateHpBar(){
-         healthBarNeg.style.height = (maxPlrHp - plrHp)+"%";
+         healthBarNeg.style.height = (maxPlrHp - plrHp)+'%';
     }
 
     function reset(){
@@ -88,13 +88,17 @@ window.addEventListener("load",function(){
         updateKills();
 
         alive = true;
-        gameover.style.display = "none";
-        overlay.style.opacity = "0";
+        gameover.style.display = 'none';
+        overlay.style.opacity = '0';
+        canvas.style.webkitAnimationPlayState='running';
+        canvas.style.animationPlayState='running';
     }
 
     function die(){
         alive = false;
-        gameover.style.display = "";
+        gameover.style.display = '';
+        canvas.style.webkitAnimationPlayState='paused';
+        canvas.style.animationPlayState='paused';
     }
 
     setInterval(function(){
@@ -103,14 +107,14 @@ window.addEventListener("load",function(){
     },3000)
 
 
-    onBtnJustPressed("A",function(){
+    onBtnJustPressed('A',function(){
         if(!alive) reset();
     });
 
     // Firing loop
     setInterval(function(){
         if(!alive) return;
-        if(isBtnPressed("A")){
+        if(isBtnPressed('A')){
             const proj = new Sprite(
                 imgProjectile,
                 plrJet.getX()+plrJet.area.getWidth()/2-2,
@@ -124,8 +128,6 @@ window.addEventListener("load",function(){
         }
     },100)
 
-    var bgPos = 0;
-
     // Movement loop
     var prevMoveFrameTime = 0;
     setInterval(function(){
@@ -133,17 +135,13 @@ window.addEventListener("load",function(){
         const delta = (Date.now() - prevMoveFrameTime) / 16;
         prevMoveFrameTime = Date.now();
 
-        bgPos += 5 * delta;
-        if(bgPos > 4096) bgPos = 0;
-        canvas.style.backgroundPositionY = bgPos+"px";
-
-        if(isBtnPressed("Up")) plrJet.moveXY(0,-speed * delta);
-        if(isBtnPressed("Down")) plrJet.moveXY(0,speed * delta);
-        if(isBtnPressed("Left")) {
+        if(isBtnPressed('Up')) plrJet.moveXY(0,-speed * delta);
+        if(isBtnPressed('Down')) plrJet.moveXY(0,speed * delta);
+        if(isBtnPressed('Left')) {
             plrJet.rotation = lerpAngle(plrJet.rotation,-rotAngle,rotAmt * delta);
             plrJet.moveXY(-speed * delta, 0);
         }
-        if(isBtnPressed("Right")){
+        if(isBtnPressed('Right')){
             plrJet.rotation = lerpAngle(plrJet.rotation,rotAngle,rotAmt * delta);
             plrJet.moveXY(speed * delta,0);
         }
@@ -225,7 +223,7 @@ window.addEventListener("load",function(){
 
     updateHpBar();
 
-    btnRestart.addEventListener("click",function(){
+    btnRestart.addEventListener('click',function(){
         if(!alive) reset();
     })
 })

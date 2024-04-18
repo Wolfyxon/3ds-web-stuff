@@ -1,76 +1,95 @@
+@-webkit-keyframes backgroundAnimation {
+	from {
+		background-position-y: 0px;
+	}
+	to {
+		background-position-y: 64px;
+	}
+}
+@keyframes backgroundAnimation {
+	from {
+		background-position-y: 0px;
+	}
+	to {
+		background-position-y: 64px;
+	}
+}
+
 #canv {
-    background-color: #86cde1;
-    background-image: url("img/background.png");
-    outline: 3px black solid;
+	background-color: #86cde1;
+	background-image: url("img/background.png");
+	outline: 3px black solid;
+	-webkit-animation: backgroundAnimation 0.5s infinite linear;
+	animation: backgroundAnimation 0.5s infinite linear;
 }
 
 #top-screen {
-    background-color: #484d56;
+	background-color: #484d56;
 }
 
 #top-screen > * {
-    height: 100%;
-    vertical-align: top;
-    width: 9.1%;
-    display: inline-block;
+	height: 100%;
+	vertical-align: top;
+	width: 9.1%;
+	display: inline-block;
 }
 
 #right {
-    margin-left: 320px;
+	margin-left: 320px;
 }
 
 #health-bar-container {
-    background-color: red;
-    height: 80%;
-    width: 50%;
-    border: 2px #232323 solid;
-    border-radius: 5px;
-    margin-left: 20%;
-    margin-top: 40%;
+	background-color: red;
+	height: 80%;
+	width: 50%;
+	border: 2px #232323 solid;
+	border-radius: 5px;
+	margin-left: 20%;
+	margin-top: 40%;
 }
 
 #health-bar-neg {
-    background-color: darkred;
-    height: 50%;
+	background-color: darkred;
+	height: 50%;
 }
 
 #stats {
-    text-align: center;
-    color: white;
+	text-align: center;
+	color: white;
 }
 
 #stats p {
-    margin: 10%;
+	margin: 10%;
 }
 
 #stats img {
-    width: 80%;
+	width: 80%;
 }
 
 #overlay {
-    background-color: black;
+	background-color: black;
 }
 
 #gameover {
-    margin-top: 20%;
-    text-align: center;
-    color: white;
+	margin-top: 20%;
+	text-align: center;
+	color: white;
 }
 
 #gameover h1 {
-    color: red;
-    -webkit-text-stroke: 1px black;
+	color: red;
+	-webkit-text-stroke: 1px black;
 }
 
 #btn-restart {
-    background-color: purple;
-    color: white;
-    border: black;
-    padding: 2%;
-    border-radius: 5px;
-    width: 30%;
+	background-color: purple;
+	color: white;
+	border: black;
+	padding: 2%;
+	border-radius: 5px;
+	width: 30%;
 }
 
 #btn-restart:active {
-    background-color: #ab30ab;
+	background-color: #ab30ab;
 }
