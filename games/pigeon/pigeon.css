@@ -72,6 +72,7 @@
 
 #gameover {
     color: red;
+    z-index: 100;
 }
 
 #prestart {
