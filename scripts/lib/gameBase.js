@@ -1,3 +1,14 @@
+/*
+// A library with basic classes and mathematical functions useful for making games
+
+Do not put here things like:
+- Canvas operations
+- Rendering solutions
+- Advanced element operations
+
+This library is for basic things, for more advanced features see: canvasGame and elementGame (they also depend on this library).
+
+ */
 libName("gameBase");
 
 /**
