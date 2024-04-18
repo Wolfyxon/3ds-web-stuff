@@ -94,7 +94,7 @@ window.addEventListener('load', function() {
 		enemyScoreTxt.innerText = enemy.score;
 	}
 
-	function isTouching(target) {
+	function isBallTouching(target) {
 		return !(ball.x > (target.x + target.w) ||
 				 (ball.x + ball.w) < target.x ||
 				 ball.y > (target.y + target.h) ||
@@ -139,8 +139,8 @@ window.addEventListener('load', function() {
 			ball.x += bNew[0];
 			ball.y += bNew[1];
 
-			if (isTouching(enemy)) bounce(enemy);
-			if (isTouching(player)) bounce(player);
+			if (isBallTouching(enemy)) bounce(enemy);
+			if (isBallTouching(player)) bounce(player);
 
 			if (ball.y <= 0 || ball.y >= height) {
 				ball.rot = -ball.rot;
