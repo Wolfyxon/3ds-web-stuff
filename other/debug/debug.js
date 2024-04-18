@@ -49,7 +49,7 @@ window.addEventListener("load",function (){
 
     // Canvas testing
     const canvas = document.getElementById("canv");
-    const rect = Rect2D(Vector2(20,20),70,50);
+    const rect = new Rect2D(new Vector2(20,20),70,50);
     rect.outlineSize = 5;
     rect.outlineStyle = "red";
 

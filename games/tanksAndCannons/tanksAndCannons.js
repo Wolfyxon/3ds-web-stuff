@@ -70,7 +70,7 @@ window.addEventListener("load",function(){
                 if(isBtnPressed("left")) cannon.rotation -= rotSpeed;
                 if(isBtnPressed("right")) cannon.rotation += rotSpeed;
 
-                cannon.area.moveTo(Vector2(x-cellSize/4,y-cellSize/1.5));
+                cannon.area.moveTo(new Vector2(x-cellSize/4,y-cellSize/1.5));
                 cannon.render(canvas);
             }
         }
