@@ -251,6 +251,7 @@ function libName(lib) {
     if(hasLib(lib)) {
         throw "This library is already registered. Is this function duplicated? Did you mean depend()?";
     }
+    availableLibs.push(lib);
 }
 
 /////////////////////////////////
