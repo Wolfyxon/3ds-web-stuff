@@ -68,12 +68,12 @@ window.addEventListener('load', function() {
 			setTimeout(reset, 1500);
 		}
 		if (currentPlayer === 'O') {
-			cell.style.color = 'green';
+			cell.style.color = 'blue';
 			plrTxt.style.color = 'red';
 			currentPlayer = 'X';
 		} else {
 			cell.style.color = 'red';
-			plrTxt.style.color = 'green';
+			plrTxt.style.color = 'blue';
 			currentPlayer = 'O';
 		}
 		winTxt.style.color = cell.style.color;
