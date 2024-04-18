@@ -966,5 +966,5 @@ function distanceToLine(lineStart, lineEnd, point) {
         closestY = lineStart.y + parametricValue * dy2;
     }
 
-    return Math.sqrt(powerOf(point.x - closestX, 2) + powerOf(point.y - closestY,2));
+    return Math.sqrt(pow(point.x - closestX, 2) + pow(point.y - closestY,2));
 }

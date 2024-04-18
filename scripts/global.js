@@ -71,7 +71,7 @@ function clamp(value, min, max){
  * @param exponent
  * @return {number}
  */
-function powerOf(base, exponent) {
+function pow(base, exponent) {
     if (exponent === 0) return 1;
 
     var result = 1;
