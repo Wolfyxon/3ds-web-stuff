@@ -93,41 +93,6 @@ function is3DS(){
     return includes(window.navigator.userAgent,"Nintendo 3DS");
 }
 
-/////// Dependency system ///////
-
-var availableLibs = [];
-
-/**
- *  Checks if a library is loaded
- * @param {String} lib Name of the library
- * @return boolean
- */
-function hasLib(lib) {
-    return includes(availableLibs, lib);
-}
-
-/**
- * Requires the specified library to be loaded for the script to function
- * @param {String} lib Name of the library to depend on
- */
-function depend(lib) {
-    if(!hasLib(lib)) {
-        throw "Dependency error! '" + lib + "' is not loaded.";
-    }
-}
-
-/**
- * Registers a library
- * @param {String} lib Name of the library
- */
-function libName(lib) {
-    if(hasLib(lib)) {
-        throw "This library is already registered. Is this function duplicated? Did you mean depend()?";
-    }
-}
-
-/////////////////////////////////
-
 // array.includes and string.includes does not work on the 3DS browser
 /**
  * Performs a linear interpolation between 2 numbers
@@ -254,6 +219,41 @@ function findScrollableAncestor(element) {
         parent = parent.parentElement;
     }
 }
+
+/////// Dependency system ///////
+
+var availableLibs = [];
+
+/**
+ *  Checks if a library is loaded
+ * @param {String} lib Name of the library
+ * @return boolean
+ */
+function hasLib(lib) {
+    return includes(availableLibs, lib);
+}
+
+/**
+ * Requires the specified library to be loaded for the script to function
+ * @param {String} lib Name of the library to depend on
+ */
+function depend(lib) {
+    if(!hasLib(lib)) {
+        throw "Dependency error! '" + lib + "' is not loaded.";
+    }
+}
+
+/**
+ * Registers a library
+ * @param {String} lib Name of the library
+ */
+function libName(lib) {
+    if(hasLib(lib)) {
+        throw "This library is already registered. Is this function duplicated? Did you mean depend()?";
+    }
+}
+
+/////////////////////////////////
 
 var forcePosition = true;
 
