@@ -39,6 +39,7 @@
 }
 
 #moon {
+    user-select: none;
     position: absolute;
     top: 10px;
     left: 300px;
