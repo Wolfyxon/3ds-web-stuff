@@ -2,6 +2,8 @@
 // https://open-meteo.com/
 // https://ip-api.com/
 
+libName("geo");
+
 if(!window.httpGet) throw new Error("net.js not imported!")
 
 /***

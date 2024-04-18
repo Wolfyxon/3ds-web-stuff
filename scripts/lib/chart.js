@@ -1,3 +1,5 @@
+libName("chart");
+
 /**
  * Draws a line chart on a canvas
  * @param {HTMLCanvasElement} canvas Canvas to draw the chart on.

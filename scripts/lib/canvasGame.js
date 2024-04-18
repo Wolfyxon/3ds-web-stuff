@@ -1,3 +1,5 @@
+libName("canvasGame");
+
 
 var alphaEnabled = false;
 

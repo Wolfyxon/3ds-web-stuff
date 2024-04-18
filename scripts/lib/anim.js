@@ -1,3 +1,5 @@
+libName("anim");
+
 function advanceFrame(ele) {
 	var curFrame = ele.querySelector( '[data-animated="1"]' );
 	if (curFrame) curFrame.removeAttribute('data-animated');

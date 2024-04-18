@@ -1,5 +1,7 @@
 // Alternative to canvasGame that utilizes DOM elements instead of drawing on canvases
 
+libName("elementGame");
+
 /**
  * 2D position
  * @param {number} x

@@ -1,3 +1,5 @@
+libName("virtualKeyboard");
+
 // classes don't work on the 3DS browser, so I had to make a workaround with objects
 function createKeyboard(element) {
     var kb = {}

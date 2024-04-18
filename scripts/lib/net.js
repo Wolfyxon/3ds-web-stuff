@@ -1,3 +1,4 @@
+libName("net");
 
 /**
  * Gets the domain name from the given URL
