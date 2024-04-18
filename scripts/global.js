@@ -41,6 +41,12 @@ function lerp(start, end, speed){
     return (1-speed)*start+speed*end
 }
 
+/**
+ * Performs a float modulo (% operator)
+ * @param  {Number} a
+ * @param {Number} b
+ * @return {Number}
+ */
 function fmod(a, b){
     return Number((a - (Math.floor(a / b) * b)).toPrecision(8));
 }
