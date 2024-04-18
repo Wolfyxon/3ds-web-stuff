@@ -22,8 +22,8 @@ window.addEventListener("load",function(){
     }
 
     function addTank(){
-        const base = new Sprite(imgTank1Base);
-        const cannon = new Sprite(imgTank1Cannon);
+        const base = new CanvasSprite(imgTank1Base);
+        const cannon = new CanvasSprite(imgTank1Cannon);
 
         const scale = 0.6;
 
@@ -37,7 +37,7 @@ window.addEventListener("load",function(){
     }
 
     function addCannon(cellIdx){
-        cannons[cellIdx] = new Sprite(imgTank1Cannon);
+        cannons[cellIdx] = new CanvasSprite(imgTank1Cannon);
     }
 
     addCannon(0);

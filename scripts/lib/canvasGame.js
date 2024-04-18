@@ -440,7 +440,7 @@ function Rect2D(pos, w, h){
  * @param {number} [h=auto] Sprite height
  * @constructor
  */
-function Sprite(image,x,y,rot,w,h){
+function CanvasSprite(image,x,y,rot,w,h){
     if(!x) x = 0;
     if(!y) y = 0;
     if(!rot) rot = 0;

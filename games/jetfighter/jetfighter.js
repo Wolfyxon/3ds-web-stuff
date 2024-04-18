@@ -21,7 +21,7 @@ window.addEventListener('load',function(){
     const initX = 135;
     const initY = 350;
 
-    const plrJet = new Sprite(imgJet,initX,initY);
+    const plrJet = new CanvasSprite(imgJet,initX,initY);
     const maxPlrHp = 100;
     var plrHp = maxPlrHp;
     var alive = true;
@@ -43,10 +43,10 @@ window.addEventListener('load',function(){
 
     function addHelicopter(x,y){
         const scale = 0.8;
-        const heli = new Sprite(imgHeli,x,y,180);
+        const heli = new CanvasSprite(imgHeli,x,y,180);
         heli.targetPos = new Vector2(x,y);
         heli.hp = 10;
-        heli.rotor = new Sprite(imgRotor);
+        heli.rotor = new CanvasSprite(imgRotor);
         heli.rotor.rescale(scale)
         heli.rescale(scale);
         helicopters.push(heli);
@@ -54,7 +54,7 @@ window.addEventListener('load',function(){
         heli.fireItv = setInterval(function(){
             if(!alive) return;
             const pos = heli.getCenter();
-            const rocket = new Sprite(imgRocket,pos.x,pos.y,heli.rotation);
+            const rocket = new CanvasSprite(imgRocket,pos.x,pos.y,heli.rotation);
             rocket.rescale(1.3);
             rocket.enemy = true;
             projectiles.push(rocket)
@@ -117,7 +117,7 @@ window.addEventListener('load',function(){
     setInterval(function(){
         if(!alive) return;
         if(isBtnPressed('A')){
-            const proj = new Sprite(
+            const proj = new CanvasSprite(
                 imgProjectile,
                 plrJet.getX()+plrJet.area.getWidth()/2-2,
                 plrJet.getY()

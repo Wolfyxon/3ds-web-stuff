@@ -16,7 +16,7 @@ window.addEventListener("load",function(){
 
     const startY = 70;
 
-    const pigeon = new Sprite(imgWingUp,10,startY);
+    const pigeon = new CanvasSprite(imgWingUp,10,startY);
     const hitbox = pigeon.area.copy();
 
     var started = false;
@@ -35,8 +35,8 @@ window.addEventListener("load",function(){
         const gap = 152;
         const startX = 300
         const scale = 0.5;
-        pipes.push(new Sprite(imgPipe,startX,y,180).rescale(scale));
-        pipes.push(new Sprite(imgPipe,startX,y+gap).rescale(scale));
+        pipes.push(new CanvasSprite(imgPipe,startX,y,180).rescale(scale));
+        pipes.push(new CanvasSprite(imgPipe,startX,y+gap).rescale(scale));
     }
 
     function spawnPipes(){
