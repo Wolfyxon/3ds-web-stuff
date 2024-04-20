@@ -28,6 +28,7 @@ SceneNode.prototype = {
         this._pos = new Vector2(0, 0);
 
         this.updateTransform();
+        this.updateClass();
     },
 
     /**
@@ -36,6 +37,7 @@ SceneNode.prototype = {
      */
     addClass: function(className) {
         this._classList.push(className);
+        this.updateClass();
     },
 
     /**
@@ -51,6 +53,7 @@ SceneNode.prototype = {
         }
 
         this._classList.splice(idx, 1);
+        this.updateClass();
     },
 
     /**
@@ -59,6 +62,13 @@ SceneNode.prototype = {
      */
     getClassList: function() {
         return this._classList;
+    },
+
+    /**
+     * Updates the node's element class list
+     */
+    updateClass: function() {
+        this.element.className = this.getClassString();
     },
 
     /**
