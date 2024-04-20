@@ -72,6 +72,17 @@ SceneNode.prototype = {
 
     getParent: function() {
         return this._parent;
+    },
+
+    remove: function() {
+        const par = this.getParent();
+
+        if(par) {
+            par.removeChild(this);
+            return;
+        }
+
+        this.element.remove();
     }
 }
 
