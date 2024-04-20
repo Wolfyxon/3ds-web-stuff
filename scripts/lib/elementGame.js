@@ -42,7 +42,7 @@ SceneNode.prototype = {
     },
 
     moveXY: function(x, y) {
-        this.setPositionXY(this._pos.x + x, this._pos + y);
+        this.setPositionXY(this._pos.x + x, this._pos.y + y);
     },
 
     getPosition: function() {
