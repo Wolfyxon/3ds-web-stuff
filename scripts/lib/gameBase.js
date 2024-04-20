@@ -201,6 +201,7 @@ Vector2.prototype = {
     mul: function(value) {
         this.x *= value;
         this.y *= value;
+        return this;
     },
 
     /**
