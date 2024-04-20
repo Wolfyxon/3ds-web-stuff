@@ -171,7 +171,6 @@ window.addEventListener('load', function() {
 				(coords.left) < screenCoords.left ||
 				(coords.left + coords.width) > (screenCoords.left + screenCoords.width)) {
 					projectiles.removeChild(p[i]);
-					continue;
 			}
 		}
 	}, 5);
