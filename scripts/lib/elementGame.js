@@ -32,7 +32,9 @@ SceneNode.prototype = {
     },
 
     setPositionXY: function(x, y) {
-        this.setPositionVec( new Vector2(x, y) );
+        this._pos.x = x;
+        this._pos.y = y;
+        this.updateTransform();
     },
 
     getPosition: function() {
