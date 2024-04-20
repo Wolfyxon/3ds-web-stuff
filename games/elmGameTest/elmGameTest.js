@@ -53,7 +53,7 @@ window.addEventListener("load", function(){
         const particles = scene.getChildrenOfClass("particle");
         for(var i = 0; i < particles.length; i++) {
             const p = particles[i];
-            p.moveXY(delta, delta);
+            p.moveVec(p.velocity.getMul(0.2 * delta));
         }
         particlesTxt.innerText = particles.length;
 
@@ -66,6 +66,7 @@ window.addEventListener("load", function(){
     function spawnParticle() {
         const p = new Sprite("../pigeon/img/wingUp.png");
         p.addClass("particle");
+        p.velocity = new Vector2(randf(-1, 1), randf(-1, 1));
         scene.addChild(p);
 
         setTimeout(function() {
