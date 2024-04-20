@@ -205,6 +205,15 @@ Vector2.prototype = {
     },
 
     /**
+     * Returns a copy of the vector multiplied by the value
+     * @param {number} value
+     * @return {Vector2}
+     */
+    getMul: function(value) {
+        return this.copy().mul(value);
+    },
+
+    /**
      * Returns an independent copy of this vector
      * @return {Vector2}
      */
