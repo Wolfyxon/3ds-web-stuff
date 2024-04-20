@@ -16,5 +16,15 @@ window.addEventListener("load", function(){
         prevFrameTime = Date.now();
 
         chicken.rotate(delta);
+
+        const spd = 2 * delta;
+        var vel = new Vector2(0, 0);
+
+        if(isBtnPressed("left")) vel.x = -1;
+        if(isBtnPressed("right")) vel.x = 1;
+        if(isBtnPressed("up")) vel.y = -1;
+        if(isBtnPressed("down")) vel.y = 1;
+
+        maxwell.moveVec(vel);
     });
 });
