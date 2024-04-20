@@ -279,7 +279,10 @@ function Sprite(imageUrl) {
     const img = document.createElement("img");
     img.src = imageUrl;
 
-    this.element = img;
+    const container = document.createElement("span");
+    container.appendChild(img);
+
+    this.element = container;
     this.init();
     this.addClass("sprite");
 }
