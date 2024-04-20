@@ -196,7 +196,7 @@ SceneNode.prototype = {
     getChildrenOfClass: function(className) {
         var res = [];
 
-        for(var i = 0; i < this._children; i++) {
+        for(var i = 0; i < this._children.length; i++) {
             const ch = this._children[i];
 
             if(ch.isClass(className)) {
