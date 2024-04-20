@@ -56,6 +56,16 @@ SceneNode.prototype = {
         this.element.appendChild(node.element);
     },
 
+    removeChild: function(node) {
+        const idx = this._children.indexOf(node);
+        if(idx === -1) {
+            console.warn("Attempt to remove not owned child");
+            return;
+        }
+        this._children.splice(idx, 1);
+        node._parent = null;
+    },
+
     getChildren: function() {
         return this._children;
     },
