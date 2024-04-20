@@ -166,7 +166,7 @@ SceneNode.prototype = {
             return;
         }
 
-        this.element.remove();
+        this.element.parentNode.removeChild(this.element);
     }
 }
 
