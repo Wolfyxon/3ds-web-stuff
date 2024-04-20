@@ -197,10 +197,17 @@ SceneNode.prototype = {
 
         var trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ")";
 
-        this.element.style.webkitTransform = trStr;
-        this.element.style.transform = trStr;
-        this.element.style.left = x;
-        this.element.style.top = y;
+        if( this.element.style.webkitTransform !== trStr || this.element.style.transform !== trStr) {
+            this.element.style.webkitTransform = trStr;
+            this.element.style.transform = trStr;
+        }
+
+        if(this.element.style.left !== x) {
+            this.element.style.left = x;
+        }
+        if(this.element.style.top !== y) {
+            this.element.style.top = y;
+        }
     },
 
     /**
