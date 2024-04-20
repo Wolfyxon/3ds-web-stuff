@@ -1,5 +1,7 @@
 depend("canvasGame");
 
+// TODO: After elementGame is complete, migrate
+
 window.addEventListener("load",function(){
     const bgEle = document.getElementById("bg");
     const canvas = document.getElementById("canv");
