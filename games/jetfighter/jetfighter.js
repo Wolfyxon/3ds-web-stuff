@@ -9,7 +9,9 @@ window.addEventListener('load', function() {
 		gameover = document.getElementById('gameover'),
 		screenCoords = screenEle.getBoundingClientRect(),
 		degreeInRadiant = 2 * Math.PI / 360,
-		speed = 5;
+		speed = 5,
+		projectileSpeed = 2;
+
 	var helis = [],
 		running = true,
 		prevMoveFrameTime = 0,
@@ -120,8 +122,8 @@ window.addEventListener('load', function() {
 			var angle = degreeInRadiant * (Number(p[i].getAttribute('data-rot')) - 90);
 			var deltaX = speed * Math.cos(angle);
 			var deltaY = speed * Math.sin(angle);
-			p[i].style.top = (parseFloat(p[i].style.top) + deltaY * delta) + 'px';
-			p[i].style.left = (parseFloat(p[i].style.left) + deltaX * delta) + 'px';
+			p[i].style.top = (parseFloat(p[i].style.top) + deltaY * delta * projectileSpeed) + 'px';
+			p[i].style.left = (parseFloat(p[i].style.left) + deltaX * delta * projectileSpeed) + 'px';
 			var coords = p[i].getBoundingClientRect();
 			if (p[i].className.indexOf('jet') > -1) { // Jet-projectiles
 				for (var j = 0; j < helis.length; j++) {
