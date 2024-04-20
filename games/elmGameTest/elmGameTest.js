@@ -46,9 +46,28 @@ window.addEventListener("load", function(){
         if(isBtnPressed("up")) vel.y = -1;
         if(isBtnPressed("down")) vel.y = 1;
 
+        if(isBtnPressed("a")) spawnParticle();
+
+        const particles = scene.getChildrenOfClass("particle");
+        for(var i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.moveXY(delta * 5, delta);
+        }
+
         maxwell.moveVec(vel.mul(spd));
 
         setTimeout(mainLoop, 0);
     }
     mainLoop();
+
+    function spawnParticle() {
+        const p = new Sprite("../pigeon/img/wingUp.png");
+        p.addClass("particle");
+        scene.addChild(p);
+
+        setTimeout(function() {
+            p.remove();
+        }, randi(100, 1000));
+    }
+
 });
