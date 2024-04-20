@@ -12,7 +12,7 @@ window.addEventListener("load", function(){
     scene.addChild(maxwell);
 
     var prevFrameTime = Date.now();
-    setInterval(function() {
+    function mainLoop() {
         const delta = (Date.now() - prevFrameTime);
         prevFrameTime = Date.now();
 
@@ -29,5 +29,8 @@ window.addEventListener("load", function(){
         if(isBtnPressed("down")) vel.y = 1;
 
         maxwell.moveVec(vel.mul(spd));
-    });
+
+        setTimeout(mainLoop, 0);
+    }
+    mainLoop();
 });
