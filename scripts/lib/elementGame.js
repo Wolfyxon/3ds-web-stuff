@@ -37,6 +37,14 @@ SceneNode.prototype = {
         this.updateTransform();
     },
 
+    moveVec: function(vec) {
+        this.moveXY(vec.x, vec.y);
+    },
+
+    moveXY: function(x, y) {
+        this.setPositionXY(this._pos.x + x, this._pos + y);
+    },
+
     getPosition: function() {
         return this._pos;
     },
