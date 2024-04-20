@@ -50,6 +50,10 @@ SceneNode.prototype = {
         this.updateTransform();
     },
 
+    rotate: function(deg) {
+        this.setRotation(this._rotation + deg);
+    },
+
     updateTransform: function() {
         const x = this._pos.x + "px";
         const y = this._pos.y + "px";
