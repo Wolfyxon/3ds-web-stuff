@@ -119,15 +119,6 @@ function getWithout(array,exclude){
     });
 }
 
-/**
- * Returns the webkit gamepad for the 3DS. Returns null if not detected.
- * WARNING: Gamepad API is only supported on the New 3DS
- * @return {Gamepad, null}
- */
-function getGamepad(){
-    if(navigator.webkitGetGamepads === undefined) return null; // Unsupported browser (most likely not the 3DS one)
-    return navigator.webkitGetGamepads()[0];
-}
 
 var pressStates = {}
 var pressCallbacks = {
