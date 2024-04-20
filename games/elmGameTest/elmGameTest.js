@@ -7,6 +7,7 @@ window.addEventListener("load", function(){
     scene.addChild(chicken);
 
     const maxwell = new Sprite("../../img/pets/maxwell_trim.png");
+    maxwell.setPositionXY(0, 50);
     scene.addChild(maxwell);
 
     var prevFrameTime = Date.now();
