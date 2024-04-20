@@ -8,7 +8,7 @@
 		<meta name="author" content="magiczocker / Wolfyxon (original Author)">
 		<meta name="description" content="JetFighter game for the 3DS.">
 		<link rel="stylesheet" href="jetfighter.css">
-	
+
 		<script src="../../scripts/global.js" type="text/javascript"></script>
 		<script src="jetfighter.js" type="text/javascript"></script>
 	</head>
@@ -25,7 +25,11 @@
 			</div>
 			<div id="projectiles"></div>
 			<div id="target" data-rot="0"></div>
-			<div id="endScreen">The game has ended. Press 'A' to restart.</div>
+			<div id="gameover" style="display: none">
+				<h1>You are dead</h1>
+				<button id="btn-restart">Restart &#xE000;</button>
+				<p>Don't give up!</p>
+			</div>
 		</div>
 	</body>
 </html>

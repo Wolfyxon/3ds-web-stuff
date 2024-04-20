@@ -78,20 +78,20 @@ body {
 
 #lifebar {
 	background-color: #ff0000;
-    border: 3px solid black;
-    border-radius: 5px;
-    height: 195px;
-    margin-left: 4px;
-    margin-top: 8px;
-    width: 25px;
+	border: 3px solid black;
+	border-radius: 5px;
+	height: 195px;
+	margin-left: 4px;
+	margin-top: 8px;
+	width: 25px;
 }
 #lifebar-neg {
 	background-color: #8b0000;
 }
 
 .heli {
-	width: 61px;
-	height: 102px;
+	width: 48px;
+	height: 81px;
 	transition: top 2s, left 2s;
 	-webkit-transition: top 2s, left 2s;
 }
@@ -100,19 +100,20 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100%;
-	transform-origin: 29.7px 40.7px;
+	transform-origin: 21.5px 31px;
 	width: 100%;
 }
 .heli .lifebar {
-	background-color: #006a00;
+	background-color: #00ff00;
 	display: inline-block;
 	height: 5px;
 	margin-left: -5px;
 	position: relative;
-	width: 71px;
+	width: 50px;
 }
 .heli .lifebar-neg {
-	background-color: #00ff00; 
+	background-color: #006a00; 
+	float: right;
 	height: 100%;
 }
 
@@ -122,24 +123,24 @@ body {
 	background-image: url('img/rotor.png');
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 101px;
+	height: 80px;
 	left: -21px;
 	position: absolute;
 	top: -5px;
-	width: 101px;
+	width: 80px;
 }
 
 #skull {
-    image-rendering: pixelated;
-    margin-left: 2px;
-    margin-top: 8px;
-    width: 33px;
+	image-rendering: pixelated;
+	margin-left: 2px;
+	margin-top: 8px;
+	width: 33px;
 }
 
-#killcounter {
+#killCounter {
 	color: #fff;
-	font-size: larger;
-	font-weight: bold;
+	font-family: "Liberation Sans", sans-serif;
+	font-size: 14px;
 	text-align: center;
 }
 
@@ -160,18 +161,25 @@ body {
 	position: absolute;
 	width: 2px;
 }
-#endScreen {
-	-webkit-backdrop-filter: blur(2px);
-	backdrop-filter: blur(2px);
+
+/* Game over */
+#gameover {
 	color: white;
-	display: none;
-	height: 100%;
-	left: 0;
-	position: absolute;
+	margin-top: 20%;
+	position: relative;
 	text-align: center;
-	top: 0;
-	width: 100%;
+	top: 217px;
 }
-#endScreen.visible {
-	display: unset;
+#gameover h1 {
+	color: red;
+	-webkit-text-stroke: 1px black;
+}
+#btn-restart {
+	background-color: purple;
+	border: black;
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+	padding: 2%;
+	width: 30%;
 }

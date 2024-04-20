@@ -5,41 +5,26 @@ window.addEventListener('load', function() {
 		projectiles = document.getElementById('projectiles'),
 		lifebar = document.getElementById('lifebar-neg'),
 		killCounter = document.getElementById('killCounter'),
-		endScreen = document.getElementById('endScreen'),
+		gameover = document.getElementById('gameover'),
 		screenCoords = screenEle.getBoundingClientRect(),
 		degreeInRadiant = 2 * Math.PI / 360,
-		speed = 2,
-		defaultHe = 10;
+		speed = 2;
 	var helis = [],
-		running = true;
+		running = true,
+		prevMoveFrameTime = 0,
+		prevMainFrameTime = 0;
 
-	function f() {
-		var targetCoords = targetEle.getBoundingClientRect();
-		for (var i = 0; i < helis.length; i++) {
-			var coords = helis[i][2].getBoundingClientRect();
-			var a = Math.floor(
-				Math.atan2(
-					(targetCoords.top + targetCoords.height * 0.5) - (coords.top + coords.height * 0.5),
-					(targetCoords.left + targetCoords.width * 0.5) - (coords.left + coords.width * 0.5)
-				) * 180 / Math.PI) + 90;
-			helis[i][2].setAttribute('data-rot', a);
-			helis[i][2].style.transform = 'rotate(' + a + 'deg)';
-			helis[i][2].style.webkitTransform = 'rotate(' + a + 'deg)';
-		}
-	}
-	setInterval(f, 10);
-	
 	function spawnHeli() {
 		var h = document.createElement('div');
 		h.className = 'heli';
-		h.style.top = 110;
-		h.style.left = 140;
+		h.style.top = '-100px';
+		h.style.left = Math.floor(Math.random() * 320) + 'px';
 		var lifebar_ = document.createElement('div');
 		lifebar_.className = 'lifebar';
 		var lifebar_neg = document.createElement('div');
 		lifebar_neg.className = 'lifebar-neg';
-		lifebar_neg.setAttribute('data-health', defaultHe);
-		lifebar_neg.style.width = '100%';
+		lifebar_neg.setAttribute('data-health', '100');
+		lifebar_neg.style.width = '0%';
 		lifebar_.appendChild(lifebar_neg);
 		h.appendChild(lifebar_);
 		var inner = document.createElement('div');
@@ -52,6 +37,22 @@ window.addEventListener('load', function() {
 		helis.push([h, lifebar_neg, inner]);
 	}
 
+	function f() {
+		var targetCoords = targetEle.getBoundingClientRect();
+		for (var i = 0; i < helis.length; i++) {
+			var coords = helis[i][2].getBoundingClientRect();
+			var a = Math.floor(
+				Math.atan2(
+					(targetCoords.top + targetCoords.height * 0.5) - (coords.top + coords.height * 0.5),
+					(targetCoords.left + targetCoords.width * 0.5) - (coords.left + coords.width * 0.5)
+				) * 180 / Math.PI) + 90;
+			helis[i][2].dataset.rot = a;
+			helis[i][2].style.transform = 'rotate(' + a + 'deg)';
+			helis[i][2].style.webkitTransform = 'rotate(' + a + 'deg)';
+		}
+	}
+	setInterval(f, 10);
+
 	function spawnProjectile() {
 		if (!running) {return;}
 		for (var i = 0; i < helis.length; i++) {
@@ -62,14 +63,14 @@ window.addEventListener('load', function() {
 
 			// Move the projectile 65 steps towards rotation.
 			// This should prevent spawning directly inside of the heli.
-			var angle = degreeInRadiant * (Number(heli[2].getAttribute('data-rot')) - 90);
+			var angle = degreeInRadiant * (Number(heli[2].dataset.rot) - 90);
 			var deltaX = 65 * Math.cos(angle);
 			var deltaY = 65 * Math.sin(angle);
 			e.style.left = (parseFloat(coords.left) + parseFloat(coords.width) * 0.5 + deltaX) + 'px';
 			e.style.top = (parseFloat(coords.top) + parseFloat(coords.height) * 0.5 + deltaY) + 'px';
 			e.style.transform = 'rotate(' + heli[2].getAttribute('data-rot') + 'deg)';
 			e.style.webkitTransform = 'rotate(' + heli[2].getAttribute('data-rot') + 'deg)';
-			e.setAttribute('data-rot', heli[2].getAttribute('data-rot'));
+			e.dataset.rot = heli[2].getAttribute('data-rot');
 			projectiles.appendChild(e);
 		}
 	}
@@ -81,29 +82,30 @@ window.addEventListener('load', function() {
 		e.className = 'jet projectile';
 		e.style.left = (parseFloat(coords.left) + parseFloat(coords.width) * 0.5) + 'px';
 		e.style.top = (parseFloat(coords.top) - 10) + 'px';
-		e.setAttribute('data-rot', targetEle.getAttribute('data-rot'));
+		e.dataset.rot = targetEle.dataset.rot;
 		projectiles.appendChild(e);
 	}
 	setInterval(function() {
+		const delta = (Date.now() - prevMainFrameTime) / 16;
+        prevMainFrameTime = Date.now();
 		if (!running) {return;}
 		var p = projectiles.children;
 		for (var i = 0; i < p.length; i++) {
-			var angle = degreeInRadiant * (Number(p[i].getAttribute('data-rot')) - 90);
+			var angle = degreeInRadiant * (Number(p[i].dataset.rot) - 90);
 			var deltaX = speed * Math.cos(angle);
 			var deltaY = speed * Math.sin(angle);
 			p[i].style.top = (parseFloat(p[i].style.top) + deltaY) + 'px';
 			p[i].style.left = (parseFloat(p[i].style.left) + deltaX) + 'px';
 			var coords = p[i].getBoundingClientRect();
-			var coords2;
 			if (p[i].className.indexOf('jet') > -1) { // Jet-projectiles
 				for (var j = 0; j < helis.length; j++) {
-					coords2 = helis[j][0].getBoundingClientRect();
+					var coords2 = helis[j][0].getBoundingClientRect();
 					if (
 						(coords.top >= coords2.top && coords.top <= coords2.top + coords2.height) &&
 						(coords.left >= coords2.left && coords.left <= (coords2.left + coords2.width))
 					) {
-						var he = Number(helis[j][1].getAttribute('data-health')) - 1;
-						helis[j][1].style.width = (100 / defaultHe * he) + '%';
+						var he = Number(helis[j][1].getAttribute('data-health')) - 10;
+						helis[j][1].style.width = (100 - he) + '%';
 						helis[j][1].setAttribute('data-health', he);
 						if (helis[j][1].getAttribute('data-health') === '0') {
 							helis[j][0].parentElement.removeChild(helis[j][0]);
@@ -117,17 +119,17 @@ window.addEventListener('load', function() {
 					}
 				}
 			} else { // Heli-projectiles
-				coords2 = targetEle.getBoundingClientRect();
+				var coords2 = targetEle.getBoundingClientRect();
 				if (
 					(coords.top <= coords2.top + coords2.height && coords.top >= coords2.top) &&
 					(coords.left >= coords2.left && coords.left <= coords2.left + coords2.width)
 				) {
-					var h = Number(targetEle.getAttribute('data-health')) - 1;
+					var h = Number(targetEle.getAttribute('data-health')) - 10;
 					lifebar.style.height = (100 - h) + '%';
 					targetEle.setAttribute('data-health', h);
 					if (targetEle.getAttribute('data-health') === '0') {
 						running = false;
-						endScreen.className = 'visible';
+						gameover.style.display = '';
 						screenEle.style.webkitAnimationPlayState = 'paused';
 						screenEle.style.animationPlayState = 'paused';
 					}
@@ -143,7 +145,7 @@ window.addEventListener('load', function() {
 					continue;
 			}
 		}
-	}, 10);
+	}, 5);
 	setInterval(function() {
 		if (!running) {return;}
 		var coords = screenEle.getBoundingClientRect();
@@ -153,16 +155,16 @@ window.addEventListener('load', function() {
 		}
 	}, 2000);
 	function reset() {
-		endScreen.className = '';
+		screenEle.style.webkitAnimationPlayState = 'running';
+		screenEle.style.animationPlayState = 'running';
+		gameover.style.display = 'none';
 		killCounter.innerText = '0';
 		projectiles.innerText = '';
 		heliEle.innerText = '';
 		lifebar.style.height = '0%';
 		targetEle.setAttribute('data-health', '100');
-		screenEle.style.webkitAnimationPlayState = 'running';
-        screenEle.style.animationPlayState = 'running';
 		helis = [];
-		for (var i = 0; i < 1; i++) {
+		for (var i = 0; i < 3; i++) {
 			spawnHeli();
 		}
 		running = true;
@@ -172,8 +174,10 @@ window.addEventListener('load', function() {
 		if (isBtnPressed('A')) {
 			spawnProjectile2();
 		}
-	}, 200);
+	}, 500);
 	setInterval(function() {
+		const delta = (Date.now() - prevMoveFrameTime) / 16;
+        prevMoveFrameTime = Date.now();
 		if (!running) {
 			if (isBtnPressed('A')) {
 				reset();
@@ -182,14 +186,15 @@ window.addEventListener('load', function() {
 		}
 		var coords = getComputedStyle(targetEle);
 		if (isBtnPressed('Up')) {
-			targetEle.style.top = Math.max(parseFloat(coords.top) - 5, 0) + 'px';
+			targetEle.style.top = Math.max(parseFloat(coords.top) - speed * delta, 0) + 'px';
 		} else if (isBtnPressed('Right')) {
-			targetEle.style.left = Math.min(parseFloat(coords.left) + 5, screenCoords.width - parseFloat(coords.width)) + 'px';
+			targetEle.style.left = Math.min(parseFloat(coords.left) + speed * delta, screenCoords.width - parseFloat(coords.width)) + 'px';
 		} else if (isBtnPressed('Down')) {
-			targetEle.style.top = Math.min(parseFloat(coords.top) + 5, screenCoords.height - parseFloat(coords.height)) + 'px';
+			targetEle.style.top = Math.min(parseFloat(coords.top) + speed * delta, screenCoords.height - parseFloat(coords.height)) + 'px';
 		} else if (isBtnPressed('Left')) {
-			targetEle.style.left = Math.max(parseFloat(coords.left) - 5, 0) + 'px';
+			targetEle.style.left = Math.max(parseFloat(coords.left) - speed * delta, 0) + 'px';
 		}
 	});
+	document.getElementById('btn-restart').addEventListener('click', reset);
 	reset();
 });
