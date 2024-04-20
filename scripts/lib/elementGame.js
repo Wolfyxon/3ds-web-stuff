@@ -21,12 +21,52 @@ SceneNode.prototype = {
     init: function() {
         this._parent = null;
         this._children = [];
+        this._classList = [];
         this.element.style.position = "absolute";
 
         this._rotation = 0;
         this._pos = new Vector2(0, 0);
 
         this.updateTransform();
+    },
+
+    /**
+     * Assigns a class to the node
+     * @param {String} className
+     */
+    addClass: function(className) {
+        this._classList.push(className);
+    },
+
+    /**
+     * Returns the node's class list
+     * @return {[String]}
+     */
+    getClassList: function() {
+        return this._classList;
+    },
+
+    /**
+     * Checks if the node belongs to a class
+     * @param className
+     * @return {boolean}
+     */
+    isClass: function(className) {
+        return this._classList.indexOf(className) !== -1;
+    },
+
+    /**
+     * Returns the node's class list in a string that can be assigned to an element's className
+     * @return {String}
+     */
+    getClassString: function() {
+        var res = "";
+
+        for(var i = 0; i < this._classList.length; i++) {
+            res += this._classList[i] + " ";
+        }
+
+        return res;
     },
 
     /**
@@ -145,6 +185,26 @@ SceneNode.prototype = {
      */
     getChildren: function() {
         return this._children;
+    },
+
+
+    /**
+     *
+     * @param className
+     * @return {[SceneNode]}
+     */
+    getChildrenOfClass: function(className) {
+        var res = [];
+
+        for(var i = 0; i < this._children; i++) {
+            const ch = this._children[i];
+
+            if(ch.isClass(className)) {
+                res.push(ch);
+            }
+        }
+
+        return res;
     },
 
     /**
