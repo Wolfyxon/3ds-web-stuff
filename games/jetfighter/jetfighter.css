@@ -111,11 +111,13 @@ body {
 	margin-left: -5px;
 	position: relative;
 	width: 50px;
+	z-index: 2;
 }
 .heli .lifebar-neg {
 	background-color: #006a00; 
 	float: right;
 	height: 100%;
+	z-index: 2;
 }
 
 .rotor {
