@@ -68,7 +68,7 @@ SceneNode.prototype = {
      * Updates the node's element class list
      */
     updateClass: function() {
-        this.element.className = this.getClassString();
+        this.element.className = "scene-node " + this.getClassString();
     },
 
     /**
