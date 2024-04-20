@@ -11,6 +11,7 @@ depend("gameBase");
  */
 function SceneNode(element) {
     this.element = element;
+    this._children = [];
     element.style.position = "absolute";
 
     this._rotation = 0;
@@ -39,6 +40,15 @@ SceneNode.prototype = {
         this.element.style.transform = trStr;
         this.element.style.left = x;
         this.element.style.top = y;
+    },
+
+    addChild: function(node) {
+        this._children.push(node);
+        this.element.appendChild(node.element);
+    },
+
+    getChildren: function() {
+        return this._children;
     }
 }
 
@@ -49,6 +59,7 @@ SceneNode.prototype = {
  */
 function Scene(element) {
     this.element = element;
+    this._children = [];
     element.style.position = "relative";
 }
 Scene.prototype = Object.create(SceneNode.prototype);
@@ -67,6 +78,7 @@ function Sprite(imageUrl) {
 
     this._rotation = 0;
     this._pos = new Vector2(0, 0);
+    this._children = [];
 }
 Sprite.prototype = Object.create(SceneNode.prototype);
 
