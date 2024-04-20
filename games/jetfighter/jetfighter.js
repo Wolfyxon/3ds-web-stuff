@@ -119,13 +119,14 @@ window.addEventListener('load', function() {
 		if (!running) {return;}
 		var p = projectiles.children;
 		for (var i = 0; i < p.length; i++) {
-			var angle = degreeInRadiant * (Number(p[i].getAttribute('data-rot')) - 90);
+			const pEle = p[i];
+			var angle = degreeInRadiant * (Number(pEle.getAttribute('data-rot')) - 90);
 			var deltaX = speed * Math.cos(angle);
 			var deltaY = speed * Math.sin(angle);
-			p[i].style.top = (parseFloat(p[i].style.top) + deltaY * delta * projectileSpeed) + 'px';
-			p[i].style.left = (parseFloat(p[i].style.left) + deltaX * delta * projectileSpeed) + 'px';
-			var coords = p[i].getBoundingClientRect();
-			if (p[i].className.indexOf('jet') > -1) { // Jet-projectiles
+			pEle.style.top = (parseFloat(pEle.style.top) + deltaY * delta * projectileSpeed) + 'px';
+			pEle.style.left = (parseFloat(pEle.style.left) + deltaX * delta * projectileSpeed) + 'px';
+			var coords = pEle.getBoundingClientRect();
+			if (pEle.className.indexOf('jet') > -1) { // Jet-projectiles
 				for (var j = 0; j < helis.length; j++) {
 					var coords2 = helis[j][0].getBoundingClientRect();
 					if (
@@ -142,7 +143,7 @@ window.addEventListener('load', function() {
 							killCounter.innerText = Number(killCounter.innerText) + 1;
 							spawnHeli();
 						}
-						projectiles.removeChild(p[i]);
+						projectiles.removeChild(pEle);
 						break;
 					}
 				}
@@ -162,7 +163,7 @@ window.addEventListener('load', function() {
 						screenEle.style.webkitAnimationPlayState = 'paused';
 						screenEle.style.animationPlayState = 'paused';
 					}
-					projectiles.removeChild(p[i]);
+					projectiles.removeChild(pEle);
 					continue;
 				}
 			}
@@ -170,7 +171,7 @@ window.addEventListener('load', function() {
 				(coords.top + coords.height) > (screenCoords.top + screenCoords.height) ||
 				(coords.left) < screenCoords.left ||
 				(coords.left + coords.width) > (screenCoords.left + screenCoords.width)) {
-					projectiles.removeChild(p[i]);
+					projectiles.removeChild(pEle);
 			}
 		}
 	}, 5);
