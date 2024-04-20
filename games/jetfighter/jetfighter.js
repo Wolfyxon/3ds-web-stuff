@@ -163,7 +163,7 @@ window.addEventListener('load', function() {
 						screenEle.style.webkitAnimationPlayState = 'paused';
 						screenEle.style.animationPlayState = 'paused';
 					}
-					projectiles.removeChild(pEle);
+					if(pEle.parentNode === projectiles) projectiles.removeChild(pEle);
 					continue;
 				}
 			}
@@ -171,7 +171,7 @@ window.addEventListener('load', function() {
 				(coords.top + coords.height) > (screenCoords.top + screenCoords.height) ||
 				(coords.left) < screenCoords.left ||
 				(coords.left + coords.width) > (screenCoords.left + screenCoords.width)) {
-					projectiles.removeChild(pEle);
+					if(pEle.parentNode === projectiles) projectiles.removeChild(pEle);
 			}
 		}
 	}, 5);
