@@ -280,6 +280,7 @@ function Sprite(imageUrl) {
 
     this.element = img;
     this.init();
+    this.addClass("sprite");
 }
 Sprite.prototype = Object.create(SceneNode.prototype);
 
