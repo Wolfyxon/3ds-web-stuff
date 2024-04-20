@@ -51,7 +51,7 @@ window.addEventListener("load", function(){
         const particles = scene.getChildrenOfClass("particle");
         for(var i = 0; i < particles.length; i++) {
             const p = particles[i];
-            p.moveXY(delta * 5, delta);
+            p.moveXY(delta, delta);
         }
 
         maxwell.moveVec(vel.mul(spd));
