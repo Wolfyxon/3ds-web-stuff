@@ -8,4 +8,12 @@ window.addEventListener("load", function(){
 
     const maxwell = new Sprite("../../img/pets/maxwell_trim.png");
     scene.addChild(maxwell);
+
+    var prevFrameTime = Date.now();
+    setInterval(function() {
+        const delta = (Date.now() - prevFrameTime);
+        prevFrameTime = Date.now();
+
+        chicken.rotate(delta);
+    });
 });
