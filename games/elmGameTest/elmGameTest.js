@@ -66,6 +66,7 @@ window.addEventListener("load", function(){
     function spawnParticle() {
         const p = new Sprite("../pigeon/img/wingUp.png");
         p.addClass("particle");
+        p.setPositionXY(200, 50);
         p.velocity = new Vector2(randf(-1, 1), randf(-1, 1));
         scene.addChild(p);
 
