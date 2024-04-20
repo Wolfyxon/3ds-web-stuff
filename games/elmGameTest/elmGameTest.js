@@ -28,6 +28,6 @@ window.addEventListener("load", function(){
         if(isBtnPressed("up")) vel.y = -1;
         if(isBtnPressed("down")) vel.y = 1;
 
-        maxwell.moveVec(vel);
+        maxwell.moveVec(vel.mul(spd));
     });
 });
