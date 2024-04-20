@@ -21,6 +21,8 @@ SceneNode.prototype = {
 
         this._rotation = 0;
         this._pos = new Vector2(0, 0);
+
+        this.updateTransform();
     },
 
     getPosition: function() {
