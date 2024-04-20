@@ -2,6 +2,7 @@ depend("elementGame");
 
 window.addEventListener("load", function(){
     const scene = new Scene(document.getElementById("scene"));
+    const fpsTxt = document.getElementById("fps");
 
     const chicken = new Sprite("../../../img/pets/chicken/chicken1.png");
     scene.addChild(chicken);
@@ -14,6 +15,8 @@ window.addEventListener("load", function(){
     setInterval(function() {
         const delta = (Date.now() - prevFrameTime);
         prevFrameTime = Date.now();
+
+        fpsTxt.innerText = (1000 / delta).toFixed(2);
 
         chicken.rotate(delta);
 
