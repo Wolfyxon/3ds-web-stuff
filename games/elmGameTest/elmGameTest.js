@@ -6,6 +6,6 @@ window.addEventListener("load", function(){
     const chicken = new Sprite("../../../img/pets/chicken/chicken1.png");
     scene.addChild(chicken);
 
-    const maxwell = new Sprite("../../img/pets/maxwell/maxwell1.png");
+    const maxwell = new Sprite("../../img/pets/maxwell_trim.png");
     scene.addChild(maxwell);
 });
