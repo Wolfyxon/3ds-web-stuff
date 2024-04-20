@@ -64,6 +64,8 @@ SceneNode.prototype = {
         }
         this._children.splice(idx, 1);
         node._parent = null;
+
+        node.remove();
     },
 
     getChildren: function() {
