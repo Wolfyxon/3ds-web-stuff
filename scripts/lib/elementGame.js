@@ -16,6 +16,7 @@ function SceneNode(element) {
 SceneNode.prototype = {
 
     init: function() {
+        this._parent = null;
         this._children = [];
         this.element.style.position = "absolute";
 
@@ -50,12 +51,17 @@ SceneNode.prototype = {
     },
 
     addChild: function(node) {
+        node._parent = this;
         this._children.push(node);
         this.element.appendChild(node.element);
     },
 
     getChildren: function() {
         return this._children;
+    },
+
+    getParent: function() {
+        return this._parent;
     }
 }
 
