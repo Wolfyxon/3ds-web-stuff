@@ -7,6 +7,8 @@ window.addEventListener("load", function(){
     const maxFpsTxt = document.getElementById("max-fps");
     const minFpsTxt = document.getElementById("min-fps");
 
+    const particlesTxt = document.getElementById("particles");
+
     const chicken = new Sprite("../../img/pets/chicken/chicken1.png");
     scene.addChild(chicken);
 
@@ -53,6 +55,7 @@ window.addEventListener("load", function(){
             const p = particles[i];
             p.moveXY(delta, delta);
         }
+        particlesTxt.innerText = particles.length;
 
         maxwell.moveVec(vel.mul(spd));
 
