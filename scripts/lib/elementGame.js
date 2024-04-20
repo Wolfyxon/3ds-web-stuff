@@ -265,6 +265,7 @@ SceneNode.prototype = {
 function Scene(element) {
     this.element = element;
     this.init();
+    element.style.overflow = "hidden";
     element.style.position = "relative";
 }
 Scene.prototype = Object.create(SceneNode.prototype);
