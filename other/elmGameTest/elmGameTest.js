@@ -10,11 +10,10 @@ window.addEventListener("load", function(){
     const particlesTxt = document.getElementById("particles");
 
     const chicken = new Sprite("../../img/pets/chicken/chicken1.png");
-    scene.addChild(chicken);
-
     const maxwell = new Sprite("../../img/pets/maxwell_trim.png");
     maxwell.setPositionXY(0, 50);
-    scene.addChild(maxwell);
+
+    scene.addChildren([chicken, maxwell]);
 
     var minFps = 99999;
     var maxFps = -99999
