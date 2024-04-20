@@ -39,6 +39,21 @@ SceneNode.prototype = {
     },
 
     /**
+     * Removes an assigned class from the node
+     * @param {string} className
+     */
+    removeClass: function(className) {
+        const idx = this._classList.indexOf(className);
+
+        if(idx === -1) {
+            console.warn("Does not belong to class '"+className+"'");
+            return;
+        }
+
+        this._classList.splice(idx, 1);
+    },
+
+    /**
      * Returns the node's class list
      * @return {[String]}
      */
