@@ -195,6 +195,15 @@ Vector2.prototype = {
     },
 
     /**
+     * Multiplies the vector
+     * @param {number} value
+     */
+    mul: function(value) {
+        this.x *= value;
+        this.y *= value;
+    },
+
+    /**
      * Returns an independent copy of this vector
      * @return {Vector2}
      */
