@@ -15,81 +15,163 @@
 	}
 }
 
-#canv {
-	background-color: #86cde1;
-	background-image: url("img/background.png");
-	outline: 3px black solid;
+@-webkit-keyframes rotorAnimation {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes rotorAnimation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+body {
+	background-color: #000;
+	margin: 0;
+	padding: 0;
+}
+
+#screen {
 	-webkit-animation: backgroundAnimation 0.5s infinite linear;
 	animation: backgroundAnimation 0.5s infinite linear;
+	background-color: #86cde1;
+	background-image: url("img/background.png");
+	height: 457px;
+	margin: 0;
+	margin-left: 40px;
+	overflow: hidden;
+	padding: 0;
+	top: 10px;
+	width: 320px;
 }
 
-#top-screen {
-	background-color: #484d56;
+#target {
+	background-image: url('img/jet.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 52px;
+	left: 140px;
+	top: 335px;
+	width: 53px;
+}
+#barleft,
+#barright {
+	background: #484d56;
+	height: 217px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 10px;
+	width: 38px;
+}
+#barright {
+	margin-left: 362px;
 }
 
-#top-screen > * {
+#lifebar {
+	background-color: #ff0000;
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 195px;
+    margin-left: 4px;
+    margin-top: 8px;
+    width: 25px;
+}
+#lifebar-neg {
+	background-color: #8b0000;
+}
+
+.heli {
+	width: 61px;
+	height: 102px;
+	transition: top 2s, left 2s;
+	-webkit-transition: top 2s, left 2s;
+}
+.heli .inner {
+	background-image: url('img/heli.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 	height: 100%;
-	vertical-align: top;
-	width: 9.1%;
+	transform-origin: 29.7px 40.7px;
+	width: 100%;
+}
+.heli .lifebar {
+	background-color: #006a00;
 	display: inline-block;
+	height: 5px;
+	margin-left: -5px;
+	position: relative;
+	width: 71px;
+}
+.heli .lifebar-neg {
+	background-color: #00ff00; 
+	height: 100%;
 }
 
-#right {
-	margin-left: 320px;
+.rotor {
+	-webkit-animation: rotorAnimation 0.5s infinite linear;
+	animation: rotorAnimation 0.5s infinite linear;
+	background-image: url('img/rotor.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 101px;
+	left: -21px;
+	position: absolute;
+	top: -5px;
+	width: 101px;
 }
 
-#health-bar-container {
-	background-color: red;
-	height: 80%;
-	width: 50%;
-	border: 2px #232323 solid;
-	border-radius: 5px;
-	margin-left: 20%;
-	margin-top: 40%;
+#skull {
+    image-rendering: pixelated;
+    margin-left: 2px;
+    margin-top: 8px;
+    width: 33px;
 }
 
-#health-bar-neg {
-	background-color: darkred;
-	height: 50%;
-}
-
-#stats {
+#killcounter {
+	color: #fff;
+	font-size: larger;
+	font-weight: bold;
 	text-align: center;
+}
+
+#screen,
+#target,
+.heli {
+	position: absolute;
+}
+
+.projectile.jet {
+	background: red;
+}
+.projectile {
+	background: black;
+	height: 2px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	width: 2px;
+}
+#endScreen {
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
 	color: white;
-}
-
-#stats p {
-	margin: 10%;
-}
-
-#stats img {
-	width: 80%;
-}
-
-#overlay {
-	background-color: black;
-}
-
-#gameover {
-	margin-top: 20%;
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
 	text-align: center;
-	color: white;
+	top: 0;
+	width: 100%;
 }
-
-#gameover h1 {
-	color: red;
-	-webkit-text-stroke: 1px black;
-}
-
-#btn-restart {
-	background-color: purple;
-	color: white;
-	border: black;
-	padding: 2%;
-	border-radius: 5px;
-	width: 30%;
-}
-
-#btn-restart:active {
-	background-color: #ab30ab;
+#endScreen.visible {
+	display: unset;
 }

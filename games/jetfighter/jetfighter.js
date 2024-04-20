@@ -1,231 +1,195 @@
-depend("canvasGame");
+window.addEventListener('load', function() {
+	const heliEle = document.getElementById('helis'),
+		screenEle = document.getElementById('screen'),
+		targetEle = document.getElementById('target'),
+		projectiles = document.getElementById('projectiles'),
+		lifebar = document.getElementById('lifebar-neg'),
+		killCounter = document.getElementById('killCounter'),
+		endScreen = document.getElementById('endScreen'),
+		screenCoords = screenEle.getBoundingClientRect(),
+		degreeInRadiant = 2 * Math.PI / 360,
+		speed = 2,
+		defaultHe = 10;
+	var helis = [],
+		running = true;
 
-window.addEventListener('load',function(){
-    const canvas = document.getElementById('canv');
+	function f() {
+		var targetCoords = targetEle.getBoundingClientRect();
+		for (var i = 0; i < helis.length; i++) {
+			var coords = helis[i][2].getBoundingClientRect();
+			var a = Math.floor(
+				Math.atan2(
+					(targetCoords.top + targetCoords.height * 0.5) - (coords.top + coords.height * 0.5),
+					(targetCoords.left + targetCoords.width * 0.5) - (coords.left + coords.width * 0.5)
+				) * 180 / Math.PI) + 90;
+			helis[i][2].setAttribute('data-rot', a);
+			helis[i][2].style.transform = 'rotate(' + a + 'deg)';
+			helis[i][2].style.webkitTransform = 'rotate(' + a + 'deg)';
+		}
+	}
+	setInterval(f, 10);
+	
+	function spawnHeli() {
+		var h = document.createElement('div');
+		h.className = 'heli';
+		h.style.top = 110;
+		h.style.left = 140;
+		var lifebar_ = document.createElement('div');
+		lifebar_.className = 'lifebar';
+		var lifebar_neg = document.createElement('div');
+		lifebar_neg.className = 'lifebar-neg';
+		lifebar_neg.setAttribute('data-health', defaultHe);
+		lifebar_neg.style.width = '100%';
+		lifebar_.appendChild(lifebar_neg);
+		h.appendChild(lifebar_);
+		var inner = document.createElement('div');
+		inner.className = 'inner';
+		h.appendChild(inner);
+		var rotor = document.createElement('div');
+		rotor.className = 'rotor';
+		h.appendChild(rotor);
+		heliEle.appendChild(h);
+		helis.push([h, lifebar_neg, inner]);
+	}
 
-    const imgJet = document.getElementById('img-jet');
+	function spawnProjectile() {
+		if (!running) {return;}
+		for (var i = 0; i < helis.length; i++) {
+			var heli = helis[i];
+			var coords = getComputedStyle(helis[i][0]);
+			var e = document.createElement('div');
+			e.className = 'projectile';
 
-    const imgHeli = document.getElementById('img-heli');
-    const imgRotor = document.getElementById('img-rotor');
-
-    const imgProjectile = document.getElementById('img-projectile');
-    const imgRocket = document.getElementById('img-rocket');
-
-    const healthBarNeg = document.getElementById('health-bar-neg');
-
-    const overlay = document.getElementById('overlay');
-    const gameover = document.getElementById('gameover');
-    const btnRestart = document.getElementById('btn-restart');
-    const killsTxt = document.getElementById('kills-amount');
-
-    const initX = 135;
-    const initY = 350;
-
-    const plrJet = new CanvasSprite(imgJet,initX,initY);
-    const maxPlrHp = 100;
-    var plrHp = maxPlrHp;
-    var alive = true;
-
-    plrJet.restrictMovement = true;
-    const speed = 5;
-    const rotAngle = 20;
-    const rotAmt = 0.2;
-
-    var kills = 0;
-
-    const helicopters = []; // enemies
-
-    const projectiles = [];
-
-    function updateKills(){
-        killsTxt.innerText = kills;
-    }
-
-    function addHelicopter(x,y){
-        const scale = 0.8;
-        const heli = new CanvasSprite(imgHeli,x,y,180);
-        heli.targetPos = new Vector2(x,y);
-        heli.hp = 10;
-        heli.rotor = new CanvasSprite(imgRotor);
-        heli.rotor.rescale(scale)
-        heli.rescale(scale);
-        helicopters.push(heli);
-
-        heli.fireItv = setInterval(function(){
-            if(!alive) return;
-            const pos = heli.getCenter();
-            const rocket = new CanvasSprite(imgRocket,pos.x,pos.y,heli.rotation);
-            rocket.rescale(1.3);
-            rocket.enemy = true;
-            projectiles.push(rocket)
-            setTimeout(function(){
-                rocket.remove = true;
-            },2000)
-        },randi(500,2500))
-
-        heli.flyItv = setInterval(function(){
-            if(!alive) return;
-            const range = 320;
-            heli.targetPos = new Vector2(randi(0,range),randi(0,range));
-        },1000)
-    }
-
-    function updateHpBar(){
-         healthBarNeg.style.height = (maxPlrHp - plrHp)+'%';
-    }
-
-    function reset(){
-        for(var i=0;i<helicopters.length;i++){
-            helicopters[i].remove = true;
-        }
-        for(var i=0;i<projectiles.length;i++){
-            projectiles[i].remove = true;
-        }
-
-        plrJet.area.moveTo(new Vector2(initX,initY));
-        plrHp = maxPlrHp;
-        updateHpBar();
-
-        kills = 0;
-        updateKills();
-
-        alive = true;
-        gameover.style.display = 'none';
-        overlay.style.opacity = '0';
-        canvas.style.webkitAnimationPlayState='running';
-        canvas.style.animationPlayState='running';
-    }
-
-    function die(){
-        alive = false;
-        gameover.style.display = '';
-        canvas.style.webkitAnimationPlayState='paused';
-        canvas.style.animationPlayState='paused';
-    }
-
-    setInterval(function(){
-        if(!alive) return;
-        if(helicopters.length < 3) addHelicopter(randi(0,320),-100)
-    },3000)
-
-
-    onBtnJustPressed('A',function(){
-        if(!alive) reset();
-    });
-
-    // Firing loop
-    setInterval(function(){
-        if(!alive) return;
-        if(isBtnPressed('A')){
-            const proj = new CanvasSprite(
-                imgProjectile,
-                plrJet.getX()+plrJet.area.getWidth()/2-2,
-                plrJet.getY()
-            );
-            setTimeout(function(){
-                proj.remove = true;
-            },2000)
-            proj.rotation = plrJet.rotation;
-            projectiles.push(proj);
-        }
-    },100)
-
-    // Movement loop
-    var prevMoveFrameTime = 0;
-    setInterval(function(){
-        if(!alive) return;
-        const delta = (Date.now() - prevMoveFrameTime) / 16;
-        prevMoveFrameTime = Date.now();
-
-        if(isBtnPressed('Up')) plrJet.moveXY(0,-speed * delta);
-        if(isBtnPressed('Down')) plrJet.moveXY(0,speed * delta);
-        if(isBtnPressed('Left')) {
-            plrJet.rotation = lerpAngle(plrJet.rotation,-rotAngle,rotAmt * delta);
-            plrJet.moveXY(-speed * delta, 0);
-        }
-        if(isBtnPressed('Right')){
-            plrJet.rotation = lerpAngle(plrJet.rotation,rotAngle,rotAmt * delta);
-            plrJet.moveXY(speed * delta,0);
-        }
-        plrJet.rotation = lerpAngle(plrJet.rotation,0,rotAmt * delta);
-    });
-
-    // Main loop
-    var prevMainFrameTime = 0;
-    setInterval(function(){
-        const delta = (Date.now() - prevMainFrameTime) / 16;
-        prevMainFrameTime = Date.now();
-
-        clearCanvas(canvas);
-        if(!alive) overlay.style.opacity = lerp(overlay.style.opacity,0.5,0.4 * delta);
-
-
-        for(var i=0;i<projectiles.length;i++){
-            const proj = projectiles[i];
-            var sp = -speed*2;
-            if(proj.enemy) sp *= 0.75;
-            if(alive) proj.moveLocalXY(0,sp * delta);
-            proj.render(canvas);
-
-            if(alive && proj.enemy && plrHp > 0 && proj.area.isTouching(plrJet.area)){
-                plrHp -= 2;
-                proj.remove = true;
-                updateHpBar();
-            } else if(plrHp <= 0){
-                die()
-            }
-
-            if(proj.remove){
-                projectiles.splice(i, 1);
-                i--;
-            }
-        }
-
-        for(var i=0;i<helicopters.length;i++){
-            const heli = helicopters[i];
-            const rotor = heli.rotor;
-
-            rotor.area.moveTo(heli.getCenter().offsetXY(-40,-33))
-
-            if(alive){
-                rotor.rotation += 10;
-                heli.area.moveTo(heli.area.startVec.getLerped(heli.targetPos,0.01 * delta))
-                const ang = heli.getCenter().getRotationToVec(plrJet.getCenter())+90;
-                heli.rotation = lerpAngle(heli.rotation,ang, 0.2 * delta);
-            }
-
-            heli.render(canvas);
-            rotor.render(canvas);
-
-            if(heli.hp <= 0 || heli.remove){
-                if(heli.hp <= 0){
-                    kills++;
-                    updateKills();
-                }
-                clearInterval(heli.fireItv);
-                helicopters.splice(i,1);
-                i--;
-                continue;
-            }
-            if(alive){
-                for(var ii=0;ii<projectiles.length;ii++){
-                    const proj = projectiles[ii];
-                    if(proj.enemy) continue;
-                    if(proj.area.isTouching(heli.area)){
-                        heli.hp -= 1;
-                        heli.rotation += randi(-5,5);
-                        proj.remove = true;
-                    }
-                }
-            }
-        }
-
-        plrJet.render(canvas);
-    });
-
-    updateHpBar();
-
-    btnRestart.addEventListener('click',function(){
-        if(!alive) reset();
-    })
-})
+			// Move the projectile 65 steps towards rotation.
+			// This should prevent spawning directly inside of the heli.
+			var angle = degreeInRadiant * (Number(heli[2].getAttribute('data-rot')) - 90);
+			var deltaX = 65 * Math.cos(angle);
+			var deltaY = 65 * Math.sin(angle);
+			e.style.left = (parseFloat(coords.left) + parseFloat(coords.width) * 0.5 + deltaX) + 'px';
+			e.style.top = (parseFloat(coords.top) + parseFloat(coords.height) * 0.5 + deltaY) + 'px';
+			e.style.transform = 'rotate(' + heli[2].getAttribute('data-rot') + 'deg)';
+			e.style.webkitTransform = 'rotate(' + heli[2].getAttribute('data-rot') + 'deg)';
+			e.setAttribute('data-rot', heli[2].getAttribute('data-rot'));
+			projectiles.appendChild(e);
+		}
+	}
+	setInterval(spawnProjectile, 3000);
+	function spawnProjectile2() {
+		if (!running) {return;}
+		var coords = getComputedStyle(targetEle);
+		var e = document.createElement('div');
+		e.className = 'jet projectile';
+		e.style.left = (parseFloat(coords.left) + parseFloat(coords.width) * 0.5) + 'px';
+		e.style.top = (parseFloat(coords.top) - 10) + 'px';
+		e.setAttribute('data-rot', targetEle.getAttribute('data-rot'));
+		projectiles.appendChild(e);
+	}
+	setInterval(function() {
+		if (!running) {return;}
+		var p = projectiles.children;
+		for (var i = 0; i < p.length; i++) {
+			var angle = degreeInRadiant * (Number(p[i].getAttribute('data-rot')) - 90);
+			var deltaX = speed * Math.cos(angle);
+			var deltaY = speed * Math.sin(angle);
+			p[i].style.top = (parseFloat(p[i].style.top) + deltaY) + 'px';
+			p[i].style.left = (parseFloat(p[i].style.left) + deltaX) + 'px';
+			var coords = p[i].getBoundingClientRect();
+			var coords2;
+			if (p[i].className.indexOf('jet') > -1) { // Jet-projectiles
+				for (var j = 0; j < helis.length; j++) {
+					coords2 = helis[j][0].getBoundingClientRect();
+					if (
+						(coords.top >= coords2.top && coords.top <= coords2.top + coords2.height) &&
+						(coords.left >= coords2.left && coords.left <= (coords2.left + coords2.width))
+					) {
+						var he = Number(helis[j][1].getAttribute('data-health')) - 1;
+						helis[j][1].style.width = (100 / defaultHe * he) + '%';
+						helis[j][1].setAttribute('data-health', he);
+						if (helis[j][1].getAttribute('data-health') === '0') {
+							helis[j][0].parentElement.removeChild(helis[j][0]);
+							helis.splice(j, 1);
+							j--;
+							killCounter.innerText = Number(killCounter.innerText) + 1;
+							spawnHeli();
+						}
+						projectiles.removeChild(p[i]);
+						continue;
+					}
+				}
+			} else { // Heli-projectiles
+				coords2 = targetEle.getBoundingClientRect();
+				if (
+					(coords.top <= coords2.top + coords2.height && coords.top >= coords2.top) &&
+					(coords.left >= coords2.left && coords.left <= coords2.left + coords2.width)
+				) {
+					var h = Number(targetEle.getAttribute('data-health')) - 1;
+					lifebar.style.height = (100 - h) + '%';
+					targetEle.setAttribute('data-health', h);
+					if (targetEle.getAttribute('data-health') === '0') {
+						running = false;
+						endScreen.className = 'visible';
+						screenEle.style.webkitAnimationPlayState = 'paused';
+						screenEle.style.animationPlayState = 'paused';
+					}
+					projectiles.removeChild(p[i]);
+					continue;
+				}
+			}
+			if ((coords.top) < screenCoords.top ||
+				(coords.top + coords.height) > (screenCoords.top + screenCoords.height) ||
+				(coords.left) < screenCoords.left ||
+				(coords.left + coords.width) > (screenCoords.left + screenCoords.width)) {
+					projectiles.removeChild(p[i]);
+					continue;
+			}
+		}
+	}, 10);
+	setInterval(function() {
+		if (!running) {return;}
+		var coords = screenEle.getBoundingClientRect();
+		for (var i = 0; i < helis.length; i++) {
+			helis[i][0].style.top = Math.floor(Math.random() * (coords.height - 61)) + 'px';
+			helis[i][0].style.left = Math.floor(Math.random() * (coords.width - 61)) + 'px';
+		}
+	}, 2000);
+	function reset() {
+		endScreen.className = '';
+		killCounter.innerText = '0';
+		projectiles.innerText = '';
+		heliEle.innerText = '';
+		lifebar.style.height = '0%';
+		targetEle.setAttribute('data-health', '100');
+		screenEle.style.webkitAnimationPlayState = 'running';
+        screenEle.style.animationPlayState = 'running';
+		helis = [];
+		for (var i = 0; i < 1; i++) {
+			spawnHeli();
+		}
+		running = true;
+	}
+	setInterval(function() {
+		if (!running) {return;}
+		if (isBtnPressed('A')) {
+			spawnProjectile2();
+		}
+	}, 200);
+	setInterval(function() {
+		if (!running) {
+			if (isBtnPressed('A')) {
+				reset();
+			}
+			return;
+		}
+		var coords = getComputedStyle(targetEle);
+		if (isBtnPressed('Up')) {
+			targetEle.style.top = Math.max(parseFloat(coords.top) - 5, 0) + 'px';
+		} else if (isBtnPressed('Right')) {
+			targetEle.style.left = Math.min(parseFloat(coords.left) + 5, screenCoords.width - parseFloat(coords.width)) + 'px';
+		} else if (isBtnPressed('Down')) {
+			targetEle.style.top = Math.min(parseFloat(coords.top) + 5, screenCoords.height - parseFloat(coords.height)) + 'px';
+		} else if (isBtnPressed('Left')) {
+			targetEle.style.left = Math.max(parseFloat(coords.left) - 5, 0) + 'px';
+		}
+	});
+	reset();
+});
