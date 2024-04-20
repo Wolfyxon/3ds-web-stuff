@@ -221,6 +221,25 @@ SceneNode.prototype = {
     },
 
     /**
+     * Adds multiple nodes to the node. Should provide better performance than calling addChild() in a loop
+     * @param {[SceneNode]} nodes
+     */
+    addChildren: function (nodes) {
+        if(nodes.length === 0) return;
+
+        const frag = document.createDocumentFragment();
+
+        for(var i = 0; i < nodes.length; i++) {
+            const node = nodes[i];
+            node._parent = this;
+            this._children.push(node);
+            frag.appendChild(node.element);
+        }
+
+        this.element.appendChild(frag);
+    },
+
+    /**
      * Removes a child from the node
      * @param {SceneNode} node
      */
