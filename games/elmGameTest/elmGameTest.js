@@ -16,14 +16,17 @@ window.addEventListener("load", function(){
 
     var minFps = 99999;
     var maxFps = -99999
+    var frame = 0;
 
     var prevFrameTime = Date.now();
     function mainLoop() {
         const delta = (Date.now() - prevFrameTime);
         prevFrameTime = Date.now();
 
+        frame++;
+
         const fps = (1000 / delta);
-        if(isFinite(fps)) {
+        if(isFinite(fps) && frame > 10) {
             maxFps = Math.max(fps, maxFps);
             minFps = Math.min(fps, minFps);
 
