@@ -26,6 +26,7 @@ SceneNode.prototype = {
 
         this._rotation = 0;
         this._pos = new Vector2(0, 0);
+        this._scale = new Vector2(1, 1);
 
         this.updateTransform();
         this.updateClass();
@@ -115,6 +116,26 @@ SceneNode.prototype = {
     },
 
     /**
+     * Sets the node's scale to the specified vector
+     * @param {Vector2} vec
+     */
+    setScaleVec: function(vec) {
+        this._scale = vec;
+        this.updateTransform();
+    },
+
+    /**
+     * Sets the node's scale to the specified X and Y values
+     * @param {number} x Horizontal scale
+     * @param {number} y Vertical scale
+     */
+    setScaleXY: function(x, y) {
+        this._scale.x = x;
+        this._scale.y = y;
+        this.updateTransform();
+    },
+
+    /**
      * Moves the node by the specified Vector2
      * @param {Vector2} vec
      */
@@ -170,7 +191,11 @@ SceneNode.prototype = {
     updateTransform: function() {
         const x = this._pos.x + "px";
         const y = this._pos.y + "px";
-        var trStr = "rotate(" + this._rotation + "deg)";
+
+        const sX = this._scale.x;
+        const sY = this._scale.y;
+
+        var trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ")";
 
         this.element.style.webkitTransform = trStr;
         this.element.style.transform = trStr;
