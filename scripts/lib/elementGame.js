@@ -274,9 +274,10 @@ SceneNode.prototype = {
      */
     getChildrenOfClass: function(className) {
         var res = [];
+        const children = this._children;
 
-        for(var i = 0; i < this._children.length; i++) {
-            const ch = this._children[i];
+        for(var i = 0; i < children.length; i++) {
+            const ch = children[i];
 
             if(ch.isClass(className)) {
                 res.push(ch);
