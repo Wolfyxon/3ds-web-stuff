@@ -197,9 +197,10 @@ SceneNode.prototype = {
 
         var trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ")";
 
-        if( this.element.style.webkitTransform !== trStr || this.element.style.transform !== trStr) {
+        // most browsers are backwards compatible with webkitTransform, so it should be disabled to stop constantly changing and comparing a nonexistent property on the 3DS
+        if( this.element.style.webkitTransform !== trStr /*|| this.element.style.transform !== trStr*/) {
             this.element.style.webkitTransform = trStr;
-            this.element.style.transform = trStr;
+            //this.element.style.transform = trStr;
         }
 
         if(this.element.style.left !== x) {
