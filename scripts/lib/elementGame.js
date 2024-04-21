@@ -86,13 +86,7 @@ SceneNode.prototype = {
      * @return {String}
      */
     getClassString: function() {
-        var res = "";
-
-        for(var i = 0; i < this._classList.length; i++) {
-            res += this._classList[i] + " ";
-        }
-
-        return res;
+        return this._classList.join(" ");
     },
 
     /**
