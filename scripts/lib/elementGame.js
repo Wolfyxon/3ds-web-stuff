@@ -306,8 +306,9 @@ SceneNode.prototype = {
             return;
         }
 
-        if(this.element.parentNode) {
-            this.element.parentNode.removeChild(this.element);
+        const pn = this.element.parentNode;
+        if(pn) {
+            pn.removeChild(this.element);
         }
 
         this._parent = null;
