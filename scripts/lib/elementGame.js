@@ -305,6 +305,8 @@ SceneNode.prototype = {
         if(this.element.parentNode) {
             this.element.parentNode.removeChild(this.element);
         }
+
+        this._parent = null;
     }
 }
 
