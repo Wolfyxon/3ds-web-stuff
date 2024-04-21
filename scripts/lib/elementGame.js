@@ -189,6 +189,8 @@ SceneNode.prototype = {
      * Updates the rendered node's position, rotation and size
      */
     updateTransform: function() {
+        const style = this.element.style;
+
         const x = this._pos.x + "px";
         const y = this._pos.y + "px";
 
@@ -198,16 +200,16 @@ SceneNode.prototype = {
         var trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ")";
 
         // most browsers are backwards compatible with webkitTransform, so it should be disabled to stop constantly changing and comparing a nonexistent property on the 3DS
-        if( this.element.style.webkitTransform !== trStr /*|| this.element.style.transform !== trStr*/) {
-            this.element.style.webkitTransform = trStr;
+        if( style.webkitTransform !== trStr /*|| this.element.style.transform !== trStr*/) {
+            style.webkitTransform = trStr;
             //this.element.style.transform = trStr;
         }
 
-        if(this.element.style.left !== x) {
-            this.element.style.left = x;
+        if(style.left !== x) {
+            style.left = x;
         }
-        if(this.element.style.top !== y) {
-            this.element.style.top = y;
+        if(style.top !== y) {
+            style.top = y;
         }
     },
 
