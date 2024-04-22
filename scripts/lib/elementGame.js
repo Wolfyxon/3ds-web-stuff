@@ -104,6 +104,7 @@ SceneNode.prototype = {
      * @param {number} y Vertical position
      */
     setPositionXY: function(x, y) {
+        if(this._pos.x == x && this._pos.y == y) return; // use == for compatibility with strings
         this._pos.x = x;
         this._pos.y = y;
         this.updateTransform();
