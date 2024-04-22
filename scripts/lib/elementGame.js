@@ -94,6 +94,7 @@ SceneNode.prototype = {
      * @param {Vector2} vec
      */
     setPositionVec: function(vec) {
+        if(vec.equals(this._pos)) return;
         this._pos = vec;
         this.updateTransform();
     },
