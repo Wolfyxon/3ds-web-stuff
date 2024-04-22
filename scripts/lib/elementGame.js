@@ -22,7 +22,7 @@ SceneNode.prototype = {
         this._parent = null;
         this._children = [];
         this._classList = [];
-        this.element.style.position = "absolute";
+        this.extraCss = "position: absolute;";
 
         this._rotation = 0;
         this._pos = new Vector2(0, 0);
@@ -183,27 +183,19 @@ SceneNode.prototype = {
      * Updates the rendered node's position, rotation and size
      */
     updateTransform: function() {
-        const style = this.element.style;
-
-        const x = this._pos.x + "px";
-        const y = this._pos.y + "px";
+        const x = this._pos.x;
+        const y = this._pos.y;
 
         const sX = this._scale.x;
         const sY = this._scale.y;
 
-        var trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ")";
+        const trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ")";
 
-        // most browsers are backwards compatible with webkitTransform, so it should be disabled to stop constantly changing and comparing a nonexistent property on the 3DS
-        if( style.webkitTransform !== trStr /*|| this.element.style.transform !== trStr*/) {
-            style.webkitTransform = trStr;
-            //this.element.style.transform = trStr;
-        }
+        const style = this.element.style;
+        const styleStr = "-webkit-transform: " + trStr + "; left: " + x + "px; top: " + y + "px;" + this.extraCss;
 
-        if(style.left !== x) {
-            style.left = x;
-        }
-        if(style.top !== y) {
-            style.top = y;
+        if(style.cssText !== styleStr) {
+            style.cssText = styleStr;
         }
     },
 
@@ -317,8 +309,8 @@ SceneNode.prototype = {
 function Scene(element) {
     this.element = element;
     this.init();
-    element.style.overflow = "hidden";
-    element.style.position = "relative";
+    this.extraCss = "position: relative; overflow: hidden;";
+    this.updateTransform();
 }
 Scene.prototype = Object.create(SceneNode.prototype);
 
