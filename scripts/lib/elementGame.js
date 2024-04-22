@@ -116,6 +116,7 @@ SceneNode.prototype = {
      * @param {Vector2} vec
      */
     setScaleVec: function(vec) {
+        if(vec.equals(this._pos)) return;
         this._scale = vec;
         this.updateTransform();
     },
@@ -126,6 +127,7 @@ SceneNode.prototype = {
      * @param {number} y Vertical scale
      */
     setScaleXY: function(x, y) {
+        if(x == this._scale.x && y == this._scale.y) // use == for string compatibility
         this._scale.x = x;
         this._scale.y = y;
         this.updateTransform();
