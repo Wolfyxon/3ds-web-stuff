@@ -214,6 +214,15 @@ Vector2.prototype = {
     },
 
     /**
+     * Compares the vector to another vector
+     * @param {Vector2} vec
+     * @return {boolean}
+     */
+    equals: function (vec) {
+        return vec.x === this.x && vec.y === this.y;
+    },
+
+    /**
      * Returns an independent copy of this vector
      * @return {Vector2}
      */
