@@ -167,6 +167,7 @@ SceneNode.prototype = {
      * @param {number} deg
      */
     setRotation: function(deg) {
+        if(this._rotation === deg) return;
         this._rotation = deg;
         this.updateTransform();
     },
