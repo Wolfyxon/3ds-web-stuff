@@ -150,8 +150,10 @@ window.addEventListener('load', function() {
     });
 
     document.addEventListener('keydown', function(e) {
-        if (e.isComposing || e.key === 229) { return; }
-        const ele = keyboard.querySelector('span[data-key="' + e.key.toUpperCase() + '"]');
+        if (e.keyCode < 65 || e.keyCode > 90) { return; }
+        const key = String.fromCharCode(e.which);
+        if (e.isComposing || !key) { return; }
+        const ele = keyboard.querySelector('span[data-key="' + key.toUpperCase() + '"]');
         if (ele) tryKey(ele.getAttribute('data-key'));
     });
 
