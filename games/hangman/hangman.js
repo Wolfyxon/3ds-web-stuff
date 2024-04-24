@@ -46,7 +46,14 @@ window.addEventListener('load', function() {
             'Switch',
             'GameBoy',
             'VirtualBoy',
-            'GameCube'
+            'GameCube',
+            "StreetPass",
+            "SpotPass",
+            "MiiPlaza",
+            "Miiverse",
+            "Metroid",
+            "Minecraft",
+            "JavaScript"
         ];
     var mistakes, gameOver;
     //ctx.strokeStyle = '#f6f6f6';
