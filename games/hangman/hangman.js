@@ -18,9 +18,11 @@ window.addEventListener('load', function() {
             [100, 110, 120, 130]
         ],
         words = [
+            // People
             'Magiczocker',
             'Wolfyxon',
             'Trickiy',
+            // Nintendo stuff
             'Nintendo',
             'Mario',
             'Luigi',
@@ -38,25 +40,30 @@ window.addEventListener('load', function() {
             'Blooey',
             'Kirby',
             'Boolossus',
-            'Kart',
             'Ware',
-            'Tomodachi',
             'Badge',
+            "StreetPass",
+            "SpotPass",
+            // Nintendo Consoles
             'Switch',
             'GameBoy',
             'VirtualBoy',
             'GameCube',
-            "StreetPass",
-            "SpotPass",
-            "MiiPlaza",
+            // Games
+            "Minecraft",
+            'Tomodachi',
             "Miiverse",
             "Metroid",
-            "Minecraft",
+            'Kart',
+            "MarioKart",
+            "MiiPlaza",
+            // Tech
             "JavaScript",
             "Browser",
             "Webkit",
             "HTML",
             "GitHub",
+            // 3DS web stuff games
             "Minesweeper",
             "JetFighter",
             "Jumpy",
