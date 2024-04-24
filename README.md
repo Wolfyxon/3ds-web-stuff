@@ -65,7 +65,7 @@ Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.c
 ### People
 - @Wolfyxon : programming, site design, sprites
 - @magiczocker10 : huge code improvements. Creator of [Minesweeper](https://wolfyxon.github.io/3ds-web-stuff/games/minesweeper), [Connect 4](https://wolfyxon.github.io/3ds-web-stuff/games/connect4), [Hangman](https://wolfyxon.github.io/3ds-web-stuff/games/hagman) and some other games. Screenshots.
-- @Trikkii : amazing game ideas and detailed bug reports
+- @Trickiy : amazing game ideas and detailed bug reports
 - @iHeolity : testing
 
 ## TODO

@@ -21,7 +21,7 @@ window.addEventListener('load', function() {
             'Hangman',
             'Magiczocker',
             'Wolfyxon',
-            'Trikkii',
+            'Trickiy',
             'Nintendo',
             'Mario',
             'Luigi',
