@@ -18,7 +18,6 @@ window.addEventListener('load', function() {
             [100, 110, 120, 130]
         ],
         words = [
-            'Hangman',
             'Magiczocker',
             'Wolfyxon',
             'Trickiy',
@@ -53,7 +52,21 @@ window.addEventListener('load', function() {
             "Miiverse",
             "Metroid",
             "Minecraft",
-            "JavaScript"
+            "JavaScript",
+            "Browser",
+            "Webkit",
+            "HTML",
+            "GitHub",
+            "Minesweeper",
+            "JetFighter",
+            "Jumpy",
+            "Hangman",
+            "Pigeon",
+            "Breakout",
+            "Sudoku",
+            "ConnectFour",
+            "Pong",
+            "TicTacToe"
         ];
     var mistakes, gameOver;
     //ctx.strokeStyle = '#f6f6f6';
