@@ -61,6 +61,30 @@
             user-select: none;
     width: 16px;
 }
+td[data-num="1"] {
+	color: #0000F5;
+}
+td[data-num="2"] {
+	color: #377E22;
+}
+td[data-num="3"] {
+	color: #EA3323;
+}
+td[data-num="4"] {
+	color: #00007B;
+}
+td[data-num="5"] {
+	color: #75140C;
+}
+td[data-num="6"] {
+	color: #377E7F;
+}
+td[data-num="7"] {
+	color: #000;
+}
+td[data-num="8"] {
+	color: #808080;
+}
 #field td:not(.open) {
     color: transparent !important;
     cursor: pointer;
