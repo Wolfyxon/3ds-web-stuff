@@ -7,18 +7,7 @@ window.addEventListener('load', function() {
 		restartMsg = document.getElementById('restart-msg'),
 		width = 9,
 		height = 9,
-		mines = 5,
-		content = [
-			['', ''],
-			['1', '#0000F5'],
-			['2', '#377E22'],
-			['3', '#EA3323'],
-			['4', '#00007B'],
-			['5', '#75140C'],
-			['6', '#377E7F'],
-			['7', '#000'],
-			['8', '#808080']
-		],
+		mines = 10,
 		pos = [
 			[-1, -1],
 			[ 0, -1],
@@ -32,75 +21,82 @@ window.addEventListener('load', function() {
 	var lost = false,
 		won = false,
 		first = true,
-		cells = [],
 		time = 0,
 		timeout;
-
-	function getRandomInt(max) {
-		return Math.floor(Math.random() * max);
-	}
-
-	function getType(x, y) {
-		const row = field.rows[y];
-		if (!row) return false;
-		return row.cells[x] ? row.cells[x].textContent : false;
-	}
 
 	function generate(excludeX, excludeY) {
 		excludeX = excludeX || -1;
 		excludeY = excludeY || -1;
 		field.innerHTML = '';
-		cells = [];
+		var cells = [];
 
 		/* generate cells */
 		for (var y=0; y<height; y++) {
 			const row = field.insertRow();
 			for (var x=0; x<width; x++) {
-				const cell = row.insertCell();
-				if (!((excludeX === x) && (excludeY === y))) cells.push(cell);
+				cells.push(row.insertCell());
 			}
 		}
 
-		/* place bombs */
-		for (var i=0; i<mines; i++) {
-			const index = getRandomInt(cells.length);
-			cells[index].textContent = 'o';
-			cells[index].className += ' mine';
-			cells.splice(index, 1);
-		}
+		var minesPlaced = 0;
+		while (minesPlaced < mines) {
+			const index = Math.floor(Math.random() * cells.length),
+				cell = cells[index],
+				col = cell.cellIndex,
+				row = cell.parentElement.rowIndex;
 
-		/* update mine count */
-		for (var y=0; y<height; y++) {
-			for (var x=0; x<width; x++) {
-				if (getType(x, y) !== 'o') {
-					var count = 0;
-					if (getType(x-1, y-1) === 'o') count++;
-					if (getType(x, y-1) === 'o') count++;
-					if (getType(x+1, y-1) === 'o') count++;
-					if (getType(x-1, y) === 'o') count++;
-					if (getType(x+1, y) === 'o') count++;
-					if (getType(x-1, y+1) === 'o') count++;
-					if (getType(x, y+1) === 'o') count++;
-					if (getType(x+1, y+1) === 'o') count++;
-					const cell = field.rows[y].cells[x];
-					if (count > 0) {
-						cell.style.color = content[count][1];
-						cell.textContent = content[count][0];
+			// Return if cell should be excluded
+			if (col === excludeX && row === excludeY) continue;
+
+			// Place mine
+			cell.textContent = 'o';
+			cell.className += ' mine';
+
+			// Increase count on adjacent cells
+			for (var y=-1; y<2; y++) {
+				for (var x=-1; x<2; x++) {
+					const c = field.rows[row + y] ? field.rows[row + y].cells[col + x] : null
+					if (c && c.textContent !== 'o') {
+						c.textContent = Number(c.textContent) + 1;
+						c.setAttribute('data-num', c.textContent);
 					}
 				}
 			}
+
+			cells.splice(index, 1);
+			minesPlaced++;
+		}
+	}
+
+	function endGame(cell) {
+		restartMsg.style.visibility = 'visible';
+		cell.style.backgroundColor = '#EA3323';
+		cell.style.borderColor = '#CD372E';
+		lost = true;
+		const all = field.querySelectorAll('td.mine');
+		for (var i=0; i<all.length; i++) {
+			all[i].className += ' open';
 		}
 	}
 
 	function open(x, y) {
-		const curType = field.rows[y].cells[x].textContent;
-		field.rows[y].cells[x].className += ' open';
-		if (curType !== '') return;
+		const cell = field.rows[y] ? field.rows[y].cells[x] : null;
+
+		// Return if already open
+		if (!cell || cell.className.indexOf('open') > 0) return;
+
+		// Open field
+		cell.className += ' open';
+
+		// If it's a mine
+		if (cell.textContent === 'o') endGame(cell);
+
+		// Return if count > 0
+		if (cell.textContent !== '') return;
+
+		// Reveal adjacent cells
 		for (var i=0; i<pos.length; i++) {
-			const posX = x + pos[i][0],
-				posY = y + pos[i][1],
-				cell = field.rows[posY] && field.rows[posY].cells[posX];
-			if (cell && (cell.className.indexOf('open') < 0)) open(posX, posY);
+			open(x + pos[i][0], y + pos[i][1]);
 		}
 	}
 
@@ -115,6 +111,7 @@ window.addEventListener('load', function() {
 		generate();
 		field.style.display = '';
 	}
+
 	reset();
 
 	function updateTime() {
@@ -127,41 +124,27 @@ window.addEventListener('load', function() {
 
 	field.addEventListener('click', function(event) {
 		if (won || lost || event.target.nodeName !== 'TD') return;
-		var cell = event.target;
-		const row = cell.parentElement.rowIndex,
+		const cell = event.target,
+			row = cell.parentElement.rowIndex,
 			column = cell.cellIndex;
 
-		if (cell.className.indexOf('open') > 0) return;
-
 		// Reset if first click is a bomb
-		if (first && cell.textContent === 'o') {
-			generate(column, row);
-			cell = field.rows[row].cells[column];
-		}
+		if (first && cell.textContent === 'o') generate(column, row);
 
 		// Open cell
 		first = false;
-		cell.className += ' open';
-		if (cell.textContent === 'o') {
-			restartMsg.style.visibility = 'visible';
-			cell.style.backgroundColor = '#EA3323';
-			cell.style.borderColor = '#CD372E';
-			lost = true;
-			const all = field.querySelectorAll('td.mine');
-			for (var i=0; i<all.length; i++) {
-				all[i].className += ' open';
-			}
-			return;
-		}
 		open(column, row);
+
+		// Check if all cells are open
 		const all = field.querySelectorAll('td:not(.open)');
 		if (all.length === mines) {
+			restartMsg.style.visibility = 'visible';
 			alert('You won!');
 			won = true;
 		}
 	});
 
 	onBtnJustPressed('a', function() {
-		if(lost) reset();
+		if (won || lost) reset();
 	});
 });
