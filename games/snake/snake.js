@@ -64,7 +64,7 @@ window.addEventListener('load', function() {
 
 			//ctx.fillRect(foodX * size, foodY * size, size, size);
 			ctx.beginPath();
-			ctx.arc((foodX * size) + size / 2,(foodY * size) + size / 2, size*0.5, 0, 2 * Math.PI);
+			ctx.arc((foodX * size) + size / 2,(foodY * size) + size / 2, size*0.4, 0, 2 * Math.PI);
 			ctx.fill();
 			ctx.stroke();
 		}
