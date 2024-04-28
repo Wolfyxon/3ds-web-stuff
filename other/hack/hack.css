@@ -39,17 +39,9 @@
 }
 
 #tiles {
-	vertical-align: top;
-	width: 70%;
-	height: 100%;
-	display: inline-block;
-	margin-top: 1%;
-}
-
-#tiles td {
-	background-color: #0f960f;
-	width: 10px;
-	height: 1px;
+    margin-left: 5px;
+    margin-top: 5px;
+    vertical-align: top;
 }
 
 #radar {

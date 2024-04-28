@@ -29,8 +29,9 @@ const terminalTexts = [
 window.addEventListener('load', function() {
     const terminal = document.getElementById('terminal'),
         numbers = document.getElementById('numbers'),
-        tileTbl = document.getElementById('tiles'),
         bars = document.getElementById('bars'),
+		canv = document.getElementById('tiles'),
+		ctx = canv.getContext('2d'),
         termLength = terminalTexts.length,
         barLength = 30;
     var tiles = [],
@@ -48,18 +49,6 @@ window.addEventListener('load', function() {
             const line = document.createElement('div');
             terminal.appendChild(line);
         }
-
-        // tiles
-        const cols = 16,
-            rows = 16;
-        for (var row = 0; row < rows; row++) {
-            const tr = tileTbl.insertRow();
-
-            for (var col = 0; col < cols; col++) {
-                tiles.push(tr.insertCell());
-            }
-        }
-        tileLength = tiles.length;
 
         // bars
         for (var i=0; i<9; i++) {
@@ -80,9 +69,12 @@ window.addEventListener('load', function() {
     }
 
     function genTiles() {
-        for (var i=0; i<tileLength; i++) {
-            tiles[i].style.backgroundColor = Math.random() < 0.5 ? 'black' : '';
-        }
+		for (var y=0; y<16; y++) {
+			for (var x=0; x<16; x++) {
+				ctx.fillStyle = Math.random() < 0.5 ? '#000' : '#0f960f';
+				ctx.fillRect(x * 13, y * 5, 11, 3);
+			}
+		}
     }
 
     function genBars() {
