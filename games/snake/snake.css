@@ -7,18 +7,12 @@
 	    -ms-user-select: none;
 	        user-select: none;
 	text-align: center;
-	position: relative;
 }
 
 #bottom-screen {
 	display: block;
 }
 
-#canvas {
-	bottom: 0;
-	left: 0;
-	position: absolute;
-}
 
 #status {
 	display: none;
