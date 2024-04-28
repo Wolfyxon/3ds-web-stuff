@@ -23,6 +23,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Sudoku](https://wolfyxon.github.io/3ds-web-stuff/games/sudoku) - Fill the table with numbers
 - [x] [Connect 4](https://wolfyxon.github.io/3ds-web-stuff/games/connect4) - Connect 4 points
 - [x] [Hangman](https://wolfyxon.github.io/3ds-web-stuff/games/hangman) - Guess the word
+- [x] [Simon](https://wolfyxon.github.io/3ds-web-stuff/games/simon) - Remember the lights
 - Intercepter - take down the incoming missiles. Based on Missile Command
 - Clicker - a Cookie Clicker clone
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
