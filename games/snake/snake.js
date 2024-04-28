@@ -75,7 +75,7 @@ window.addEventListener('load', function() {
 			lost = true;
 			setStatus();
 			return;
-		} else if (data[0] !== 0 && newX !== foodX && newY !== foodY) {
+		} else if (data[0] !== 0 && newX !== foodX && newY !== foodY && newX > 0 && newY > 0) { // Check if you bite yourself
 			paused = true;
 			lost = true;
 			setStatus();
