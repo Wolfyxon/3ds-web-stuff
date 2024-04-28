@@ -111,7 +111,7 @@ window.addEventListener('load', function() {
 
 	document.addEventListener('keydown', function(e) {
 		const k = e.keyCode;
-		if (paused && (k === 65) || (k === 13) ) reset(); // a
+		if (paused && ( (k === 65) || (k === 13) ) ) reset(); // a
 
 		if (!allowKey || paused) return;
 
