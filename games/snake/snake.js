@@ -101,7 +101,7 @@ window.addEventListener('load', function() {
 			snake.splice(0, 1);
 		}
 		allowKey = true;
-	}, 200);
+	}, 150);
 
 	document.addEventListener('keydown', function(e) {
 		const k = e.keyCode;
