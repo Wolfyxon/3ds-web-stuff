@@ -13,6 +13,10 @@
 	display: block;
 }
 
+#canvas {
+	background-image: url("grid.png");
+	background-size: 20px;
+}
 
 #status {
 	display: none;
