@@ -60,7 +60,13 @@ window.addEventListener('load', function() {
 		// Add food
 		if (foodX > -1 && foodY > -1) {
 			ctx.fillStyle = 'red';
-			ctx.fillRect(foodX * size, foodY * size, size, size);
+			ctx.strokeStyle = 'red';
+
+			//ctx.fillRect(foodX * size, foodY * size, size, size);
+			ctx.beginPath();
+			ctx.arc((foodX * size) + size / 2,(foodY * size) + size / 2, size*0.5, 0, 2 * Math.PI);
+			ctx.fill();
+			ctx.stroke();
 		}
 
 		ctx.fillStyle = 'white';
