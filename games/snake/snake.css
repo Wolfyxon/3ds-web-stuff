@@ -21,6 +21,9 @@
 }
 
 #status {
+	top: 0;
+	position: absolute;
+	width: 400px;
 	display: none;
 	font-size: 30px;
 	font-weight: bold;
