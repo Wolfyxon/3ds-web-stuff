@@ -301,6 +301,22 @@ SceneNode.prototype = {
     },
 
     /**
+     * Gets a child node with the specified ID
+     * @param {string} id
+     * @return {SceneNode|null}
+     */
+    getChildById: function(id) {
+        const children = this.getChildren();
+
+        for(var i = 0; i < children.length; i++) {
+            const ch = children[i];
+            if(ch.getId() === id) return ch;
+        }
+
+        return null;
+    },
+
+    /**
      * Returns the node's parent node
      * @return {SceneNode|null}
      */
