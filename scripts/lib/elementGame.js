@@ -33,6 +33,19 @@ SceneNode.prototype = {
     },
 
     /**
+     * Sets the node's element ID
+     * @param {String} id
+     */
+    setId: function(id) {
+        if(!this.element) {
+            console.warn("Node has no element. Attempting to apply id: " + id);
+            return;
+        }
+
+        this.element.id = id;
+    },
+
+    /**
      * Assigns a class to the node
      * @param {String} className
      */
