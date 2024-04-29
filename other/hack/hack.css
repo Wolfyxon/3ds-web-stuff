@@ -60,6 +60,7 @@ textarea {
 	color: #0f0;
 	font-size: 9px;
 	height: 100%;
+	overflow-y: hidden;
 	padding-left: 4px;
 	resize: none;
 	width: 320px;
