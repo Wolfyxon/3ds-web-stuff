@@ -3,6 +3,8 @@ window.addEventListener('load', function() {
 		ctx = canvas.getContext('2d'),
 		status = document.getElementById('status'),
 		start = document.getElementById('start'),
+		foodTxt = document.getElementById('food-eaten'),
+		timeTxt = document.getElementById('time'),
 		size = 10,
 		rows = 200 / size,
 		cols = 400 / size;
@@ -54,6 +56,11 @@ window.addEventListener('load', function() {
 		snake = [
 			[cols * 0.5, rows * 0.5]
 		];
+		updateFoodCounter();
+	}
+
+	function updateFoodCounter() {
+		foodTxt.innerText = foodEaten;
 	}
 
 	setInterval(function() {
@@ -106,6 +113,7 @@ window.addEventListener('load', function() {
 			foodX = -1;
 			foodY = -1;
 			foodEaten++;
+			updateFoodCounter();
 		} else {
 			const old = snake[0];
 			ctx.clearRect(old[0] * size, old[1] * size, size, size);
