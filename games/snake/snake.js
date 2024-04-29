@@ -127,7 +127,7 @@ window.addEventListener('load', function() {
 		allowKey = true;
 	}, 150);
 
-	setTimeout(function (){
+	setInterval(function (){
 		if(paused) return;
 		time++;
 		updateTime();
