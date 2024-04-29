@@ -47,6 +47,10 @@
 	width: 120px;
 }
 
+#stats {
+	margin-top: 1%;
+}
+
 #food-icon {
 	display: inline-block;
 	background-color: red;
