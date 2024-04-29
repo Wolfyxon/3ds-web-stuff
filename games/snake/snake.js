@@ -12,6 +12,7 @@ window.addEventListener('load', function() {
 		foodX,
 		foodY,
 		foodEaten = 0,
+		time = 0,
 		paused = true,
 		allowKey = true,
 		wrapfield = true;
@@ -49,6 +50,7 @@ window.addEventListener('load', function() {
 		foodX = -1;
 		foodY = -1;
 		foodEaten = 0;
+		time = 0;
 		snake = [
 			[cols * 0.5, rows * 0.5]
 		];
@@ -111,6 +113,12 @@ window.addEventListener('load', function() {
 		}
 		allowKey = true;
 	}, 150);
+
+	setTimeout(function (){
+		if(paused) return;
+
+		time++;
+	});
 
 	document.addEventListener('keydown', function(e) {
 		const k = e.keyCode;
