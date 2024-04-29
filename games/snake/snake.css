@@ -35,7 +35,7 @@
 #start {
 	position: absolute;
 	top: 35%;
-	left: 30%;
+	left: 26%;
 	background: #c7c7c7;
 	border: 4px solid #767676;
 	border-radius: 10px;
@@ -44,7 +44,7 @@
 	font-size: 30px;
 	font-weight: bold;
 	height: 60px;
-	width: 120px;
+	width: 150px;
 }
 
 #stats {
