@@ -43,3 +43,13 @@
 	margin-top: 70px;
 	width: 120px;
 }
+
+#food-icon {
+	display: inline-block;
+	background-color: red;
+	width: 10px;
+	height: 10px;
+	-webkit-border-radius: 100%;
+		-moz-border-radius: 100%;
+			border-radius: 100%;
+}
