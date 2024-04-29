@@ -15,50 +15,62 @@
 	padding-right: 1%;
 }
 
-#top-screen > * {
-	height: 100%;
-}
-
-#terminal {
-	height: 100%;
-	width: 80%;
-	font-size: 60%;
-	padding-left: 4px;
-}
-
-#numbers {
-	font-size: 40%;
-	width: 15%;
+textarea {
+	font-family: "Liberation Sans", sans-serif;
 }
 
 #banner {
 	display: block;
-	width: 97%;
 	margin-left: auto;
 	margin-right: auto;
+	width: 97%;
 }
 
-#tiles {
-	vertical-align: top;
-	width: 70%;
-	height: 100%;
-	display: inline-block;
+#bars {
+	color: #0f0;
+	display: block;
+	font-size: 9px;
+	height: 45%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 1%;
+	resize: none;
+	width: 90%;
 }
 
-#tiles td {
-	background-color: #0f960f;
-	width: 10px;
-	height: 1px;
+#numbers {
+	color: #0f0;
+	font-size: 6px;
+	height: 100%;
+	padding: 0;
+	resize: none;
+	width: 60px;
 }
 
 #radar {
-	display: inline-block;
 	background-color: #002a00;
-	width: 85px;
-	height: 85px;
 	border: 1px solid green;
 	border-radius: 43px;
+	display: inline-block;
+	height: 85px;
+	width: 85px;
+}
+
+#terminal {
+	color: #0f0;
+	font-size: 9px;
+	height: 100%;
+	overflow-y: hidden;
+	padding-left: 4px;
+	resize: none;
+	width: 320px;
+}
+
+#tiles {
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	vertical-align: top;
 }
 
 @-webkit-keyframes scanRot {
@@ -79,21 +91,11 @@
 	}
 }
 #scan {
-	width: 43px;
-	height: 85px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
 	-webkit-animation: scanRot 1s infinite linear;
-	animation: scanRot 1s infinite linear;
-}
-
-#bars {
-	margin-top: 1%;
+	        animation: scanRot 1s infinite linear;
 	display: block;
-	height: 45%;
-	width: 90%;
+	height: 85px;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 60%;
+	width: 43px;
 }

@@ -1,121 +1,98 @@
 const terminalTexts = [
-    'rm -rf /* --no-preserve-root',
-    'pacman -Syu',
-    'sudo -s',
-    'neofetch',
-    'Hacking database',
-    'Establishing connection',
-    'Hi',
-    'undefined',
-    'Hello World!',
-    'Goodbye World!',
-    'Ah free at last',
-    'A visitor. Hm indeed, I\'ve slept long enough.',
-    'Rise and shine mr Freeman',
-    'Get out',
-    'kernel panic - not syncing: Attempted to kill inint !',
-    'Uncaught ReferenceError: message is not defined',
-    'Exception in thread \"main\" java.lang.NullPointerException',
-    'Segmentation fault (core dumped)',
-    'Fatal error: Unexpectedly found nil while unwrapping an Optional value',
-    'ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'WHERE id=1\' at line 1',
-    'System.NullReferenceException: Object reference not set to an instance of an object.',
-    'panic: runtime error: index out of range [5] with length 3',
-    'Type mismatch: inferred type is Int but String was expected',
-    'thread \'main\' panicked at \'attempt to add with overflow\', src/main.rs:4:9',
-    'for(int i = 0; i < sizeof(arr); i++) {}',
+	'rm -rf /* --no-preserve-root',
+	'pacman -Syu',
+	'sudo -s',
+	'neofetch',
+	'Hacking database',
+	'Establishing connection',
+	'Hi',
+	'undefined',
+	'Hello World!',
+	'Goodbye World!',
+	'Ah free at last',
+	'A visitor. Hm indeed, I\'ve slept long enough.',
+	'Rise and shine mr Freeman',
+	'Get out',
+	'kernel panic - not syncing: Attempted to kill inint !',
+	'Uncaught ReferenceError: message is not defined',
+	'Exception in thread \"main\" java.lang.NullPointerException',
+	'Segmentation fault (core dumped)',
+	'Fatal error: Unexpectedly found nil while unwrapping an Optional value',
+	'ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'WHERE id=1\' at line 1',
+	'System.NullReferenceException: Object reference not set to an instance of an object.',
+	'panic: runtime error: index out of range [5] with length 3',
+	'Type mismatch: inferred type is Int but String was expected',
+	'thread \'main\' panicked at \'attempt to add with overflow\', src/main.rs:4:9',
+	'for(int i = 0; i < sizeof(arr); i++) {}',
 ];
 
 window.addEventListener('load', function() {
-    const terminal = document.getElementById('terminal'),
-        numbers = document.getElementById('numbers'),
-        tileTbl = document.getElementById('tiles'),
-        bars = document.getElementById('bars'),
-        termLength = terminalTexts.length,
-        barLength = 30;
-    var tiles = [],
-        lines = [],
-        barTxt = '',
-        tileLength;
+	const terminal = document.getElementById('terminal'),
+		numbers = document.getElementById('numbers'),
+		bars = document.getElementById('bars'),
+		canv = document.getElementById('tiles'),
+		ctx = canv.getContext('2d'),
+		termLength = terminalTexts.length,
+		barLength = 30,
+		cols = 6,
+		rows = 30;
+	var terminalLength = 0,
+		barTxt = '';
 
-    function ran(num) {
-        return Math.floor(Math.random() * num);
-    }
+	function ran(num) {
+		return Math.floor(Math.random() * num);
+	}
 
-    function init() {
-        // terminal
-        for (var i=0; i<16; i++) {
-            const line = document.createElement('div');
-            terminal.appendChild(line);
-        }
+	function echo() {
+		var v = terminal.value;
+		if (terminalLength < 16) {
+			terminalLength++
+		} else {
+			v = v.substring(v.match('\n').index + 2);			
+		}
+		terminal.value = v + terminalTexts[ran(termLength-1)] + '\n';
+	}
 
-        // tiles
-        const cols = 16,
-            rows = 16;
-        for (var row = 0; row < rows; row++) {
-            const tr = tileTbl.insertRow();
+	function genTiles() {
+		for (var y=0; y<16; y++) {
+			for (var x=0; x<16; x++) {
+				ctx.fillStyle = Math.random() < 0.5 ? '#000' : '#0f960f';
+				ctx.fillRect(x * 13, y * 5, 11, 3);
+			}
+		}
+	}
 
-            for (var col = 0; col < cols; col++) {
-                tiles.push(tr.insertCell());
-            }
-        }
-        tileLength = tiles.length;
+	function genBars() {
+		var v = '';
+		for (var ln=0; ln<9; ln++) {
+			v += ln + " ) |" + barTxt.substring(0, ran(barLength)) + (ln === 8 ? '' : '\n');
+		}
+		bars.value = v;
+	}
 
-        // bars
-        for (var i=0; i<9; i++) {
-            const bar = document.createElement('div');
-            bars.appendChild(bar);
-            lines.push(bar);
-        }
-        for (var j=0; j<barLength; j++) {
-            barTxt += '|';
-        }
+	function genNums() {
+		var v = '';
+		for (var row=0; row<rows; row++) {
+			for (var col=0; col<cols; col++) {
+				v += ran(64) + ' ';
+			}
+			v += (row === rows-1) ? '' : '\n';
+		}
 
-    }
+		numbers.value = v;
+	}
 
-    function echo() {
-        const line = terminal.children[0];
-        terminal.appendChild(line);
-        line.textContent = terminalTexts[ran(termLength-1)];
-    }
+	for (var j=0; j<barLength; j++) {
+		barTxt += '|';
+	}
 
-    function genTiles() {
-        for (var i=0; i<tileLength; i++) {
-            tiles[i].style.backgroundColor = Math.random() < 0.5 ? 'black' : '';
-        }
-    }
+	echo();
+	genTiles();
+	genBars();
+	genNums();
 
-    function genBars() {
-        for (var ln=0; ln<9; ln++) {
-            lines[ln].textContent = ln + " ) |" + barTxt.substring(0, ran(barLength));
-        }
-    }
-
-    function genNums() {
-        const cols = 6,
-            rows = 30;
-
-        var html = '';
-        for(var row=0; row<rows; row++) {
-
-            for(var col=0; col<cols; col++) {
-                html += ran(64) + ' ';
-            }
-
-            html += '<br>';
-        }
-
-        numbers.innerHTML = html;
-    }
-
-    init();
-    echo();
-    genTiles();
-    genBars();
-    genNums();
-
-    setInterval(echo, 50);
-    setInterval(genTiles, 1000);
-    setInterval(genBars, 500);
-    setInterval(genNums, 20);
+	setInterval(echo, 50);
+	setInterval(genTiles, 1000);
+	setInterval(genBars, 500);
+	setInterval(genNums, 20);
 });
