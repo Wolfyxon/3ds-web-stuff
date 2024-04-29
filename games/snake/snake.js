@@ -131,7 +131,7 @@ window.addEventListener('load', function() {
 		if(paused) return;
 		time++;
 		updateTime();
-	});
+	}, 1000);
 
 	document.addEventListener('keydown', function(e) {
 		const k = e.keyCode;
