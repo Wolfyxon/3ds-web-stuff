@@ -57,10 +57,15 @@ window.addEventListener('load', function() {
 			[cols * 0.5, rows * 0.5]
 		];
 		updateFoodCounter();
+		updateTime();
 	}
 
 	function updateFoodCounter() {
 		foodTxt.innerText = foodEaten;
+	}
+
+	function updateTime() {
+		timeTxt.innerText = new Date(time * 1000).toISOString().slice(11,19);
 	}
 
 	setInterval(function() {
@@ -124,8 +129,8 @@ window.addEventListener('load', function() {
 
 	setTimeout(function (){
 		if(paused) return;
-
 		time++;
+		updateTime();
 	});
 
 	document.addEventListener('keydown', function(e) {
