@@ -14,6 +14,7 @@
 }
 
 #canvas {
+	margin-top: 8px;
 	background-image: url("grid.png");
 	-webkit-background-size: 20px;
 		-moz-background-size: 20px;
