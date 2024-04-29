@@ -27,20 +27,19 @@ textarea {
 }
 
 #bars {
-	color: #01c401;
+	color: #0f0;
 	display: block;
 	font-size: 9px;
 	height: 45%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1%;
-	overflow-y: hidden;
 	resize: none;
 	width: 90%;
 }
 
 #numbers {
-	color: #01c401;
+	color: #0f0;
 	font-size: 6px;
 	height: 100%;
 	padding: 0;
@@ -58,10 +57,9 @@ textarea {
 }
 
 #terminal {
-	color: #01c401;
+	color: #0f0;
 	font-size: 9px;
 	height: 100%;
-	overflow-y: hidden;
 	padding-left: 4px;
 	resize: none;
 	width: 320px;
