@@ -11,6 +11,7 @@ window.addEventListener('load', function() {
 		moveY,
 		foodX,
 		foodY,
+		foodEaten = 0,
 		paused = true,
 		allowKey = true,
 		wrapfield = true;
@@ -46,7 +47,8 @@ window.addEventListener('load', function() {
 		moveX = 1;
 		moveY = 0;
 		foodX = -1;
-		foodY = -1
+		foodY = -1;
+		foodEaten = 0;
 		snake = [
 			[cols * 0.5, rows * 0.5]
 		];
@@ -101,6 +103,7 @@ window.addEventListener('load', function() {
 		if (now[0] === foodX && now[1] === foodY) {
 			foodX = -1;
 			foodY = -1;
+			foodEaten++;
 		} else {
 			const old = snake[0];
 			ctx.clearRect(old[0] * size, old[1] * size, size, size);
