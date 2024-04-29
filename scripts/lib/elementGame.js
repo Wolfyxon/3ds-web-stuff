@@ -46,6 +46,15 @@ SceneNode.prototype = {
     },
 
     /**
+     * Returns the node's element ID.
+     * @return {string|null}
+     */
+    getId: function() {
+        if(!this.element) return null;
+        return this.element.id;
+    },
+
+    /**
      * Assigns a class to the node
      * @param {String} className
      */
