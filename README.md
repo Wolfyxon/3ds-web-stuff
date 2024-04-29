@@ -24,6 +24,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Connect 4](https://wolfyxon.github.io/3ds-web-stuff/games/connect4) - Connect 4 points
 - [x] [Hangman](https://wolfyxon.github.io/3ds-web-stuff/games/hangman) - Guess the word
 - [x] [Simon](https://wolfyxon.github.io/3ds-web-stuff/games/simon) - Remember the lights
+- [x] [Snake](https://wolfyxon.github.io/3ds-web-stuff/games/snake) - Eat apples to grow
 - Intercepter - take down the incoming missiles. Based on Missile Command
 - Clicker - a Cookie Clicker clone
 - Miner - a mining game where you dig in the earth in search of rare minerals you can then sell.
