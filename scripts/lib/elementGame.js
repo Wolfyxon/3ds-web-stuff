@@ -22,7 +22,7 @@ SceneNode.prototype = {
         this._parent = null;
         this._children = [];
         this._classList = [];
-        this.extraCss = "position: absolute;";
+        this.extraCss = "";
 
         this._rotation = 0;
         this._pos = new Vector2(0, 0);
