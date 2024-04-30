@@ -216,11 +216,10 @@ SceneNode.prototype = {
         const sX = this._scale.x;
         const sY = this._scale.y;
 
-        const trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ")";
-        const posStr = "left: " + x + "px; top: " + y + "px;"
+        const trStr = "rotate(" + this._rotation + "deg) scale(" + sY + "," + sX + ") translateX(" + x +"px) translateY(" + y + "px);";
 
         const style = this.element.style;
-        const styleStr = "-webkit-transform: " + trStr + ";" + posStr + this.extraCss;
+        const styleStr = "-webkit-transform: " + trStr + this.extraCss;
 
         if(style.cssText !== styleStr) {
             style.cssText = styleStr;
