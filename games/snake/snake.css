@@ -55,3 +55,12 @@
 	height: 10px;
 	width: 10px;
 }
+
+#gamemodes > * {
+	background-color: #004900;
+	color: white;
+	border: #006400 2px solid;
+	-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+			border-radius: 5px;
+}
