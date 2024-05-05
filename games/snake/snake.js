@@ -25,7 +25,7 @@ window.addEventListener('load', function() {
 		time = 0,
 		paused = true,
 		allowKey = true,
-		wrapfield = true;
+		wrapfield = false;
 
 	function drawBackground(x, y) {
 		ctx.fillStyle = x%2-y%2 ? back1 : back2;
