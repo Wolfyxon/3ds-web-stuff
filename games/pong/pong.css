@@ -1,50 +1,19 @@
 #top-screen {
-	background: #1f1f21;
+	background-color: #1f1f21;
+	-webkit-user-select: none;
+	        user-select: none;
+	position: relative;
 }
 
 #bottom-screen {
 	background: #2b2b2e;
 	color: white;
-}
-
-#field {
-	background: #5700ff;
-	-webkit-border-radius: 10px;
-	   -moz-border-radius: 10px;
-	        border-radius: 10px;
-	color: white;
-	height: 95%;
-	margin: 1.5% 1%;
-	left: 0;
-	position: relative;
-	top: 0;
-	width: 98%;
-}
-
-#ball {
-	background: white;
-	height: 4px;
-	position: absolute;
-	width: 4px;
-}
-
-#player,
-#enemy {
-	background: white;
-	height: 43px;
-	position:absolute;
-	width: 8px;
-}
-
-#player {
-	left: 18px;
-}
-
-#enemy {
-	right: 18px;
+	-webkit-user-select: none;
+	        user-select: none;
 }
 
 #text {
+	color: white;
 	font-size: 30px;
 	font-weight: bold;
 	left: 50%;
@@ -52,10 +21,11 @@
 	text-shadow: 0px 0px 5px #000;
 	top: 50%;
 	-webkit-transform: translate(-50%, -50%);
-	   -moz-transform: translate(-50%, -50%);
-	    -ms-transform: translate(-50%, -50%);
-	     -o-transform: translate(-50%, -50%);
 	        transform: translate(-50%, -50%);
+}
+
+#canv {
+	position: absolute;
 }
 
 #line {
@@ -65,11 +35,8 @@
 	position: absolute;
 	top: 0;
 	-webkit-transform: translateX(-4px);
-	   -moz-transform: translateX(-4px);
-	    -ms-transform: translateX(-4px);
-	     -o-transform: translateX(-4px);
 	        transform: translateX(-4px);
-	width: 8px;
+	width: 0;
 }
 
 #score {
@@ -79,9 +46,7 @@
 #score > * {
 	background-color: #bdbdbd;
 	border: 2px solid black;
-	-webkit-border-radius: 10px;
-	   -moz-border-radius: 10px;
-	        border-radius: 10px;
+	border-radius: 10px;
 	display: inline-block;
 	font-size: 120%;
 	padding: 5%;

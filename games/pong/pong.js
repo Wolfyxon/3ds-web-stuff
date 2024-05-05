@@ -1,7 +1,8 @@
 window.addEventListener('load', function() {
-	const field = document.getElementById('field'),
-		width = field.offsetWidth,
-		height = field.offsetHeight,
+	const canv = document.getElementById('canv'),
+		ctx = canv.getContext('2d', {alpha: false}),
+		width = canv.width,
+		height = canv.height,
 
 		enemyScoreTxt = document.getElementById('score-enemy'),
 		playerScoreTxt = document.getElementById('score-player'),
@@ -15,7 +16,6 @@ window.addEventListener('load', function() {
 	var level = 1,
 		active = false,
 		ball = {
-			ele: document.getElementById('ball'),
 			x: width / 2.1,
 			y: height / 2.1,
 			w: 4,
@@ -25,7 +25,6 @@ window.addEventListener('load', function() {
 			accel: 1.06
 		},
 		player = {
-			ele: document.getElementById('player'),
 			x: 18,
 			y: y,
 			w: 8,
@@ -34,7 +33,6 @@ window.addEventListener('load', function() {
 			score: 0
 		},
 		enemy = {
-			ele: document.getElementById('enemy'),
 			x: width - 26,
 			y: y,
 			w: 8,
@@ -43,9 +41,29 @@ window.addEventListener('load', function() {
 			score: 0
 		};
 
-		enemy.rect = new Rect2D(new Vector2(width - player.x * 1.5, y), enemy.w, enemy.h);
-	
+	enemy.rect = new Rect2D(new Vector2(width - player.x * 1.5, y), enemy.w, enemy.h);
+
+	ctx.fillStyle = '#5700ff';
+	ctx.fillRect(0, 0, canv.width, canv.height);
+	ctx.fillStyle = '#fff';
+
+	function removeOld() {
+		ctx.fillStyle = '#5700ff';
+		ctx.fillRect(player.x, Math.floor(player.oldY), player.w, player.h);
+		ctx.fillRect(enemy.x, Math.floor(enemy.oldY), enemy.w, enemy.h);
+		ctx.fillRect(Math.floor(ball.oldX), Math.floor(ball.oldY), ball.w, ball.h);		
+	}
+
+	function saveOld() {
+		player.oldY = player.y;
+		enemy.oldY = enemy.y;
+		ball.oldX = ball.x;
+		ball.oldY = ball.y;
+	}
+
 	function roundReset() {
+		saveOld();
+		removeOld();
 		enemy.y = y;
 		player.y = y;
 		ball.x = width / 2.1;
@@ -121,19 +139,20 @@ window.addEventListener('load', function() {
 		const delta = (Date.now() - prevFrameTime) / 16;
 		prevFrameTime = Date.now();
 
+		saveOld();
 		if (active) {
 			if (player.y > 0 && isBtnPressed('up')) {
 				player.y += -player.speed * delta;
-			}
-			if ((player.y + player.h) < height && isBtnPressed('down')) {
+			} else if ((player.y + player.h) < height && isBtnPressed('down')) {
 				player.y += player.speed * delta;
 			}
 			enemy.rect.area.moveTo(
 				enemy.rect.area.startVec.getLerped(new Vector2(enemy.x, ball.y - enemy.h * 0.5), enemy.speed * level * delta)
 			);
 			var gTL = enemy.rect.area.getTopLeft();
-			enemy.x = gTL.x;
-			enemy.y = gTL.y;
+			enemy.y = Math.floor(gTL.y);
+			if (enemy.y < 0) enemy.y = 0;
+			if (enemy.y + enemy.h > height) enemy.y = height - enemy.h;
 
 			const bNew = moveLocalXY(ball.speed * delta, 0);
 			ball.x += bNew[0];
@@ -167,9 +186,10 @@ window.addEventListener('load', function() {
 
 		}
 
-		player.ele.style.top = Math.floor(player.y) + 'px';
-		enemy.ele.style.top = Math.floor(enemy.y) + 'px';
-		ball.ele.style.left = Math.floor(ball.x) + 'px';
-		ball.ele.style.top = Math.floor(ball.y) + 'px';
+		removeOld();
+		ctx.fillStyle = '#fff';
+		ctx.fillRect(player.x, Math.floor(player.y), player.w, player.h);
+		ctx.fillRect(enemy.x, Math.floor(enemy.y), enemy.w, enemy.h);
+		ctx.fillRect(Math.floor(ball.x), Math.floor(ball.y), ball.w, ball.h);
 	});
 });
