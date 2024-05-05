@@ -8,6 +8,8 @@ window.addEventListener('load', function() {
 		start = document.getElementById('start'),
 		foodTxt = document.getElementById('food-eaten'),
 		timeTxt = document.getElementById('time'),
+		btnEnableWalls = document.getElementById("btn-enable-walls"),
+		btnDisableWalls = document.getElementById("btn-disable-walls"),
 		size = 10,
 		rows = canv.height / size,
 		cols = canv.width / size,
@@ -22,6 +24,7 @@ window.addEventListener('load', function() {
 		time = 0,
 		paused = true,
 		allowKey = true,
+		walls = false,
 		wrapfield = true;
 
 	function drawBackground(x, y) {
@@ -92,6 +95,21 @@ window.addEventListener('load', function() {
 		lost = true;
 		setStatus();
 	}
+
+	function updateGamemodes() {
+		const bg = "#00AA00";
+
+		btnEnableWalls.style.backgroundColor = "";
+		btnDisableWalls.style.backgroundColor = "";
+
+		if(walls) {
+			btnEnableWalls.style.backgroundColor = bg;
+		} else {
+			btnDisableWalls.style.backgroundColor = bg;
+		}
+
+	}
+	updateGamemodes();
 
 	setInterval(function() {
 		if (paused) return;
@@ -182,5 +200,15 @@ window.addEventListener('load', function() {
 	start.addEventListener('click', function() {
 		start.disabled = true;
 		reset();
-	})
+	});
+
+	btnDisableWalls.addEventListener('click', function() {
+		walls = false;
+		updateGamemodes();
+	});
+
+	btnEnableWalls.addEventListener('click', function() {
+		walls = true;
+		updateGamemodes();
+	});
 });
