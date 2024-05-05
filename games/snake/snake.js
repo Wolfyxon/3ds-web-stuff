@@ -8,6 +8,7 @@ window.addEventListener('load', function() {
 		start = document.getElementById('start'),
 		foodTxt = document.getElementById('food-eaten'),
 		timeTxt = document.getElementById('time'),
+		gamemodeContainer = document.getElementById("gamemode-container"),
 		btnEnableWalls = document.getElementById("btn-enable-walls"),
 		btnDisableWalls = document.getElementById("btn-disable-walls"),
 		size = 10,
@@ -48,6 +49,7 @@ window.addEventListener('load', function() {
 	function setStatus() {
 		start.disabled = false;
 		status.style.display = 'block';
+		gamemodeContainer.style.pointerEvents = null;
 		start.style.removeProperty('display');
 		if (lost) {
 			status.style.color = 'red';
@@ -60,6 +62,7 @@ window.addEventListener('load', function() {
 
 	function reset() {
 		start.style.display = 'none';
+		gamemodeContainer.style.pointerEvents = 'none';
 		status.style.removeProperty('display');
 		for (var i=0; i<snake.length; i++) {
 			drawBackground(snake[i][0], snake[i][1]);
