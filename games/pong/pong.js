@@ -66,10 +66,10 @@ window.addEventListener('load', function() {
 		removeOld();
 		enemy.y = y;
 		player.y = y;
+		enemy.rect.area.moveTo(new Vector2(enemy.x, enemy.y));
 		ball.x = width / 2.1;
 		ball.y = height / 2.1;
 		ball.rot = 0;
-
 		ball.speed = originalBallSpeed;
 		text.innerText = '';
 		active = true;
