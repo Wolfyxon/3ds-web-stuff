@@ -1,14 +1,19 @@
 window.addEventListener('load', function() {
-	const canvas = document.getElementById('canvas'),
-		ctx = canvas.getContext('2d'),
+	const canv = document.getElementById('canvas'),
+		ctx = canv.getContext('2d', {
+			alpha: false,
+			willReadFrequently: true
+		}),
 		status = document.getElementById('status'),
 		start = document.getElementById('start'),
 		foodTxt = document.getElementById('food-eaten'),
 		timeTxt = document.getElementById('time'),
 		size = 10,
-		rows = 200 / size,
-		cols = 400 / size;
-	var snake,
+		rows = canv.height / size,
+		cols = canv.width / size,
+		back1 = '#6abe30',
+		back2 = '#99e550';
+	var snake = [],
 		moveX,
 		moveY,
 		foodX,
@@ -19,14 +24,23 @@ window.addEventListener('load', function() {
 		allowKey = true,
 		wrapfield = true;
 
+	function drawBackground(x, y) {
+		ctx.fillStyle = x%2-y%2 ? back1 : back2;
+		ctx.fillRect(x*size, y*size, size, size);
+	}
+	for (var Y=0; Y<rows; Y++) {
+		for (var X=0; X<cols; X++) {
+			drawBackground(X, Y)
+		}
+	}
+
 	function placeFood() {
 		const newX = Math.floor(Math.random() * cols),
 			newY = Math.floor(Math.random() * rows),
 			data = ctx.getImageData(newX * size, newY * size, 1, 1).data;
-		if (data[0] === 0) {
-			foodX = newX;
-			foodY = newY;
-		}
+		if (data[0] === back1 || data[0] === back1 || data[0] === 255) return;
+		foodX = newX;
+		foodY = newY;
 	}
 
 	function setStatus() {
@@ -45,7 +59,12 @@ window.addEventListener('load', function() {
 	function reset() {
 		start.style.display = 'none';
 		status.style.removeProperty('display');
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		for (var i=0; i<snake.length; i++) {
+			drawBackground(snake[i][0], snake[i][1]);
+		}
+		if (foodX && foodY) {
+			drawBackground(foodX, foodY);
+		}
 		paused = false;
 		moveX = 1;
 		moveY = 0;
@@ -54,7 +73,7 @@ window.addEventListener('load', function() {
 		foodEaten = 0;
 		time = 0;
 		snake = [
-			[cols * 0.5, rows * 0.5]
+			[Math.floor(cols * 0.5), Math.floor(rows * 0.5)]
 		];
 		updateFoodCounter();
 		updateTime();
@@ -91,13 +110,13 @@ window.addEventListener('load', function() {
 		const cur = snake[snake.length - 1],
 			newX = cur[0] + moveX,
 			newY = cur[1] + moveY,
-			data = ctx.getImageData(newX * size, newY * size, 1, 1).data;
+			data = ctx.getImageData(newX * size + 5, newY * size + 5, 1, 1).data;
 		if (!wrapfield && ((newX < 0) || (newX >= cols) || (newY < 0) || (newY >= rows))) {
 			paused = true;
 			lost = true;
 			setStatus();
 			return;
-		} else if (data[0] !== 0 && newX !== foodX && newY !== foodY && newX > 0 && newY > 0) { // Check if you bite yourself
+		} else if (data[0] === 255 && newX !== foodX && newY !== foodY && newX > 0 && newY > 0) { // Check if you bite yourself
 			paused = true;
 			lost = true;
 			setStatus();
@@ -121,7 +140,7 @@ window.addEventListener('load', function() {
 			updateFoodCounter();
 		} else {
 			const old = snake[0];
-			ctx.clearRect(old[0] * size, old[1] * size, size, size);
+			drawBackground(old[0], old[1]);
 			snake.splice(0, 1);
 		}
 		allowKey = true;

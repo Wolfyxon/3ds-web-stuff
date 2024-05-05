@@ -3,11 +3,9 @@
 	background-color: #262626;
 	color: #f6f6f6;
 	-webkit-user-select: none;
-	   -moz-user-select: none;
-	    -ms-user-select: none;
 	        user-select: none;
-	text-align: center;
 	position: relative;
+	text-align: center;
 }
 
 #bottom-screen {
@@ -15,27 +13,20 @@
 }
 
 #canvas {
-	margin-top: 8px;
-	background-image: url("grid.png");
-	-webkit-background-size: 20px;
-		-moz-background-size: 20px;
-			background-size: 20px;
+	margin-top: 4px;
 }
 
 #status {
-	top: 0;
-	position: absolute;
-	width: 400px;
 	display: none;
 	font-size: 30px;
 	font-weight: bold;
 	line-height: 217px;
+	position: absolute;
+	top: 0;
 	vertical-align: middle;
+	width: 400px;
 }
 #start {
-	position: absolute;
-	top: 35%;
-	left: 26%;
 	background: #c7c7c7;
 	border: 4px solid #767676;
 	border-radius: 10px;
@@ -44,6 +35,9 @@
 	font-size: 30px;
 	font-weight: bold;
 	height: 60px;
+	left: 26%;
+	position: absolute;
+	top: 35%;
 	width: 150px;
 }
 
@@ -52,11 +46,9 @@
 }
 
 #food-icon {
-	display: inline-block;
 	background-color: red;
-	width: 10px;
+	border-radius: 5px;
+	display: inline-block;
 	height: 10px;
-	-webkit-border-radius: 100%;
-		-moz-border-radius: 100%;
-			border-radius: 100%;
+	width: 10px;
 }
