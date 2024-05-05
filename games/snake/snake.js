@@ -24,7 +24,6 @@ window.addEventListener('load', function() {
 		time = 0,
 		paused = true,
 		allowKey = true,
-		walls = false,
 		wrapfield = true;
 
 	function drawBackground(x, y) {
@@ -102,10 +101,10 @@ window.addEventListener('load', function() {
 		btnEnableWalls.style.backgroundColor = "";
 		btnDisableWalls.style.backgroundColor = "";
 
-		if(walls) {
-			btnEnableWalls.style.backgroundColor = bg;
-		} else {
+		if(wrapfield) {
 			btnDisableWalls.style.backgroundColor = bg;
+		} else {
+			btnEnableWalls.style.backgroundColor = bg;
 		}
 
 	}
@@ -203,12 +202,12 @@ window.addEventListener('load', function() {
 	});
 
 	btnDisableWalls.addEventListener('click', function() {
-		walls = false;
+		wrapfield = true;
 		updateGamemodes();
 	});
 
 	btnEnableWalls.addEventListener('click', function() {
-		walls = true;
+		wrapfield = false;
 		updateGamemodes();
 	});
 });
