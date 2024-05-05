@@ -49,7 +49,6 @@ window.addEventListener('load', function() {
 	function setStatus() {
 		start.disabled = false;
 		start.style.opacity = null;
-		start.style.pointerEvents = null;
 		status.style.display = 'block';
 		gamemodeContainer.style.pointerEvents = null;
 		gamemodeContainer.style.opacity = null;
@@ -64,8 +63,8 @@ window.addEventListener('load', function() {
 	}
 
 	function reset() {
+		start.disabled = true;
 		start.style.opacity = "0.5";
-		start.style.pointerEvents = 'none';
 		gamemodeContainer.style.opacity = "0.5";
 		gamemodeContainer.style.pointerEvents = 'none';
 		status.style.removeProperty('display');
@@ -205,7 +204,6 @@ window.addEventListener('load', function() {
 	});
 
 	start.addEventListener('click', function() {
-		start.disabled = true;
 		reset();
 	});
 
