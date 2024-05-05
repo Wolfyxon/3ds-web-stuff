@@ -87,6 +87,12 @@ window.addEventListener('load', function() {
 		timeTxt.innerText = new Date(time * 1000).toISOString().slice(11,19);
 	}
 
+	function die() {
+		paused = true;
+		lost = true;
+		setStatus();
+	}
+
 	setInterval(function() {
 		if (paused) return;
 
@@ -112,14 +118,10 @@ window.addEventListener('load', function() {
 			newY = cur[1] + moveY,
 			data = ctx.getImageData(newX * size + 5, newY * size + 5, 1, 1).data;
 		if (!wrapfield && ((newX < 0) || (newX >= cols) || (newY < 0) || (newY >= rows))) {
-			paused = true;
-			lost = true;
-			setStatus();
+			die();
 			return;
 		} else if (data[0] === 255 && newX !== foodX && newY !== foodY && newX > 0 && newY > 0) { // Check if you bite yourself
-			paused = true;
-			lost = true;
-			setStatus();
+			die();
 			return;
 		} else if (snake.length === rows * cols) won = true;
 
