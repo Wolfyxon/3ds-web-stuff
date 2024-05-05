@@ -26,6 +26,12 @@
 	vertical-align: middle;
 	width: 400px;
 }
+
+#start-container {
+	margin-top: 15%;
+	margin-bottom: 5%;
+}
+
 #start {
 	background: #c7c7c7;
 	border: 4px solid #767676;
@@ -35,9 +41,6 @@
 	font-size: 30px;
 	font-weight: bold;
 	height: 60px;
-	left: 26%;
-	position: absolute;
-	top: 35%;
 	width: 150px;
 }
 
