@@ -48,6 +48,7 @@ window.addEventListener('load', function() {
 
 	function setStatus() {
 		start.disabled = false;
+		start.style.opacity = null;
 		status.style.display = 'block';
 		gamemodeContainer.style.pointerEvents = null;
 		start.style.removeProperty('display');
@@ -61,7 +62,7 @@ window.addEventListener('load', function() {
 	}
 
 	function reset() {
-		start.style.display = 'none';
+		start.style.opacity = "0.5";
 		gamemodeContainer.style.pointerEvents = 'none';
 		status.style.removeProperty('display');
 		for (var i=0; i<snake.length; i++) {
