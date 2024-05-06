@@ -71,7 +71,7 @@ window.addEventListener('load', function() {
 		for (var i=0; i<snake.length; i++) {
 			drawBackground(snake[i][0], snake[i][1]);
 		}
-		if (foodX && foodY) {
+		if (foodX > -1 && foodY > -1) {
 			drawBackground(foodX, foodY);
 		}
 		paused = false;
