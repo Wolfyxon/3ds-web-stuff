@@ -24,8 +24,8 @@ window.addEventListener('load', function() {
 		foodEaten = 0,
 		time = 0,
 		paused = true,
-		allowKey = true,
-		wrapfield = false;
+		wrapfield = false,
+		lastDir = 2;
 
 	function drawBackground(x, y) {
 		ctx.fillStyle = x%2-y%2 ? back1 : back2;
@@ -79,6 +79,7 @@ window.addEventListener('load', function() {
 		moveY = 0;
 		foodX = -1;
 		foodY = -1;
+		lastDir = 2;
 		foodEaten = 0;
 		time = 0;
 		snake = [
@@ -169,7 +170,10 @@ window.addEventListener('load', function() {
 			drawBackground(old[0], old[1]);
 			snake.splice(0, 1);
 		}
-		allowKey = true;
+		if (moveX === 1) lastDir = 0
+		if (moveY === 1) lastDir = 1
+		if (moveX === -1) lastDir = 2
+		if (moveY === -1) lastDir = 3
 	}, 150);
 
 	setInterval(function (){
@@ -182,24 +186,20 @@ window.addEventListener('load', function() {
 		const k = e.keyCode;
 		if (paused && ( (k === 65) || (k === 13) ) ) reset(); // a
 
-		if (!allowKey || paused) return;
+		if (paused) return;
 
-		if (k === 37 && moveX === 0) { // left
+		if (k === 37 && lastDir !== 0) { // left
 			moveX = -1;
 			moveY = 0;
-			allowKey = false;
-		} else if (k === 38 && moveY === 0) { // up
+		} else if (k === 38 && lastDir !== 1) { // up
 			moveX = 0;
 			moveY = -1;
-			allowKey = false;
-		} else if (k === 39 && moveX === 0) { // right
+		} else if (k === 39 && lastDir !== 2) { // right
 			moveX = 1;
 			moveY = 0;
-			allowKey = false;
-		} else if (k === 40 && moveY === 0) { // down
+		} else if (k === 40 && lastDir !== 3) { // down
 			moveX = 0;
 			moveY = 1;
-			allowKey = false;
 		}
 	});
 
