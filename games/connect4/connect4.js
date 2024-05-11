@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.onload = function() {
 	const blue = document.getElementById('pointsB'),
 		red = document.getElementById('pointsR'),
 		field = document.getElementById('field'),
@@ -80,17 +80,20 @@ window.addEventListener('load', function() {
 		updateCurrent();
 	}
 
-	input.addEventListener('click', function(e) {
+	input.onclick = function(e) {
 		if (won || e.target.tagName !== 'TH') return;
 
 		const column = e.target.cellIndex,
-			row = Number(e.target.getAttribute('data-index'));
+			row = Number(e.target.getAttribute('data-index')),
+			cell = rows[row].cells[column];
 
 		if (row < 0) return;
 		if (row === 0) e.target.style.color = 'transparent';
 
-		rows[row].cells[column].textContent = 'o';
-		rows[row].cells[column].setAttribute('data-player', player ? '1' : '0');
+		cell.textContent = 'o';
+		cell.setAttribute('data-player', player ? '1' : '0');
+		cell.style.color = player ? '#ff0000' : '#0026ff'
+		
 		checkWin(column, row);
 		if (won) {
 			alert((player ? 'Red' : 'Blue') + ' won');
@@ -100,9 +103,11 @@ window.addEventListener('load', function() {
 		player = !player;
 		updateCurrent();
 		e.target.setAttribute('data-index', row - 1);
-	});
+	};
 
-	document.getElementById('button').addEventListener('click', reset);
+	document.getElementById('button').onclick = function() {
+		reset();
+	};
 
 	reset();
-});
+};
