@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.onload = function() {
     const button = document.getElementById('btn-reset'),
         keyboard = document.getElementById('keyboard'),
         wordDisplay = document.getElementById('display'),
@@ -75,7 +75,9 @@ window.addEventListener('load', function() {
             "Pong",
             "TicTacToe"
         ];
-    var mistakes, gameOver;
+    var mistakes, gameOver,
+		keys = [],
+		letters = [];
     //ctx.strokeStyle = '#f6f6f6';
 
     function draw() {
@@ -87,7 +89,7 @@ window.addEventListener('load', function() {
                 ctx.moveTo(l[0], l[1]);
                 ctx.lineTo(l[2], l[3]);
             } else {
-                ctx.arc(100, 50, 20, 0, 2 * Math.PI);
+                ctx.arc(100, 50, 20, 0, 2 * Math.PI, false);
             }
             ctx.stroke();
             ctx.closePath();
@@ -107,43 +109,56 @@ window.addEventListener('load', function() {
                     char = String.fromCharCode(k);
                 ele.setAttribute('data-key', char)
                 ele.textContent = char;
+				keys.push(ele);
                 layer.appendChild(ele);
             }
             keyboard.appendChild(layer);
         }
     }
 
-    function tryKey(k) {
+    function tryKey(ele, k) {
         if (!k || gameOver) return;
-        var ele = keyboard.querySelector('span[data-key="' + k + '"]');
         if (ele.getAttribute('data-disabled')) return;
         ele.setAttribute('data-disabled', true);
 
-        var b = wordDisplay.querySelectorAll('span[data-letter="' + k.toLowerCase() + '"]');
-        if (b.length) {
-            for (var i=0; i<b.length; i++) {
-                b[i].innerText = b[i].getAttribute('data-displayletter');
-                b[i].removeAttribute('data-hidden');
-            }
-            if (!wordDisplay.querySelectorAll('span[data-letter][data-hidden]').length) {
-                var c = wordDisplay.querySelectorAll('span[data-letter]');
-                for (var l = 0; l < c.length; l++) {
-                    c[l].className += 'success';
-                }
-                gameOver = true;
-            }
-        } else {
-            mistakes++;
-            if (mistakes > 9) {
-                var s = wordDisplay.querySelectorAll('span[data-hidden]');
-                for (var j=0; j<s.length; j++) {
-                    s[j].innerText = s[j].getAttribute('data-displayletter');
-                    s[j].removeAttribute('data-hidden');
-                    s[j].className += 'failed';
-                }
-                gameOver = true;
-            }
-        }
+		var found = 0,
+			closed = 0;
+
+		// Open letter if possible
+		for (var i=0; i<letters.length; i++) {
+			const l = letters[i];
+			if (l.getAttribute('data-displayletter').toLowerCase() === k.toLowerCase()) {
+				found++;
+				l.innerText = l.getAttribute('data-displayletter');
+				l.removeAttribute('data-hidden');
+			} else if (l.getAttribute('data-hidden')) {
+				closed++;
+			}
+		}
+
+		// If everything was opened
+		if (!closed) {
+			for (var i=0; i<letters.length; i++) {
+				letters[i].className += 'success';
+			}
+			gameOver = true;
+		}
+
+		// If no matching letter found
+		if (!found) {
+			mistakes++;
+			if (mistakes > 9) {
+				for (var i=0; i<letters.length; i++) {
+					const l = letters[i];
+					if (l.getAttribute('data-hidden')) {
+						l.innerText = l.getAttribute('data-displayletter');
+						l.removeAttribute('data-hidden');
+						l.className += 'failed';
+					}
+				}
+				gameOver = true;
+			}
+		}
         draw();
     }
 
@@ -151,12 +166,12 @@ window.addEventListener('load', function() {
         mistakes = 0;
         gameOver = false;
         draw();
+		letters.length = 0;
 
         // Reset keyboard
-        const keys = keyboard.querySelectorAll('span[data-disabled]');
-        for (var i=0; i<keys.length; i++) {
+		for (var i=0; i<keys.length; i++) {
             keys[i].removeAttribute('data-disabled');
-        }
+		}
 
         // Reset word
         wordDisplay.innerHTML = '';
@@ -167,24 +182,27 @@ window.addEventListener('load', function() {
             ele.setAttribute('data-displayletter', selectedWord.substring(j, j + 1));
             ele.setAttribute('data-letter', ele.getAttribute('data-displayletter').toLowerCase());
             ele.setAttribute('data-hidden', '.');
+			letters.push(ele);
             wordDisplay.appendChild(ele);
         }
     }
 
-    keyboard.addEventListener('click', function(e) {
+	keyboard.onclick = function(e) {
         if (e.target.nodeName !== 'SPAN') return;
-        tryKey(e.target.textContent);
-    });
+        tryKey(e.target, e.target.textContent);
+    };
 
-    document.addEventListener('keydown', function(e) {
+    document.onkeydown = function(e) {
         if (e.keyCode < 65 || e.keyCode > 90) { return; }
         const key = String.fromCharCode(e.which);
         const ele = keyboard.querySelector('span[data-key="' + key.toUpperCase() + '"]');
-        if (ele) tryKey(ele.getAttribute('data-key'));
-    });
+        if (ele) tryKey(ele, ele.getAttribute('data-key'));
+    };
 
-    button.addEventListener('click', reset);
+    button.onclick = function() {
+		reset()
+	};
 
     drawKeyboard();
     reset();
-});
+};

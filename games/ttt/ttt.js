@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.onload = function() {
 	const grid = document.getElementById('grid'),
 		cells = grid.getElementsByTagName('td'),
 		plrTxt = document.getElementById('plr'),
@@ -47,7 +47,7 @@ window.addEventListener('load', function() {
 	}
 
 	var cooldown = false;
-	grid.addEventListener('click', function(event) {
+	grid.onclick = function(event) {
 		const cell = event.target;
 		if (cooldown || cell.tagName !== 'TD' || cell.innerText !== '') return;
 
@@ -86,5 +86,5 @@ window.addEventListener('load', function() {
 			}
 			if (filled >= 9) reset();
 		}
-	});
-});
+	};
+};
