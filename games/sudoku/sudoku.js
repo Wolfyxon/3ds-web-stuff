@@ -131,6 +131,7 @@ window.onload = function() {
 		checkWin();
 	};
 	document.onkeydown = function(e) {
+		e.preventDefault();
 		if (e.isComposing || e.key === 229) { return; }
 		if (e.key > 0 && e.key <= size) {
 			last.textContent = e.key;
