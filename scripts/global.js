@@ -260,7 +260,7 @@ function centerScreen() {
     window.scrollTo(x,y);
 }
 
-setInterval(centerScreen);
+if(is3DS()) setInterval(centerScreen);
 
 const keycodes = {
     13: "A",
