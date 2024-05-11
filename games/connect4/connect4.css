@@ -29,10 +29,10 @@
 	width: 20px;
 }
 #field td[data-player="1"] {
-	color: red;
+	color: #ff0000;
 }
 #field td[data-player="0"] {
-	color: blue;
+	color: #0026ff;
 }
 
 /* Input arrows */
@@ -67,10 +67,10 @@
 	display: inline-block;
 }
 #pointsB.current {
-	border-color: blue;	
+	border-color: #0026ff;	
 }
 #pointsR.current {
-	border-color: red;
+	border-color: #ff0000;
 }
 #pointsB {
     color: blue;
