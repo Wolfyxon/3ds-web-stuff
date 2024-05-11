@@ -177,7 +177,7 @@ window.onload = function() {
         wordDisplay.innerHTML = '';
         var selectedWord = words[Math.floor(Math.random() * words.length)];
         for (var j = 0; j < selectedWord.length; j++) {
-            var ele = document.createElement("span");
+            const ele = document.createElement("span");
             ele.innerText = "_";
             ele.setAttribute('data-displayletter', selectedWord.substring(j, j + 1));
             ele.setAttribute('data-letter', ele.getAttribute('data-displayletter').toLowerCase());
