@@ -193,6 +193,7 @@ window.onload = function() {
     };
 
     document.onkeydown = function(e) {
+        e.preventDefault();
         if (e.keyCode < 65 || e.keyCode > 90) { return; }
         const key = String.fromCharCode(e.which);
         const ele = keyboard.querySelector('span[data-key="' + key.toUpperCase() + '"]');
