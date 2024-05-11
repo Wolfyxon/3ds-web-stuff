@@ -186,3 +186,12 @@ a {
     background-color: #688820;
     border-color: #a7f332
 }
+
+.tag-dsi:before {
+    content: "DSi support";
+}
+
+.tag-dsi {
+    background-color: #9471de;
+    border-color: #b698ff;
+}
