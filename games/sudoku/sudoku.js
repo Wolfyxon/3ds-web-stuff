@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.onload = function() {
 	const t = document.getElementById('board'),
 		settings = document.getElementById('settings'),
 		sizes = {4: [2, 2, 10], 6: [3, 2, 21], 9: [3, 3, 45]}; // Width, Height, Sum per col/row
@@ -33,7 +33,7 @@ window.addEventListener('load', function() {
 		return true;
 	}
 	function generateField(size) {
-		var a = ('123456789').substring(0, size);
+		var a = '123456789'.substring(0, size);
 		a = a + a + a + a;
 		for (var i = 0; i < size; i++) {
 			var offset = Math.ceil((i + 1) / size * sizes[size][0]) - 1;
@@ -77,8 +77,9 @@ window.addEventListener('load', function() {
 		for (var i = 0; i < size; i++) {
 			var row = t.insertRow();
 			for (var j = 0; j < size; j++) {
-				var cell = row.insertCell();
+				var cell = document.createElement('td');
 				cell.textContent = field[i][j];
+				row.appendChild(cell);
 			}
 		}
 	}
@@ -99,13 +100,13 @@ window.addEventListener('load', function() {
 		size = Number(getSelection(document.getElementById('sizeselector')).getAttribute('data-size'));
 		t.setAttribute('data-size', size);
 		var i = document.getElementById('input');
-		i.textContent='';
+		i.textContent = '';
 		for (var j = 1; j <= size; j++) {
 			var r = i.insertRow(i.rows.length);
-			var c = r.insertCell();
-			c.textContent = j;
+			const c = document.createElement('td');
+			c.textContent = j
+			r.appendChild(c);
 		}
-
 		generateField(size);
 		randomizeField(switchCol, sizes[size][0], sizes[size][1]);
 		randomizeField(switchRow, sizes[size][1], sizes[size][0]);
@@ -113,29 +114,31 @@ window.addEventListener('load', function() {
 		replaceRandomEntries(Number(getSelection(document.getElementById('diffselector')).getAttribute('data-emptycells').split(",")[document.getElementById("sizeselector").selectedIndex]));
 		settings.style.display = '';
 	}
-	document.getElementById('resetbtn').addEventListener('click', reset);
-	document.getElementById('board').addEventListener('click', function(e) {
+	document.getElementById('resetbtn').onclick = function() {
+		reset();
+	};
+	document.getElementById('board').onclick = function(e) {
 		if (e.target.nodeName !== 'TD' || e.target.className.indexOf('input') < 0) return;
 
 		if (last) last.className = last.className.replace(' selected', '');
 		last = e.target;
 		e.target.className += ' selected';
-	});
-	document.getElementById('input').addEventListener('click', function(e) {
+	};
+	document.getElementById('input').onclick = function(e) {
 		if (!last || e.target.nodeName !== 'TD') return;
 
 		last.textContent = e.target.textContent;
 		checkWin();
-	});
-	document.addEventListener('keydown', function(e) {
+	};
+	document.onkeydown = function(e) {
 		if (e.isComposing || e.key === 229) { return; }
 		if (e.key > 0 && e.key <= size) {
 			last.textContent = e.key;
 			checkWin();
 		}
-	});
-	document.getElementById('open').addEventListener('click', function() {
+	};
+	document.getElementById('open').onclick = function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
-	});
+	};
 	reset();
-});
+};
