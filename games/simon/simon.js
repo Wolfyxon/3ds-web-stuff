@@ -1,5 +1,5 @@
 // Canvas code from https://stackoverflow.com/a/63599674
-window.addEventListener('load', function() {
+window.onload = function() {
 	const canvas = document.getElementById('canvas'),
 		ctx = canvas.getContext('2d'),
 		settings = document.getElementById('settings'),
@@ -90,7 +90,7 @@ window.addEventListener('load', function() {
 		draw();
 	}
 
-	canvas.addEventListener('click', function(e) {
+	canvas.onclick = function(e) {
 		if (paused) return;
 		const x = e.offsetX,
 			y = e.offsetY,
@@ -121,33 +121,35 @@ window.addEventListener('load', function() {
 				//setTimeout(addSequence, 1000);
 			}
 		}
-	});
+	};
 
-	document.getElementById('open').addEventListener('click', function() {
+	document.getElementById('open').onclick = function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
-	});
+	};
 
-	left.addEventListener('click', function() {
+	left.onclick = function() {
 		settingB.value--;
 		if (Number(settingB.value) === 2) left.disabled = true;
 		right.disabled = false;
-	});
+	};
 
-	right.addEventListener('click', function() {
+	right.onclick = function() {
 		settingB.value++;
 		if (Number(settingB.value) === colors.length) right.disabled = true;
 		left.disabled = false;
-	});
+	};
 
-	start.addEventListener('click', function() {
+	start.onclick = function() {
 		if (!paused) return;
 		start.disabled = true;
 		reset();
 		addSequence();
 		paused = false;
-	});
+	};
 
-	document.getElementById('resetbtn').addEventListener('click', reset);
+	document.getElementById('resetbtn').onclick = function() {
+		reset();
+	};
 
 	draw();
-});
+};
