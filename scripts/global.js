@@ -109,6 +109,14 @@ function isDS(){
     return !isDSi() && includes(window.navigator.userAgent, "Nintendo DS");
 }
 
+/**
+ * Checks if the user's browser runs on the Nintendo DS family (Including DS, DSi, 3DS)
+ * @return {Boolean}
+ */
+function isDSFamily(){
+    return isDS() || isDSi() || is3DS();
+}
+
 // array.includes and string.includes does not work on the 3DS browser
 /**
  * Performs a linear interpolation between 2 numbers
