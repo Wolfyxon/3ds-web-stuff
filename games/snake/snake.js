@@ -183,6 +183,7 @@ window.onload = function() {
 	}, 1000);
 
 	document.onkeydown = function(e) {
+		e.preventDefault();
 		const k = e.keyCode;
 		if (paused && ( (k === 65) || (k === 13) ) ) reset(); // a
 
