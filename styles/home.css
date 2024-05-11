@@ -169,11 +169,20 @@ a {
 .tag {
     display: inline-block;
     text-decoration: none;
-    background-color: #688820;
     color: white;
-    border: #a7f332 2px solid;
+    border-width: 2px;
+    border-style: solid;
     border-radius: 10px;
     font-size: 70%;
     padding-left: 2%;
     padding-right: 2%;
+}
+
+.tag-early-access:before {
+    content: "early access";
+}
+
+.tag-early-access {
+    background-color: #688820;
+    border-color: #a7f332
 }
