@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.onload = function() {
 	const canv = document.getElementById('canvas'),
 		ctx = canv.getContext('2d', {
 			alpha: false,
@@ -130,7 +130,7 @@ window.addEventListener('load', function() {
 
 			//ctx.fillRect(foodX * size, foodY * size, size, size);
 			ctx.beginPath();
-			ctx.arc((foodX * size) + size / 2,(foodY * size) + size / 2, size*0.4, 0, 2 * Math.PI);
+			ctx.arc((foodX * size) + size / 2,(foodY * size) + size / 2, size*0.4, 0, 2 * Math.PI, false);
 			ctx.fill();
 			ctx.stroke();
 		}
@@ -176,13 +176,13 @@ window.addEventListener('load', function() {
 		if (moveY === -1) lastDir = 3
 	}, 150);
 
-	setInterval(function (){
+	setInterval(function() {
 		if(paused) return;
 		time++;
 		updateTime();
 	}, 1000);
 
-	document.addEventListener('keydown', function(e) {
+	document.onkeydown = function(e) {
 		const k = e.keyCode;
 		if (paused && ( (k === 65) || (k === 13) ) ) reset(); // a
 
@@ -201,19 +201,19 @@ window.addEventListener('load', function() {
 			moveX = 0;
 			moveY = 1;
 		}
-	});
+	};
 
-	start.addEventListener('click', function() {
+	start.onclick = function() {
 		reset();
-	});
+	};
 
-	btnDisableWalls.addEventListener('click', function() {
+	btnDisableWalls.onclick = function() {
 		wrapfield = true;
 		updateGamemodes();
-	});
+	};
 
-	btnEnableWalls.addEventListener('click', function() {
+	btnEnableWalls.onclick = function() {
 		wrapfield = false;
 		updateGamemodes();
-	});
-});
+	};
+};
