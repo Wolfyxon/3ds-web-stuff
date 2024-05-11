@@ -101,6 +101,14 @@ function isDSi(){
     return includes(window.navigator.userAgent, "Nintendo DSi");
 }
 
+/**
+ * Checks if the user's browser is the DS browser.
+ * @return {Boolean}
+ */
+function isDS(){
+    return !isDSi() && includes(window.navigator.userAgent, "Nintendo DS");
+}
+
 // array.includes and string.includes does not work on the 3DS browser
 /**
  * Performs a linear interpolation between 2 numbers
