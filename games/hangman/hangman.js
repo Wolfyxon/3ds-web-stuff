@@ -192,13 +192,13 @@ window.addEventListener("load", function() {
         tryKey(e.target, e.target.textContent);
     }, false);
 
-    document.onkeydown = function(e) {
+    document.addEventListener("keydown", function(e) {
         e.preventDefault();
         if (e.keyCode < 65 || e.keyCode > 90) { return; }
         const key = String.fromCharCode(e.which);
         const ele = keyboard.querySelector('span[data-key="' + key.toUpperCase() + '"]');
         if (ele) tryKey(ele, ele.getAttribute('data-key'));
-    };
+    }, false);
 
     button.addEventListener("click", reset, false);
 

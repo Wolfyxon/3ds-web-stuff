@@ -182,7 +182,7 @@ window.addEventListener("load", function() {
 		updateTime();
 	}, 1000);
 
-	document.onkeydown = function(e) {
+	document.addEventListener("keydown", function(e) {
 		e.preventDefault();
 		const k = e.keyCode;
 		if (paused && isButton(k, "a") ) reset(); // a
@@ -202,7 +202,7 @@ window.addEventListener("load", function() {
 			moveX = 0;
 			moveY = 1;
 		}
-	};
+	}, false);
 
 	start.addEventListener("click", function() {
 		reset();
