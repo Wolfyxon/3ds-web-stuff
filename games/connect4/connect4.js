@@ -48,13 +48,13 @@ window.addEventListener('load', function() {
 					won = true;
 				} else
 
-					// diagonal /
-					if ((t2 === getType(column2 + 1, row2 + 1)) &&
-						(t2 === getType(column2 + 2, row2 + 2)) &&
-						(t2 === getType(column2 + 3, row2 + 3)) &&
-						(t2 !== '')) {
-						won = true;
-					}
+				// diagonal /
+				if ((t2 === getType(column2 + 1, row2 + 1)) &&
+					(t2 === getType(column2 + 2, row2 + 2)) &&
+					(t2 === getType(column2 + 3, row2 + 3)) &&
+					(t2 !== '')) {
+					won = true;
+				}
 			}
 		}
 	}
