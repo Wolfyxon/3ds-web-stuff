@@ -55,6 +55,9 @@ p, h4 {
     font-size: 90%;
 }
 
-.animated > *:not([data-animated="1"]) {
+.animated > :not(.vis) {
 	display: none;
+}
+.animated > .vis {
+	display: block;
 }
