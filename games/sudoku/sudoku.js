@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
 	const t = document.getElementById('board'),
 		settings = document.getElementById('settings'),
 		sizes = {4: [2, 2, 10], 6: [3, 2, 21], 9: [3, 3, 45]}; // Width, Height, Sum per col/row
@@ -42,7 +42,7 @@ window.addEventListener("load", function() {
 		a = a + a + a + a;
 		for (var i = 0; i < size; i++) {
 			var offset = Math.ceil((i + 1) / size * sizes[size][0]) - 1;
-			field[i] = a.substring(i * sizes[size][0] + offset, i * sizes[size][0] + size + offset).split("");
+			field[i] = a.substring(i * sizes[size][0] + offset, i * sizes[size][0] + size + offset).split('');
 		}
 	}
 
@@ -122,13 +122,13 @@ window.addEventListener("load", function() {
 		randomizeField(switchCol, sizes[size][0], sizes[size][1]);
 		randomizeField(switchRow, sizes[size][1], sizes[size][0]);
 		generateTable(size);
-		replaceRandomEntries(Number(getSelection(document.getElementById('diffselector')).getAttribute('data-emptycells').split(",")[document.getElementById("sizeselector").selectedIndex]));
+		replaceRandomEntries(Number(getSelection(document.getElementById('diffselector')).getAttribute('data-emptycells').split(',')[document.getElementById('sizeselector').selectedIndex]));
 		settings.style.display = '';
 	}
 
-	document.getElementById('resetbtn').addEventListener("click", reset, false);
+	document.getElementById('resetbtn').addEventListener('click', reset, false);
 
-	document.getElementById('board').addEventListener("click", function(e) {
+	document.getElementById('board').addEventListener('click', function(e) {
 		if (e.target.nodeName !== 'TD' || e.target.className.indexOf('input') < 0) return;
 
 		if (last) last.className = last.className.replace(' selected', '');
@@ -136,26 +136,25 @@ window.addEventListener("load", function() {
 		e.target.className += ' selected';
 	}, false);
 
-	document.getElementById('input').addEventListener("click", function(e) {
+	document.getElementById('input').addEventListener('click', function(e) {
 		if (!last || e.target.nodeName !== 'TD') return;
 
 		last.textContent = e.target.textContent;
 		checkWin();
 	}, false);
 
-	document.addEventListener("keydown", function(e) {
+	document.addEventListener('keydown', function(e) {
 		e.preventDefault();
-		if (e.isComposing || e.key === 229) { return; }
+		if (e.isComposing || e.key === 229) return;
 		if (e.key > 0 && e.key <= size) {
 			last.textContent = e.key;
 			checkWin();
 		}
 	}, false);
 
-	document.getElementById('open').addEventListener("click", function() {
+	document.getElementById('open').addEventListener('click', function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
 	}, false);
 
 	reset();
-
 }, false);

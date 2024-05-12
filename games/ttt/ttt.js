@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
 	const grid = document.getElementById('grid'),
 		cells = grid.getElementsByTagName('td'),
 		plrTxt = document.getElementById('plr'),
@@ -47,7 +47,7 @@ window.addEventListener("load", function() {
 	}
 
 	var cooldown = false;
-	grid.addEventListener("click", function(event) {
+	grid.addEventListener('click', function(event) {
 		const cell = event.target;
 		if (cooldown || cell.tagName !== 'TD' || cell.innerText !== '') return;
 

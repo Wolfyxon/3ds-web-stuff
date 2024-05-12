@@ -15,14 +15,14 @@ const terminalTexts = [
 	'Get out',
 	'kernel panic - not syncing: Attempted to kill inint !',
 	'Uncaught ReferenceError: message is not defined',
-	'Exception in thread \"main\" java.lang.NullPointerException',
+	'Exception in thread "main" java.lang.NullPointerException',
 	'Segmentation fault (core dumped)',
 	'Fatal error: Unexpectedly found nil while unwrapping an Optional value',
 	'ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'WHERE id=1\' at line 1',
 	'System.NullReferenceException: Object reference not set to an instance of an object.',
 	'panic: runtime error: index out of range [5] with length 3',
 	'Type mismatch: inferred type is Int but String was expected',
-	'thread \'main\' panicked at \'attempt to add with overflow\', src/main.rs:4:9',
+	'thread "main" panicked at "attempt to add with overflow", src/main.rs:4:9',
 	'for(int i = 0; i < sizeof(arr); i++) {}',
 ];
 
@@ -65,7 +65,7 @@ window.addEventListener('load', function() {
 	function genBars() {
 		var v = '';
 		for (var ln=0; ln<9; ln++) {
-			v += ln + " ) |" + barTxt.substring(0, ran(barLength)) + (ln === 8 ? '' : '\n');
+			v += ln + ' ) |' + barTxt.substring(0, ran(barLength)) + (ln === 8 ? '' : '\n');
 		}
 		bars.value = v;
 	}

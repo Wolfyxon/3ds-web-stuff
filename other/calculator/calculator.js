@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
 	const formula = document.getElementById('formula'),
 		result = document.getElementById('result');
 
@@ -12,19 +12,19 @@ window.addEventListener("load", function() {
 		}
 	}
 
-	document.getElementById('pads').addEventListener("click", function(e) {
+	document.getElementById('pads').addEventListener('click', function(e) {
 		const target = e.target;
 		if (target.nodeName !== 'BUTTON') return;
 		if (target.innerText === '=') run();
 		else formula.innerText += target.innerText;
 	}, false);
 
-	document.getElementById('btn-clear').addEventListener("click", function() {
+	document.getElementById('btn-clear').addEventListener('click', function() {
 		result.innerText = '';
 		formula.innerText = '';
 	}, false);
 
-	document.getElementById('btn-backspace').addEventListener("click", function() {
+	document.getElementById('btn-backspace').addEventListener('click', function() {
 		formula.innerText = formula.innerText.slice(0, -1);
 	},false);
 }, false);

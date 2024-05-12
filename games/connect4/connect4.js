@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
 	const blue = document.getElementById('pointsB'),
 		red = document.getElementById('pointsR'),
 		field = document.getElementById('field'),
@@ -48,13 +48,13 @@ window.addEventListener("load", function() {
 					won = true;
 				} else
 
-				// diagonal /
-				if ((t2 === getType(column2 + 1, row2 + 1)) &&
-					(t2 === getType(column2 + 2, row2 + 2)) &&
-					(t2 === getType(column2 + 3, row2 + 3)) &&
-					(t2 !== '')) {
-					won = true;
-				}
+					// diagonal /
+					if ((t2 === getType(column2 + 1, row2 + 1)) &&
+						(t2 === getType(column2 + 2, row2 + 2)) &&
+						(t2 === getType(column2 + 3, row2 + 3)) &&
+						(t2 !== '')) {
+						won = true;
+					}
 			}
 		}
 	}
@@ -80,7 +80,7 @@ window.addEventListener("load", function() {
 		updateCurrent();
 	}
 
-	input.addEventListener("click", function(e) {
+	input.addEventListener('click', function(e) {
 		if (won || e.target.tagName !== 'TH') return;
 
 		const column = e.target.cellIndex,
@@ -93,7 +93,7 @@ window.addEventListener("load", function() {
 		cell.textContent = 'o';
 		cell.setAttribute('data-player', player ? '1' : '0');
 		cell.style.color = player ? '#ff0000' : '#0026ff'
-		
+
 		checkWin(column, row);
 		if (won) {
 			alert((player ? 'Red' : 'Blue') + ' won');
@@ -105,9 +105,7 @@ window.addEventListener("load", function() {
 		e.target.setAttribute('data-index', row - 1);
 	}, false);
 
-	document.getElementById('button').addEventListener("click", function() {
-		reset();
-	}, false);
+	document.getElementById('button').addEventListener('click', reset, false);
 
 	reset();
 }, false);
