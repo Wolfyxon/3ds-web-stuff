@@ -1,3 +1,13 @@
+const keycodes = {
+    13: "A",
+    65: "A",
+    37: "Left",
+    38: "Up",
+    39: "Right",
+    40: "Down"
+};
+
+
 /**
  * Generates a random float number within the given range
  * @param  {Number} min Minimum value
@@ -307,15 +317,6 @@ function centerScreen() {
 }
 
 if(is3DS()) setInterval(centerScreen);
-
-const keycodes = {
-    13: "A",
-    65: "A",
-    37: "Left",
-    38: "Up",
-    39: "Right",
-    40: "Down"
-};
 
 window.addEventListener("keydown",function(e){
     const name = keycodes[e.keyCode];
