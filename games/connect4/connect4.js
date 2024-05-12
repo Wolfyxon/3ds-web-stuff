@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	const blue = document.getElementById('pointsB'),
 		red = document.getElementById('pointsR'),
 		field = document.getElementById('field'),
@@ -110,4 +110,4 @@ window.onload = function() {
 	};
 
 	reset();
-};
+}, false);

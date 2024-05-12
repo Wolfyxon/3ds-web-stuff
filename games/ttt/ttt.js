@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	const grid = document.getElementById('grid'),
 		cells = grid.getElementsByTagName('td'),
 		plrTxt = document.getElementById('plr'),
@@ -87,4 +87,4 @@ window.onload = function() {
 			if (filled >= 9) reset();
 		}
 	};
-};
+}, false);

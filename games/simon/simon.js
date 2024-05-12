@@ -1,5 +1,5 @@
 // Canvas code from https://stackoverflow.com/a/63599674
-window.onload = function() {
+window.addEventListener("load", function() {
 	const canvas = document.getElementById('canvas'),
 		ctx = canvas.getContext('2d'),
 		settings = document.getElementById('settings'),
@@ -152,4 +152,4 @@ window.onload = function() {
 	};
 
 	draw();
-};
+}, false);

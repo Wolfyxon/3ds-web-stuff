@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	const qr = document.getElementById('qr'),
 		input = document.getElementById('text');
 
@@ -9,4 +9,4 @@ window.onload = function() {
 	document.getElementById('btn-gen').onclick = function() {
 		if (input.value.length) generate(input.value);
 	};
-};
+}, false);

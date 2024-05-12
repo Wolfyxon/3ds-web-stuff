@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	const formula = document.getElementById('formula'),
 		result = document.getElementById('result');
 
@@ -27,4 +27,4 @@ window.onload = function() {
 	document.getElementById('btn-backspace').onclick = function() {
 		formula.innerText = formula.innerText.slice(0, -1);
 	};
-};
+}, false);

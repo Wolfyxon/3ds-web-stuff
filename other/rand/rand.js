@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	const minInput = document.getElementById('min'),
 		maxInput = document.getElementById('max'),
 		resultTxt = document.getElementById('result'),
@@ -10,4 +10,4 @@ window.onload = function() {
 
 		resultTxt.innerText = res;
 	};
-};
+}, false);

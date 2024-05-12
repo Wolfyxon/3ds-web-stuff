@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	const t = document.getElementById('board'),
 		settings = document.getElementById('settings'),
 		sizes = {4: [2, 2, 10], 6: [3, 2, 21], 9: [3, 3, 45]}; // Width, Height, Sum per col/row
@@ -142,4 +142,4 @@ window.onload = function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
 	};
 	reset();
-};
+}, false);

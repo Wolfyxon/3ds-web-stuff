@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
 	const canv = document.getElementById('canvas'),
 		ctx = canv.getContext('2d', {
 			alpha: false,
@@ -217,4 +217,4 @@ window.onload = function() {
 		wrapfield = false;
 		updateGamemodes();
 	};
-};
+}, false);
