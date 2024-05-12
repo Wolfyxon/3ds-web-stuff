@@ -1,21 +1,18 @@
 libName("anim");
 
-function advanceFrame(ele) {
-	var curFrame = ele.querySelector( '[data-animated="1"]' );
-	if (curFrame) curFrame.removeAttribute('data-animated');
-	var nextFrame = curFrame && curFrame.nextElementSibling || ele.firstElementChild;
-	nextFrame.setAttribute('data-animated', '1');
-	return nextFrame === ele.lastElementChild;
-}
 function stopAnim(v) {
 	clearInterval(v);
 }
 function startAnim(data) {
 	return setInterval(function() {
 		if (!data.playing) return;
-		var last = advanceFrame(data.element);
-		if (!data.looped && last) data.playing = false;
-		if (last && data.loopDelay > 0) {
+		data.element.children[data.frame].className = '';
+		data.frame++
+		if (data.frame === data.frameCount) data.frame = 0;
+		data.element.children[data.frame].className = 'vis';
+		
+		if (!data.looped && data.frame === 0) data.playing = false;
+		if (data.frame === 0 && data.loopDelay > 0) {
 			data.playing = false;
 			setTimeout(function() {
 				data.playing = true;
@@ -30,11 +27,14 @@ Animation = function(element){
 	this.spacing = 1;
 	this.loopDelay = 0;
 	this.playing = false;
+	this.frame = 0;
+	this.frameCount = 0;
 	this.loopItv = startAnim(this);
 };
 Animation.prototype = {
 	addKeyframe: function(property, value, timeOffset) {
 		this.element.innerHTML += '<img src="' + value + '" alt=" ">';
+		this.frameCount++;
 	},
 
 	setDelay: function(v) {

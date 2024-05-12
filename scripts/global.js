@@ -7,6 +7,13 @@ const keycodes = {
     40: "Down"
 };
 
+function oKeys(obj) {
+	var out = [];
+	for (var k in obj) {
+		out.push(k);
+	}
+	return out;
+}
 
 /**
  * Generates a random float number within the given range
@@ -48,7 +55,7 @@ function pickRandom(array){
  */
 function lerp(start, end, speed){
     if(speed >= 1) return end;
-    return (1-speed)*start+speed*end
+    return (1-speed)*start+speed*end;
 }
 
 /**
@@ -116,7 +123,7 @@ function isDSi(){
  * @return {Boolean}
  */
 function isDS(){
-    return !isDSi() && includes(window.navigator.userAgent, "Nintendo DS");
+    return !isDSi() && includes(window.navigator.userAgent || '', "Nintendo DS");
 }
 
 /**
@@ -135,11 +142,11 @@ function isDSFamily(){
  * @return {Boolean}
  */
 function includes(container,search){
-    if(typeof container === "string" || Array.isArray(container)){
-        return container.indexOf(search) !== -1;
-    }
+	if (typeof(container) === 'string'){
+		return container.indexOf(search) !== -1;
+	}
 
-    return container[search] !== undefined
+	return container[search] !== undefined;
 }
 
 /**
@@ -154,14 +161,14 @@ function getWithout(array,exclude){
 }
 
 
-var pressStates = {}
+var pressStates = {};
 var pressCallbacks = {
     "Left": [],
     "Up": [],
     "Right": [],
     "Down": [],
     "A": []
-}
+};
 
 /**
  * Triggers a callback when a button is pressed once.
@@ -169,7 +176,7 @@ var pressCallbacks = {
  * @param {Function} callback Function to call when the button is pressed
  */
 function onBtnJustPressed(name, callback){
-    const keys = Object.keys(pressCallbacks);
+    const keys = oKeys(pressCallbacks);
     for(var i=0; i<keys.length; i++) {
         const key = keys[i];
         if(key.toLowerCase() === name.toLowerCase()) {
@@ -205,11 +212,11 @@ function isButton(keycode, buttonName){
  * @return {[String]}
  */
 function getPressedBtns(){
-    const keys = Object.keys(pressStates);
+    const keys = oKeys(pressStates);
     var res = [];
     for(var i=0; i<keys.length; i++) {
         const key = keys[i];
-        if(pressStates[key]) res.push(key);
+        if (pressStates[key]) res.push(key);
     }
     return res;
 }
@@ -220,11 +227,11 @@ function getPressedBtns(){
  * @return {Boolean}
  */
 function isBtnPressed(name){
-    const keys = Object.keys(pressStates);
+    const keys = oKeys(pressStates);
     name = name.toLowerCase();
     for(var i=0; i<keys.length; i++) {
         const key = keys[i];
-        if(pressStates[key] && name === key.toLowerCase()) return true;
+        if (pressStates[key] && name === key.toLowerCase()) return true;
     }
     return false;
 }
@@ -232,10 +239,10 @@ function isBtnPressed(name){
 
 function registerNon3DSlink(a){
     a.onclick = function (e){
-        alert("The 3DS doesn't support that page. Please open \n\n"+a.href+"\n\non a external device (with a modern browser)")
+        alert("The 3DS doesn't support that page. Please open \n\n"+a.href+"\n\non a external device (with a modern browser)");
         e.preventDefault();
         return false;
-    }
+    };
 }
 /**
  * Checks if an Element is scrollable.
@@ -295,7 +302,7 @@ function depend(lib) {
  * @param {String} lib Name of the library
  */
 function libName(lib) {
-    if(hasLib(lib)) {
+	if(hasLib(lib)) {
         throw "This library is already registered. Is this function duplicated? Did you mean depend()?";
     }
     availableLibs.push(lib);
@@ -345,13 +352,11 @@ function globalHandleKeyUp(e){
         pressStates[name] = false;
     }
 }
-
-window.addEventListener("keydown",globalHandleKeyDown);
-window.addEventListener("keyup",globalHandleKeyUp);
-
+window.addEventListener("keydown", globalHandleKeyDown, false);
+window.addEventListener("keyup", globalHandleKeyUp, false);
 window.addEventListener("blur", function (){
     pressStates = {};
-})
+}, false);
 
 // This prevents the browser from moving the page using the arrow keys
 function prevent(event){
@@ -374,17 +379,17 @@ if(is3DS()){
     window.addEventListener("error", function(e) {
         alert(e.filename+":"+e.lineno+" "+e.message);
         return false;
-    })
+    }, false);
 }
 
 // Prevent dragging
 
-var touchStart
+var touchStart;
 
 document.addEventListener('touchstart', function(e) {
     touchStart = e.touches[0];
     if(e.target.classList.contains("drag-protection")) e.preventDefault(); // this can't be applied globally since it breaks click events
-});
+}, false);
 
 document.addEventListener('touchmove', function(e){
     const scrollable = findScrollableAncestor(e.target);
@@ -408,14 +413,14 @@ document.addEventListener('touchmove', function(e){
 
         if(Math.abs(deltaX) > Math.abs(deltaY)){
             // Horizontal
-            if(deltaX > 0) direction = -1
+            if(deltaX > 0) direction = -1;
 
             const notExtended = (direction === 1 && scrollX<w) || (direction === -1 && scrollX>0);
             if(notExtended && css.overflowX === "scroll") return true;
         }
         else {
             // Vertical
-            if(deltaY < 0) direction = -1
+            if(deltaY < 0) direction = -1;
 
             // TODO: Fix drag prevention not working when scrolling upwards
             const notExtended = (direction === 1 && scrollY<h) || (direction === -1 && scrollY>0);
@@ -425,7 +430,7 @@ document.addEventListener('touchmove', function(e){
     }
 
     e.preventDefault();
-});
+}, false);
 
 window.addEventListener("load",function (){
     if(is3DS()){
@@ -447,8 +452,8 @@ window.addEventListener("load",function (){
             const ctx = elm.getContext("2d");
             ctx.imageSmoothingEnabled = false;
 
-            elm.width = 320
-            elm.height = 457
+            elm.width = 320;
+            elm.height = 457;
         }
     }
-})
+}, false);
