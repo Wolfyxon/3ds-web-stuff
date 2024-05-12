@@ -55,10 +55,10 @@ window.addEventListener('load', function() {
 		lastKeyPress = now;
 
 		var newId = id;
-		if (e.keyCode === 39) {
+		if (isButton(e.keyCode, "right")) {
 			newId++;
 			if (newId > tabs.children.length-1) newId = 0;
-		} else if (e.keyCode === 37) {
+		} else if (isButton(e.keyCode, "left")) {
 			newId--;
 			if (newId < 0) newId = tabs.children.length-1;
 		}

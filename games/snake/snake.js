@@ -185,20 +185,20 @@ window.onload = function() {
 	document.onkeydown = function(e) {
 		e.preventDefault();
 		const k = e.keyCode;
-		if (paused && ( (k === 65) || (k === 13) ) ) reset(); // a
+		if (paused && isButton(k, "a") ) reset(); // a
 
 		if (paused) return;
 
-		if (k === 37 && lastDir !== 0) { // left
+		if (isButton(k, "left") && lastDir !== 0) { // left
 			moveX = -1;
 			moveY = 0;
-		} else if (k === 38 && lastDir !== 1) { // up
+		} else if (isButton(k, "up") && lastDir !== 1) { // up
 			moveX = 0;
 			moveY = -1;
-		} else if (k === 39 && lastDir !== 2) { // right
+		} else if (isButton(k, "right") && lastDir !== 2) { // right
 			moveX = 1;
 			moveY = 0;
-		} else if (k === 40 && lastDir !== 3) { // down
+		} else if (isButton(k, "down") && lastDir !== 3) { // down
 			moveX = 0;
 			moveY = 1;
 		}
