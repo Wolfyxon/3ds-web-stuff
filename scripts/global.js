@@ -330,6 +330,8 @@ if(is3DS()) setInterval(centerScreen);
  * @param {KeyboardEvent} e
  */
 function globalHandleKeyDown(e){
+    preventKey(e);
+
     const name = keycodes[e.keyCode];
     if(name) {
         if(!pressStates[name]) {
@@ -347,6 +349,8 @@ function globalHandleKeyDown(e){
  * @param {KeyboardEvent} e
  */
 function globalHandleKeyUp(e){
+    preventKey(e);
+
     const name = keycodes[e.keyCode];
     if(name) {
         pressStates[name] = false;
@@ -370,8 +374,6 @@ function preventKey(event){
     return false;
 }
 
-document.onkeydown = preventKey;
-document.onkeyup = preventKey;
 ///////////////////////////////////////////////////////////////////////
 
 // You can't access console logs on the 3DS, so it will show an alert when there's an error
