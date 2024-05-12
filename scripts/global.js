@@ -178,6 +178,19 @@ function whichButton(keycode){
 }
 
 /**
+ * Checks if the given keycode matches the given button
+ * @param {number} keycode
+ * @param buttonName
+ * @return {boolean}
+ */
+function isButton(keycode, buttonName){
+    const name = whichButton(keycode);
+    if(!name) return false;
+
+    return name.toLowerCase() === buttonName.toLowerCase();
+}
+
+/**
  * Returns an Array of the pressed gamepad buttons as strings.
  * @return {[String]}
  */
