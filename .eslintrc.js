@@ -12,7 +12,7 @@ module.exports = {
             'error',
             {
                 selector: 'VariableDeclaration[kind="let"]',
-                message: '"let" is not supported on the 3DS browser.',
+                message: '"let" is not supported on the 3DS browser. Use "var" or "const".',
             },
         ],
     },
