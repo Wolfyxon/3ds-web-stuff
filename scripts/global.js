@@ -142,7 +142,7 @@ function isDSFamily(){
  * @return {Boolean}
  */
 function includes(container,search){
-	if (typeof(container) === 'string'){
+	if (typeof(container) === 'string' || container instanceof Array){
 		return container.indexOf(search) !== -1;
 	}
 
