@@ -121,7 +121,7 @@ window.onload = function() {
 
 	function updateTime() {
 		if (first || won || lost) return setTimeout(updateTime, 1000);
-		time = time + 1;
+		time++;
 		timeDisplay.textContent = time + ' sec';
 		timeout = setTimeout(updateTime, 1000);
 	}
