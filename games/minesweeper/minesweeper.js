@@ -148,7 +148,9 @@ window.onload = function() {
 		}
 	};
 
-	onBtnJustPressed('a', function() {
-		if (won || lost) reset();
-	});
+	document.onkeydown = function(e) {
+		if (e.keyCode === 13 || e.keyCode === 65) { // a
+			if (won || lost) reset();
+		}
+	};
 };
