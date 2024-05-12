@@ -359,7 +359,7 @@ window.addEventListener("blur", function (){
 }, false);
 
 // This prevents the browser from moving the page using the arrow keys
-function prevent(event){
+function preventKey(event){
     if(event.keyCode === 8) return true; //backspace
     if(event.keyCode === 116) return true; //f5
     if(event.keyCode === 13) return true; //enter
@@ -370,8 +370,8 @@ function prevent(event){
     return false;
 }
 
-document.onkeydown = prevent;
-document.onkeyup = prevent;
+document.onkeydown = preventKey;
+document.onkeyup = preventKey;
 ///////////////////////////////////////////////////////////////////////
 
 // You can't access console logs on the 3DS, so it will show an alert when there's an error
