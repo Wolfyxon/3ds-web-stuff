@@ -204,17 +204,17 @@ window.addEventListener("load", function() {
 		}
 	};
 
-	start.onclick = function() {
+	start.addEventListener("click", function() {
 		reset();
-	};
+	}, false);
 
-	btnDisableWalls.onclick = function() {
+	btnDisableWalls.addEventListener("click", function() {
 		wrapfield = true;
 		updateGamemodes();
-	};
+	}, false);
 
-	btnEnableWalls.onclick = function() {
+	btnEnableWalls.addEventListener("click", function() {
 		wrapfield = false;
 		updateGamemodes();
-	};
+	}, false);
 }, false);

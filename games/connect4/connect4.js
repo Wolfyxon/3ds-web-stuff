@@ -80,7 +80,7 @@ window.addEventListener("load", function() {
 		updateCurrent();
 	}
 
-	input.onclick = function(e) {
+	input.addEventListener("click", function(e) {
 		if (won || e.target.tagName !== 'TH') return;
 
 		const column = e.target.cellIndex,
@@ -103,11 +103,11 @@ window.addEventListener("load", function() {
 		player = !player;
 		updateCurrent();
 		e.target.setAttribute('data-index', row - 1);
-	};
+	}, false);
 
-	document.getElementById('button').onclick = function() {
+	document.getElementById('button').addEventListener("click", function() {
 		reset();
-	};
+	}, false);
 
 	reset();
 }, false);

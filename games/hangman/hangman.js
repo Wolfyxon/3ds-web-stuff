@@ -187,10 +187,10 @@ window.addEventListener("load", function() {
         }
     }
 
-	keyboard.onclick = function(e) {
+	keyboard.addEventListener("click", function(e) {
         if (e.target.nodeName !== 'SPAN') return;
         tryKey(e.target, e.target.textContent);
-    };
+    }, false);
 
     document.onkeydown = function(e) {
         e.preventDefault();
@@ -200,9 +200,7 @@ window.addEventListener("load", function() {
         if (ele) tryKey(ele, ele.getAttribute('data-key'));
     };
 
-    button.onclick = function() {
-		reset()
-	};
+    button.addEventListener("click", reset, false);
 
     drawKeyboard();
     reset();

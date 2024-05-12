@@ -47,7 +47,7 @@ window.addEventListener("load", function() {
 	}
 
 	var cooldown = false;
-	grid.onclick = function(event) {
+	grid.addEventListener("click", function(event) {
 		const cell = event.target;
 		if (cooldown || cell.tagName !== 'TD' || cell.innerText !== '') return;
 
@@ -86,5 +86,5 @@ window.addEventListener("load", function() {
 			}
 			if (filled >= 9) reset();
 		}
-	};
+	}, false);
 }, false);

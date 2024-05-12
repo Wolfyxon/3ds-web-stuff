@@ -114,22 +114,21 @@ window.addEventListener("load", function() {
 		replaceRandomEntries(Number(getSelection(document.getElementById('diffselector')).getAttribute('data-emptycells').split(",")[document.getElementById("sizeselector").selectedIndex]));
 		settings.style.display = '';
 	}
-	document.getElementById('resetbtn').onclick = function() {
-		reset();
-	};
-	document.getElementById('board').onclick = function(e) {
+	document.getElementById('resetbtn').addEventListener("click", reset, false);
+
+	document.getElementById('board').addEventListener("click", function(e) {
 		if (e.target.nodeName !== 'TD' || e.target.className.indexOf('input') < 0) return;
 
 		if (last) last.className = last.className.replace(' selected', '');
 		last = e.target;
 		e.target.className += ' selected';
-	};
-	document.getElementById('input').onclick = function(e) {
+	}, false);
+	document.getElementById('input').addEventListener("click", function(e) {
 		if (!last || e.target.nodeName !== 'TD') return;
 
 		last.textContent = e.target.textContent;
 		checkWin();
-	};
+	}, false);
 	document.onkeydown = function(e) {
 		e.preventDefault();
 		if (e.isComposing || e.key === 229) { return; }
@@ -138,8 +137,8 @@ window.addEventListener("load", function() {
 			checkWin();
 		}
 	};
-	document.getElementById('open').onclick = function() {
+	document.getElementById('open').addEventListener("click", function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
-	};
+	}, false);
 	reset();
 }, false);

@@ -90,7 +90,7 @@ window.addEventListener("load", function() {
 		draw();
 	}
 
-	canvas.onclick = function(e) {
+	canvas.addEventListener("click", function(e) {
 		if (paused) return;
 		const x = e.offsetX,
 			y = e.offsetY,
@@ -121,35 +121,35 @@ window.addEventListener("load", function() {
 				//setTimeout(addSequence, 1000);
 			}
 		}
-	};
+	}, false);
 
-	document.getElementById('open').onclick = function() {
+	document.getElementById('open').addEventListener("click", function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
-	};
+	}, false);
 
-	left.onclick = function() {
+	left.addEventListener("click", function() {
 		settingB.value--;
 		if (Number(settingB.value) === 2) left.disabled = true;
 		right.disabled = false;
-	};
+	}, false);
 
-	right.onclick = function() {
+	right.addEventListener("click", function() {
 		settingB.value++;
 		if (Number(settingB.value) === colors.length) right.disabled = true;
 		left.disabled = false;
-	};
+	}, false);
 
-	start.onclick = function() {
+	start.addEventListener("click", function() {
 		if (!paused) return;
 		start.disabled = true;
 		reset();
 		addSequence();
 		paused = false;
-	};
+	}, false);
 
-	document.getElementById('resetbtn').onclick = function() {
+	document.getElementById('resetbtn').addEventListener("click", function() {
 		reset();
-	};
+	}, false);
 
 	draw();
 }, false);
