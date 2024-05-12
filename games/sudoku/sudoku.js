@@ -2,12 +2,15 @@ window.addEventListener("load", function() {
 	const t = document.getElementById('board'),
 		settings = document.getElementById('settings'),
 		sizes = {4: [2, 2, 10], 6: [3, 2, 21], 9: [3, 3, 45]}; // Width, Height, Sum per col/row
+
 	var field = [],
 		size = 9,
 		last;
+
 	function getSelection(e) {
 		return e.options[e.selectedIndex];
 	}
+
 	function getSumOfColOrRow(n, isCol) {
 		var c = 0;
 		if (isCol) {
@@ -24,6 +27,7 @@ window.addEventListener("load", function() {
 		}
 		return c;
 	}
+
 	function checkWin() {
 		for (var i = 0; i < size; i++) {
 			if (getSumOfColOrRow(i, false) !== sizes[size][2]) {return false;}
@@ -32,6 +36,7 @@ window.addEventListener("load", function() {
 		alert('You won!');
 		return true;
 	}
+
 	function generateField(size) {
 		var a = '123456789'.substring(0, size);
 		a = a + a + a + a;
@@ -40,6 +45,7 @@ window.addEventListener("load", function() {
 			field[i] = a.substring(i * sizes[size][0] + offset, i * sizes[size][0] + size + offset).split("");
 		}
 	}
+
 	function switchCol(a, b) {
 		for (var i = 0; i < field.length; i++) {
 			const tmp = field[i][a];
@@ -47,11 +53,13 @@ window.addEventListener("load", function() {
 			field[i][b] = tmp;
 		}
 	}
+
 	function switchRow(a, b) {
 		const tmp = field[a];
 		field[a] = field[b];
 		field[b] = tmp;
 	}
+
 	function randomizeField(func, var1, var2) {
 		var col1, col2, i;
 		// Columns / Rows
@@ -72,6 +80,7 @@ window.addEventListener("load", function() {
 			func(col + col1, col + col2);
 		}
 	}
+
 	function generateTable(size) {
 		t.textContent='';
 		for (var i = 0; i < size; i++) {
@@ -83,6 +92,7 @@ window.addEventListener("load", function() {
 			}
 		}
 	}
+
 	function replaceRandomEntries(n) {
 		var r = t.rows;
 		var c = 0;
@@ -96,6 +106,7 @@ window.addEventListener("load", function() {
 			}
 		}
 	}
+
 	function reset() {
 		size = Number(getSelection(document.getElementById('sizeselector')).getAttribute('data-size'));
 		t.setAttribute('data-size', size);
@@ -114,6 +125,7 @@ window.addEventListener("load", function() {
 		replaceRandomEntries(Number(getSelection(document.getElementById('diffselector')).getAttribute('data-emptycells').split(",")[document.getElementById("sizeselector").selectedIndex]));
 		settings.style.display = '';
 	}
+
 	document.getElementById('resetbtn').addEventListener("click", reset, false);
 
 	document.getElementById('board').addEventListener("click", function(e) {
@@ -123,12 +135,14 @@ window.addEventListener("load", function() {
 		last = e.target;
 		e.target.className += ' selected';
 	}, false);
+
 	document.getElementById('input').addEventListener("click", function(e) {
 		if (!last || e.target.nodeName !== 'TD') return;
 
 		last.textContent = e.target.textContent;
 		checkWin();
 	}, false);
+
 	document.addEventListener("keydown", function(e) {
 		e.preventDefault();
 		if (e.isComposing || e.key === 229) { return; }
@@ -137,8 +151,11 @@ window.addEventListener("load", function() {
 			checkWin();
 		}
 	}, false);
+
 	document.getElementById('open').addEventListener("click", function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
 	}, false);
+
 	reset();
+
 }, false);
