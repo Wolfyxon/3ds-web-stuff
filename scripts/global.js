@@ -318,7 +318,11 @@ function centerScreen() {
 
 if(is3DS()) setInterval(centerScreen);
 
-window.addEventListener("keydown",function(e){
+/**
+ * Process keydown logic. Call this when using window.onkeydown, and you want to use the global.js input detection system
+ * @param {KeyboardEvent} e
+ */
+function globalHandleKeyDown(e){
     const name = keycodes[e.keyCode];
     if(name) {
         if(!pressStates[name]) {
@@ -329,14 +333,21 @@ window.addEventListener("keydown",function(e){
         }
         pressStates[name] = true;
     }
-})
+}
 
-window.addEventListener("keyup",function(e){
+/**
+ * Process keyup logic. Call this when using window.onkeyup, and you want to use the global.js input detection system
+ * @param {KeyboardEvent} e
+ */
+function globalHandleKeyUp(e){
     const name = keycodes[e.keyCode];
     if(name) {
         pressStates[name] = false;
     }
-})
+}
+
+window.addEventListener("keydown",globalHandleKeyDown);
+window.addEventListener("keyup",globalHandleKeyUp);
 
 window.addEventListener("blur", function (){
     pressStates = {};
