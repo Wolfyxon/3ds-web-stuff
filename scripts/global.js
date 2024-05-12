@@ -169,6 +169,15 @@ function onBtnJustPressed(name, callback){
 }
 
 /**
+ * Returns the matching button name for the given keycode
+ * @param {number} keycode
+ * @return {String}
+ */
+function whichButton(keycode){
+    return keycodes[keycode];
+}
+
+/**
  * Returns an Array of the pressed gamepad buttons as strings.
  * @return {[String]}
  */
