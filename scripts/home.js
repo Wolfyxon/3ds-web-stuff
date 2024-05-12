@@ -1,8 +1,7 @@
 window.addEventListener('load', function() {
-
 	var id = 0,
 		lastKeyPress = 0,
-		prevFrameTime = Date.now();
+		prevFrameTime = new Date().valueOf();
 	const petImg = document.getElementById('pet'),
 		tabBtns = document.getElementById('tab-btns'),
 		tabs = document.getElementById('tabs'),
@@ -39,18 +38,19 @@ window.addEventListener('load', function() {
 
 	tabBtns.addEventListener('click', function(e) {
 		if (e.target.nodeName === 'SPAN') setTab(e.target.getAttribute('data-id'));
-	});
+	}, false);
 
 	setInterval(function() {
-		const delta = (Date.now() - prevFrameTime);
-		prevFrameTime = Date.now();
+		const delta = (new Date().valueOf() - prevFrameTime);
+		prevFrameTime = new Date().valueOf();
+
 		const scrollAmt = 0.5;
 		if (isBtnPressed('down')) tabs.children[id].scrollTop += scrollAmt * delta;
 		if (isBtnPressed('up')) tabs.children[id].scrollTop -= scrollAmt * delta;
 	});
 
 	window.addEventListener('keydown', function(e) {
-		const now = Date.now();
+		const now = new Date().valueOf();
 		if (now < lastKeyPress + 200) return;
 		lastKeyPress = now;
 
@@ -63,5 +63,5 @@ window.addEventListener('load', function() {
 			if (newId < 0) newId = tabs.children.length-1;
 		}
 		setTab(newId);
-	});
-});
+	}, false);
+}, false);
