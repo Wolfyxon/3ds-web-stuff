@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
 	const canv = document.getElementById('canvas'),
 		ctx = canv.getContext('2d', {
 			alpha: false,
@@ -8,9 +8,9 @@ window.addEventListener("load", function() {
 		start = document.getElementById('start'),
 		foodTxt = document.getElementById('food-eaten'),
 		timeTxt = document.getElementById('time'),
-		gamemodeContainer = document.getElementById("gamemode-container"),
-		btnEnableWalls = document.getElementById("btn-enable-walls"),
-		btnDisableWalls = document.getElementById("btn-disable-walls"),
+		gamemodeContainer = document.getElementById('gamemode-container'),
+		btnEnableWalls = document.getElementById('btn-enable-walls'),
+		btnDisableWalls = document.getElementById('btn-disable-walls'),
 		size = 10,
 		rows = canv.height / size,
 		cols = canv.width / size,
@@ -64,8 +64,8 @@ window.addEventListener("load", function() {
 
 	function reset() {
 		start.disabled = true;
-		start.style.opacity = "0.5";
-		gamemodeContainer.style.opacity = "0.5";
+		start.style.opacity = '0.5';
+		gamemodeContainer.style.opacity = '0.5';
 		gamemodeContainer.style.pointerEvents = 'none';
 		status.style.removeProperty('display');
 		for (var i=0; i<snake.length; i++) {
@@ -104,10 +104,10 @@ window.addEventListener("load", function() {
 	}
 
 	function updateGamemodes() {
-		const bg = "#00AA00";
+		const bg = '#00AA00';
 
-		btnEnableWalls.style.backgroundColor = "";
-		btnDisableWalls.style.backgroundColor = "";
+		btnEnableWalls.style.backgroundColor = '';
+		btnDisableWalls.style.backgroundColor = '';
 
 		if(wrapfield) {
 			btnDisableWalls.style.backgroundColor = bg;
@@ -182,38 +182,36 @@ window.addEventListener("load", function() {
 		updateTime();
 	}, 1000);
 
-	document.addEventListener("keydown", function(e) {
+	document.addEventListener('keydown', function(e) {
 		e.preventDefault();
 		const k = e.keyCode;
-		if (paused && isButton(k, "a") ) reset(); // a
+		if (paused && isButton(k, 'a') ) reset(); // a
 
 		if (paused) return;
 
-		if (isButton(k, "left") && lastDir !== 0) { // left
+		if (isButton(k, 'left') && lastDir !== 0) { // left
 			moveX = -1;
 			moveY = 0;
-		} else if (isButton(k, "up") && lastDir !== 1) { // up
+		} else if (isButton(k, 'up') && lastDir !== 1) { // up
 			moveX = 0;
 			moveY = -1;
-		} else if (isButton(k, "right") && lastDir !== 2) { // right
+		} else if (isButton(k, 'right') && lastDir !== 2) { // right
 			moveX = 1;
 			moveY = 0;
-		} else if (isButton(k, "down") && lastDir !== 3) { // down
+		} else if (isButton(k, 'down') && lastDir !== 3) { // down
 			moveX = 0;
 			moveY = 1;
 		}
 	}, false);
 
-	start.addEventListener("click", function() {
-		reset();
-	}, false);
+	start.addEventListener('click', reset, false);
 
-	btnDisableWalls.addEventListener("click", function() {
+	btnDisableWalls.addEventListener('click', function() {
 		wrapfield = true;
 		updateGamemodes();
 	}, false);
 
-	btnEnableWalls.addEventListener("click", function() {
+	btnEnableWalls.addEventListener('click', function() {
 		wrapfield = false;
 		updateGamemodes();
 	}, false);

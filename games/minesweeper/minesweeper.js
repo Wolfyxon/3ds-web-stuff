@@ -1,6 +1,6 @@
 // Originally made by magiczocker10
 
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
 	const field = document.getElementById('field'),
 		minesDisplay = document.getElementById('mines'),
 		timeDisplay = document.getElementById('time'),
@@ -127,7 +127,7 @@ window.addEventListener("load", function() {
 	}
 	timeout = setTimeout(updateTime, 1000);
 
-	field.addEventListener("click", function(event) {
+	field.addEventListener('click', function(event) {
 		if (won || lost || event.target.nodeName !== 'TD') return;
 		const cell = event.target,
 			row = cell.parentElement.rowIndex,
@@ -146,9 +146,9 @@ window.addEventListener("load", function() {
 			alert('You won!');
 			won = true;
 		}
-	});
+	}, false);
 
-	addEventListener("keydown", function(e) {
+	document.addEventListener('keydown', function(e) {
 		if (isButton(e.keyCode, 'a')) {
 			if (won || lost) reset();
 		}

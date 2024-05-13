@@ -1,5 +1,5 @@
 // Canvas code from https://stackoverflow.com/a/63599674
-window.addEventListener("load", function() {
+window.addEventListener('load', function() {
 	const canvas = document.getElementById('canvas'),
 		ctx = canvas.getContext('2d'),
 		settings = document.getElementById('settings'),
@@ -90,7 +90,7 @@ window.addEventListener("load", function() {
 		draw();
 	}
 
-	canvas.addEventListener("click", function(e) {
+	canvas.addEventListener('click', function(e) {
 		if (paused) return;
 		const x = e.offsetX,
 			y = e.offsetY,
@@ -123,23 +123,23 @@ window.addEventListener("load", function() {
 		}
 	}, false);
 
-	document.getElementById('open').addEventListener("click", function() {
+	document.getElementById('open').addEventListener('click', function() {
 		settings.style.display = settings.style.display.length ? '' : 'block';
 	}, false);
 
-	left.addEventListener("click", function() {
+	left.addEventListener('click', function() {
 		settingB.value--;
 		if (Number(settingB.value) === 2) left.disabled = true;
 		right.disabled = false;
 	}, false);
 
-	right.addEventListener("click", function() {
+	right.addEventListener('click', function() {
 		settingB.value++;
 		if (Number(settingB.value) === colors.length) right.disabled = true;
 		left.disabled = false;
 	}, false);
 
-	start.addEventListener("click", function() {
+	start.addEventListener('click', function() {
 		if (!paused) return;
 		start.disabled = true;
 		reset();
@@ -147,9 +147,7 @@ window.addEventListener("load", function() {
 		paused = false;
 	}, false);
 
-	document.getElementById('resetbtn').addEventListener("click", function() {
-		reset();
-	}, false);
+	document.getElementById('resetbtn').addEventListener('click', reset, false);
 
 	draw();
 }, false);

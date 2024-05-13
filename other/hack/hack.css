@@ -1,18 +1,21 @@
-#screens > * {
+#bottom-screen,
+#top-screen {
 	background-color: #121215;
-	color: #01c401;
-}
-
-#screens > * > * {
-	border: 1px #003800 solid;
-	background-color: black;
-	display: inline-block;
-	vertical-align: top;
 }
 
 #top-screen {
 	padding-left: 1%;
 	padding-right: 1%;
+}
+
+#bars,
+#banner,
+#numbers,
+#terminal {
+	border: 1px #003800 solid;
+	background-color: #000;
+	color: #0f0;
+	vertical-align: top;
 }
 
 textarea {
@@ -27,19 +30,19 @@ textarea {
 }
 
 #bars {
-	color: #0f0;
 	display: block;
 	font-size: 9px;
 	height: 45%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1%;
+	overflow-y: hidden;
 	resize: none;
 	width: 90%;
 }
 
 #numbers {
-	color: #0f0;
+	display: inline-block;
 	font-size: 6px;
 	height: 100%;
 	padding: 0;
@@ -49,7 +52,7 @@ textarea {
 
 #radar {
 	background-color: #002a00;
-	border: 1px solid green;
+	border: 1px solid #008000;
 	border-radius: 43px;
 	display: inline-block;
 	height: 85px;
@@ -57,7 +60,7 @@ textarea {
 }
 
 #terminal {
-	color: #0f0;
+	display: inline-block;
 	font-size: 9px;
 	height: 100%;
 	overflow-y: hidden;
@@ -67,6 +70,7 @@ textarea {
 }
 
 #tiles {
+	display: inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-top: 5px;
