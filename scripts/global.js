@@ -356,11 +356,17 @@ function globalHandleKeyUp(e){
         pressStates[name] = false;
     }
 }
+
+/**
+ * Clears all input
+ */
+function releaseAllKeys() {
+    pressStates = {};
+}
+
 window.addEventListener("keydown", globalHandleKeyDown, false);
 window.addEventListener("keyup", globalHandleKeyUp, false);
-window.addEventListener("blur", function (){
-    pressStates = {};
-}, false);
+window.addEventListener("blur", releaseAllKeys, false);
 
 // This prevents the browser from moving the page using the arrow keys
 function preventKey(event){
