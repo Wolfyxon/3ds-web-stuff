@@ -397,9 +397,13 @@ var touchStart;
 document.addEventListener('touchstart', function(e) {
     touchStart = e.touches[0];
     if(e.target.classList.contains("drag-protection")) e.preventDefault(); // this can't be applied globally since it breaks click events
+
+    releaseAllKeys(); // Temporary fix
 }, false);
 
 document.addEventListener('touchmove', function(e){
+    releaseAllKeys(); // Temporary fix
+
     const scrollable = findScrollableAncestor(e.target);
 
     if(scrollable){
