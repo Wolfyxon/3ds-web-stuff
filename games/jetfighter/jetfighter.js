@@ -118,6 +118,7 @@ window.addEventListener('load', function() {
         prevMainFrameTime = Date.now();
 		if (!running) {return;}
 		var p = projectiles.children;
+		const sc = screenEle.getBoundingClientRect();
 		for (var i = 0; i < p.length; i++) {
 			const pEle = p[i];
 			var angle = degreeInRadiant * (Number(pEle.getAttribute('data-rot')) - 90);
@@ -126,7 +127,6 @@ window.addEventListener('load', function() {
 			pEle.style.top = (parseFloat(pEle.style.top) + deltaY * delta * projectileSpeed) + 'px';
 			pEle.style.left = (parseFloat(pEle.style.left) + deltaX * delta * projectileSpeed) + 'px';
 			var coords = pEle.getBoundingClientRect();
-			const sc = screenEle.getBoundingClientRect();
 			if (pEle.className.indexOf('jet') > -1) { // Jet-projectiles
 				for (var j = 0; j < helis.length; j++) {
 					var coords2 = helis[j][0].getBoundingClientRect();
