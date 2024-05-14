@@ -126,6 +126,7 @@ window.addEventListener('load', function() {
 			pEle.style.top = (parseFloat(pEle.style.top) + deltaY * delta * projectileSpeed) + 'px';
 			pEle.style.left = (parseFloat(pEle.style.left) + deltaX * delta * projectileSpeed) + 'px';
 			var coords = pEle.getBoundingClientRect();
+			const sc = screenEle.getBoundingClientRect();
 			if (pEle.className.indexOf('jet') > -1) { // Jet-projectiles
 				for (var j = 0; j < helis.length; j++) {
 					var coords2 = helis[j][0].getBoundingClientRect();
@@ -167,10 +168,10 @@ window.addEventListener('load', function() {
 					continue;
 				}
 			}
-			if ((coords.top) < screenCoords.top ||
-				(coords.top + coords.height) > (screenCoords.top + screenCoords.height) ||
-				(coords.left) < screenCoords.left ||
-				(coords.left + coords.width) > (screenCoords.left + screenCoords.width)) {
+			if ((coords.top) < sc.top ||
+				(coords.top + coords.height) > (sc.top + sc.height) ||
+				(coords.left) < sc.left ||
+				(coords.left + coords.width) > (sc.left + sc.width)) {
 					if(pEle.parentNode === projectiles) projectiles.removeChild(pEle);
 			}
 		}
@@ -178,10 +179,9 @@ window.addEventListener('load', function() {
 
 	setInterval(function() {
 		if (!running) {return;}
-		var coords = screenEle.getBoundingClientRect();
 		for (var i = 0; i < helis.length; i++) {
-			helis[i][0].style.top = Math.floor(Math.random() * (coords.height - 61)) + 'px';
-			helis[i][0].style.left = Math.floor(Math.random() * (coords.width - 61)) + 'px';
+			helis[i][0].style.top = Math.floor(Math.random() * (screenCoords.height - 61)) + 'px';
+			helis[i][0].style.left = Math.floor(Math.random() * (screenCoords.width - 61)) + 'px';
 		}
 	}, 2000);
 
