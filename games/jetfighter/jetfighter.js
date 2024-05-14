@@ -118,6 +118,7 @@ window.addEventListener('load', function() {
         prevMainFrameTime = Date.now();
 		if (!running) {return;}
 		var p = projectiles.children;
+		const sc = screenEle.getBoundingClientRect();
 		for (var i = 0; i < p.length; i++) {
 			const pEle = p[i];
 			var angle = degreeInRadiant * (Number(pEle.getAttribute('data-rot')) - 90);
@@ -167,10 +168,10 @@ window.addEventListener('load', function() {
 					continue;
 				}
 			}
-			if ((coords.top) < screenCoords.top ||
-				(coords.top + coords.height) > (screenCoords.top + screenCoords.height) ||
-				(coords.left) < screenCoords.left ||
-				(coords.left + coords.width) > (screenCoords.left + screenCoords.width)) {
+			if ((coords.top) < sc.top ||
+				(coords.top + coords.height) > (sc.top + sc.height) ||
+				(coords.left) < sc.left ||
+				(coords.left + coords.width) > (sc.left + sc.width)) {
 					if(pEle.parentNode === projectiles) projectiles.removeChild(pEle);
 			}
 		}
@@ -178,10 +179,9 @@ window.addEventListener('load', function() {
 
 	setInterval(function() {
 		if (!running) {return;}
-		var coords = screenEle.getBoundingClientRect();
 		for (var i = 0; i < helis.length; i++) {
-			helis[i][0].style.top = Math.floor(Math.random() * (coords.height - 61)) + 'px';
-			helis[i][0].style.left = Math.floor(Math.random() * (coords.width - 61)) + 'px';
+			helis[i][0].style.top = Math.floor(Math.random() * (screenCoords.height - 61)) + 'px';
+			helis[i][0].style.left = Math.floor(Math.random() * (screenCoords.width - 61)) + 'px';
 		}
 	}, 2000);
 
