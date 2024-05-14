@@ -196,12 +196,6 @@ window.addEventListener('load', function() {
 	setInterval(function() {
 		const delta = (Date.now() - prevMoveFrameTime) / 16;
         prevMoveFrameTime = Date.now();
-		if (!running) {
-			if (isBtnPressed('A')) {
-				reset();
-			}
-			return;
-		}
 		var coords = getComputedStyle(targetEle);
 		if (isBtnPressed('Up')) {
 			targetEle.style.top = Math.max(parseFloat(coords.top) - speed * delta, 0) + 'px';
@@ -213,6 +207,10 @@ window.addEventListener('load', function() {
 		} else if (isBtnPressed('Left')) {
 			targetEle.style.left = Math.max(parseFloat(coords.left) - speed * delta, 0) + 'px';
 		}
+	});
+
+	onBtnJustPressed("A", function () {
+		if(!running) reset();
 	});
 
 	document.getElementById('btn-restart').addEventListener('click', reset);
