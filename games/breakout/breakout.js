@@ -119,6 +119,10 @@ window.addEventListener("load", function() {
         }
     }
 
+    function setUserX(x) {
+        player.area.moveTo(new Vector2(x - player.area.getWidth() / 2, plrY));
+    }
+
     function touchMove(e){
         if(!active) return;
         const rect = canvas.getBoundingClientRect();
@@ -127,7 +131,7 @@ window.addEventListener("load", function() {
         const x = (touch.clientX - rect.left) * scaleX;
 
         e.preventDefault();
-        player.area.moveTo(new Vector2(x, plrY));
+        setUserX(x);
     }
 
     function mouseMove(e){
@@ -137,7 +141,7 @@ window.addEventListener("load", function() {
         const scaleX = canvas.width / rect.width;
         const x = (e.clientX - rect.left) * scaleX;
 
-        player.area.moveTo(new Vector2(x, plrY));
+       setUserX(x);
     }
 
     function start() {
