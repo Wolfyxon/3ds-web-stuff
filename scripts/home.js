@@ -5,6 +5,7 @@ window.addEventListener('load', function() {
 	const petImg = document.getElementById('pet'),
 		tabBtns = document.getElementById('tab-btns'),
 		tabs = document.getElementById('tabs'),
+		appLists = document.getElementsByClassName("app-list"),
 		petRoot = 'img/pets/',
 		animations = [ // name, delay, spacing, frames
 			[ 'pigeon', 3, 0.2, [1, 2, 1] ],
@@ -35,6 +36,25 @@ window.addEventListener('load', function() {
 		tabs.children[t].style.display = 'none';
 	}
 	setTab(id);
+
+
+	if(isDSi()) {
+		for(var lI = 0; lI < appLists.length; lI++) {
+			const list = appLists[lI];
+
+			for(var aI = 0; aI < list.children.length; aI++) {
+				const app = list.children[aI];
+
+				if(app.getElementsByClassName("tag-dsi").length === 0) {
+					app.addEventListener("click", function(e){
+						if(!confirm("This app will most likely not work on your DSi as it's not supported. You may experience errors. \nContinue?")) {
+							e.preventDefault();
+						}
+					}, false);
+				}
+			}
+		}
+	}
 
 	setInterval(function() {
 		const delta = (new Date().valueOf() - prevFrameTime);
