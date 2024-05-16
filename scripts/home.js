@@ -36,10 +36,6 @@ window.addEventListener('load', function() {
 	}
 	setTab(id);
 
-	tabBtns.addEventListener('click', function(e) {
-		if (e.target.nodeName === 'SPAN') setTab(e.target.getAttribute('data-id'));
-	}, false);
-
 	setInterval(function() {
 		const delta = (new Date().valueOf() - prevFrameTime);
 		prevFrameTime = new Date().valueOf();
@@ -48,6 +44,10 @@ window.addEventListener('load', function() {
 		if (isBtnPressed('down')) tabs.children[id].scrollTop += scrollAmt * delta;
 		if (isBtnPressed('up')) tabs.children[id].scrollTop -= scrollAmt * delta;
 	});
+
+	tabBtns.addEventListener('click', function(e) {
+		if (e.target.nodeName === 'SPAN') setTab(e.target.getAttribute('data-id'));
+	}, false);
 
 	window.addEventListener('keydown', function(e) {
 		const now = new Date().valueOf();
