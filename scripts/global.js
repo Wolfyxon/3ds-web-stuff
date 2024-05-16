@@ -92,7 +92,7 @@ function pow(base, exponent) {
     if (exponent === 0) return 1;
 
     var result = 1;
-    for (var i=0; i < Math.abs(exponent); i++){
+    for (var i = 0; i < Math.abs(exponent); i++){
         result *= base;
     }
     if (exponent < 0) {
@@ -177,7 +177,7 @@ var pressCallbacks = {
  */
 function onBtnJustPressed(name, callback){
     const keys = oKeys(pressCallbacks);
-    for(var i=0; i<keys.length; i++) {
+    for(var i = 0; i < keys.length; i++) {
         const key = keys[i];
         if(key.toLowerCase() === name.toLowerCase()) {
             pressCallbacks[key].push(callback);
@@ -214,7 +214,7 @@ function isButton(keycode, buttonName){
 function getPressedBtns(){
     const keys = oKeys(pressStates);
     var res = [];
-    for(var i=0; i<keys.length; i++) {
+    for(var i = 0; i < keys.length; i++) {
         const key = keys[i];
         if (pressStates[key]) res.push(key);
     }
@@ -229,7 +229,7 @@ function getPressedBtns(){
 function isBtnPressed(name){
     const keys = oKeys(pressStates);
     name = name.toLowerCase();
-    for(var i=0; i<keys.length; i++) {
+    for(var i = 0; i < keys.length; i++) {
         const key = keys[i];
         if (pressStates[key] && name === key.toLowerCase()) return true;
     }
@@ -336,7 +336,7 @@ function globalHandleKeyDown(e){
     if(name) {
         if(!pressStates[name]) {
             const callbacks = pressCallbacks[name];
-            for(var i=0; i<callbacks.length; i++) {
+            for(var i = 0; i < callbacks.length; i++) {
                 callbacks[i]();
             }
         }
@@ -447,18 +447,18 @@ document.addEventListener('touchmove', function(e){
 window.addEventListener("load",function (){
     if(is3DS()){
         const non3dsLinks = document.getElementsByClassName("non-3ds-link");
-        for(var i=0;i<non3dsLinks.length;i++) registerNon3DSlink(non3dsLinks[i]);
+        for(var i = 0; i < non3dsLinks.length; i++) registerNon3DSlink(non3dsLinks[i]);
 
     } else {
         const only3ds = document.getElementsByClassName("only-3ds");
-        for(var i=0;i<only3ds.length;i++){
+        for(var i = 0; i < only3ds.length; i++) {
             only3ds[i].style.display = "none";
         }
     }
 
     // This ensures that the canvas isn't stretched and blured
     const dualScreen = document.getElementsByClassName("dual-screen");
-    for(var i=0;i<dualScreen.length;i++){
+    for(var i = 0; i < dualScreen.length; i++){
         const elm = dualScreen[i];
         if(elm.tagName.toLowerCase() === "canvas"){
             const ctx = elm.getContext("2d");

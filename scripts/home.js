@@ -32,7 +32,7 @@ window.addEventListener('load', function() {
 		tabBtns.children[id].style.backgroundColor = 'darkred';
 	}
 
-	for (var t=0; t<tabs.children.length; t++) {
+	for (var t = 0; t < tabs.children.length; t++) {
 		tabs.children[t].style.display = 'none';
 	}
 	setTab(id);
