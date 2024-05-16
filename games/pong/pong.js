@@ -18,8 +18,8 @@ window.addEventListener('load', function() {
 		ball = {
 			x: width / 2.1,
 			y: height / 2.1,
-			w: 4,
-			h: 4,
+			w: 6,
+			h: 6,
 			rot: 0,
 			speed: originalBallSpeed,
 			accel: 1.06
@@ -51,7 +51,7 @@ window.addEventListener('load', function() {
 		ctx.fillStyle = '#5700ff';
 		ctx.fillRect(player.x, Math.floor(player.oldY), player.w, player.h);
 		ctx.fillRect(enemy.x, Math.floor(enemy.oldY), enemy.w, enemy.h);
-		ctx.fillRect(Math.floor(ball.oldX), Math.floor(ball.oldY), ball.w, ball.h);		
+		ctx.fillRect(Math.floor(ball.oldX), Math.floor(ball.oldY), ball.w, ball.h);
 	}
 
 	function saveOld() {
@@ -161,7 +161,7 @@ window.addEventListener('load', function() {
 			if (isBallTouching(enemy)) bounce(enemy);
 			if (isBallTouching(player)) bounce(player);
 
-			if (ball.y <= 0 || ball.y >= height) {
+			if (ball.y <= 0 || ball.y+ball.h >= height) {
 				ball.rot = -ball.rot;
 				ball.speed *= ball.accel;
 			}
@@ -173,7 +173,7 @@ window.addEventListener('load', function() {
 				enemy.score++;
 				scheduleNextRound();
 				updateScore();
-			} else if (ball.x > width) {
+			} else if (ball.x+ball.w >= width) {
 				active = false;
 				text.innerText = 'You scored';
 				text.style.color = 'lime';
@@ -190,6 +190,9 @@ window.addEventListener('load', function() {
 		ctx.fillStyle = '#fff';
 		ctx.fillRect(player.x, Math.floor(player.y), player.w, player.h);
 		ctx.fillRect(enemy.x, Math.floor(enemy.y), enemy.w, enemy.h);
-		ctx.fillRect(Math.floor(ball.x), Math.floor(ball.y), ball.w, ball.h);
+		ctx.beginPath();
+		ctx.arc(Math.floor(ball.x)+ball.w*0.5, Math.floor(ball.y)+ball.h*0.5, ball.w*0.5, 0, 2 * Math.PI, false);
+		ctx.closePath();
+		ctx.fill();
 	});
 });
