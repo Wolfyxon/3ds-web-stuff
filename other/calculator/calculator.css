@@ -111,3 +111,8 @@
 #operations button:active {
     background-color: #6100ec;
 }
+
+footer {
+    background-color: #343436;
+    height: 18%;
+}
