@@ -5,8 +5,12 @@ window.addEventListener('load', function() {
 		intChk = document.getElementById('chk-int');
 
 	document.getElementById('btn-gen').addEventListener('click', function() {
-		var res = randf(parseFloat(minInput.value), parseFloat(maxInput.value));
-		if (intChk.checked) res = Math.floor(res);
+		const min = parseFloat(minInput.value);
+		const max = parseFloat(maxInput.value);
+
+		var res = 0;
+		if (intChk.checked) res = randi(min, max);
+		else res = randf(min, max);
 
 		resultTxt.innerText = res;
 	}, false);
