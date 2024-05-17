@@ -10,29 +10,25 @@
 #formula {
     color: lime;
     background-color: #081c00;
-    margin: 15% 2% 2% 2%;
     padding: 1%;
     border-radius: 5px;
-    height: 25%;
-}
-
-#result-container {
-    text-align: center;
-    height: 20%;
-}
-
-#result-container > * {
-    vertical-align: top;
+    width: 95%;
+    height: 70%;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #result {
-    display: inline-block;
     color: #ff0000;
     background-color: #1c0000;
     padding: 2%;
     border-radius: 5px;
-    width: 60%;
-    height: 30%;
+    width: 75%;
+    height: 8%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
