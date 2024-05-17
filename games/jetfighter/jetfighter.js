@@ -82,7 +82,7 @@ window.addEventListener('load', function() {
 		var coords = getComputedStyle(targetEle);
 		var e = document.createElement('div');
 		e.className = 'jet projectile';
-		e.style.left = (parseFloat(coords.left) + parseFloat(coords.width) * 0.5) + 'px';
+		e.style.left = (parseFloat(coords.left) + parseFloat(coords.width) * 0.472) + 'px';
 		e.style.top = (parseFloat(coords.top) - 10) + 'px';
 		e.setAttribute('data-rot', targetEle.getAttribute('data-rot'));
 		projectiles.appendChild(e);
