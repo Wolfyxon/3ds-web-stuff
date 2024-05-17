@@ -44,6 +44,7 @@
     text-align: right;
     background-color: #16161a;
     border-radius: 20px;
+    height: 10%;
 }
 
 #toolbar button {
@@ -51,6 +52,7 @@
     background-color: orange;
     border: 2px #da8d00 solid;
     border-radius: 10px;
+    height: 100%;
 }
 
 #toolbar button img {
