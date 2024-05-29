@@ -190,6 +190,6 @@ window.addEventListener('load', function() {
 		if (isButton(e.keyCode, 'a')) {
 			if (won || lost) reset();
 		}
-		e.preventDefault();
+		preventKey(e);
 	}, false);
 }, false);
