@@ -157,7 +157,7 @@ window.addEventListener('load', function() {
 		}
 
 		reset();
-	});
+	}, false);
 
 	flagBtn.addEventListener('click', function () {
 		flagging = !flagging;
@@ -167,7 +167,7 @@ window.addEventListener('load', function() {
 		} else {
 			flagBtn.style.backgroundColor = '';
 		}
-	});
+	}, false);
 
 	document.addEventListener('keydown', function(e) {
 		if (isButton(e.keyCode, 'a')) {
