@@ -5,6 +5,8 @@ window.addEventListener('load', function() {
 		minesDisplay = document.getElementById('mines'),
 		timeDisplay = document.getElementById('time'),
 		restartMsg = document.getElementById('restart-msg'),
+		resetBtn = document.getElementById('btn-reset'),
+		flagBtn = document.getElementById("btn-flag"),
 		width = 9,
 		height = 9,
 		mineCount = 10,
@@ -147,6 +149,14 @@ window.addEventListener('load', function() {
 			won = true;
 		}
 	}, false);
+
+	resetBtn.addEventListener('click', function () {
+		if(!lost) {
+			if(!confirm("Restart the game?")) return;
+		}
+
+		reset();
+	});
 
 	document.addEventListener('keydown', function(e) {
 		if (isButton(e.keyCode, 'a')) {
