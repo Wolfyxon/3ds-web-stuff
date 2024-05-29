@@ -162,7 +162,7 @@ window.addEventListener('load', function() {
 		open(column, row);
 
 		// Check if all cells are open
-		if (opened+mineCount === width*height) {
+		if (opened + mineCount === width * height) {
 			restartMsg.style.visibility = 'visible';
 			alert('You won!');
 			won = true;
