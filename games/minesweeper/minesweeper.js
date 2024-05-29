@@ -23,6 +23,7 @@ window.addEventListener('load', function() {
 	var lost = false,
 		won = false,
 		first = true,
+		flagging = false,
 		time = 0,
 		timeout,
 		mines = [],
@@ -156,6 +157,16 @@ window.addEventListener('load', function() {
 		}
 
 		reset();
+	});
+
+	flagBtn.addEventListener('click', function () {
+		flagging = !flagging;
+
+		if(flagging) {
+			flagBtn.style.backgroundColor = 'gray';
+		} else {
+			flagBtn.style.backgroundColor = '';
+		}
 	});
 
 	document.addEventListener('keydown', function(e) {
