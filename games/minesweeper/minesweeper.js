@@ -90,6 +90,17 @@ window.addEventListener('load', function() {
 		// Return if already open
 		if (!cell || cell.className.indexOf('open') > 0) return;
 
+		var flagNum = parseInt(cell.getAttribute("flagged")) || -1;
+
+		// Flag or unflag
+		if(flagging) {
+			cell.setAttribute("flagged", -flagNum);
+			return;
+		}
+
+		// Return if flagged
+		if(flagNum === 1) return;
+
 		// Open field
 		cell.className += ' open';
 		opened++;
