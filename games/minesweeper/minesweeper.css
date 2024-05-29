@@ -48,6 +48,9 @@
 	margin-right: auto;
 }
 td {
+	-webkit-background-size: 100% 100%;
+		-o-background-size: 100%;
+			background-size: 100%;
 	background-color: #C0C0C0;
 	border-bottom: #808080 2px solid;
 	border-left: #fff 2px solid;
@@ -100,6 +103,11 @@ td.mine.open {
 	        background-size: 100%;
 	background-image: url("img/bomb.png");
 	font-size: 0;
+}
+
+td[flagged="1"] {
+	font-size: 0;
+	background-image: url("img/flag.png");
 }
 
 #restart-msg {
