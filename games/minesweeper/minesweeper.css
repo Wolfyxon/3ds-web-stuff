@@ -31,7 +31,13 @@
 	width: 50%;
 }
 
+#bottom-screen > * {
+	vertical-align: top;
+	margin-top: 2%;
+}
+
 #field {
+	display: inline-table;
 	border-bottom: #fff 2px solid;
 	border-left: #808080 2px solid;
 	border-right: #fff 2px solid;
@@ -40,7 +46,6 @@
 	border-spacing: 0;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 2%;
 }
 td {
 	background-color: #C0C0C0;
@@ -100,4 +105,17 @@ td.mine.open {
 #restart-msg {
 	color: #f00;
 	visibility: hidden;
+}
+
+#buttons {
+	display: inline-block;
+	width: 12%;
+}
+
+#buttons button {
+	width: 100%;
+}
+
+#buttons img {
+	width: 100%;
 }
