@@ -152,6 +152,8 @@ window.addEventListener('load', function() {
 	}, false);
 
 	resetBtn.addEventListener('click', function () {
+		if(opened === 0) return;
+
 		if(!lost) {
 			if(!confirm("Restart the game?")) return;
 		}
