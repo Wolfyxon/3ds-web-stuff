@@ -139,6 +139,9 @@ window.addEventListener('load', function() {
 			row = cell.parentElement.rowIndex,
 			column = cell.cellIndex;
 
+		// Return if the cell is already open
+		if (!cell || cell.className.indexOf('open') > 0) return;
+
 		// Reset if first click is a bomb
 		if (first && cell.textContent === 'o') generate(column, row);
 
@@ -146,7 +149,7 @@ window.addEventListener('load', function() {
 		var flagNum = parseInt(cell.getAttribute("flagged")) || -1;
 
 		// Flag or unflag
-		if(flagging) {
+		if(flagging ) {
 			cell.setAttribute("flagged", -flagNum);
 			return;
 		}
