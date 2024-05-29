@@ -90,16 +90,8 @@ window.addEventListener('load', function() {
 		// Return if already open
 		if (!cell || cell.className.indexOf('open') > 0) return;
 
-		var flagNum = parseInt(cell.getAttribute("flagged")) || -1;
-
-		// Flag or unflag
-		if(flagging) {
-			cell.setAttribute("flagged", -flagNum);
-			return;
-		}
-
-		// Return if flagged
-		if(flagNum === 1) return;
+		// Remove flag
+		cell.setAttribute("flagged", -1);
 
 		// Open field
 		cell.className += ' open';
@@ -149,6 +141,18 @@ window.addEventListener('load', function() {
 
 		// Reset if first click is a bomb
 		if (first && cell.textContent === 'o') generate(column, row);
+
+		// Check flagged attribute
+		var flagNum = parseInt(cell.getAttribute("flagged")) || -1;
+
+		// Flag or unflag
+		if(flagging) {
+			cell.setAttribute("flagged", -flagNum);
+			return;
+		}
+
+		// Return if flagged
+		if(flagNum === 1) return;
 
 		// Open cell
 		first = false;
