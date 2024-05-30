@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
 		timeDisplay = document.getElementById('time'),
 		restartMsg = document.getElementById('restart-msg'),
 		resetBtn = document.getElementById('btn-reset'),
-		flagBtn = document.getElementById("btn-flag"),
+		flagBtn = document.getElementById('btn-flag'),
 		width = 9,
 		height = 9,
 		mineCount = 10,
@@ -26,6 +26,7 @@ window.addEventListener('load', function() {
 		flagging = false,
 		time = 0,
 		timeout,
+		flagCount = 0,
 		mines = [],
 		opened = 0;
 
@@ -88,10 +89,7 @@ window.addEventListener('load', function() {
 		const cell = field.rows[y] ? field.rows[y].cells[x] : null;
 
 		// Return if already open
-		if (!cell || cell.className.indexOf('open') > 0) return;
-
-		// Remove flag
-		cell.setAttribute("flagged", -1);
+		if (!cell || cell.className.indexOf('open') > 0 || cell.getAttribute('flagged')) return;
 
 		// Open field
 		cell.className += ' open';
@@ -116,6 +114,7 @@ window.addEventListener('load', function() {
 		time = 0;
 		mines.length = 0;
 		opened = 0;
+		flagCount = 0;
 		minesDisplay.textContent = mineCount;
 		timeDisplay.textContent = '0 sec';
 		restartMsg.style.visibility = '';
@@ -126,12 +125,14 @@ window.addEventListener('load', function() {
 	reset();
 
 	function updateTime() {
-		if (first || won || lost) return setTimeout(updateTime, 1000);
+		if (first || won || lost) {
+			clearInterval(timeout);
+			timeout = null;
+			return;
+		}
 		time++;
 		timeDisplay.textContent = time + ' sec';
-		timeout = setTimeout(updateTime, 1000);
 	}
-	timeout = setTimeout(updateTime, 1000);
 
 	field.addEventListener('click', function(event) {
 		if (won || lost || event.target.nodeName !== 'TD') return;
@@ -142,20 +143,27 @@ window.addEventListener('load', function() {
 		// Return if the cell is already open
 		if (!cell || cell.className.indexOf('open') > 0) return;
 
-		// Reset if first click is a bomb
-		if (first && cell.textContent === 'o') generate(column, row);
-
 		// Check flagged attribute
-		var flagNum = parseInt(cell.getAttribute("flagged")) || -1;
+		var flagNum = parseInt(cell.getAttribute('flagged')) || -1;
 
 		// Flag or unflag
-		if(flagging ) {
-			cell.setAttribute("flagged", -flagNum);
+		if (flagging) {
+			if ((flagCount === mineCount) && flagNum === -1) return;
+			cell.setAttribute('flagged', -flagNum);
+			flagCount -= flagNum;
+			minesDisplay.textContent = mineCount - flagCount;
+			first = false;
 			return;
 		}
 
 		// Return if flagged
-		if(flagNum === 1) return;
+		if (flagNum === 1) return;
+
+		// Reset if first click is a bomb
+		if (first && cell.textContent === 'o') generate(column, row);
+
+		// Start timer if not running
+		if (!timeout) timeout = setInterval(updateTime, 1000);
 
 		// Open cell
 		first = false;
@@ -170,10 +178,10 @@ window.addEventListener('load', function() {
 	}, false);
 
 	resetBtn.addEventListener('click', function () {
-		if(opened === 0) return;
+		if (opened === 0) return;
 
-		if(!lost) {
-			if(!confirm("Restart the game?")) return;
+		if (!lost) {
+			if (!confirm('Restart the game?')) return;
 		}
 
 		reset();
@@ -181,12 +189,7 @@ window.addEventListener('load', function() {
 
 	flagBtn.addEventListener('click', function () {
 		flagging = !flagging;
-
-		if(flagging) {
-			flagBtn.style.backgroundColor = 'gray';
-		} else {
-			flagBtn.style.backgroundColor = '';
-		}
+		flagBtn.style.backgroundColor = flagging ? 'gray' : '';
 	}, false);
 
 	document.addEventListener('keydown', function(e) {
