@@ -3,6 +3,7 @@
 window.addEventListener('load', function() {
 	const field = document.getElementById('field'),
 		minesDisplay = document.getElementById('mines'),
+		flagsDisplay = document.getElementById('flags'),
 		timeDisplay = document.getElementById('time'),
 		restartMsg = document.getElementById('restart-msg'),
 		resetBtn = document.getElementById('btn-reset'),
@@ -116,6 +117,7 @@ window.addEventListener('load', function() {
 		opened = 0;
 		flagCount = 0;
 		minesDisplay.textContent = mineCount;
+		flagsDisplay.textContent = mineCount;
 		timeDisplay.textContent = '0 sec';
 		restartMsg.style.visibility = '';
 		generate();
@@ -151,7 +153,7 @@ window.addEventListener('load', function() {
 			if ((flagCount === mineCount) && flagNum === -1) return;
 			cell.setAttribute('flagged', -flagNum);
 			flagCount -= flagNum;
-			minesDisplay.textContent = mineCount - flagCount;
+			flagsDisplay.textContent = mineCount - flagCount;
 			first = false;
 			return;
 		}
