@@ -89,8 +89,8 @@ window.addEventListener('load', function() {
 	function open(x, y) {
 		const cell = field.rows[y] ? field.rows[y].cells[x] : null;
 
-		// Return if already open
-		if (!cell || cell.className.indexOf('open') > 0 || cell.getAttribute('flagged')) return;
+		// Return if already open or flagged
+		if (!cell || cell.className.indexOf('open') > 0 || cell.getAttribute('flagged') === '1') return;
 
 		// Open field
 		cell.className += ' open';
