@@ -27,3 +27,13 @@
 #btn-gen:active {
     background: lime;
 }
+
+label{
+  font-size: 17px;
+  display: inline-block;
+  width: 130px;
+}
+
+input[name="codeSelectRadio"] {
+  transform: scale(1.2);
+}
