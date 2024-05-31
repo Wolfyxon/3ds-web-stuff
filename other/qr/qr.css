@@ -1,5 +1,6 @@
 #qr {
-    height: 140px;
+    max-width: 300px;
+    max-height: 140px;
     display: block;
     margin-left: auto;
     margin-right: auto;
