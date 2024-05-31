@@ -37,3 +37,7 @@ label{
 input[name="codeSelectRadio"] {
   transform: scale(1.2);
 }
+
+h3{
+  text-align: center;
+}
