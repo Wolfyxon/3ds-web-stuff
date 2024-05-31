@@ -19,12 +19,32 @@
             <img id="qr" src="http://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Hello World" alt="Error getting the QR code">
         </div>
         <div id="bottom-screen">
-            <h3>QR code generator</h3>
+            <h3>QR and barcode generator</h3>
+            <span style="white-space: nowrap;"><input type="radio" id="aztec" name="codeSelectRadio" value="aztec">
+            <label for="aztec">Aztec&nbsp;<img src="https://barcodeapi.org/api/aztec/aztec" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="codabar" name="codeSelectRadio" value="codabar">
+            <label for="codabar">Codabar&nbsp;<img src="https://barcodeapi.org/api/codabar/12345678" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="code39" name="codeSelectRadio" value="code39">
+            <label for="code39">Code39&nbsp;<img src="https://barcodeapi.org/api/code39/CODE39" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="code128" name="codeSelectRadio" value="code128">
+            <label for="code128">Code128&nbsp;<img src="https://barcodeapi.org/api/code128/code128" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="datamatrix" name="codeSelectRadio" value="datamatrix">
+            <label for="datamatrix">Data Matrix&nbsp;<img src="https://barcodeapi.org/api/datamatrix/datamatrix" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="ean8" name="codeSelectRadio" value="ean8">
+            <label for="ean8">EAN-8&nbsp;<img src="https://barcodeapi.org/api/ean8/0123456" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="ean13" name="codeSelectRadio" value="ean13">
+            <label for="ean13">EAN-13&nbsp;<img src="https://barcodeapi.org/api/ean13/012345678910" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="pdf417" name="codeSelectRadio" value="pdf417">
+            <label for="pdf417">PDF-417&nbsp;<img src="https://barcodeapi.org/api/pdf417/pdf417___pdf417___pdf417___pdf417___pdf417___pdf417___pdf417___pdf417___pdf417___pdf417___" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="qrcode" name="codeSelectRadio" value="qrcode" checked>
+            <label for="qrcode">QR Code&nbsp;<img src="https://barcodeapi.org/api/qrcode/qrcode" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="upca" name="codeSelectRadio" value="upca">
+            <label for="upca">UPC-A&nbsp;<img src="https://barcodeapi.org/api/upca/12345678910" height="25px"></label></span>
+            <span style="white-space: nowrap;"><input type="radio" id="upce" name="codeSelectRadio" value="upce">
+            <label for="upce">UPC-E&nbsp;<img src="https://barcodeapi.org/api/upce/0123456" height="25px"></label></span>
             <input type="text" id="text" placeholder="Input text...">
             <br>
             <button id="btn-gen">Generate</button>
-
-            <p>https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=</p>
         </div>
     </div>
 </body>
