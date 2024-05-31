@@ -19,7 +19,7 @@
 #btn-gen {
     margin-top: 2%;
     height: 10%;
-    width: 49%;
+    width: 45%;
     border: 2px green solid;
     border-radius: 5px;
     background-color: limegreen;
@@ -32,7 +32,7 @@
 label{
   font-size: 17px;
   display: inline-block;
-  width: 130px;
+  width: 120px;
 }
 
 input[name="codeSelectRadio"] {
