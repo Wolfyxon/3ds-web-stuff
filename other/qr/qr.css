@@ -1,44 +1,74 @@
+#bottom-screen {
+	position: relative;
+	text-align: center;
+}
+
 #qr {
-    max-width: 300px;
-    max-height: 140px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2%;
+	max-width: 300px;
+	max-height: 140px;
 }
 
 #text {
-    margin-top: 2%;
-    width: 90%;
+	margin-top: 2%;
+	width: 190px;
 }
 
-#bottom-screen {
-    text-align: center;
+#left,
+#right {
+	cursor: pointer;
+	display: inline-block;
+	font-size: 12px;
+	line-height: 160px;
+	vertical-align: bottom;
+	width: 10px;
+}
+
+.page {
+	display: inline-block;
+	width: 280px;
 }
 
 #btn-gen {
-    margin-bottom: 2%;
-    height: 10%;
-    width: 45%;
-    border: 2px green solid;
-    border-radius: 5px;
-    background-color: limegreen;
+	background-color: limegreen;
+	border: 2px green solid;
+	border-radius: 5px;
+	height: 10%;
+	margin-top: 2%;
 }
 
 #btn-gen:active {
-    background: lime;
-}
-
-label{
-  font-size: 17px;
-  display: inline-block;
-  width: 120px;
+	background: lime;
 }
 
 input[name="codeSelectRadio"] {
-  transform: scale(1.2);
+	display: none;
 }
 
-h3{
-  text-align: center;
+input:checked + label {
+	border-color: #008000;
+	background-color: #00db00;
+}
+
+label {
+	border: 2px solid;
+	border-radius: 5px;
+	display: inline-block;
+	font-size: 17px;
+	margin-bottom: 5px;
+	text-align: center;
+	width: 128px;
+	padding: 2px;
+}
+
+label > img {
+	display: block;
+	margin: auto;
+}
+
+h3 {
+	text-align: center;
 }
