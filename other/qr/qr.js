@@ -25,7 +25,7 @@ window.addEventListener('load', function() {
             			}
             			reader.readAsDataURL(this.response);
         		} else {
-            			console.error("Failed to load image", this.statusText);
+            			callback('./img/ERROR.png'); // Return the error image (likely the code type does not support the input)
         		}
     		};
 
