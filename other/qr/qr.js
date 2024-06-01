@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
     		};
 
     		xhr.onerror = function() {
-        		console.error("Request failed");
+        		callback('./img/ERROR.png'); // Return the error image (likely the code type does not support the input)
     		};
 
    		xhr.send();
@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
 
 	
 	function generate(str) {
-		var imageUrl = 'https://barcodeapi.org/api/' + getSelectedCode() + '/' + decodeURIComponent(str);
+		var imageUrl = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
 		loadImageAsDataURL(imageUrl, function(dataUrl) {
     			qr.src = dataUrl;
 		});
