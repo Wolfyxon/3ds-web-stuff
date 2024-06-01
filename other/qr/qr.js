@@ -15,19 +15,9 @@ window.addEventListener('load', function() {
 		}
 	}
 
-	function loadImage(url) {
-		qr.src = url;
-		qr.addEventListener("load", function() {
-			if(qr.naturalWidth === 0 || qr.naturalHeight === 0){
-				qr.src = './img/ERROR.png'; // Display the error image (likely the code type does not support the input)
-			}
-		}, false);
-	}
-
-	
 	function generate(str) {
 		var imageUrl = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
-		loadImage(imageUrl);
+		qr.src = imageUrl;
 	}
 
 	document.getElementById('btn-gen').addEventListener('click', function() {
