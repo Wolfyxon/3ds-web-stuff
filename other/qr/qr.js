@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
     		};
 
     		xhr.onerror = function() {
-        		console.error("Request failed");
+        		callback('./img/ERROR.png'); // Return the error image (likely the code type does not support the input)
     		};
 
    		xhr.send();
