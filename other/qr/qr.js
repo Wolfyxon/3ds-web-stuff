@@ -1,7 +1,11 @@
 window.addEventListener('load', function() {
 	const qr = document.getElementById('qr'),
 		input = document.getElementById('text');
-		codeSelectors = document.getElementsByName('codeSelectRadio');
+		codeSelectors = document.getElementsByName('codeSelectRadio'),
+		pages = document.getElementsByClassName('page'),
+		left = document.getElementById('left'),
+		right = document.getElementById('right');
+	var page = 0;
 
 	function getSelectedCode(){
 		for(var i = 0; i < codeSelectors.length; i++){
@@ -11,40 +15,38 @@ window.addEventListener('load', function() {
 		}
 	}
 
-	function loadImageAsDataURL(url, callback) { // 3DS refuses to wait for api when just setting the src, so I need to request it through JS
-    		var xhr = new XMLHttpRequest();
-    		xhr.open('GET', url, true);
-    		xhr.responseType = 'blob';
-
-    		xhr.onload = function() {
-        		if (this.status === 200) {
-            			var reader = new FileReader();
-            			reader.onloadend = function() {
-                			var base64data = reader.result;
-                			callback(base64data);
-            			}
-            			reader.readAsDataURL(this.response);
-        		} else {
-            			callback('./img/ERROR.png'); // Return the error image (likely the code type does not support the input)
-        		}
-    		};
-
-    		xhr.onerror = function() {
-        		callback('./img/ERROR.png'); // Return the error image (likely the code type does not support the input)
-    		};
-
-   		xhr.send();
+	function loadImage(url) {
+		qr.src = url;
+		qr.addEventListener("load", function() {
+			if(qr.naturalWidth === 0 || qr.naturalHeight === 0){
+				qr.src = './img/ERROR.png'; // Display the error image (likely the code type does not support the input)
+			}
+		}
 	}
 
 	
 	function generate(str) {
 		var imageUrl = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
-		loadImageAsDataURL(imageUrl, function(dataUrl) {
-    			qr.src = dataUrl;
-		});
+		loadImage(imageUrl);
 	}
 
 	document.getElementById('btn-gen').addEventListener('click', function() {
 		if (input.value.length) generate(input.value);
 	}, false);
+	
+	left.addEventListener('click', function(e) {
+		right.style.removeProperty('color');
+		pages[page].style.display = 'none';
+		page--;
+		pages[page].style.removeProperty('display');
+		if (page === 0) e.target.style.color = 'transparent';
+	});
+	
+	right.addEventListener('click', function(e) {
+		left.style.removeProperty('color');
+		pages[page].style.display = 'none';
+		page++;
+		pages[page].style.removeProperty('display');
+		if (page+1 === pages.length) e.target.style.color = 'transparent';
+	});
 }, false);
