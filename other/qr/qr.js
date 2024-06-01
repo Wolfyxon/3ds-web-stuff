@@ -21,7 +21,7 @@ window.addEventListener('load', function() {
 			if(qr.naturalWidth === 0 || qr.naturalHeight === 0){
 				qr.src = './img/ERROR.png'; // Display the error image (likely the code type does not support the input)
 			}
-		}
+		}, false);
 	}
 
 	
