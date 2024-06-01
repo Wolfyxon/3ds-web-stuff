@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
 
 	
 	function generate(str) {
-		var imageUrl = 'https://quickchart.io/barcode?type=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
+		var imageUrl = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
 		loadImageAsDataURL(imageUrl, function(dataUrl) {
     			qr.src = dataUrl;
 		});
