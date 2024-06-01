@@ -20,6 +20,9 @@
             <img id="qr" src="http://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Hello World" alt="Error getting the QR code">
         </div>
         <div id="bottom-screen">
+            <input type="text" id="text" placeholder="Input text...">
+            <br>
+            <button id="btn-gen">Generate</button>
             <span style="white-space: nowrap;"><input type="radio" id="aztec" name="codeSelectRadio" value="azteccode">
             <label for="aztec">Aztec&nbsp;<img src="./img/aztec.gif" height="25px"></label></span>
             <span style="white-space: nowrap;"><input type="radio" id="microqrcode" name="codeSelectRadio" value="microqrcode">
@@ -42,9 +45,6 @@
             <label for="upca">UPC-A&nbsp;<img src="./img/upca.gif" height="25px"></label></span>
             <span style="white-space: nowrap;"><input type="radio" id="upce" name="codeSelectRadio" value="upce">
             <label for="upce">UPC-E&nbsp;<img src="./img/upce.gif" height="25px"></label></span>
-            <button id="btn-gen">Generate</button>
-            <br>
-            <input type="text" id="text" placeholder="Input text...">
         </div>
     </div>
 </body>
