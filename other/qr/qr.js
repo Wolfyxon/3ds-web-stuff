@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
         		if (this.status === 200) {
             			var reader = new FileReader();
             			reader.onloadend = function() {
-                			var base64data = reader.result.replace("data:", "").replace(/^.+,/, "");
+                			var base64data = reader.result;
                 			callback(base64data);
             			}
             			reader.readAsDataURL(this.response);
