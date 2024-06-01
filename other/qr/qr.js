@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
 
 	
 	function generate(str) {
-		var imageUrl = 'http://barcode.orcascan.com/?type=' + getSelectedCode() + '&data=' + decodeURIComponent(str);
+		var imageUrl = 'https://barcode.orcascan.com/?type=' + getSelectedCode() + '&data=' + decodeURIComponent(str);
 		loadImageAsDataURL(imageUrl, function(dataUrl) {
     			qr.src = dataUrl;
 		});
