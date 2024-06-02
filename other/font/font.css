@@ -4,9 +4,10 @@
 	margin-top: 5%;
 	text-align: center;
 }
-#table thead td {
+#table th {
 	background-color: #eaecf0;
 }
+#table th,
 #table td {
 	border: 1px solid #a2a9b1;
 	line-height: 1;
