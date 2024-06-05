@@ -1,5 +1,5 @@
 window.addEventListener('load', function() {
-	const qr = document.getElementById('qr'),
+	const code = document.getElementById('code'),
 		input = document.getElementById('text'),
 		codeSelectors = document.getElementsByName('codeSelectRadio'),
 		pages = document.getElementsByClassName('page'),
@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 	}
 
 	function generate(str) {
-		qr.src = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
+		code.src = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
 	}
 
 	function nextPage() {
