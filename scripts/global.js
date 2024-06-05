@@ -249,6 +249,20 @@ function registerNon3DSlink(a){
 }
 
 /**
+ * Registers an element that unlocks the screen position when focused. Useful for text areas that are not visible due to virtual keyboard.
+ * @param element
+ */
+function registerScreenUnlocker(element) {
+    element.addEventListener("focusin",function(){
+        forcePosition = false;
+    }, false);
+
+    element.addEventListener("focusout",function(){
+        forcePosition = true;
+    }, false);
+}
+
+/**
  * Checks if an Element is scrollable.
  * @param {HTMLElement} element Element you want to check
  * @return {Boolean}
