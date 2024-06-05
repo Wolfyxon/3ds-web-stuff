@@ -40,6 +40,6 @@ window.addEventListener('load', function() {
 		pages[page].style.display = 'none';
 		page++;
 		pages[page].style.removeProperty('display');
-		if (page+1 === pages.length) e.target.style.color = 'transparent';
+		if (page + 1 === pages.length) e.target.style.color = 'transparent';
 	});
 }, false);
