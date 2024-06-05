@@ -32,6 +32,10 @@
 	width: 280px;
 }
 
+.page img {
+	height: 25px;
+}
+
 #btn-gen {
 	background-color: limegreen;
 	border: 2px green solid;
