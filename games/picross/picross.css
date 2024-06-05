@@ -1,6 +1,6 @@
 .boardButton{
-  width: 50px;
-  height: 50px;
+  width: 10px;
+  height: 10px;
 }
 
 .boardButton[data-state="unpressed"]{
