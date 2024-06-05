@@ -236,7 +236,10 @@ function isBtnPressed(name){
     return false;
 }
 
-
+/**
+ * Register an <a> that isn't meant to be opened on the 3DS
+ * @param {HTMLAnchorElement} a
+ */
 function registerNon3DSlink(a){
     a.addEventListener("click", function (e){
         alert("The 3DS doesn't support that page. Please open \n\n"+a.href+"\n\non a external device (with a modern browser)");
@@ -244,6 +247,7 @@ function registerNon3DSlink(a){
         return false;
     }, false);
 }
+
 /**
  * Checks if an Element is scrollable.
  * @param {HTMLElement} element Element you want to check
