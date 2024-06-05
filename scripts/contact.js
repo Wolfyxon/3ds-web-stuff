@@ -56,10 +56,4 @@ window.addEventListener("load",function(){
         return false;
     });
 
-    contentInput.addEventListener("focusin",function(){
-        forcePosition = false;
-    });
-    contentInput.addEventListener("focusout",function(){
-        forcePosition = true;
-    });
 })
