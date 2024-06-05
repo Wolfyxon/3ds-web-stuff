@@ -16,8 +16,7 @@ window.addEventListener('load', function() {
 	}
 
 	function generate(str) {
-		var imageUrl = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
-		qr.src = imageUrl;
+		qr.src = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
 	}
 
 	document.getElementById('btn-gen').addEventListener('click', function() {
