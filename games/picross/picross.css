@@ -1,6 +1,11 @@
+#board{
+  text-align: center;
+}
+
 .boardButton{
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
+  margin: 0;
 }
 
 .boardButton[data-state="unpressed"]{
@@ -20,12 +25,10 @@
 
 #board table thead tr th {
   /* Top hints */
-  height: 100%;
   vertical-align: bottom;
 }
 
 #board table tbody tr th {
   /* Left hints */
-  width: 100%;
   text-align: right;
 }
