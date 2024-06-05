@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
 	const qr = document.getElementById('qr'),
-		input = document.getElementById('text');
+		input = document.getElementById('text'),
 		codeSelectors = document.getElementsByName('codeSelectRadio'),
 		pages = document.getElementsByClassName('page'),
 		left = document.getElementById('left'),
