@@ -467,6 +467,9 @@ window.addEventListener("load",function (){
         const non3dsLinks = document.getElementsByClassName("non-3ds-link");
         for(var i = 0; i < non3dsLinks.length; i++) registerNon3DSlink(non3dsLinks[i]);
 
+        const unlockers = document.getElementsByClassName("screen-unlocker");
+        for(var i = 0; i < unlockers.length; i++) registerScreenUnlocker(unlockers[i]);
+
     } else {
         const only3ds = document.getElementsByClassName("only-3ds");
         for(var i = 0; i < only3ds.length; i++) {
