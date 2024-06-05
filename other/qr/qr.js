@@ -24,6 +24,8 @@ window.addEventListener('load', function() {
 	}, false);
 	
 	left.addEventListener('click', function(e) {
+		if(page <= 0) return;
+
 		right.style.removeProperty('color');
 		pages[page].style.display = 'none';
 		page--;
@@ -32,6 +34,8 @@ window.addEventListener('load', function() {
 	});
 	
 	right.addEventListener('click', function(e) {
+		if(page >= pages.length) return;
+
 		left.style.removeProperty('color');
 		pages[page].style.display = 'none';
 		page++;
