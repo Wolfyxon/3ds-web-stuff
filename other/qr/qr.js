@@ -42,7 +42,10 @@ window.addEventListener('load', function() {
 	document.getElementById('btn-gen').addEventListener('click', function() {
 		if (input.value.length) generate(input.value);
 	}, false);
-	
+
+	onBtnJustPressed("left", prevPage);
+	onBtnJustPressed("right", nextPage);
+
 	left.addEventListener('click', prevPage, false);
 	right.addEventListener('click', nextPage, false);
 }, false);
