@@ -34,7 +34,7 @@ window.addEventListener('load', function() {
 	});
 	
 	right.addEventListener('click', function() {
-		if(page >= pages.length) return;
+		if(page + 1 >= pages.length) return;
 
 		left.style.removeProperty('color');
 		pages[page].style.display = 'none';
