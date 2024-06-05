@@ -9,8 +9,9 @@ window.addEventListener('load', function() {
 
 	function getSelectedCode(){
 		for(var i = 0; i < codeSelectors.length; i++){
-			if(codeSelectors[i].checked){
-				return codeSelectors[i].value;
+			const sel = codeSelectors[i]
+			if(sel.checked){
+				return sel.value;
 			}
 		}
 	}
