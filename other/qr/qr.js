@@ -19,21 +19,7 @@ window.addEventListener('load', function() {
 		qr.src = 'http://bwipjs-api.metafloor.com?bcid=' + getSelectedCode() + '&text=' + decodeURIComponent(str);
 	}
 
-	document.getElementById('btn-gen').addEventListener('click', function() {
-		if (input.value.length) generate(input.value);
-	}, false);
-	
-	left.addEventListener('click', function() {
-		if(page <= 0) return;
-
-		right.style.removeProperty('color');
-		pages[page].style.display = 'none';
-		page--;
-		pages[page].style.removeProperty('display');
-		if (page === 0) left.style.color = 'transparent';
-	});
-	
-	right.addEventListener('click', function() {
+	function nextPage() {
 		if(page + 1 >= pages.length) return;
 
 		left.style.removeProperty('color');
@@ -41,5 +27,22 @@ window.addEventListener('load', function() {
 		page++;
 		pages[page].style.removeProperty('display');
 		if (page + 1 === pages.length) right.style.color = 'transparent';
-	});
+	}
+
+	function prevPage() {
+		if(page <= 0) return;
+
+		right.style.removeProperty('color');
+		pages[page].style.display = 'none';
+		page--;
+		pages[page].style.removeProperty('display');
+		if (page === 0) left.style.color = 'transparent';
+	}
+
+	document.getElementById('btn-gen').addEventListener('click', function() {
+		if (input.value.length) generate(input.value);
+	}, false);
+	
+	left.addEventListener('click', prevPage, false);
+	right.addEventListener('click', nextPage, false);
 }, false);
