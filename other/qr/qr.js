@@ -23,23 +23,23 @@ window.addEventListener('load', function() {
 		if (input.value.length) generate(input.value);
 	}, false);
 	
-	left.addEventListener('click', function(e) {
+	left.addEventListener('click', function() {
 		if(page <= 0) return;
 
 		right.style.removeProperty('color');
 		pages[page].style.display = 'none';
 		page--;
 		pages[page].style.removeProperty('display');
-		if (page === 0) e.target.style.color = 'transparent';
+		if (page === 0) left.style.color = 'transparent';
 	});
 	
-	right.addEventListener('click', function(e) {
+	right.addEventListener('click', function() {
 		if(page >= pages.length) return;
 
 		left.style.removeProperty('color');
 		pages[page].style.display = 'none';
 		page++;
 		pages[page].style.removeProperty('display');
-		if (page + 1 === pages.length) e.target.style.color = 'transparent';
+		if (page + 1 === pages.length) right.style.color = 'transparent';
 	});
 }, false);
