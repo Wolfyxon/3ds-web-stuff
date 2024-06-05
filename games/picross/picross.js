@@ -1,3 +1,22 @@
+function requestText(url, callback){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+
+  xhr.onload = function() {
+    if (this.status === 200) {
+      callback(this.responseText);
+    } else {
+      callback("Request failed");
+    }
+  };
+
+  xhr.onerror = function() {
+    callback("Request failed");
+  };
+
+  xhr.send();
+}
+
 Element.prototype.appendNew = function (
   tagname,
   content = "",
@@ -29,40 +48,34 @@ function boardClick(event) {
   }
 }
 
-const non = parseNon(document.getElementById("testfile").innerHTML);
-const height = non.height;
-const width = non.width;
-const title = document.getElementById("title");
-if (non.title !== null) {
-  title.appendNew("h2", non.title, { id: "name" });
-  title.appendNew("h3", "By " + non.by, { id: "author" });
-}
+requestText("boards/demo.non", function(text){play(parseNon(text));});
+function play(non){
+  const height = non.height;
+  const width = non.width;
+  const title = document.getElementById("title");
+  if (non.title !== null) {
+    title.appendNew("h2", non.title, { id: "name" });
+    title.appendNew("h3", "By " + non.by, { id: "author" });
+  }
 
-const board = document.getElementById("board");
-const table = board.appendNew("table");
-var tr = table.appendNew("thead").appendNew("tr");
-tr.appendNew("th");
-for (var i = 0; i < width; i++) {
-  tr.appendNew("th", non.columns[i].join("<br>"));
-}
+  const board = document.getElementById("board");
+  const table = board.appendNew("table");
+  var tr = table.appendNew("thead").appendNew("tr");
+  tr.appendNew("th");
+  for (var i = 0; i < width; i++) {
+    tr.appendNew("th", non.columns[i].join("<br>"));
+  }
 
-const tbody = table.appendNew("tbody");
-var buttons = [];
-for (var i = 0; i < height; i++) {
-  buttons.push([]);
-  tr = tbody.appendNew("tr");
-  tr.appendNew("th", non.rows[i].join(" "));
-  for (var j = 0; j < width; j++) {
-    buttons[i].push(
-      tr
-        .appendNew("td")
-        .appendNew("button", "", {
-          class: "boardButton",
-          "data-pos": j + "," + i,
-          "data-state": "unpressed",
-        }),
-    );
-    buttons[i][j].addEventListener("click", boardClick);
+  const tbody = table.appendNew("tbody");
+  var buttons = [];
+  for (var i = 0; i < height; i++) {
+    buttons.push([]);
+    tr = tbody.appendNew("tr");
+    tr.appendNew("th", non.rows[i].join(" "));
+    for (var j = 0; j < width; j++) {
+      buttons[i].push(tr.appendNew("td").appendNew("button", "", {class: "boardButton", "data-pos": j + "," + i, "data-state": "unpressed"}));
+      buttons[i][j].addEventListener("click", boardClick);
+    }
   }
 }
 
