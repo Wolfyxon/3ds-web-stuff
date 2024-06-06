@@ -24,7 +24,7 @@ Element.prototype.appendNew = function (tagname, content = "", attributes = {}) 
     elem[attribute] = attributes[attribute];
     elem.setAttribute(attribute, attributes[attribute]);
   }
-  this.append(elem);
+  this.appendChild(elem);
   return elem;
 };
 
