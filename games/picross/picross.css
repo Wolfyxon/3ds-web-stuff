@@ -1,24 +1,37 @@
-#board{
+#board {
   text-align: center;
 }
 
-.boardButton{
+#board table {
+  /* Table with buttons */
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#board table tbody tr td {
+  /* Table cell with button */
+  padding: 0;
+  border: 1px solid currentColor;
+}
+
+.boardButton {
+  /* Button for the board */
   width: 15px;
   height: 15px;
   margin: 0;
 }
 
-.boardButton[data-state="unpressed"]{
+.boardButton[data-state="unpressed"] {
   /* Tiles that have had no interaction */
   background-color: #EEEEEE;
 }
 
-.boardButton[data-state="pressed"]{
+.boardButton[data-state="pressed"] {
   /* Tiles that are active */
   background-color: #444444;
 }
 
-.boardButton[data-state="flagged"]{
+.boardButton[data-state="flagged"] {
   /* Tiles that are flagged as not active */
   background-color: #FF0000;
 }
