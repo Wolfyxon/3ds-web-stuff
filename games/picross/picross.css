@@ -19,7 +19,7 @@
   border: none;
 }
 
-#baord table tbody tr td div {
+#board table tbody tr td div {
   width: 15px;
   height: 15px;
   overflow: hidden;
