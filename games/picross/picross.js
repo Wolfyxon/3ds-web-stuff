@@ -17,7 +17,9 @@ function requestText(url, callback){
   xhr.send();
 }
 
-Element.prototype.appendNew = function(tagname, content = "", attributes = new Object()) {
+Element.prototype.appendNew = function(tagname, content, attributes) {
+  content = content || "";
+  attributes = attributes || {};
   var elem = document.createElement(tagname);
   elem.innerHTML = content;
   for (attribute in attributes) {
