@@ -71,7 +71,7 @@ function play(non){
     tr = tbody.appendNew("tr");
     tr.appendNew("th", non.rows[i].join(" "));
     for (var j = 0; j < width; j++) {
-      buttons[i].push(tr.appendNew("td").appendNew("button", "", {class: "boardButton", "data-pos": j + "," + i, "data-state": "unpressed"}));
+      buttons[i].push(tr.appendNew("td").appendNew("div").appendNew("button", "", {class: "boardButton", "data-pos": j + "," + i, "data-state": "unpressed"}));
       buttons[i][j].addEventListener("click", boardClick);
     }
   }
