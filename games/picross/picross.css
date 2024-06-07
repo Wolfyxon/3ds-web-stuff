@@ -11,6 +11,10 @@
 
 #board table tbody tr td {
   /* Table cell with button */
+  width: 15px;
+  height: 15px;
+  max-width: 15px;
+  max-height: 15px;
   padding: 0;
   border: none;
 }
