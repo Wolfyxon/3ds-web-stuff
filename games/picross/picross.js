@@ -6,12 +6,12 @@ function requestText(url, callback){
     if (this.status === 200) {
       callback(this.responseText);
     } else {
-      callback("Request failed");
+      callback("Request failed with status " + this.status);
     }
   };
 
   xhr.onerror = function() {
-    callback("Request failed");
+    callback("Request failed after " + e.loaded + " bytes transfered");
   };
 
   xhr.send();
@@ -30,14 +30,21 @@ Element.prototype.appendNew = function(tagname, content, attributes) {
   return elem;
 };
 
-String.prototype.startsWith = function (str) {
+Array.prototype.last = function(set) {
+  if(set){
+    this[this.length - 1] = set;
+  } else {
+    return this[this.length - 1];
+  }
+}
+
+String.prototype.startsWith = function (str) { // This is a polyfill
   return this.substring(0, str.length) == str;
 };
 
 function boardClick(event) {
   console.log(event.target.getAttribute("data-pos"));
-  if (
-    event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
+  if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
     event.target.setAttribute("data-state", "flagged");
   } else if (event.target.getAttribute("data-state") == "unpressed") {
     event.target.setAttribute("data-state", "pressed");
@@ -103,4 +110,31 @@ function parseNon(nonStr) {
     }
   }
   return obj;
+}
+
+function hasWon(buttons, obj){
+  for(var i = 0 ; i < obj.height; i++){
+    var streaks  = [0];
+    for(var j = 0; j < obj.width; j++){
+      if(buttons[i][j].getAttribute("data-state") == "pressed"){
+        streaks.last() = streaks.last() + 1;
+      } else {
+        streaks.push(0);
+      }
+    }
+  }
+
+  if(streaks.last() == 0){
+    streaks.pop();
+  }
+
+  if(streaks.length != obj.columns.length){
+    return false;
+  }
+  
+  for(var i = 0; i < obj.columns.length; i++) {
+    if(streaks[i] != obj.columns[i]){
+      return false;
+    }
+  }
 }
