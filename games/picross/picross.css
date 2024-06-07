@@ -15,6 +15,12 @@
   border: none;
 }
 
+#baord table tbody tr td div {
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+}
+
 .boardButton {
   /* Button for the board */
   width: 15px;
