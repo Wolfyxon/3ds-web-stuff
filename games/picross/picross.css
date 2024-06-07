@@ -1,3 +1,7 @@
+#bottom-screen {
+  zoom: 0.75;
+}
+
 #board {
   border-collapse: collapse;
   text-align: center;
