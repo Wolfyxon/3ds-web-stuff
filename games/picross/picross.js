@@ -42,7 +42,7 @@ String.prototype.startsWith = function (str) { // This is a polyfill
   return this.substring(0, str.length) == str;
 };
 
-function boardClick(event, buttons, non) {
+function boardClick(event, buttons, obj) {
   console.log(event.target.getAttribute("data-pos"));
   if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
     event.target.setAttribute("data-state", "flagged");
