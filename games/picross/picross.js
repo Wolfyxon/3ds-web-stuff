@@ -42,7 +42,7 @@ String.prototype.startsWith = function (str) { // This is a polyfill
   return this.substring(0, str.length) == str;
 };
 
-function boardClick(event) {
+function boardClick(event, buttons, non) {
   console.log(event.target.getAttribute("data-pos"));
   if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
     event.target.setAttribute("data-state", "flagged");
@@ -51,6 +51,7 @@ function boardClick(event) {
   } else {
     event.target.setAttribute("data-state", "unpressed");
   }
+  console.log(hasWon(buttons, obj));
 }
 
 requestText("boards/demo.non", function(text){play(parseNon(text));});
@@ -79,7 +80,7 @@ function play(non){
     tr.appendNew("th", non.rows[i].join(" "));
     for (var j = 0; j < width; j++) {
       buttons[i].push(tr.appendNew("td").appendNew("div").appendNew("button", "", {class: "boardButton", "data-pos": j + "," + i, "data-state": "unpressed"}));
-      buttons[i][j].addEventListener("click", boardClick);
+      buttons[i][j].addEventListener("click", boardClick, buttons, non);
     }
   }
 }
