@@ -11,7 +11,7 @@
 #board table tbody tr td {
   /* Table cell with button */
   padding: 0;
-  border: 1px solid currentColor;
+  border: none;
 }
 
 .boardButton {
