@@ -80,7 +80,7 @@ function play(non){
     tr.appendNew("th", non.rows[i].join(" "));
     for (var j = 0; j < width; j++) {
       buttons[i].push(tr.appendNew("td").appendNew("div").appendNew("button", "", {class: "boardButton", "data-pos": j + "," + i, "data-state": "unpressed"}));
-      buttons[i][j].addEventListener("click", boardClick, buttons, non);
+      buttons[i][j].addEventListener("click", function(){boardClick(buttons, non);});
     }
   }
 }
