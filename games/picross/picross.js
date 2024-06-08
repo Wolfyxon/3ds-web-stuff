@@ -118,7 +118,7 @@ function hasWon(buttons, obj){
     var streaks  = [0];
     for(var j = 0; j < obj.width; j++){
       if(buttons[i][j].getAttribute("data-state") == "pressed"){
-        streaks.last() = streaks.last() + 1;
+        streaks.last(streaks.last() + 1);
       } else {
         streaks.push(0);
       }
