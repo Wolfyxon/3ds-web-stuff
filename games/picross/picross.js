@@ -127,7 +127,7 @@ function hasWon(buttons, non) {
           consec++;
         }
         if(consec != non.cols[i][ansIndex]) {
-          console.log("Expected " + non.cols[i][ansIndex] + " got " + consec + " on " + i");
+          console.log("Expected " + non.cols[i][ansIndex] + " got " + consec + " on " + i);
           return false;
         }
         ansIndex++;
