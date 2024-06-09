@@ -43,7 +43,6 @@ String.prototype.startsWith = function (str) { // This is a polyfill
 };
 
 function boardClick(event, buttons, obj) {
-  console.log(event.target.getAttribute("data-pos"));
   if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
     event.target.setAttribute("data-state", "flagged");
   } else if (event.target.getAttribute("data-state") == "unpressed") {
@@ -113,29 +112,49 @@ function parseNon(nonStr) {
   return obj;
 }
 
-function hasWon(buttons, obj){
-  for(var i = 0 ; i < obj.height; i++){
-    var streaks  = [0];
-    for(var j = 0; j < obj.width; j++){
+function hasWon(buttons, non) {
+  for(var i = 0; i < non.width; i++) {
+    var ansIndex = 0;
+    for(var j = 0; j < non.height; j++) {
       if(buttons[i][j].getAttribute("data-state") == "pressed"){
-        streaks.last(streaks.last() + 1);
-      } else {
-        streaks.push(0);
+        if(ansIndex == non.cols[i].length){
+          console.log("too many on " + i);
+          return false;
+        }
+        var consec = 0;
+        while(buttons[i][j].getAttribute("data-state") == "pressed" && j < non.height){
+          j++;
+          consec++;
+        }
+        if(consec != non.cols[i][ansIndex]) {
+          console.log("Expected " + non.cols[i][ansIndex] + "; got " + consec + " on " + i");
+          return false;
+        }
+        ansIndex++;
+      }
+    }
+  }
+  console.log("cols passed");
+
+  for(var i = 0; i < non.height; i++) {
+    var ansIndex = 0;
+    for(var j = 0; j < non.width; j++) {
+      if(buttons[i][j].getAttribute("data-state") == "pressed"){
+        if(ansIndex == non.rows[i].length){
+          return false;
+        }
+        var consec = 0;
+        while(buttons[i][j].getAttribute("data-state") == "pressed" && j < non.width){
+          j++;
+          consec++;
+        }
+        if(consec != non.rows[i][ansIndex]) {
+          return false;
+        }
+        ansIndex++;
       }
     }
   }
 
-  if(streaks.last() == 0){
-    streaks.pop();
-  }
-
-  if(streaks.length != obj.columns.length){
-    return false;
-  }
-  
-  for(var i = 0; i < obj.columns.length; i++) {
-    if(streaks[i] != obj.columns[i]){
-      return false;
-    }
-  }
+  return true;
 }
