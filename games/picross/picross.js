@@ -117,7 +117,7 @@ function hasWon(buttons, non) {
     var ansIndex = 0;
     for(var j = 0; j < non.height; j++) {
       if(buttons[i][j].getAttribute("data-state") == "pressed"){
-        if(ansIndex == non.cols[i].length){
+        if(ansIndex == non.columns[i].length){
           console.log("too many on " + i);
           return false;
         }
@@ -126,15 +126,15 @@ function hasWon(buttons, non) {
           j++;
           consec++;
         }
-        if(consec != non.cols[i][ansIndex]) {
-          console.log("Expected " + non.cols[i][ansIndex] + " got " + consec + " on " + i);
+        if(consec != non.columns[i][ansIndex]) {
+          console.log("Expected " + non.columns[i][ansIndex] + " got " + consec + " on " + i);
           return false;
         }
         ansIndex++;
       }
     }
   }
-  console.log("cols passed");
+  console.log("columns passed");
 
   for(var i = 0; i < non.height; i++) {
     var ansIndex = 0;
