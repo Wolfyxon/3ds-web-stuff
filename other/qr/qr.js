@@ -7,12 +7,10 @@ window.addEventListener('load', function() {
 		right = document.getElementById('right');
 	var page = 0;
 
-	function getSelectedCode(){
-		for(var i = 0; i < codeSelectors.length; i++){
-			const sel = codeSelectors[i]
-			if(sel.checked){
-				return sel.value;
-			}
+	function getSelectedCode() {
+		for (var i = 0; i < codeSelectors.length; i++) {
+			const sel = codeSelectors[i];
+			if (sel.checked) return sel.value;
 		}
 	}
 
@@ -21,7 +19,7 @@ window.addEventListener('load', function() {
 	}
 
 	function nextPage() {
-		if(page + 1 >= pages.length) return;
+		if (page + 1 >= pages.length) return;
 
 		left.style.removeProperty('color');
 		pages[page].style.display = 'none';
@@ -31,7 +29,7 @@ window.addEventListener('load', function() {
 	}
 
 	function prevPage() {
-		if(page <= 0) return;
+		if (page <= 0) return;
 
 		right.style.removeProperty('color');
 		pages[page].style.display = 'none';
@@ -44,8 +42,8 @@ window.addEventListener('load', function() {
 		if (input.value.length) generate(input.value);
 	}, false);
 
-	onBtnJustPressed("left", prevPage);
-	onBtnJustPressed("right", nextPage);
+	onBtnJustPressed('left', prevPage);
+	onBtnJustPressed('right', nextPage);
 
 	left.addEventListener('click', prevPage, false);
 	right.addEventListener('click', nextPage, false);
