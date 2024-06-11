@@ -125,17 +125,18 @@ function hasWon(buttons, non) {
   
   // Function to check if a sequence matches the hints
   const matchesHints = (sequence, hints) => {
+    var myHints = hints.slice();
     var i = 0;
     var hintsIndex = 0;
     while(i < sequence.length){
       if(sequence[i]){
-        if(hintsIndex == hints.length){
+        if(hintsIndex == myHints.length){
             return false;
         }
-        hints[hintsIndex]--;
+        myHints[hintsIndex]--;
       } else {
         if(i != 0 && sequence[i - 1]){
-          if(hints[hintsIndex] != 0){
+          if(myHints[hintsIndex] != 0){
             return false;
           }
           hintsIndex++;
