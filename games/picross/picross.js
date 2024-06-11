@@ -121,7 +121,6 @@ function hasWon(buttons, non) {
       buttonsBool[i].push(buttons[i][j].getAttribute("data-state") == "pressed");
     }
   }
-  console.log(buttonsBool);
   
   // Function to check if a sequence matches the hints
   const matchesHints = (sequence, hints) => {
@@ -151,6 +150,7 @@ function hasWon(buttons, non) {
   for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
     if (!matchesHints(buttonsBool[rowIndex], non.rows[rowIndex])) {
       console.log("Row " + rowIndex + " failed");
+      console.log("matchesHints([" + buttonsBool[rowIndex] + "], [" + non.rows[rowIndex] + "])");
       return false;
     }
   }
