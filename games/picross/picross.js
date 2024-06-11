@@ -113,48 +113,52 @@ function parseNon(nonStr) {
 }
 
 function hasWon(buttons, non) {
-  for(var i = 0; i < non.width; i++) {
-    var ansIndex = 0;
-    for(var j = 0; j < non.height; j++) {
-      if(buttons[i][j].getAttribute("data-state") == "pressed"){
-        if(ansIndex == non.columns[i].length){
-          console.log("too many on " + i);
-          return false;
-        }
-        var consec = 0;
-        while(buttons[i][j].getAttribute("data-state") == "pressed" && j < non.height){
-          j++;
-          consec++;
-        }
-        if(consec != non.columns[i][ansIndex]) {
-          console.log("Expected " + non.columns[i][ansIndex] + " got " + consec + " on " + i);
-          return false;
-        }
-        ansIndex++;
-      }
-    }
-  }
-  console.log("columns passed");
+    // Function to check if a sequence matches the hints
+    const matchesHints = function(sequence, hints) {
+        var hintIndex = 0;
+        var sequenceStart = 0;
 
-  for(var i = 0; i < non.height; i++) {
-    var ansIndex = 0;
-    for(var j = 0; j < non.width; j++) {
-      if(buttons[i][j].getAttribute("data-state") == "pressed"){
-        if(ansIndex == non.rows[i].length){
-          return false;
-        }
-        var consec = 0;
-        while(buttons[i][j].getAttribute("data-state") == "pressed" && j < non.width){
-          j++;
-          consec++;
-        }
-        if(consec != non.rows[i][ansIndex]) {
-          return false;
-        }
-        ansIndex++;
-      }
-    }
-  }
+        for (var i = 0; i < sequence.length; i++) {
+            if (sequence[i]) {
+                if (!hintIndex || sequenceStart === 0) {
+                    sequenceStart = 1;
+                } else {
+                    sequenceStart++;
+                }
 
-  return true;
+                if (sequenceStart === hints[hintIndex]) {
+                    hintIndex++;
+                    sequenceStart = 0;
+                }
+            } else if (sequenceStart > 0) {
+                sequenceStart = 0;
+            }
+
+            if (hintIndex >= hints.length && sequenceStart!== 0) {
+                return false;
+            }
+        }
+
+        return hintIndex === hints.length;
+    };
+
+    // Check rows
+    for (var rowIndex = 0; rowIndex < buttons.length; rowIndex++) {
+        if (!matchesHints(buttons[rowIndex], non.rows[rowIndex])) {
+            return false;
+        }
+    }
+
+    // Check columns
+    for (var colIndex = 0; colIndex < buttons[0].length; colIndex++) {
+        const column = [];
+        for (var rowIndex = 0; rowIndex < buttons.length; rowIndex++) {
+            column.push(buttons[rowIndex][colIndex]);
+        }
+        if (!matchesHints(column, non.columns[colIndex])) {
+            return false;
+        }
+    }
+
+    return true;
 }
