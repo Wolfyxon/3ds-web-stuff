@@ -42,7 +42,7 @@ String.prototype.startsWith = function (str) { // This is a polyfill
   return this.substring(0, str.length) == str;
 };
 
-function boardClick(event, buttons, obj) {
+function boardClick(event, buttons, non) {
   if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
     event.target.setAttribute("data-state", "flagged");
   } else if (event.target.getAttribute("data-state") == "unpressed") {
@@ -50,7 +50,9 @@ function boardClick(event, buttons, obj) {
   } else {
     event.target.setAttribute("data-state", "unpressed");
   }
-  console.log(hasWon(buttons, obj));
+  if(hasWon(buttons, non)) {
+    gameWin(buttons);
+  }
 }
 
 requestText("boards/demo.non", function(text){play(parseNon(text));});
@@ -154,8 +156,7 @@ function hasWon(buttons, non) {
   // Check rows
   for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
     if (!matchesHints(buttonsBool[rowIndex], non.rows[rowIndex])) {
-      console.log("Row " + rowIndex + " failed");
-      console.log("matchesHints([" + buttonsBool[rowIndex] + "], [" + non.rows[rowIndex] + "])");
+      console.log("Row " + (rowIndex + 1) + " failed");
       return false;
     }
   }
@@ -167,10 +168,20 @@ function hasWon(buttons, non) {
         column.push(buttonsBool[rowIndex][colIndex]);
       }
       if (!matchesHints(column, non.columns[colIndex])) {
-        console.log("Column " + colIndex + " failed");
+        console.log("Column " + (colIndex + 1) + " failed");
         return false;
       }
   }
 
   return true;
+}
+
+function gameWin(buttons){
+  for(var i = 0; i < buttons.length; i++){
+    for(var j = 0; j < buttons[i].length; i++){
+      buttons[i][j].parentNode.replaceChild((buttons[i][j] = buttons[i][j].cloneNode(true)), buttons[i][j]); // Removes the event listener
+    }
+  }
+
+  document.getElementById("winMessage").innerHTML = "You win!";
 }
