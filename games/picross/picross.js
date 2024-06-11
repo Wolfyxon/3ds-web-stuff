@@ -150,6 +150,7 @@ function hasWon(buttons, non) {
   // Check rows
   for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
     if (!matchesHints(buttonsBool[rowIndex], non.rows[rowIndex])) {
+      console.log("Row " + rowIndex + " failed");
       return false;
     }
   }
@@ -161,6 +162,7 @@ function hasWon(buttons, non) {
         column.push(buttonsBool[rowIndex][colIndex]);
       }
       if (!matchesHints(column, non.columns[colIndex])) {
+        console.log("Column " + colIndex + " failed");
         return false;
       }
   }
