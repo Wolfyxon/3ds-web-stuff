@@ -113,6 +113,7 @@ function parseNon(nonStr) {
 }
 
 function hasWon(buttons, non) {
+  // Make an array of 
   buttonsBool = [];
   for(var i = 0; i < buttons.length; i++){
     buttonsBool.push([]);
@@ -120,33 +121,33 @@ function hasWon(buttons, non) {
       buttonsBool[i].push(buttons[i][j].getAttribute("data-state") == "pressed");
     }
   }
+  console.log(buttonsBool);
+  
   // Function to check if a sequence matches the hints
-  const matchesHints = function(sequence, hints) {
+  const matchesHints = (sequence, hints) => {
     var hintIndex = 0;
     var sequenceStart = 0;
 
     for (var i = 0; i < sequence.length; i++) {
       if (sequence[i]) {
-        if (!hintIndex || sequenceStart == 0) {
-          sequenceStart = 1;
-        } else {
-          sequenceStart++;
-        }
-
-        if (sequenceStart == hints[hintIndex]) {
+        sequenceStart++;
+        if (sequenceStart === hints[hintIndex]) {
           hintIndex++;
           sequenceStart = 0;
         }
-      } else if (sequenceStart > 0) {
-        sequenceStart = 0;
+      } else { // If the cell is not filled
+        if (sequenceStart > 0) {
+          sequenceStart = 0;
+        }
       }
 
-      if (hintIndex >= hints.length && sequenceStart != 0) {
-        return false;
+      if (hintIndex >= hints.length) {
+        return true;
       }
     }
 
-    return hintIndex == hints.length;
+    // If the loop exits without returning true, it means not all hints were matched
+    return false;
   };
 
   // Check rows
