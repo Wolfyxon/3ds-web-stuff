@@ -86,7 +86,7 @@ function play(non){
 
 function parseNon(nonStr) {
   // bundling and the 'color' key are not supported
-  var non = nonStr.split("\n");
+  var non = nonStr.split(/\r?\n/);
   var obj = {catalogue: null, title: null, by: null, copyright: null, license: null, width: null, height: null, rows: [], columns: [], goal: null};
   const keys = ["catalogue", "title", "by", "copyright", "license", "width", "height", "goal"];
   for (var i = 0; i < non.length; i++) {
