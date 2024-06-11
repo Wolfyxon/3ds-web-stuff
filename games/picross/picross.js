@@ -3,7 +3,7 @@ function requestText(url, callback){
   xhr.open('GET', url, true);
 
   xhr.onload = function() {
-    if (this.status === 200) {
+    if (this.status == 200) {
       callback(this.responseText);
     } else {
       callback("Request failed with status " + this.status);
@@ -113,52 +113,59 @@ function parseNon(nonStr) {
 }
 
 function hasWon(buttons, non) {
-    // Function to check if a sequence matches the hints
-    const matchesHints = function(sequence, hints) {
-        var hintIndex = 0;
-        var sequenceStart = 0;
+  buttonsBool = [];
+  for(var i = 0; i < buttons.length; i++){
+    buttonsBool.push([]);
+    for(var j = 0; j < buttons[i].length; j++){
+      buttonsBool[i].push(buttons[i][j].getAttribute("data-state") == "pressed");
+    }
+  }
+  // Function to check if a sequence matches the hints
+  const matchesHints = function(sequence, hints) {
+    var hintIndex = 0;
+    var sequenceStart = 0;
 
-        for (var i = 0; i < sequence.length; i++) {
-            if (sequence[i]) {
-                if (!hintIndex || sequenceStart === 0) {
-                    sequenceStart = 1;
-                } else {
-                    sequenceStart++;
-                }
-
-                if (sequenceStart === hints[hintIndex]) {
-                    hintIndex++;
-                    sequenceStart = 0;
-                }
-            } else if (sequenceStart > 0) {
-                sequenceStart = 0;
-            }
-
-            if (hintIndex >= hints.length && sequenceStart!== 0) {
-                return false;
-            }
+    for (var i = 0; i < sequence.length; i++) {
+      if (sequence[i]) {
+        if (!hintIndex || sequenceStart == 0) {
+          sequenceStart = 1;
+        } else {
+          sequenceStart++;
         }
 
-        return hintIndex === hints.length;
-    };
-
-    // Check rows
-    for (var rowIndex = 0; rowIndex < buttons.length; rowIndex++) {
-        if (!matchesHints(buttons[rowIndex], non.rows[rowIndex])) {
-            return false;
+        if (sequenceStart == hints[hintIndex]) {
+          hintIndex++;
+          sequenceStart = 0;
         }
+      } else if (sequenceStart > 0) {
+        sequenceStart = 0;
+      }
+
+      if (hintIndex >= hints.length && sequenceStart != 0) {
+        return false;
+      }
     }
 
-    // Check columns
-    for (var colIndex = 0; colIndex < buttons[0].length; colIndex++) {
-        const column = [];
-        for (var rowIndex = 0; rowIndex < buttons.length; rowIndex++) {
-            column.push(buttons[rowIndex][colIndex]);
-        }
-        if (!matchesHints(column, non.columns[colIndex])) {
-            return false;
-        }
-    }
+    return hintIndex == hints.length;
+  };
 
-    return true;
+  // Check rows
+  for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
+    if (!matchesHints(buttonsBool[rowIndex], non.rows[rowIndex])) {
+      return false;
+    }
+  }
+
+  // Check columns
+  for (var colIndex = 0; colIndex < buttonsBool[0].length; colIndex++) {
+    const column = [];
+      for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
+        column.push(buttonsBool[rowIndex][colIndex]);
+      }
+      if (!matchesHints(column, non.columns[colIndex])) {
+        return false;
+      }
+  }
+
+  return true;
 }
