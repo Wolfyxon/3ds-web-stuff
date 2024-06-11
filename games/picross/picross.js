@@ -113,6 +113,7 @@ function parseNon(nonStr) {
 }
 
 function hasWon(buttons, non) {
+  console.log(non.rows);
   // Make an array of 
   buttonsBool = [];
   for(var i = 0; i < buttons.length; i++){
