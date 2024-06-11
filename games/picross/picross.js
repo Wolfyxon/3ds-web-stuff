@@ -144,6 +144,9 @@ function hasWon(buttons, non) {
       }
       i++;
     }
+    if(hintsIndex < myHints.length && myHints[hintsIndex] != 0){
+      return false;
+    }
 
     return true;
   };
