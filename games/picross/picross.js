@@ -125,29 +125,26 @@ function hasWon(buttons, non) {
   
   // Function to check if a sequence matches the hints
   const matchesHints = (sequence, hints) => {
-    var hintIndex = 0;
-    var sequenceStart = 0;
-
-    for (var i = 0; i < sequence.length; i++) {
-      if (sequence[i]) {
-        sequenceStart++;
-        if (sequenceStart === hints[hintIndex]) {
-          hintIndex++;
-          sequenceStart = 0;
+    var i = 0;
+    var hintsIndex = 0;
+    while(i < sequence.length){
+      if(sequence[i]){
+        if(hintsIndex == hints.length){
+            return false;
         }
-      } else { // If the cell is not filled
-        if (sequenceStart > 0) {
-          sequenceStart = 0;
+        hints[hintsIndex]--;
+      } else {
+        if(i != 0 && sequence[i - 1]){
+          if(hints[hintsIndex] != 0){
+            return false;
+          }
+          hintsIndex++;
         }
       }
-
-      if (hintIndex >= hints.length) {
-        return true;
-      }
+      i++;
     }
 
-    // If the loop exits without returning true, it means not all hints were matched
-    return false;
+    return true;
   };
 
   // Check rows
