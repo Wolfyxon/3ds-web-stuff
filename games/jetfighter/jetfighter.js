@@ -41,6 +41,8 @@ window.addEventListener('load', function() {
 	}
 
 	function f() {
+		if(!running) return;
+
 		var targetCoords = targetEle.getBoundingClientRect();
 		for (var i = 0; i < helis.length; i++) {
 			var coords = helis[i][2].getBoundingClientRect();
