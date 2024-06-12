@@ -198,6 +198,7 @@ window.addEventListener('load', function() {
 
 	// Movement loop
 	setInterval(function() {
+		if(!running) return;
 		const delta = (Date.now() - prevMoveFrameTime) / 16;
         prevMoveFrameTime = Date.now();
 		var coords = getComputedStyle(targetEle);
