@@ -60,3 +60,9 @@
   /* Left hints */
   text-align: right;
 }
+
+#winMessage {
+  font-size: 20px;
+  text-align: center;
+  color: #30D020;
+}
