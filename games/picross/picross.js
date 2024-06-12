@@ -178,7 +178,7 @@ function hasWon(buttons, non) {
 
 function gameWin(buttons){
   for(var i = 0; i < buttons.length; i++){
-    for(var j = 0; j < buttons[i].length; i++){
+    for(var j = 0; j < buttons[i].length; j++){
       const newButton = buttons[i][j].cloneNode(true);
       buttons[i][j].parentNode.replaceChild(newButton, buttons[i][j]); // Removes the event listener
       buttons[i][j] = newButton;
