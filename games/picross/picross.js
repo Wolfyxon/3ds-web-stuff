@@ -126,7 +126,7 @@ function hasWon(buttons, non) {
   }
   
   // Function to check if a sequence matches the hints
-  const matchesHints = (sequence, hints) => {
+  const matchesHints = function(sequence, hints) {
     var myHints = hints.slice();
     var i = 0;
     var hintsIndex = 0;
@@ -179,7 +179,9 @@ function hasWon(buttons, non) {
 function gameWin(buttons){
   for(var i = 0; i < buttons.length; i++){
     for(var j = 0; j < buttons[i].length; i++){
-      buttons[i][j].parentNode.replaceChild((buttons[i][j] = buttons[i][j].cloneNode(true)), buttons[i][j]); // Removes the event listener
+      const newButton = buttons[i][j].cloneNode(true);
+      buttons[i][j].parentNode.replaceChild(newButton, buttons[i][j]); // Removes the event listener
+      buttons[i][j] = newButton;
     }
   }
 
