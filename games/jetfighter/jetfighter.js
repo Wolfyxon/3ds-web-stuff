@@ -158,10 +158,10 @@ window.addEventListener('load', function() {
 					(coords.top <= coords2.top + coords2.height && coords.top >= coords2.top) &&
 					(coords.left >= coords2.left && coords.left <= coords2.left + coords2.width)
 				) {
-					var h = Number(targetEle.getAttribute('data-health')) - 2;
+					var h = getHealth() - 2;
 					lifebar.style.height = (100 - h) + '%';
 					targetEle.setAttribute('data-health', h);
-					if (targetEle.getAttribute('data-health') === '0') {
+					if (h <= 0) {
 						running = false;
 						overlay.style.display = '';
 						gameover.style.display = '';
