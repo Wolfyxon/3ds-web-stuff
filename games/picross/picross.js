@@ -126,7 +126,7 @@ function hasWon(buttons, non) {
   }
   
   // Function to check if a sequence matches the hints
-  const matchesHints = function(sequence, hints) {
+  function matchesHints(sequence, hints) {
     var myHints = hints.slice();
     var i = 0;
     var hintsIndex = 0;
@@ -151,7 +151,7 @@ function hasWon(buttons, non) {
     }
 
     return true;
-  };
+  }
 
   // Check rows
   for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
