@@ -88,6 +88,10 @@ window.addEventListener('load', function() {
 		projectiles.appendChild(e);
 	}
 
+	function getHealth() {
+		return Number(targetEle.getAttribute('data-health'));
+	}
+
 	function reset() {
 		prevMoveFrameTime = Date.now();
 		prevMainFrameTime = Date.now();
