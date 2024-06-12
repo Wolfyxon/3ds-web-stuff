@@ -62,7 +62,8 @@
 }
 
 #winMessage {
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 60px;
   text-align: center;
   color: #30D020;
 }
