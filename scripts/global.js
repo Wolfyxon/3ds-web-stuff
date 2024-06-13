@@ -10,16 +10,14 @@ const keycodes = {
 ////////// Compatibility system //////////
 
 /**
- * Provides a fallback or placeholder function if it doesn't exist in the specified object's prototype
+ * Provides a fallback value if it doesn't exist in the specified object
  * @param {Object} object
- * @param {String} functionName
- * @param {function|null} func
+ * @param {String} property
+ * @param {*} fallback
  */
-function registerFunctionFallback(object, functionName, func) {
-    if(object.prototype[functionName]) return;
-    if(!func) func = function(){} // create a placeholder that does nothing
-
-    object.prototype[functionName] = func
+function registerFallback(object, property, fallback) {
+    if(object[property]) return;
+    object[property] = fallback
 }
 
 ////////// Math //////////
