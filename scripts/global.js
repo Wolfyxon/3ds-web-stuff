@@ -7,14 +7,6 @@ const keycodes = {
     40: "Down"
 };
 
-function oKeys(obj) {
-	var out = [];
-	for (var k in obj) {
-		out.push(k);
-	}
-	return out;
-}
-
 /**
  * Generates a random float number within the given range
  * @param  {Number} min Minimum value
@@ -147,6 +139,14 @@ function includes(container,search){
 	}
 
 	return container[search] !== undefined;
+}
+
+function oKeys(obj) {
+    var out = [];
+    for (var k in obj) {
+        out.push(k);
+    }
+    return out;
 }
 
 /**
