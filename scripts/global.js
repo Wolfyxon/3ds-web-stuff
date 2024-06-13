@@ -7,11 +7,6 @@ const keycodes = {
     40: "Down"
 };
 
-/**
- * Placeholder function that does nothing. Used for fallbacks
- */
-function doNothing() {}
-
 ////////// Compatibility system //////////
 
 /**
@@ -24,6 +19,11 @@ function registerFallback(object, property, fallback) {
     if(object[property]) return;
     object[property] = fallback
 }
+
+/**
+ * Placeholder function that does nothing. Used for fallbacks
+ */
+function doNothing() {}
 
 // console doesn't seem to be available on DSi
 registerFallback(window, "console", {});
