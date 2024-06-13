@@ -7,6 +7,8 @@ const keycodes = {
     40: "Down"
 };
 
+////////// Math //////////
+
 /**
  * Generates a random float number within the given range
  * @param  {Number} min Minimum value
@@ -94,6 +96,8 @@ function pow(base, exponent) {
     }
 }
 
+////////// Browser detection //////////
+
 /**
  * Checks if the user's browser is the Nintendo 3DS browser.
  * @return {Boolean}
@@ -125,6 +129,8 @@ function isDS(){
 function isDSFamily(){
     return isDS() || isDSi() || is3DS();
 }
+
+////////// Object and array operations //////////
 
 // array.includes and string.includes does not work on the 3DS browser
 /**
@@ -165,6 +171,7 @@ function getWithout(array,exclude){
     });
 }
 
+////////// Input detection //////////
 
 var pressStates = {};
 var pressCallbacks = {
@@ -240,6 +247,8 @@ function isBtnPressed(name){
     }
     return false;
 }
+
+////////// Element operations //////////
 
 /**
  * Register an <a> that isn't meant to be opened on the 3DS
@@ -348,6 +357,8 @@ function centerScreen() {
 
 if(is3DS()) setInterval(centerScreen);
 
+////////// Event listeners //////////
+
 /**
  * Process keydown logic. Call this when using window.onkeydown, and you want to use the global.js input detection system
  * @param {KeyboardEvent} e
@@ -403,8 +414,6 @@ function preventKey(event){
     return false;
 }
 
-///////////////////////////////////////////////////////////////////////
-
 // You can't access console logs on the 3DS, so it will show an alert when there's an error
 if(is3DS()){
     window.addEventListener("error", function(e) {
@@ -413,7 +422,7 @@ if(is3DS()){
     }, false);
 }
 
-// Prevent dragging
+/// Drag prevention ///
 
 var touchStart;
 
@@ -466,6 +475,8 @@ document.addEventListener('touchmove', function(e){
 
     e.preventDefault();
 }, false);
+
+/// onload logic ///
 
 window.addEventListener("load",function (){
     if(is3DS()){
