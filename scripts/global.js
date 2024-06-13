@@ -25,6 +25,14 @@ function registerFallback(object, property, fallback) {
     object[property] = fallback
 }
 
+// console doesn't seem to be available on DSi
+registerFallback(window, "console", {});
+registerFallback(console, "log", doNothing);
+registerFallback(console, "error", doNothing);
+registerFallback(console, "warn", doNothing);
+registerFallback(console, "assert", doNothing);
+
+
 ////////// Math //////////
 
 /**
