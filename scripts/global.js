@@ -7,6 +7,21 @@ const keycodes = {
     40: "Down"
 };
 
+////////// Compatibility system //////////
+
+/**
+ * Provides a fallback or placeholder function if it doesn't exist in the specified object's prototype
+ * @param {Object} object
+ * @param {String} functionName
+ * @param {function|null} func
+ */
+function registerFunctionFallback(object, functionName, func) {
+    if(object.prototype[functionName]) return;
+    if(!func) func = function(){} // create a placeholder that does nothing
+
+    object.prototype[functionName] = func
+}
+
 ////////// Math //////////
 
 /**
