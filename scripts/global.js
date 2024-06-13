@@ -30,6 +30,10 @@ registerFallback(Array.prototype, "includes", function (value) {
     return includes(this, value);
 });
 
+registerFallback(Object.prototype, "keys", function () {
+    return oKeys(this);
+})
+
 // console doesn't seem to be available on DSi
 registerFallback(window, "console", {});
 registerFallback(console, "log", doNothing);
