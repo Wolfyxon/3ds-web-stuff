@@ -7,6 +7,11 @@ const keycodes = {
     40: "Down"
 };
 
+/**
+ * Placeholder function that does nothing. Used for fallbacks
+ */
+function doNothing() {}
+
 ////////// Compatibility system //////////
 
 /**
