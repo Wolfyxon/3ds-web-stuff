@@ -87,7 +87,9 @@ function play(non){
 				"data-pos": j + "," + i,
 				"data-state": "unpressed"
 			}));
-			buttons[i][j].addEventListener("click", function(event){boardClick(event, buttons, non);});
+			buttons[i][j].addEventListener("click", function(event) {
+				boardClick(event, buttons, non);
+			}, false);
 		}
 	}
 }
@@ -132,7 +134,6 @@ function parseNon(nonStr) {
 }
 
 function hasWon(buttons, non) {
-	console.log(non.rows);
 	// Make an array of 
 	var buttonsBool = [];
 	for(var i = 0; i < buttons.length; i++){
@@ -173,7 +174,7 @@ function hasWon(buttons, non) {
 	// Check rows
 	for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
 		if (!matchesHints(buttonsBool[rowIndex], non.rows[rowIndex])) {
-			console.log("Row " + (rowIndex + 1) + " failed");
+			//alert("Row " + (rowIndex + 1) + " failed");
 			return false;
 		}
 	}
@@ -185,7 +186,7 @@ function hasWon(buttons, non) {
 			column.push(buttonsBool[rowIndex][colIndex]);
 		}
 		if (!matchesHints(column, non.columns[colIndex])) {
-			console.log("Column " + (colIndex + 1) + " failed");
+			//alert("Column " + (colIndex + 1) + " failed");
 			return false;
 		}
 	}
