@@ -25,6 +25,11 @@ function registerFallback(object, property, fallback) {
  */
 function doNothing() {}
 
+
+registerFallback(Array.prototype, "includes", function (value) {
+    return includes(this, value);
+});
+
 // console doesn't seem to be available on DSi
 registerFallback(window, "console", {});
 registerFallback(console, "log", doNothing);
