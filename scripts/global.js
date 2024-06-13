@@ -141,6 +141,11 @@ function includes(container,search){
 	return container[search] !== undefined;
 }
 
+/**
+ * Returns an array of keys that an object holds
+ * @param {Object} obj
+ * @return {*[]}
+ */
 function oKeys(obj) {
     var out = [];
     for (var k in obj) {
