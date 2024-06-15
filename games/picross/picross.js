@@ -240,7 +240,7 @@ window.addEventListener('load', function() {
 				lt.addEventListener("mouseover", function(){lt.startIconAnim()});
 				lt.addEventListener("mouseout", function(){lt.stopIconAnim()});
 				lt.addEventListener("click", function(){
-					const fadeDiv = ls.parentElem.appendNew("div", "", {id: "LevelFadeTransition", style: "display: none;"});
+					const fadeDiv = ls.parentNode.appendNew("div", "", {id: "LevelFadeTransition", style: "display: none;"});
 					var fadeTimer = 0;
 					const fadeTimeout = setInterval(function() {
 						fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
