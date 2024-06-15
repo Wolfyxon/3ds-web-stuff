@@ -87,7 +87,11 @@ window.addEventListener('load', function() {
 		}
 
 		const board = document.getElementById("board"),
-			table = board.appendNew("table");
+			table = board.appendNew("table"),
+			tool = board.parentNode.appendNew("div", "", {id: tool});
+		tool.appendNew("input", "", {type: "checkbox", id: "flag"});
+		tool.appendNew("lable", "Flag", {for: "flag"});
+		
 		var tr = table.appendNew("thead").appendNew("tr");
 		tr.appendNew("th");
 		for (var k = 0; k < width; k++) {
