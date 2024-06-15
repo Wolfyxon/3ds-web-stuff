@@ -98,3 +98,8 @@
   position: absolute;
   bottom: 0;
 }
+
+#bottom-screen {
+  position: relative;
+}
+}
