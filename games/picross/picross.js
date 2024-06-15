@@ -88,7 +88,7 @@ window.addEventListener('load', function() {
 
 		const board = document.getElementById("board"),
 			table = board.appendNew("table"),
-			tool = board.parentNode.appendNew("div", "", {id: tool});
+			tool = board.parentNode.appendNew("div", "", {id: "tool"});
 		tool.appendNew("input", "", {type: "checkbox", id: "flag"});
 		tool.appendNew("lable", "Flag", {for: "flag"});
 		
