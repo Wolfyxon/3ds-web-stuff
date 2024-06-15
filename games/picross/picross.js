@@ -30,6 +30,23 @@ Element.prototype.appendNew = function(tagname, content, attributes) {
   return elem;
 };
 
+Element.prototype.startIconAnim = function() {
+  const elem = this;
+  var animIndex = 0;
+  elem["data-iconAnimInterval"] = setInterval(function() {
+    const rot = Math.sin(animIndex/20) * 8;
+    const scale = 1 + (Math.abs(((animIndex/80) % 2) - 1) - 0.5) * 0.1; // Triangle Wave
+    elem.style["-webkit-transform"] = "rotate(" + rot + "deg) scale(" + scale + ")";
+    animIndex++;
+  }, 10);
+};
+
+Element.prototype.stopIconAnim = function() {
+  const elem = this;
+  clearInterval(elem["data-iconAnimInterval"]);
+  elem.style["-webkit-transform"] = "rotate(0deg) scale(1)";
+};
+
 Array.prototype.last = function(set) {
   if(set){
     this[this.length - 1] = set;
@@ -41,6 +58,8 @@ Array.prototype.last = function(set) {
 String.prototype.startsWith = function (str) { // This is a polyfill
   return this.substring(0, str.length) == str;
 };
+
+showLevelSelect();
 
 function boardClick(event, buttons, non) {
   if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
@@ -55,7 +74,6 @@ function boardClick(event, buttons, non) {
   }
 }
 
-requestText("boards/demo.non", function(text){play(parseNon(text));});
 function play(non){
   const height = non.height;
   const width = non.width;
@@ -186,4 +204,39 @@ function gameWin(buttons){
   }
 
   document.getElementById("winMessage").innerHTML = "You win!";
+}
+
+function showLevelSelect(){
+  const ls = document.getElementById("bottom-screen").appendNew("div", "", {id: "levelSelect"});
+  const table = ls.appendNew("table", "", {id: "levelSelectTable"});
+  const groupNames = ["Tutorial", "Easy", "Medium", "Hard"];
+  const groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"]
+  for(var i = 0; i < 4; i++) {
+    const tr = table.appendNew("tr");
+    for(var j = 0; j < 5; j++) {
+      const lt = table.appendNew("td").appendNew("div", "", {class: "LevelTile"});
+      lt.style["background-color"] = groupColors[i];
+      lt.appendNew("div", groupNames[i], {class: "LevelGroupName"});
+      lt.appendNew("div", j + 1, {class: "LevelNumber"});
+      lt.addEventListener("mouseover", function(){lt.startIconAnim()});
+      lt.addEventListener("mouseout", function(){lt.stopIconAnim()});
+      lt.addEventListener("click", function(){
+        const fadeDiv = ls.parentElem.appendNew("div", "", {id: "LevelFadeTransition", style: "display: none;"});
+        var fadeTimer = 0;
+        const fadeTimeout = setInterval(function() {
+          fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
+          fadeDiv.style.display = "block";
+          if(fadeTimer == 30){
+            ls.remove();
+            requestText("boards/demo.non", function(text){play(parseNon(text));});
+          }
+          if(fadeTimer == 90) {
+            clearInterval(fadeTimeout);
+            fadeDiv.remove();
+          }
+          fadeTimer++;
+        }, 10);
+      });
+    }
+  }
 }
