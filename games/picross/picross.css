@@ -51,8 +51,48 @@
 }
 
 #winMessage {
-	font-weight: bold;
-	font-size: 60px;
-	text-align: center;
-	color: #30D020;
+  font-weight: bold;
+  font-size: 60px;
+  text-align: center;
+  color: #30D020;
+}
+
+.LevelTile {
+  box-sizing: border-box;
+  width: 53px;
+  height: 53px;
+  border: 2px solid black;
+}
+
+.LevelGroupName {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.LevelNumber {
+  line-height: 35px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+#levelSelect{
+  position: relative;
+  box-sizing: border-box;
+  width: 320px;
+  height: 240px;
+}
+
+#levelSelectTable {
+  border-collapse: separate;
+  border-spacing: 0px 1.5px;
+}
+
+#LevelFadeTransition {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
 }
