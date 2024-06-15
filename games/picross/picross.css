@@ -67,14 +67,14 @@
 .LevelGroupName {
   text-align: center;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .LevelNumber {
-  line-height: 35px;
+  line-height: 32px;
   text-align: center;
-  font-size: 50px;
-  font-weight: 900;
+  font-size: 45px;
+  font-weight: 600;
 }
 
 #levelSelect{
@@ -86,7 +86,9 @@
 
 #levelSelectTable {
   border-collapse: separate;
-  border-spacing: 0px 1.5px;
+  border-spacing: 3px 1.5px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #LevelFadeTransition {
