@@ -1,64 +1,53 @@
 #board {
-  border-collapse: collapse;
-  text-align: center;
-  zoom: 0.75;
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 10px;
 }
 
 #board table {
-  /* Table with buttons */
-  border-collapse: collapse;
-  border-spacing: 0;
+	/* Table with buttons */
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 #board table tbody tr td {
-  /* Table cell with button */
-  width: 20px;
-  height: 20px;
-  max-width: 20px;
-  max-height: 20px;
-  padding: 0;
-  border: none;
-}
-
-#board table tbody tr td div {
-  /* div holding button */
-  width: 20px;
-  height: 20px;
-  overflow: hidden;
+	/* Table cell with button */
+	padding: 0;
+	border: none;
 }
 
 .boardButton {
-  /* Button for the board */
-  width: 20px;
-  height: 20px;
-  margin: 0;
-  line-height: 20px;
-  display: block;
+	/* Button for the board */
+	width: 15px;
+	height: 15px;
+	margin: 0;
+	line-height: 20px;
+	display: block;
 }
 
 .boardButton[data-state="unpressed"] {
-  /* Tiles that have had no interaction */
-  background-color: #EEEEEE;
+	/* Tiles that have had no interaction */
+	background-color: #EEEEEE;
 }
 
 .boardButton[data-state="pressed"] {
-  /* Tiles that are active */
-  background-color: #444444;
+	/* Tiles that are active */
+	background-color: #444444;
 }
 
 .boardButton[data-state="flagged"] {
-  /* Tiles that are flagged as not active */
-  background-color: #FF0000;
+	/* Tiles that are flagged as not active */
+	background-color: #FF0000;
 }
 
 #board table thead tr th {
-  /* Top hints */
-  vertical-align: bottom;
+	/* Top hints */
+	vertical-align: bottom;
 }
 
 #board table tbody tr th {
-  /* Left hints */
-  text-align: right;
+	/* Left hints */
+	text-align: right;
 }
 
 #winMessage {
