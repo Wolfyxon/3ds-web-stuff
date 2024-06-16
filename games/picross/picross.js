@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
 		content = content || "";
 		attributes = attributes || {};
 		var elem = document.createElement(tagname);
-		elem.innerHTML = content;
+		if (tagname !== 'input') elem.innerHTML = content;
 		for (var attribute in attributes) {
 			if (attributes.hasOwnProperty(attribute)) {
 				elem[attribute] = attributes[attribute];
@@ -34,20 +34,20 @@ window.addEventListener('load', function() {
 	};
 
 	Element.prototype.startIconAnim = function() {
- 	 const elem = this;
- 	 var animIndex = 0;
- 	 elem["data-iconAnimInterval"] = setInterval(function() {
- 	   const rot = Math.sin(animIndex/20) * 8;
- 	   const scale = 1 + (Math.abs(((animIndex/80) % 2) - 1) - 0.5) * 0.1; // Triangle Wave
-  	  elem.style["-webkit-transform"] = "rotate(" + rot + "deg) scale(" + scale + ")";
-  	  animIndex++;
- 	 }, 10);
+		const elem = this;
+		var animIndex = 0;
+		elem["data-iconAnimInterval"] = setInterval(function() {
+			const rot = Math.sin(animIndex/20) * 8;
+			const scale = 1 + (Math.abs(((animIndex/80) % 2) - 1) - 0.5) * 0.1; // Triangle Wave
+			elem.style["-webkit-transform"] = "rotate(" + rot + "deg) scale(" + scale + ")";
+			animIndex++;
+		}, 10);
 	};
 
 	Element.prototype.stopIconAnim = function() {
-	  const elem = this;
-	  clearInterval(elem["data-iconAnimInterval"]);
-	  elem.style["-webkit-transform"] = "rotate(0deg) scale(1)";
+		const elem = this;
+		clearInterval(elem["data-iconAnimInterval"]);
+		elem.style["-webkit-transform"] = "rotate(0deg) scale(1)";
 	};
 
 	Array.prototype.last = function(set) {
@@ -82,16 +82,16 @@ window.addEventListener('load', function() {
 			width = non.width,
 			title = document.getElementById("title");
 		if (non.title !== null) {
-			title.appendNew("h2", non.title, { id: "name" });
-			title.appendNew("h3", "By " + non.by, { id: "author" });
+			title.appendNew("h2", non.title, { "id": "name" });
+			title.appendNew("h3", "By " + non.by, { "id": "author" });
 		}
 
 		const board = document.getElementById("board"),
 			table = board.appendNew("table"),
-			tool = board.parentNode.appendNew("div", "", {id: "tool"});
-		tool.appendNew("input", "", {type: "checkbox", id: "flag"});
-		tool.appendNew("lable", "Flag", {for: "flag"});
-		
+			tool = board.parentNode.appendNew("div", "", {"id": "tool"});
+		tool.appendNew("input", "", {"type": "checkbox", "id": "flag"});
+		tool.appendNew("lable", "Flag", {"for": "flag"});
+
 		var tr = table.appendNew("thead").appendNew("tr");
 		tr.appendNew("th");
 		for (var k = 0; k < width; k++) {
@@ -171,7 +171,7 @@ window.addEventListener('load', function() {
 			var myHints = hints.slice(),
 				i = 0,
 				hintsIndex = 0;
-				while (i < sequence.length) {
+			while (i < sequence.length) {
 				if(sequence[i]){
 					if(hintsIndex == myHints.length){
 						return false;
@@ -230,36 +230,36 @@ window.addEventListener('load', function() {
 	}
 
 	function showLevelSelect(){
-		const ls = document.getElementById("bottom-screen").appendNew("div", "", {id: "levelSelect"});
-		const table = ls.appendNew("table", "", {id: "levelSelectTable"});
-		const groupNames = ["Tutorial", "Easy", "Medium", "Hard"];
-		const groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
+		const ls = document.getElementById("bottom-screen").appendNew("div", "", {"id": "levelSelect"}),
+			table = ls.appendNew("table", "", {"id": "levelSelectTable"}),
+			groupNames = ["Tutorial", "Easy", "Medium", "Hard"],
+			groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
 		for(var i = 0; i < 4; i++) {
 			const tr = table.appendNew("tr");
 			for(var j = 0; j < 5; j++) {
-				const lt = table.appendNew("td").appendNew("div", "", {class: "LevelTile"});
+				const lt = table.appendNew("td").appendNew("div", "", {"class": "LevelTile"});
 				lt.style["background-color"] = groupColors[i];
-				lt.appendNew("div", groupNames[i], {class: "LevelGroupName"});
-				lt.appendNew("div", j + 1, {class: "LevelNumber"});
-				lt.addEventListener("mouseover", function(){lt.startIconAnim()});
-				lt.addEventListener("mouseout", function(){lt.stopIconAnim()});
+				lt.appendNew("div", groupNames[i], {"class": "LevelGroupName"});
+				lt.appendNew("div", j + 1, {"class": "LevelNumber"});
+				lt.addEventListener("mouseover", lt.startIconAnim, false);
+				lt.addEventListener("mouseout", lt.stopIconAnim, false);
 				lt.addEventListener("click", function(){
-					const fadeDiv = ls.parentNode.appendNew("div", "", {id: "LevelFadeTransition", style: "display: none;"});
+					const fadeDiv = ls.parentNode.appendNew("div", "", {"id": "LevelFadeTransition", "style": "display: none;"});
 					var fadeTimer = 0;
 					const fadeTimeout = setInterval(function() {
 						fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
 						fadeDiv.style.display = "block";
 						if(fadeTimer == 30){
-							ls.remove();
+							ls.parentNode.removeChild(ls);
 							requestText("boards/demo.non", function(text){play(parseNon(text));});
 						}
 						if(fadeTimer == 90) {
 							clearInterval(fadeTimeout);
-							fadeDiv.remove();
+							fadeDiv.parentNode.removeChild(fadeDiv);
 						}
 						fadeTimer++;
 					}, 10);
-				});
+				}, false);
 			}
 		}
 	}
