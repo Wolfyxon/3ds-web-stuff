@@ -229,7 +229,7 @@ Vector2.prototype = {
     copy: function() {
         return new Vector2(this.x, this.y);
     }
-}
+};
 
 ///////// FUNCTIONS /////////
 

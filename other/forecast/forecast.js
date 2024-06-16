@@ -50,7 +50,7 @@ window.addEventListener("load", function(){
         elem.addEventListener("click",function(){
             userPickedLocation = true;
             loadWeather(lat, long, elem.innerText);
-        });
+        }, false);
     }
 
     function loadWeather(lat, long, locationString){
@@ -96,17 +96,17 @@ window.addEventListener("load", function(){
                 addResult(results[i]);
             }
         });
-    });
+    }, false);
 
     document.getElementById("btn-clear").addEventListener("click",function(){
         searchInput.value = "";
-    });
+    }, false);
 
     bottomScreen.addEventListener("click",function (e){
         if(e.target !== bottomScreen) return;
         hideResults();
-    });
-    searchInput.addEventListener("focusin",showResults);
+    }, false);
+    searchInput.addEventListener("focusin",showResults, false);
 
     clearResults();
     hideResults();
@@ -130,5 +130,5 @@ window.addEventListener("load", function(){
 
         const locStr = data["city"] + ", " + data["regionName"] + ", " + data["country"];
         loadWeather(data["lat"], data["lon"], locStr);
-    })
-});
+    });
+}, false);

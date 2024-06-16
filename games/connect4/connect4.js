@@ -13,25 +13,25 @@ window.addEventListener('load', function() {
 
 	function checkWin(x, y) {
 		for (var n=0; n<4; n++) {
-			const t = getType(n, y);
+			var a = getType(n, y);
 
 			// horizontal
-			if ((t === getType(n + 1, y)) &&
-				(t === getType(n + 2, y)) &&
-				(t === getType(n + 3, y)) &&
-				(t !== '')) {
+			if ((a === getType(n + 1, y)) &&
+				(a === getType(n + 2, y)) &&
+				(a === getType(n + 3, y)) &&
+				(a !== '')) {
 				won = true;
 			}
 
 			if (n === 3) break;
 
-			const t2 = getType(x, n);
+			var a2 = getType(x, n);
 
 			// vertical
-			if ((t2 === getType(x, n + 1)) &&
-				(t2 === getType(x, n + 2)) &&
-				(t2 === getType(x, n + 3)) &&
-				(t2 !== '')) {
+			if ((a2 === getType(x, n + 1)) &&
+				(a2 === getType(x, n + 2)) &&
+				(a2 === getType(x, n + 3)) &&
+				(a2 !== '')) {
 				won = true;
 			}
 		}
@@ -39,20 +39,20 @@ window.addEventListener('load', function() {
 		for (var row2 = 0; row2 < 3; row2++) {
 			for (var column2 = 0; column2 < 4; column2++) {
 				// diagonal \
-				const t = getType(column2, row2 + 3),
-					t2 = getType(column2, row2);
-				if ((t === getType(column2 + 1, row2 + 2)) &&
-					(t === getType(column2 + 2, row2 + 1)) &&
-					(t === getType(column2 + 3, row2)) &&
-					(t !== '')) {
+				var b = getType(column2, row2 + 3),
+					b2 = getType(column2, row2);
+				if ((b === getType(column2 + 1, row2 + 2)) &&
+					(b === getType(column2 + 2, row2 + 1)) &&
+					(b === getType(column2 + 3, row2)) &&
+					(b !== '')) {
 					won = true;
 				} else
 
 				// diagonal /
-				if ((t2 === getType(column2 + 1, row2 + 1)) &&
-					(t2 === getType(column2 + 2, row2 + 2)) &&
-					(t2 === getType(column2 + 3, row2 + 3)) &&
-					(t2 !== '')) {
+				if ((b2 === getType(column2 + 1, row2 + 1)) &&
+					(b2 === getType(column2 + 2, row2 + 2)) &&
+					(b2 === getType(column2 + 3, row2 + 3)) &&
+					(b2 !== '')) {
 					won = true;
 				}
 			}
@@ -74,7 +74,7 @@ window.addEventListener('load', function() {
 		var cells = field.getElementsByTagName('td');
 		for (var i=0; i<cells.length; i++) {
 			cells[i].textContent = '';
-			cells[i].setAttribute('data-player', '')
+			cells[i].setAttribute('data-player', '');
 		}
 		won = false;
 		updateCurrent();
@@ -92,14 +92,14 @@ window.addEventListener('load', function() {
 
 		cell.textContent = 'o';
 		cell.setAttribute('data-player', player ? '1' : '0');
-		cell.style.color = player ? '#ff0000' : '#0026ff'
+		cell.style.color = player ? '#ff0000' : '#0026ff';
 
 		checkWin(column, row);
 		if (won) {
 			alert((player ? 'Red' : 'Blue') + ' won');
-			if (player) red.textContent = Number(red.textContent) + 1
+			if (player) red.textContent = Number(red.textContent) + 1;
 			else blue.textContent = Number(blue.textContent) + 1;
-		};
+		}
 		player = !player;
 		updateCurrent();
 		e.target.setAttribute('data-index', row - 1);

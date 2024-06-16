@@ -5,7 +5,6 @@ window.addEventListener('load', function() {
 			willReadFrequently: true
 		}),
 		plrTxt = document.getElementById('plr'),
-		winTxt = document.getElementById('win'),
 		winO = document.getElementById('wins-o'),
 		winX = document.getElementById('wins-x');
 	var curPlayer = true,
@@ -39,8 +38,8 @@ window.addEventListener('load', function() {
 			(getData(0, y) === getData(2, y)) &&
 			(getData(0, y) > 0)) {
 			drawLine(0, y, 2, y);
-			won = true
-		};
+			won = true;
+		}
 
 		// vertical
 		if ((getData(x, 0) === getData(x, 1)) &&
@@ -48,7 +47,7 @@ window.addEventListener('load', function() {
 			(getData(x, 0) > 0)) {
 			drawLine(x, 0, x, 2);
 			won = true;
-		};
+		}
 
 		// diagonal \
 		if ((getData(0, 0) === getData(1, 1)) &&
@@ -56,7 +55,7 @@ window.addEventListener('load', function() {
 			(getData(0, 0) > 0)) {
 			drawLine(0, 0, 2, 2);
 			won = true;
-		};
+		}
 
 		// diagonal /
 		if ((getData(2, 0) === getData(1, 1)) &&
@@ -64,7 +63,7 @@ window.addEventListener('load', function() {
 			(getData(2, 0) > 0)) {
 			drawLine(2, 0, 0, 2);
 			won = true;
-		};
+		}
 
 		if (won) return true;
 		return false;
@@ -132,7 +131,7 @@ window.addEventListener('load', function() {
 			n = Y*3 + X,
 			d = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 		if (won || d[1] === 128 || fieldData[n] > 0) return;
-		filled++
+		filled++;
 		fieldData[n] = curPlayer ? '1' : '2';
 		curPlayer ? drawX(X, Y) : drawO(X, Y);
 		if (checkWin(X, Y)) {

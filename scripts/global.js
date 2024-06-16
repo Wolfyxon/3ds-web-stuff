@@ -17,7 +17,7 @@ const keycodes = {
  */
 function registerFallback(object, property, fallback) {
     if(object[property]) return;
-    object[property] = fallback
+    object[property] = fallback;
 }
 
 /**
@@ -32,7 +32,7 @@ registerFallback(Array.prototype, "includes", function (value) {
 
 registerFallback(Object.prototype, "keys", function () {
     return oKeys(this);
-})
+});
 
 // console doesn't seem to be available on DSi
 registerFallback(window, "console", {});
