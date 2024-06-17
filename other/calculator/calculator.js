@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
 		try {
 			result.innerText = eval(formula.innerText);
 		} catch (e){
-			alert(e)
+			alert(e);
 		}
 	}
 

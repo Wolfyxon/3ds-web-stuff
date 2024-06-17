@@ -346,7 +346,7 @@ SceneNode.prototype = {
 
         this._parent = null;
     }
-}
+};
 
 /**
  * Scene constructor

@@ -49,7 +49,7 @@ window.addEventListener('load', function() {
 	function echo() {
 		var v = terminal.value;
 		if (terminalLength < 16) {
-			terminalLength++
+			terminalLength++;
 		} else {
 			v = v.substring(v.match('\n').index + 2);			
 		}

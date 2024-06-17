@@ -16,7 +16,7 @@ window.addEventListener("load", function(){
     scene.addChildren([chicken, maxwell]);
 
     var minFps = 99999;
-    var maxFps = -99999
+    var maxFps = -99999;
     var frame = 0;
 
     var prevFrameTime = Date.now();
