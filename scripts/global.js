@@ -7,13 +7,42 @@ const keycodes = {
     40: "Down"
 };
 
-function oKeys(obj) {
-	var out = [];
-	for (var k in obj) {
-		out.push(k);
-	}
-	return out;
+////////// Compatibility system //////////
+
+/**
+ * Provides a fallback value if it doesn't exist in the specified object
+ * @param {Object} object
+ * @param {String} property
+ * @param {*} fallback
+ */
+function registerFallback(object, property, fallback) {
+    if(object[property]) return;
+    object[property] = fallback;
 }
+
+/**
+ * Placeholder function that does nothing. Used for fallbacks
+ */
+function doNothing() {}
+
+
+registerFallback(Array.prototype, "includes", function (value) {
+    return includes(this, value);
+});
+
+registerFallback(Object.prototype, "keys", function () {
+    return oKeys(this);
+});
+
+// console doesn't seem to be available on DSi
+registerFallback(window, "console", {});
+registerFallback(console, "log", doNothing);
+registerFallback(console, "error", doNothing);
+registerFallback(console, "warn", doNothing);
+registerFallback(console, "assert", doNothing);
+
+
+////////// Math //////////
 
 /**
  * Generates a random float number within the given range
@@ -102,6 +131,8 @@ function pow(base, exponent) {
     }
 }
 
+////////// Browser detection //////////
+
 /**
  * Checks if the user's browser is the Nintendo 3DS browser.
  * @return {Boolean}
@@ -134,6 +165,8 @@ function isDSFamily(){
     return isDS() || isDSi() || is3DS();
 }
 
+////////// Object and array operations //////////
+
 // array.includes and string.includes does not work on the 3DS browser
 /**
  * Performs a linear interpolation between 2 numbers
@@ -150,6 +183,19 @@ function includes(container,search){
 }
 
 /**
+ * Returns an array of keys that an object holds
+ * @param {Object} obj
+ * @return {*[]}
+ */
+function oKeys(obj) {
+    var out = [];
+    for (var k in obj) {
+        out.push(k);
+    }
+    return out;
+}
+
+/**
  * Returns the specified array without the specified value
  * @param  {Array} array The current array
  * @param  {*} exclude The value you want to exclude
@@ -160,6 +206,7 @@ function getWithout(array,exclude){
     });
 }
 
+////////// Input detection //////////
 
 var pressStates = {};
 var pressCallbacks = {
@@ -235,6 +282,8 @@ function isBtnPressed(name){
     }
     return false;
 }
+
+////////// Element operations //////////
 
 /**
  * Register an <a> that isn't meant to be opened on the 3DS
@@ -343,6 +392,8 @@ function centerScreen() {
 
 if(is3DS()) setInterval(centerScreen);
 
+////////// Event listeners //////////
+
 /**
  * Process keydown logic. Call this when using window.onkeydown, and you want to use the global.js input detection system
  * @param {KeyboardEvent} e
@@ -398,8 +449,6 @@ function preventKey(event){
     return false;
 }
 
-///////////////////////////////////////////////////////////////////////
-
 // You can't access console logs on the 3DS, so it will show an alert when there's an error
 if(is3DS()){
     window.addEventListener("error", function(e) {
@@ -408,7 +457,7 @@ if(is3DS()){
     }, false);
 }
 
-// Prevent dragging
+/// Drag prevention ///
 
 var touchStart;
 
@@ -461,6 +510,8 @@ document.addEventListener('touchmove', function(e){
 
     e.preventDefault();
 }, false);
+
+/// onload logic ///
 
 window.addEventListener("load",function (){
     if(is3DS()){

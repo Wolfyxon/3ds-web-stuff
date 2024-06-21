@@ -7,10 +7,10 @@ function startAnim(data) {
 	return setInterval(function() {
 		if (!data.playing) return;
 		data.element.children[data.frame].className = '';
-		data.frame++
+		data.frame++;
 		if (data.frame === data.frameCount) data.frame = 0;
 		data.element.children[data.frame].className = 'vis';
-		
+
 		if (!data.looped && data.frame === 0) data.playing = false;
 		if (data.frame === 0 && data.loopDelay > 0) {
 			data.playing = false;
@@ -18,7 +18,7 @@ function startAnim(data) {
 				data.playing = true;
 			}, data.loopDelay * 1000);
 		}
-	}, data.spacing * 1000)
+	}, data.spacing * 1000);
 }
 
 Animation = function(element){
@@ -61,7 +61,7 @@ Animation.prototype = {
 	stop: function() {
 		this.playing = false;
 	}
-}
+};
 
 
 /**
@@ -72,7 +72,7 @@ Animation.prototype = {
  * @return {string}
  */
 function rgbToHex(r, g, b) {
-    return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
+	return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
 }
 
 /**
@@ -81,18 +81,18 @@ function rgbToHex(r, g, b) {
  * @return {null|{r: string, b: string, g: string}}
  */
 function extractRgb(input){
-    const inner = input.substring(
-        input.indexOf("(") + 1,
-        input.lastIndexOf(")")
-    );
-    const split = inner.split(",")
-    if(split.length !== 3) return null;
+	const inner = input.substring(
+		input.indexOf("(") + 1,
+		input.lastIndexOf(")")
+	);
+	const split = inner.split(",");
+	if(split.length !== 3) return null;
 
-    return {
-        "r": split[0],
-        "g": split[1],
-        "b": split[2]
-    }
+	return {
+		"r": split[0],
+		"g": split[1],
+		"b": split[2]
+	};
 }
 
 /**
@@ -101,21 +101,21 @@ function extractRgb(input){
  * @return {{r: number, b: number, g: number}|null}
  */
 function hexToRgb(hex) {
-    const hexRegex = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
-    if (!hexRegex.test(hex)) return null;
+	const hexRegex = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+	if (!hexRegex.test(hex)) return null;
 
-    hex = hex.replace("#", "");
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
+	hex = hex.replace("#", "");
+	const r = parseInt(hex.substring(0, 2), 16);
+	const g = parseInt(hex.substring(2, 4), 16);
+	const b = parseInt(hex.substring(4, 6), 16);
 
-    if (isNaN(r) || isNaN(g) || isNaN(b)) return null;
+	if (isNaN(r) || isNaN(g) || isNaN(b)) return null;
 
-    return {
-        "r": r,
-        "g": g,
-        "b": b
-    };
+	return {
+		"r": r,
+		"g": g,
+		"b": b
+	};
 }
 
 
@@ -127,23 +127,23 @@ function hexToRgb(hex) {
  * @return {String|string|*}
  */
 function lerpColor(color1, color2, weight) {
-    if(color1 === color2) return color1;
+	if(color1 === color2) return color1;
 
-    color1 = colorNameToHex(color1) || color1
-    color2 = colorNameToHex(color2) || color2
+	color1 = colorNameToHex(color1) || color1;
+	color2 = colorNameToHex(color2) || color2;
 
-    if(color1 === color2) return color1;
+	if(color1 === color2) return color1;
 
-    const rgb1 = extractRgb(color1) || hexToRgb(color1)
-    const rgb2 = extractRgb(color2) || hexToRgb(color2)
+	const rgb1 = extractRgb(color1) || hexToRgb(color1),
+		rgb2 = extractRgb(color2) || hexToRgb(color2);
 
-    if(rgb1 === rgb2) return color1;
+	if(rgb1 === rgb2) return color1;
 
-    const r = Math.round(lerp(rgb1.r,rgb2.r,weight));
-    const g = Math.round(lerp(rgb1.g,rgb2.g,weight));
-    const b = Math.round(lerp(rgb1.b,rgb2.b,weight));
+	const r = Math.round(lerp(rgb1.r,rgb2.r,weight));
+	const g = Math.round(lerp(rgb1.g,rgb2.g,weight));
+	const b = Math.round(lerp(rgb1.b,rgb2.b,weight));
 
-    return rgbToHex(r,g,b)
+	return rgbToHex(r,g,b);
 }
 
 /**
@@ -152,7 +152,7 @@ function lerpColor(color1, color2, weight) {
  * @return {String}
  */
 function colorNameToHex(colour) {
-    const colours = {"aliceblue":"#f0f8ff","antiquewhite":"#faebd7","aqua":"#00ffff","aquamarine":"#7fffd4","azure":"#f0ffff",
+	const colours = {"aliceblue":"#f0f8ff","antiquewhite":"#faebd7","aqua":"#00ffff","aquamarine":"#7fffd4","azure":"#f0ffff",
         "beige":"#f5f5dc","bisque":"#ffe4c4","black":"#000000","blanchedalmond":"#ffebcd","blue":"#0000ff","blueviolet":"#8a2be2","brown":"#a52a2a","burlywood":"#deb887",
         "cadetblue":"#5f9ea0","chartreuse":"#7fff00","chocolate":"#d2691e","coral":"#ff7f50","cornflowerblue":"#6495ed","cornsilk":"#fff8dc","crimson":"#dc143c","cyan":"#00ffff",
         "darkblue":"#00008b","darkcyan":"#008b8b","darkgoldenrod":"#b8860b","darkgray":"#a9a9a9","darkgreen":"#006400","darkkhaki":"#bdb76b","darkmagenta":"#8b008b","darkolivegreen":"#556b2f",
@@ -177,5 +177,5 @@ function colorNameToHex(colour) {
         "wheat":"#f5deb3","white":"#ffffff","whitesmoke":"#f5f5f5",
         "yellow":"#ffff00","yellowgreen":"#9acd32"};
 
-    if (typeof colours[colour.toLowerCase()] != 'undefined') return colours[colour.toLowerCase()];
+	if (typeof colours[colour.toLowerCase()] != 'undefined') return colours[colour.toLowerCase()];
 }

@@ -39,20 +39,23 @@ window.addEventListener('load', function() {
 
 		/* generate cells */
 		for (var y=0; y<height; y++) {
-			const row = field.insertRow(field.rows.length);
+			var row2 = document.createElement('tr');
 			for (var x=0; x<width; x++) {
-				const cell = document.createElement('td');
-				cells.push([cell, x, y]);
-				row.appendChild(cell);
+				var cell2 = document.createElement('td');
+				cell2.setAttribute('data-row', y);
+				cells.push([cell2, x, y]);
+				row2.appendChild(cell2);
 			}
+			field.appendChild(row2);
 		}
 
 		var minesPlaced = 0;
 		while (minesPlaced < mineCount) {
-			const index = Math.floor(Math.random() * cells.length),
-				cell = cells[index][0],
-				col = cells[index][1],
-				row = cells[index][2];
+			var index = Math.floor(Math.random() * cells.length),
+				abc = cells[index],
+				cell = abc[0],
+				col = abc[1],
+				row = abc[2];
 
 			// Return if cell should be excluded
 			if (col === excludeX && row === excludeY) continue;
@@ -64,7 +67,7 @@ window.addEventListener('load', function() {
 
 			// Increase count on adjacent cells
 			for (var i=0; i<pos.length; i++) {
-				const c = field.rows[row + pos[i][1]] ? field.rows[row + pos[i][1]].cells[col + pos[i][0]] : null;
+				var c = field.rows[row + pos[i][1]] ? field.rows[row + pos[i][1]].cells[col + pos[i][0]] : null;
 				if (c && c.textContent !== 'o') {
 					c.textContent = Number(c.textContent) + 1;
 					c.className = 'num' + c.textContent;
@@ -139,7 +142,7 @@ window.addEventListener('load', function() {
 	field.addEventListener('click', function(event) {
 		if (won || lost || event.target.nodeName !== 'TD') return;
 		const cell = event.target,
-			row = cell.parentElement.rowIndex,
+			row = Number(cell.getAttribute('data-row')),
 			column = cell.cellIndex;
 
 		// Return if the cell is already open

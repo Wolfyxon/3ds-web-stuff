@@ -7,58 +7,58 @@ libName("chart");
  * @param {String} [color=red] Line color.
  */
 function drawLineChart(canvas, points, color) {
-    color = color || "red";
-    const ctx = canvas.getContext("2d");
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
+	color = color || "red";
+	const ctx = canvas.getContext("2d"),
+		w = canvas.clientWidth,
+		h = canvas.clientHeight;
 
-    // Ensure the canvas isn't stretched;
-    if(canvas.width !== w || canvas.height !== h){
-        canvas.width =  w;
-        canvas.height = h;
-    }
+	// Ensure the canvas isn't stretched;
+	if(canvas.width !== w || canvas.height !== h){
+		canvas.width =  w;
+		canvas.height = h;
+	}
 
-    var minY = 0;
-    var maxY = 0;
+	var minY = 0,
+		maxY = 0;
 
-    const xSpacing = w/points.length;
+	const xSpacing = w/points.length;
 
-    for(var i=0;i<points.length;i++){
-        const point = points[i];
+	for(var i=0;i<points.length;i++){
+		const point = points[i];
 
-        if(point.y < minY) minY = point.y;
-        if(point.y > maxY) maxY = point.y;
-    }
+		if(point.y < minY) minY = point.y;
+		if(point.y > maxY) maxY = point.y;
+	}
 
-    var prevX = 0;
-    var prevY = 0;
+	var prevX = 0;
+	var prevY = 0;
 
-    ctx.strokeStyle = color;
-    ctx.fillStyle = color;
+	ctx.strokeStyle = color;
+	ctx.fillStyle = color;
 
-    for(var i=0;i<points.length;i++){
-        const point = points[i];
-        const yFactor = (point.y - minY) / (maxY - minY);
+	for(var i=0;i<points.length;i++){
+		const point = points[i],
+			yFactor = (point.y - minY) / (maxY - minY),
 
-        const x = xSpacing * i;
-        const y = h - (yFactor * h);
+			x = xSpacing * i,
+			y = h - (yFactor * h);
 
-        ctx.beginPath();
-        ctx.arc(x, y, 2, 0, 2 * Math.PI);
-        ctx.fill();
+		ctx.beginPath();
+		ctx.arc(x, y, 2, 0, 2 * Math.PI);
+		ctx.fill();
 
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(prevX, prevY);
-        ctx.lineTo(x, y);
-        ctx.stroke();
-        ctx.restore();
+		ctx.save();
+		ctx.beginPath();
+		ctx.moveTo(prevX, prevY);
+		ctx.lineTo(x, y);
+		ctx.stroke();
+		ctx.restore();
 
-        prevX = x;
-        prevY = y;
-    }
+		prevX = x;
+		prevY = y;
+	}
 
-    ctx.strokeStyle = "";
-    ctx.fillStyle = "";
+	ctx.strokeStyle = "";
+	ctx.fillStyle = "";
 }
 // I hate math, please end me

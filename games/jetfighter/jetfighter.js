@@ -41,6 +41,8 @@ window.addEventListener('load', function() {
 	}
 
 	function f() {
+		if(!running) return;
+
 		var targetCoords = targetEle.getBoundingClientRect();
 		for (var i = 0; i < helis.length; i++) {
 			var coords = helis[i][2].getBoundingClientRect();
@@ -86,6 +88,10 @@ window.addEventListener('load', function() {
 		e.style.top = (parseFloat(coords.top) - 10) + 'px';
 		e.setAttribute('data-rot', targetEle.getAttribute('data-rot'));
 		projectiles.appendChild(e);
+	}
+
+	function getHealth() {
+		return Number(targetEle.getAttribute('data-health'));
 	}
 
 	function reset() {
@@ -154,10 +160,10 @@ window.addEventListener('load', function() {
 					(coords.top <= coords2.top + coords2.height && coords.top >= coords2.top) &&
 					(coords.left >= coords2.left && coords.left <= coords2.left + coords2.width)
 				) {
-					var h = Number(targetEle.getAttribute('data-health')) - 2;
+					var h = getHealth() - 2;
 					lifebar.style.height = (100 - h) + '%';
 					targetEle.setAttribute('data-health', h);
-					if (targetEle.getAttribute('data-health') === '0') {
+					if (h <= 0) {
 						running = false;
 						overlay.style.display = '';
 						gameover.style.display = '';
@@ -194,9 +200,12 @@ window.addEventListener('load', function() {
 
 	// Movement loop
 	setInterval(function() {
+		if(!running) return;
+
 		const delta = (Date.now() - prevMoveFrameTime) / 16;
         prevMoveFrameTime = Date.now();
-		var coords = getComputedStyle(targetEle);
+		const coords = getComputedStyle(targetEle);
+
 		if (isBtnPressed('Up')) {
 			targetEle.style.top = Math.max(parseFloat(coords.top) - speed * delta, 0) + 'px';
 		} else if (isBtnPressed('Down')) {

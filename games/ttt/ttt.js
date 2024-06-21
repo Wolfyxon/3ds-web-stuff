@@ -1,13 +1,10 @@
 window.addEventListener('load', function() {
 	const field = document.getElementById('field'),
-		back = document.getElementById('back'),
-		cB = back.getContext('2d', {
-			//alpha: false,
+		ctx = field.getContext('2d', {
+			alpha: true,
 			willReadFrequently: true
 		}),
-		ctx = field.getContext('2d'),
 		plrTxt = document.getElementById('plr'),
-		winTxt = document.getElementById('win'),
 		winO = document.getElementById('wins-o'),
 		winX = document.getElementById('wins-x');
 	var curPlayer = true,
@@ -20,7 +17,6 @@ window.addEventListener('load', function() {
 		won = false,
 		winsO = 0,
 		winsX = 0;
-	ctx.lineWidth = 10;
 
 	function getData(x, y) {
 		return fieldData[y*3 + x];
@@ -42,8 +38,8 @@ window.addEventListener('load', function() {
 			(getData(0, y) === getData(2, y)) &&
 			(getData(0, y) > 0)) {
 			drawLine(0, y, 2, y);
-			won = true
-		};
+			won = true;
+		}
 
 		// vertical
 		if ((getData(x, 0) === getData(x, 1)) &&
@@ -51,7 +47,7 @@ window.addEventListener('load', function() {
 			(getData(x, 0) > 0)) {
 			drawLine(x, 0, x, 2);
 			won = true;
-		};
+		}
 
 		// diagonal \
 		if ((getData(0, 0) === getData(1, 1)) &&
@@ -59,7 +55,7 @@ window.addEventListener('load', function() {
 			(getData(0, 0) > 0)) {
 			drawLine(0, 0, 2, 2);
 			won = true;
-		};
+		}
 
 		// diagonal /
 		if ((getData(2, 0) === getData(1, 1)) &&
@@ -67,44 +63,28 @@ window.addEventListener('load', function() {
 			(getData(2, 0) > 0)) {
 			drawLine(2, 0, 0, 2);
 			won = true;
-		};
+		}
 
 		if (won) return true;
 		return false;
 	}
-	function drawU() {
-		cB.beginPath();
-		cB.moveTo(-40, -30);
-		cB.lineTo(-40, -95);
-		cB.lineTo(-30, -95);
-		cB.lineTo(-30, -40);
-		cB.lineTo(30, -40);
-		cB.lineTo(30, -95);
-		cB.lineTo(40, -95);
-		cB.lineTo(40, -30);
-		cB.lineTo(-40, -30);
-		cB.closePath();
-		cB.fill();
-		cB.beginPath();
-		cB.arc(-35, -95, 5, Math.PI, 0, false);
-		cB.closePath();
-		cB.fill();
-		cB.beginPath();
-		cB.arc(35, -95, 5, Math.PI, 0, false);
-		cB.closePath();
-		cB.fill();
-		cB.rotate(Math.PI * 0.5);
-	}
 	function drawField() {
-		//cB.fillStyle = '#e8e3c4';
-		//cB.fillRect(0, 0, back.width, back.height);
-		cB.fillStyle = 'gray';
-		cB.translate(100, 100);
-		drawU();
-		drawU();
-		drawU();
-		drawU();
-		cB.translate(-100, -100);
+		field.width = field.width;
+		ctx.lineWidth = 10;
+		ctx.fillStyle = 'gray';
+		ctx.translate(100, 100);
+		for (var i=0; i<4; i++) {
+			ctx.beginPath();
+			ctx.moveTo(-40, -95);
+			ctx.arc(-35, -95, 5, Math.PI, 0, false);
+			ctx.lineTo(-30, 95);
+			ctx.arc(-35, 95, 5, 0, Math.PI, false);
+			ctx.lineTo(-40, -95);
+			ctx.closePath();
+			ctx.fill();
+			ctx.rotate(Math.PI * 0.5);			
+		}
+		ctx.translate(-100, -100);
 	}
 	function drawO(x, y) {
 		ctx.fillStyle = '#0026ff';
@@ -137,22 +117,21 @@ window.addEventListener('load', function() {
 		ctx.translate(-offsetX, -offsetY);
 	}
 	function reset() {
-		ctx.clearRect(0, 0, field.width, field.height);
+		drawField();
 		for (var i=0; i<9; i++) {
 			fieldData[i] = 0;
 		}
 		filled = 0;
 		won = false;
 	}
-	drawField();
 	reset();
 	field.addEventListener('click', function(e) {
 		const X = Math.floor(e.offsetX/70),
 			Y = Math.floor(e.offsetY/70),
 			n = Y*3 + X,
-			d = cB.getImageData(e.offsetX, e.offsetY, 1, 1).data;
+			d = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 		if (won || d[1] === 128 || fieldData[n] > 0) return;
-		filled++
+		filled++;
 		fieldData[n] = curPlayer ? '1' : '2';
 		curPlayer ? drawX(X, Y) : drawO(X, Y);
 		if (checkWin(X, Y)) {
