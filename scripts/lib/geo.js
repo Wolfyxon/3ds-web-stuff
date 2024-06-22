@@ -11,7 +11,7 @@ depend("net");
  * @param {Function} callback Callback function called with the result array
  */
 function searchLocations(query, callback){
-    const url = "http://geocoding-api.open-meteo.com/v1/search?name=" // using https gives response code 0 on the 3DS
+    const url = "http://geocoding-api.open-meteo.com/v1/search?name="; // using https gives response code 0 on the 3DS
     if(!isDomainAllowed(getDomain(url))) throw new Error("Please add 'geocoding-api.open-meteo.com' to the allowed CORS domains");
     httpGet(url+query, function(code, body){
         const jsonBody = JSON.parse(body);

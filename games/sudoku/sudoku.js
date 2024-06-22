@@ -14,9 +14,9 @@ window.addEventListener('load', function() {
 	function getSumOfColOrRow(n, isCol) {
 		var c = 0;
 		if (isCol) {
-			const r = t.rows;
-			for (var i=0; i<r.length; i++) {
-				c += Number(r[i].children[n].textContent);
+			const a = t.rows;
+			for (var b=0; b<a.length; b++) {
+				c += Number(a[b].children[n].textContent);
 			}
 
 		} else {
@@ -48,7 +48,7 @@ window.addEventListener('load', function() {
 
 	function switchCol(a, b) {
 		for (var i = 0; i < field.length; i++) {
-			const tmp = field[i][a];
+			var tmp = field[i][a];
 			field[i][a] = field[i][b];
 			field[i][b] = tmp;
 		}
@@ -61,18 +61,18 @@ window.addEventListener('load', function() {
 	}
 
 	function randomizeField(func, var1, var2) {
-		var col1, col2, i;
+		var col1, col2;
 		// Columns / Rows
-		for (i = 0; i < 10; i++) {
+		for (var a = 0; a < 10; a++) {
 			col1 = Math.floor(Math.random() * var2) * var1;
 			col2 = Math.floor(Math.random() * var2) * var1;
 			if (col1 === col2) {continue;}
-			for (var j = 0; j < var1; j++) {
-				func(col1 + j, col2 + j);
+			for (var b = 0; b < var1; b++) {
+				func(col1 + b, col2 + b);
 			}
 		}
 		// Column / Row-Content
-		for (i = 0; i < 10; i++) {
+		for (var c = 0; c < 10; c++) {
 			var col = Math.floor(Math.random() * var2) * var1;
 			col1 = Math.floor(Math.random() * var1);
 			col2 = Math.floor(Math.random() * var1);
@@ -113,9 +113,9 @@ window.addEventListener('load', function() {
 		var i = document.getElementById('input');
 		i.textContent = '';
 		for (var j = 1; j <= size; j++) {
-			var r = i.insertRow(i.rows.length);
-			const c = document.createElement('td');
-			c.textContent = j
+			var r = i.insertRow(i.rows.length),
+				c = document.createElement('td');
+			c.textContent = j;
 			r.appendChild(c);
 		}
 		generateField(size);

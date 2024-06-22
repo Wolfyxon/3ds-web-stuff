@@ -33,7 +33,7 @@ window.addEventListener('load', function() {
 	}
 	for (var Y=0; Y<rows; Y++) {
 		for (var X=0; X<cols; X++) {
-			drawBackground(X, Y)
+			drawBackground(X, Y);
 		}
 	}
 
@@ -170,10 +170,10 @@ window.addEventListener('load', function() {
 			drawBackground(old[0], old[1]);
 			snake.splice(0, 1);
 		}
-		if (moveX === 1) lastDir = 0
-		if (moveY === 1) lastDir = 1
-		if (moveX === -1) lastDir = 2
-		if (moveY === -1) lastDir = 3
+		if (moveX === 1) lastDir = 0;
+		if (moveY === 1) lastDir = 1;
+		if (moveX === -1) lastDir = 2;
+		if (moveY === -1) lastDir = 3;
 	}, 150);
 
 	setInterval(function() {

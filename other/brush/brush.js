@@ -158,25 +158,25 @@ window.addEventListener("load", function(){
         menuEnabled = !menuEnabled;
     });
 
-    canvas.addEventListener("mousemove", drawMouse);
-    canvas.addEventListener("touchmove",drawTouch);
-    canvas.addEventListener("touchstart",drawTouch);
-    canvas.addEventListener("mousedown", drawMouse);
+    canvas.addEventListener("mousemove", drawMouse, false);
+    canvas.addEventListener("touchmove",drawTouch, false);
+    canvas.addEventListener("touchstart",drawTouch, false);
+    canvas.addEventListener("mousedown", drawMouse, false);
 
-    brushSizeSlider.addEventListener("change", updateBrushSize);
+    brushSizeSlider.addEventListener("change", updateBrushSize, false);
 
     btnEraser.addEventListener("click", function (){
         eraser = !eraser;
         setButtonState(btnEraser, eraser);
-    })
+    }, false);
 
     btnClear.addEventListener("click", function (){
         if(confirm("Are you sure you want to clear the canvas?\nYour drawing will be gone.")) {
             ctx.clearRect(0,0, canvas.width, canvas.height);
         }
-    });
+    }, false);
 
     if(is3DS()) {
         menu.style.height = "100%";
     }
-});
+}, false);

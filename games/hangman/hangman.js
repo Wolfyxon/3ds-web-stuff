@@ -83,7 +83,7 @@ window.addEventListener('load', function() {
 	function draw() {
 		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		for (var m=0; m<=mistakes; m++) { // loop only needed for old 3DS
-			const l = lines[m];
+			var l = lines[m];
 			ctx.beginPath();
 			if (m < 5 || m > 5) {
 				ctx.moveTo(l[0], l[1]);
@@ -102,12 +102,12 @@ window.addEventListener('load', function() {
 			[82, 90] // T - Z
 		];
 		for (var l=0; l<3; l++) {
-			const layer = document.createElement('div'),
+			var layer = document.createElement('div'),
 				i = layers[l];
 			for (var k=i[0]; k<=i[1]; k++) {
-				const ele = document.createElement('span'),
+				var ele = document.createElement('span'),
 					char = String.fromCharCode(k);
-				ele.setAttribute('data-key', char)
+				ele.setAttribute('data-key', char);
 				ele.textContent = char;
 				keys.push(ele);
 				layer.appendChild(ele);
@@ -125,21 +125,21 @@ window.addEventListener('load', function() {
 			closed = 0;
 
 		// Open letter if possible
-		for (var i=0; i<letters.length; i++) {
-			const l = letters[i];
-			if (l.getAttribute('data-displayletter').toLowerCase() === k.toLowerCase()) {
+		for (var a=0; a<letters.length; a++) {
+			var b = letters[a];
+			if (b.getAttribute('data-displayletter').toLowerCase() === k.toLowerCase()) {
 				found++;
-				l.innerText = l.getAttribute('data-displayletter');
-				l.removeAttribute('data-hidden');
-			} else if (l.getAttribute('data-hidden')) {
+				b.innerText = b.getAttribute('data-displayletter');
+				b.removeAttribute('data-hidden');
+			} else if (b.getAttribute('data-hidden')) {
 				closed++;
 			}
 		}
 
 		// If everything was opened
 		if (!closed) {
-			for (var i=0; i<letters.length; i++) {
-				letters[i].className += 'success';
+			for (var c=0; c<letters.length; c++) {
+				letters[c].className += 'success';
 			}
 			gameOver = true;
 		}
@@ -177,7 +177,7 @@ window.addEventListener('load', function() {
 		wordDisplay.innerHTML = '';
 		var selectedWord = words[Math.floor(Math.random() * words.length)];
 		for (var j = 0; j < selectedWord.length; j++) {
-			const ele = document.createElement('span');
+			var ele = document.createElement('span');
 			ele.innerText = '_';
 			ele.setAttribute('data-displayletter', selectedWord.substring(j, j + 1));
 			ele.setAttribute('data-letter', ele.getAttribute('data-displayletter').toLowerCase());
@@ -195,8 +195,8 @@ window.addEventListener('load', function() {
 	document.addEventListener('keydown', function(e) {
 		e.preventDefault();
 		if (e.keyCode < 65 || e.keyCode > 90) { return; }
-		const key = String.fromCharCode(e.which);
-		const ele = keyboard.querySelector('span[data-key="' + key.toUpperCase() + '"]');
+		const key = String.fromCharCode(e.which),
+			ele = keyboard.querySelector('span[data-key="' + key.toUpperCase() + '"]');
 		if (ele) tryKey(ele, ele.getAttribute('data-key'));
 	}, false);
 
