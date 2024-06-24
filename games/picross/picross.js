@@ -58,6 +58,15 @@ window.addEventListener('load', function() {
 		}
 	};
 
+	Element.prototype.getChildByClassName = function(name) {
+                var children = this.childNodes;
+                for(var i = 0; i < children.length; i++) {
+			if(children[i].class == name) {
+				return children[i];
+			}
+		}
+	}
+
 	String.prototype.startsWith = function (str) { // This is a polyfill
 		return this.substring(0, str.length) == str;
 	};
@@ -251,7 +260,16 @@ window.addEventListener('load', function() {
 						fadeDiv.style.display = "block";
 						if(fadeTimer == 30){
 							ls.parentNode.removeChild(ls);
-							requestText("boards/demo.non", function(text){play(parseNon(text));});
+							var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
+							var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
+							requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
+								if(text.startsWith("Request failed")){
+									alert(text + "; Attempting to load demo.non instead");
+									requestText("boards/demo.non", function(text){play(parseNon(text));});
+								} else {
+									play(parseNon(text));
+								}
+							});
 						}
 						if(fadeTimer == 90) {
 							clearInterval(fadeTimeout);
