@@ -265,17 +265,18 @@ window.addEventListener('load', function() {
 							requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
 								if(text.startsWith("Request failed")){
 									alert(text + "; Attempting to load demo.non instead");
-									requestText("boards/demo.non", function(text){play(parseNon(text));});
+									requestText("boards/demo.non", function(text){play(parseNon(text));fadeTimer++;});
 								} else {
 									play(parseNon(text));
+									fadeTimer++;
 								}
 							});
-						}
-						if(fadeTimer == 90) {
+						}else if(fadeTimer == 90) {
 							clearInterval(fadeTimeout);
 							fadeDiv.parentNode.removeChild(fadeDiv);
+						} else {
+						        fadeTimer++;
 						}
-						fadeTimer++;
 					}, 10);
 				}, false);
 			}
