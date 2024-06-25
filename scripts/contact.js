@@ -7,7 +7,9 @@ window.addEventListener("load",function(){
 	var submitted = false,
 		processing = false,
 		noEmailSeen = false;
-	document.getElementById("btn-submit").addEventListener("click", function(){
+	document.getElementById("btn-submit").addEventListener("click", function() {
+		alert("Not available");
+		/*
 		if(submitted) return false;
 		if(processing) return false;
 		const content = contentInput.value;
@@ -34,7 +36,7 @@ window.addEventListener("load",function(){
 		processing = true;
 
 		contentInput.setAttribute("disabled",true);
-		const url = "https://discord.com/api/webhooks/1197557152047444111/o0jJdbX2BFgE2v6-mjy51HfLTEwPW2g6qIZXsYvERAmKXQDbwdUPDDulftGFg6f2ieoU";
+		const url = "gone";
 		httpPost(url,{
 			username: email,
 			content: content
@@ -51,7 +53,7 @@ window.addEventListener("load",function(){
 			}
 		});
 
-		return false;
+		return false;*/
 	}, false);
 
 }, false);
