@@ -18,9 +18,25 @@ window.addEventListener('load', function() {
 		xhr.send();
 	}
 
-	Element.prototype.appendNew = function(tagname, content, attributes) {
-		content = content || "";
-		attributes = attributes || {};
+	Element.prototype.appendNew = function(tagname, attributes1, attributes2) {
+	        /* Examples:
+	        myElem.appendNew("div")  ->  myElem.innerHTML == "<div></div>"
+	        myElem.appendNew("div", "Hello, world!")  ->  myElem.innerHTML == "<div>Hello, world!</div>"
+	        myElem.appendNew("div", {id: "foo"})  ->  myElem.innerHTML == "<div id='foo'></div>"
+	        myElem.appendNew("div", {id: "foo"}, "Hello, world!");  ->  myElem.innerHTML == "<div id='foo'>Hello, world!</div>"
+	        */
+		attributes1 = attributes1 || "";
+		attributes2 = attributes2 || "";
+		var content,
+		        attributes;
+		if(typeof attributes1 === "object") {
+		        attributes = attributes1;
+		        content = attributes2;
+		} else {
+		        attributes = {};
+		        content = attributes1;
+		}
+		
 		var elem = document.createElement(tagname);
 		if (tagname !== 'input') elem.innerHTML = content;
 		for (var attribute in attributes) {
@@ -91,15 +107,15 @@ window.addEventListener('load', function() {
 			width = non.width,
 			title = document.getElementById("title");
 		if (non.title !== null) {
-			title.appendNew("h2", non.title, { "id": "name" });
-			title.appendNew("h3", "By " + non.by, { "id": "author" });
+			title.appendNew("h2", { "id": "name" }, non.title);
+			title.appendNew("h3", { "id": "author" }, "By " + non.by);
 		}
 
 		const board = document.getElementById("board"),
 			table = board.appendNew("table"),
-			tool = board.parentNode.appendNew("div", "", {"id": "tool"});
-		tool.appendNew("input", "", {"type": "checkbox", "id": "flag"});
-		tool.appendNew("lable", "Flag", {"for": "flag"});
+			tool = board.parentNode.appendNew("div", {"id": "tool"});
+		tool.appendNew("input", {"type": "checkbox", "id": "flag"});
+		tool.appendNew("lable", {"for": "flag"}, "Flag");
 
 		var tr = table.appendNew("thead").appendNew("tr");
 		tr.appendNew("th");
@@ -114,7 +130,7 @@ window.addEventListener('load', function() {
 			var tr = tbody.appendNew("tr");
 			tr.appendNew("th", non.rows[i].join(" "));
 			for (var j = 0; j < width; j++) {
-				buttons[i].push(tr.appendNew("td").appendNew("button", "", {
+				buttons[i].push(tr.appendNew("td").appendNew("button", {
 					"class": "boardButton",
 					"data-pos": j + "," + i,
 					"data-state": "unpressed"
@@ -239,21 +255,21 @@ window.addEventListener('load', function() {
 	}
 
 	function showLevelSelect(){
-		const ls = document.getElementById("bottom-screen").appendNew("div", "", {"id": "levelSelect"}),
-			table = ls.appendNew("table", "", {"id": "levelSelectTable"}),
+		const ls = document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"}),
+			table = ls.appendNew("table", {"id": "levelSelectTable"}),
 			groupNames = ["Tutorial", "Easy", "Medium", "Hard"],
 			groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
 		for(var i = 0; i < 4; i++) {
 			const tr = table.appendNew("tr");
 			for(var j = 0; j < 5; j++) {
-				const lt = table.appendNew("td").appendNew("div", "", {"class": "LevelTile"});
+				const lt = table.appendNew("td").appendNew("div", {"class": "LevelTile"});
 				lt.style["background-color"] = groupColors[i];
-				lt.appendNew("div", groupNames[i], {"class": "LevelGroupName"});
-				lt.appendNew("div", j + 1, {"class": "LevelNumber"});
+				lt.appendNew("div", {"class": "LevelGroupName"}, groupNames[i]);
+				lt.appendNew("div", {"class": "LevelNumber"}, j+1);
 				lt.addEventListener("mouseover", lt.startIconAnim, false);
 				lt.addEventListener("mouseout", lt.stopIconAnim, false);
 				lt.addEventListener("click", function(){
-					const fadeDiv = ls.parentNode.appendNew("div", "", {"id": "LevelFadeTransition", "style": "display: none;"});
+					const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
 					var fadeTimer = 0;
 					const fadeTimeout = setInterval(function() {
 						fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
