@@ -259,6 +259,7 @@ window.addEventListener('load', function() {
 			table = ls.appendNew("table", {"id": "levelSelectTable"}),
 			groupNames = ["Tutorial", "Easy", "Medium", "Hard"],
 			groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
+		var levelTiles = [];
 		for(var i = 0; i < 4; i++) {
 			const tr = table.appendNew("tr");
 			for(var j = 0; j < 5; j++) {
@@ -296,7 +297,6 @@ window.addEventListener('load', function() {
 							}
 						}, 10);
 					} else {
-						levelTiles = ls.childNodes;
 						for(var i = 0; i < levelTiles.length; i++) {
 							levelTiles[i].stopIconAnim();
 							levelTiles[i]["data-startonclick"] = false;
@@ -305,6 +305,7 @@ window.addEventListener('load', function() {
 						lt.startIconAnim();
 					}
 				}, false);
+				levelTiles.push(lt);
 			}
 		}
 	}
