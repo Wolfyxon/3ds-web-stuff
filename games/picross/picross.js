@@ -266,34 +266,44 @@ window.addEventListener('load', function() {
 				lt.style["background-color"] = groupColors[i];
 				lt.appendNew("div", {"class": "LevelGroupName"}, groupNames[i]);
 				lt.appendNew("div", {"class": "LevelNumber"}, j+1);
-				lt.addEventListener("mouseover", lt.startIconAnim, false);
-				lt.addEventListener("mouseout", lt.stopIconAnim, false);
-				lt.addEventListener("click", function(){
-					const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
-					var fadeTimer = 0;
-					const fadeTimeout = setInterval(function() {
-						fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
-						fadeDiv.style.display = "block";
-						if(fadeTimer == 30){
-							ls.parentNode.removeChild(ls);
-							var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
-							var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
-							requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
-								if(text.startsWith("Request failed")){
-									alert(text + "; Attempting to load demo.non instead");
-									requestText("boards/demo.non", function(text){play(parseNon(text));fadeTimer++;});
-								} else {
-									play(parseNon(text));
-									fadeTimer++;
-								}
-							});
-						}else if(fadeTimer == 90) {
-							clearInterval(fadeTimeout);
-							fadeDiv.parentNode.removeChild(fadeDiv);
-						} else {
-						        fadeTimer++;
+				lt["data-startonclick"] = false;
+				lt["data-iconAnimInterval"] = null;
+				lt.addEventListener("click", function() {
+					if(lt["data-startonclick"]) {
+						const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
+						var fadeTimer = 0;
+						const fadeTimeout = setInterval(function() {
+							fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
+							fadeDiv.style.display = "block";
+							if(fadeTimer == 30){
+								ls.parentNode.removeChild(ls);
+								var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
+								var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
+								requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
+									if(text.startsWith("Request failed")){
+										alert(text + "; Attempting to load demo.non instead");
+										requestText("boards/demo.non", function(text){play(parseNon(text));fadeTimer++;});
+									} else {
+										play(parseNon(text));
+										fadeTimer++;
+									}
+								});
+							}else if(fadeTimer == 90) {
+								clearInterval(fadeTimeout);
+								fadeDiv.parentNode.removeChild(fadeDiv);
+							} else {
+							        fadeTimer++;
+							}
+						}, 10);
+					} else {
+						levelTiles = ls.childNodes;
+						for(var i = 0; i < levelTiles.length; i++) {
+							levelTiles[i].stopIconAnim();
+							levelTiles[i]["data-startonclick"] = false;
 						}
-					}, 10);
+						lt["data-startonclick"] = true;
+						lt.startIconAnim();
+					}
 				}, false);
 			}
 		}
