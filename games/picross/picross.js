@@ -253,17 +253,52 @@ window.addEventListener('load', function() {
 
 		document.getElementById("winMessage").innerHTML = "You win!";
 	}
-
+	
+	function doFadeAndStart(ls, lt) {
+		const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
+		var fadeTimer = 0;
+		const fadeTimeout = setInterval(function() {
+			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
+			fadeDiv.style.display = "block";
+			if(fadeTimer == 30){
+				ls.parentNode.removeChild(ls);
+				var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
+				var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
+				requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
+					if(text.startsWith("Request failed")){
+						alert(text + "; Attempting to load demo.non instead");
+						requestText("boards/demo.non", function(text){play(parseNon(text));fadeTimer++;});
+					} else {
+						play(parseNon(text));
+						fadeTimer++;
+					}
+				});
+			}else if(fadeTimer == 90) {
+				clearInterval(fadeTimeout);
+				fadeDiv.parentNode.removeChild(fadeDiv);
+			} else {
+				fadeTimer++;
+			}
+		}, 10);
+	}
+	
 	function showLevelSelect(){
+		buttonSelectX = 0;
+		buttonSelectY = 0;
 		const ls = document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"}),
 			table = ls.appendNew("table", {"id": "levelSelectTable"}),
 			groupNames = ["Tutorial", "Easy", "Medium", "Hard"],
 			groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
+		onBtnJustPressed("A", function() {levelSelectButton("A", ls)});
+		onBtnJustPressed("Up", function() {levelSelectButton("Up", ls)});
+		onBtnJustPressed("Down", function() {levelSelectButton("Down", ls)});
+		onBtnJustPressed("Left", function() {levelSelectButton("Left", ls)});
+		onBtnJustPressed("Right", function() {levelSelectButton("Right", ls)});
 		var levelTiles = [];
 		for(var i = 0; i < 4; i++) {
 			const tr = table.appendNew("tr");
 			for(var j = 0; j < 5; j++) {
-				const lt = table.appendNew("td").appendNew("div", {"class": "LevelTile"});
+				const lt = table.appendNew("td").appendNew("div", {"class": "LevelTile", "id": "lt_" + j + "," + i});
 				lt.style["background-color"] = groupColors[i];
 				lt.appendNew("div", {"class": "LevelGroupName"}, groupNames[i]);
 				lt.appendNew("div", {"class": "LevelNumber"}, j+1);
@@ -271,32 +306,10 @@ window.addEventListener('load', function() {
 				lt["data-iconAnimInterval"] = null;
 				lt.addEventListener("click", function() {
 					if(lt["data-startonclick"]) {
-						const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
-						var fadeTimer = 0;
-						const fadeTimeout = setInterval(function() {
-							fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
-							fadeDiv.style.display = "block";
-							if(fadeTimer == 30){
-								ls.parentNode.removeChild(ls);
-								var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
-								var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
-								requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
-									if(text.startsWith("Request failed")){
-										alert(text + "; Attempting to load demo.non instead");
-										requestText("boards/demo.non", function(text){play(parseNon(text));fadeTimer++;});
-									} else {
-										play(parseNon(text));
-										fadeTimer++;
-									}
-								});
-							}else if(fadeTimer == 90) {
-								clearInterval(fadeTimeout);
-								fadeDiv.parentNode.removeChild(fadeDiv);
-							} else {
-							        fadeTimer++;
-							}
-						}, 10);
+						doFadeAndStart(ls, lt);
 					} else {
+						buttonSelectX = parseInt(lt.id[3]);
+						buttonSelectY = parseInt(lt.id[5]);
 						for(var i = 0; i < levelTiles.length; i++) {
 							levelTiles[i].stopIconAnim();
 							levelTiles[i]["data-startonclick"] = false;
@@ -308,5 +321,46 @@ window.addEventListener('load', function() {
 				levelTiles.push(lt);
 			}
 		}
+	}
+
+	function levelSelectButton(button, ls) {
+		if(button == "A") {
+			const selectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
+			selectedLevel.startIconAnim();
+			doFadeAndStart(ls, selectedLevel);
+			return;
+		}
+		
+		const oldSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
+		oldSelectedLevel.stopIconAnim();
+		
+		if(button == "Up") {
+			buttonSelectY -= 1;
+		}
+		if(button == "Down") {
+			buttonSelectY += 1;
+		}
+		if(button == "Left") {
+			buttonSelectX -= 1;
+		}
+		if(button == "Right") {
+			buttonSelectX += 1;
+		}
+
+		if(buttonSelectX > 4) {
+			buttonSelectX = 4;
+		}
+		if(buttonSelectX < 0) {
+			buttonSelectX = 0;
+		}
+		if(buttonSelectY > 3) {
+			buttonSelectY = 3;
+		}
+		if(buttonSelectY < 0) {
+			buttonSelectY = 0;
+		}
+		
+		const newSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
+		newSelectedLevel.startIconAnim();
 	}
 }, false);
