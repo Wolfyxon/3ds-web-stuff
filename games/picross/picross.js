@@ -161,7 +161,7 @@ window.addEventListener('load', function() {
 		for (var i = 0; i < non.length; i++) {
 			for (var j = 0; j < keys.length; j++) {
 				if (non[i].startsWith(keys[j])) {
-					obj[keys[j]] = non[i].substr(keys[j].length + 1).match(/[^"]+/g)[0];
+					obj[keys[j]] = non[i].substring(keys[j].length + 1).match(/[^"]+/g)[0];
 					break;
 				}
 				if (non[i].startsWith("rows")) {
@@ -261,7 +261,11 @@ window.addEventListener('load', function() {
 			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
 			fadeDiv.style.display = "block";
 			if(fadeTimer == 30){
-				ls.parentNode.removeChild(ls);
+				try {
+					ls.parentNode.removeChild(ls);
+				} catch {
+					return;
+				}
 				var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
 				var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
 				requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
