@@ -263,7 +263,7 @@ window.addEventListener('load', function() {
 			if(fadeTimer == 30){
 				try {
 					ls.parentNode.removeChild(ls);
-				} catch {
+				} catch(err) {
 					return;
 				}
 				var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
