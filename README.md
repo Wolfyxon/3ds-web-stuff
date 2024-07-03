@@ -60,7 +60,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 ## Credits
 Inspired by: http://three-ds.atspace.com/ (author unknown)
 
-Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs for helping with adapting to this old browser.
+Big thanks to https://www.3dbrew.org/ and [3DS Browser specs by Nintendo](https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs) for helping with adapting to this old browser.
 
 **This project is not affiliated with Nintendo, and it's only community driven.**
 
@@ -84,4 +84,4 @@ Besides, from planned games:
 Docs: http://goqr.me/api/doc/  
 Used URL: http://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TEXT_HERE
 #### Assets
-- ![](other/calculator/backspace.png) [Backspace icon from Google Fonts](https://fonts.google.com/icons?selected=Material+Symbols+Outlined:backspace:FILL@0;wght@400;GRAD@0;opsz@24&icon.query=backspace)
+Some button icons are from https://fonts.google.com/icons
