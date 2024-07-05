@@ -102,7 +102,7 @@ window.addEventListener('load', function() {
 		}
 	}
 
-	function play(non){
+	function play(non) {
 		const height = non.height,
 			width = non.width,
 			title = document.getElementById("title");
@@ -113,9 +113,16 @@ window.addEventListener('load', function() {
 
 		const board = document.getElementById("board"),
 			table = board.appendNew("table"),
-			tool = board.parentNode.appendNew("div", {"id": "tool"});
+			tool = document.getElementById("tool") || board.parentNode.appendNew("div", {"id": "tool"}),
+			home = document.getElementById("home") || board.parentNode.appendNew("div", {"id": "home"}),
+			fadeDiv = document.getElementById("LevelFadeTransition");
 		tool.appendNew("input", {"type": "checkbox", "id": "flag"});
 		tool.appendNew("lable", {"for": "flag"}, "Flag");
+		const hb = home.appendNew("button", {"id": "homeButton"}, "Home");
+		hb.addEventListener("click", doFadeToLS);
+
+		fadeDiv.parentNode.lastChild.after(fadeDiv);
+		
 
 		var tr = table.appendNew("thead").appendNew("tr");
 		tr.appendNew("th");
@@ -256,6 +263,7 @@ window.addEventListener('load', function() {
 	
 	function doFadeAndStart(ls, lt) {
 		const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
+		fadeDiv.parentNode.lastChild.after(fadeDiv);
 		var fadeTimer = 0;
 		const fadeTimeout = setInterval(function() {
 			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
@@ -271,7 +279,7 @@ window.addEventListener('load', function() {
 				requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
 					if(text.startsWith("Request failed")){
 						alert(text + "; Attempting to load demo.non instead");
-						requestText("boards/demo.non", function(text){play(parseNon(text));fadeTimer++;});
+						requestText("boards/demo.non", function(text){play(parseNon(text)); fadeTimer++;});
 					} else {
 						play(parseNon(text));
 						fadeTimer++;
@@ -285,11 +293,43 @@ window.addEventListener('load', function() {
 			}
 		}, 10);
 	}
+
+	function doFadeToLS() {
+		const fadeDiv = board.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
+		fadeDiv.parentNode.lastChild.after(fadeDiv);
+		var fadeTimer = 0;
+		const fadeTimeout = setInterval(function() {
+			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
+			fadeDiv.style.display = "block";
+			if(fadeTimer == 30){
+				requestText("", function(e) {
+					showLevelSelect();
+					fadeDiv.parentNode.lastChild.after(fadeDiv);
+				});
+			}else if(fadeTimer == 90) {
+				clearInterval(fadeTimeout);
+				fadeDiv.parentNode.removeChild(fadeDiv);
+			}
+			
+			fadeTimer++;
+		}, 10);
+	}
 	
-	function showLevelSelect(){
+	function showLevelSelect() {
+		document.getElementById("title").innerHTML = "";
+		document.getElementById("board").innerHTML = "";
+		tool = document.getElementById("tool");
+		home = document.getElementById("home");
+		if(tool) {
+			tool.parentNode.removeChild(tool);
+		}
+		if(home) {
+			home.parentNode.removeChild(home);
+		}
+		
 		buttonSelectX = 0;
 		buttonSelectY = 0;
-		const ls = document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"}),
+		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"}),
 			table = ls.appendNew("table", {"id": "levelSelectTable"}),
 			groupNames = ["Tutorial", "Easy", "Medium", "Hard"],
 			groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
