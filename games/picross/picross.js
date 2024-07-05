@@ -83,6 +83,12 @@ window.addEventListener('load', function() {
 		}
 	}
 
+	Element.prototype.makeLastChild = function () {
+		tempDiv = this.parentNode.appendNew("div");
+		this.parentNode.insertBefore(this, tempDiv);
+		this.parentNode.removeChild(tempDiv);
+	}
+
 	String.prototype.startsWith = function (str) { // This is a polyfill
 		return this.substring(0, str.length) == str;
 	};
@@ -121,7 +127,7 @@ window.addEventListener('load', function() {
 		const hb = home.appendNew("button", {"id": "homeButton"}, "Home");
 		hb.addEventListener("click", doFadeToLS);
 
-		fadeDiv.parentNode.lastChild.after(fadeDiv);
+		fadeDiv.makeLastChild();
 		
 
 		var tr = table.appendNew("thead").appendNew("tr");
@@ -263,7 +269,7 @@ window.addEventListener('load', function() {
 	
 	function doFadeAndStart(ls, lt) {
 		const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
-		fadeDiv.parentNode.lastChild.after(fadeDiv);
+		fadeDiv.makeLastChild();
 		var fadeTimer = 0;
 		const fadeTimeout = setInterval(function() {
 			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
@@ -296,7 +302,7 @@ window.addEventListener('load', function() {
 
 	function doFadeToLS() {
 		const fadeDiv = board.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
-		fadeDiv.parentNode.lastChild.after(fadeDiv);
+		fadeDiv.makeLastChild();
 		var fadeTimer = 0;
 		const fadeTimeout = setInterval(function() {
 			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
@@ -304,7 +310,7 @@ window.addEventListener('load', function() {
 			if(fadeTimer == 30){
 				requestText("", function(e) {
 					showLevelSelect();
-					fadeDiv.parentNode.lastChild.after(fadeDiv);
+					fadeDiv.makeLastChild();
 				});
 			}else if(fadeTimer == 90) {
 				clearInterval(fadeTimeout);
