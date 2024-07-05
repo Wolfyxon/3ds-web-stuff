@@ -2,7 +2,6 @@ window.addEventListener("load", function(){
     const canvas = document.getElementById("canv");
     const ctx = canvas.getContext("2d");
 
-    const menuContainer = document.getElementById("menu-container");
     const menu = document.getElementById("menu");
 
     const brushSizeSlider = document.getElementById("brush-size");
@@ -10,8 +9,8 @@ window.addEventListener("load", function(){
     const btnEraser = document.getElementById("btn-erase");
 
     const btnClear = document.getElementById("btn-clear");
-    const btnExport = document.getElementById("btn-export");
-    const btnSave = document.getElementById("btn-save");
+    //const btnExport = document.getElementById("btn-export");
+    //const btnSave = document.getElementById("btn-save");
 
     // draw, line, picker
     var currentTool = "draw";
