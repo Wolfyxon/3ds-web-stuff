@@ -140,22 +140,14 @@ window.addEventListener("load", function(){
 
     var menuEnabled = false;
 
-    var menuPos = 1;
-    var prevFrameTime = Date.now();
-    setInterval(function() {
-        const delta = (Date.now() - prevFrameTime) / 16;
-        prevFrameTime = Date.now();
-
-        const menuSpeed = 0.2;
-        if(menuEnabled) menuPos = lerp(menuPos, 70, menuSpeed*delta);
-        else menuPos = lerp(menuPos, 1, menuSpeed*delta);
-
-        menu.style.marginTop = menuPos+"%";
-    });
-
-
     onBtnJustPressed("a",function (){
         menuEnabled = !menuEnabled;
+
+        if(menuEnabled) {
+            menu.style.marginTop = "70%";
+        } else {
+            menu.style.marginTop = "1%";
+        }
     });
 
     canvas.addEventListener("mousemove", drawMouse, false);

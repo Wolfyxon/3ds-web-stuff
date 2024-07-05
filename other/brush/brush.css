@@ -74,6 +74,7 @@
     margin-top: 1%;
     border-radius: 8px;
     overflow: hidden;
+    -webkit-transition: 0.2s;
 }
 
 #color-selection {
