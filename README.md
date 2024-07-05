@@ -33,7 +33,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - Tanks and Cannons - Tower defense game about tanks and cannons.
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
-- [x] [Coder](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - Turn text into encoded images
+- [x] [Coder](https://wolfyxon.github.io/3ds-web-stuff/other/coder) - Turn text into encoded images
 - [x] [Calculator](https://wolfyxon.github.io/3ds-web-stuff/other/calculator) - just a calculator.
 - [x] [Random number generator](https://wolfyxon.github.io/3ds-web-stuff/other/rand) - generate random numbers in a range
 - [x] [Hack](https://wolfyxon.github.io/3ds-web-stuff/other/hack) - very real hacking interface
