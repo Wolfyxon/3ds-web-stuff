@@ -52,8 +52,10 @@ window.addEventListener('load', function() {
 	Element.prototype.startIconAnim = function() {
 		const elem = this;
 		var animIndex = 0;
+		clearInterval(elem["data-iconAnimInterval"]);
 		elem["data-iconAnimInterval"] = setInterval(function() {
-			const rot = Math.sin(animIndex/20) * 8;
+			const rot = 
+				Math.sin(animIndex/20) * 8;
 			const scale = 1 + (Math.abs(((animIndex/80) % 2) - 1) - 0.5) * 0.1; // Triangle Wave
 			elem.style["-webkit-transform"] = "rotate(" + rot + "deg) scale(" + scale + ")";
 			animIndex++;
@@ -92,8 +94,6 @@ window.addEventListener('load', function() {
 	String.prototype.startsWith = function (str) { // This is a polyfill
 		return this.substring(0, str.length) == str;
 	};
-
-	showLevelSelect();
 
 	function boardClick(event, buttons, non) {
 		if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
@@ -267,7 +267,8 @@ window.addEventListener('load', function() {
 		document.getElementById("winMessage").innerHTML = "You win!";
 	}
 	
-	function doFadeAndStart(ls, lt) {
+	function doFadeAndStart(lt) {
+		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"});
 		const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
 		fadeDiv.makeLastChild();
 		var fadeTimer = 0;
@@ -339,11 +340,6 @@ window.addEventListener('load', function() {
 			table = ls.appendNew("table", {"id": "levelSelectTable"}),
 			groupNames = ["Tutorial", "Easy", "Medium", "Hard"],
 			groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
-		onBtnJustPressed("A", function() {levelSelectButton("A", ls)});
-		onBtnJustPressed("Up", function() {levelSelectButton("Up", ls)});
-		onBtnJustPressed("Down", function() {levelSelectButton("Down", ls)});
-		onBtnJustPressed("Left", function() {levelSelectButton("Left", ls)});
-		onBtnJustPressed("Right", function() {levelSelectButton("Right", ls)});
 		var levelTiles = [];
 		for(var i = 0; i < 4; i++) {
 			const tr = table.appendNew("tr");
@@ -356,7 +352,7 @@ window.addEventListener('load', function() {
 				lt["data-iconAnimInterval"] = null;
 				lt.addEventListener("click", function() {
 					if(lt["data-startonclick"]) {
-						doFadeAndStart(ls, lt);
+						doFadeAndStart(lt);
 					} else {
 						buttonSelectX = parseInt(lt.id[3]);
 						buttonSelectY = parseInt(lt.id[5]);
@@ -373,15 +369,19 @@ window.addEventListener('load', function() {
 		}
 	}
 
-	function levelSelectButton(button, ls) {
-		if(button == "A") {
-			const selectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
-			selectedLevel.startIconAnim();
-			doFadeAndStart(ls, selectedLevel);
+	function levelSelectButton(button) {
+		const oldSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
+		if(!oldSelectedLevel) {
 			return;
 		}
 		
-		const oldSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
+		if(button == "A") {
+			const selectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
+			selectedLevel.startIconAnim();
+			doFadeAndStart(selectedLevel);
+			return;
+		}
+		
 		oldSelectedLevel.stopIconAnim();
 		
 		if(button == "Up") {
@@ -413,4 +413,11 @@ window.addEventListener('load', function() {
 		const newSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
 		newSelectedLevel.startIconAnim();
 	}
+
+	onBtnJustPressed("A", function() {levelSelectButton("A")});
+	onBtnJustPressed("Up", function() {levelSelectButton("Up")});
+	onBtnJustPressed("Down", function() {levelSelectButton("Down")});
+	onBtnJustPressed("Left", function() {levelSelectButton("Left")});
+	onBtnJustPressed("Right", function() {levelSelectButton("Right")});
+	showLevelSelect();
 }, false);
