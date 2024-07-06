@@ -355,7 +355,6 @@ window.addEventListener('load', function() {
 					if(! lt.id.startsWith("lt_")) {
 						lt = lt.parentNode;
 					}
-					console.log(lt);
 					if(lt["data-startonclick"]) {
 						doFadeAndStart(lt);
 					} else {
