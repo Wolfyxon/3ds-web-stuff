@@ -350,7 +350,12 @@ window.addEventListener('load', function() {
 				lt.appendNew("div", {"class": "LevelNumber"}, j+1);
 				lt["data-startonclick"] = false;
 				lt["data-iconAnimInterval"] = null;
-				lt.addEventListener("click", function() {
+				lt.addEventListener("click", function(event) {
+					var lt = event.target;
+					if(! lt.id.startsWith("lt_")) {
+						lt = lt.parentNode;
+					}
+					console.log(lt);
 					if(lt["data-startonclick"]) {
 						doFadeAndStart(lt);
 					} else {
