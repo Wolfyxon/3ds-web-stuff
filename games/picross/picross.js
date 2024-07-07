@@ -117,6 +117,10 @@ window.addEventListener('load', function() {
 			title.appendNew("h3", { "id": "author" }, "By " + non.by);
 		}
 
+		if (non.tutorial !== null) {
+			title.appendNew("div", { "id": "tutorial" }, non.tutorial)
+		}
+
 		const board = document.getElementById("board"),
 			table = board.appendNew("table"),
 			tool = document.getElementById("tool") || board.parentNode.appendNew("div", {"id": "tool"}),
@@ -168,9 +172,10 @@ window.addEventListener('load', function() {
 				height: null,
 				rows: [],
 				columns: [],
-				goal: null
+				goal: null,
+				tutorial: null
 			};
-		const keys = ["catalogue", "title", "by", "copyright", "license", "width", "height", "goal"];
+		const keys = ["catalogue", "title", "by", "copyright", "license", "width", "height", "goal", "tutorial"];
 		for (var i = 0; i < non.length; i++) {
 			for (var j = 0; j < keys.length; j++) {
 				if (non[i].startsWith(keys[j])) {
@@ -325,6 +330,7 @@ window.addEventListener('load', function() {
 	function showLevelSelect() {
 		document.getElementById("title").innerHTML = "";
 		document.getElementById("board").innerHTML = "";
+		document.getElementById("winMessage").innerHTML = "";
 		tool = document.getElementById("tool");
 		home = document.getElementById("home");
 		if(tool) {
