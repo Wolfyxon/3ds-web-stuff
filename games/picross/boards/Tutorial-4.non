@@ -3,6 +3,7 @@ title "Tutorial 4"
 by "Basic-Experimental"
 copyright "&copy; Copyright 2024"
 license GPLv4 or later, CC BY-NC-ND
+tutorial "When a row or column has no hints, that means there are no filled in squares in that area. Now would probably be a good time to mention the flag. Use it to mark spots you know are not filled in. The program simply ignores them; They are just there to help you solve the puzzle."
 width 5
 height 5
 
