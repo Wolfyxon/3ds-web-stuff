@@ -328,7 +328,7 @@ window.addEventListener('load', function() {
 	}
 	
 	function showLevelSelect() {
-		document.getElementById("title").innerHTML = "";
+		document.getElementById("title").innerHTML = currentNews;
 		document.getElementById("board").innerHTML = "";
 		document.getElementById("winMessage").innerHTML = "";
 		tool = document.getElementById("tool");
@@ -423,7 +423,7 @@ window.addEventListener('load', function() {
 		const newSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
 		newSelectedLevel.startIconAnim();
 	}
-
+        currentNews = document.getElementById("title").innerHTML;
 	onBtnJustPressed("A", function() {levelSelectButton("A")});
 	onBtnJustPressed("Up", function() {levelSelectButton("Up")});
 	onBtnJustPressed("Down", function() {levelSelectButton("Down")});
