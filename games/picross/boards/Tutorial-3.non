@@ -3,6 +3,7 @@ title "Tutorial 3"
 by "Basic-Experimental"
 copyright "&copy; Copyright 2024"
 license GPLv4 or later, CC BY-NC-ND
+tutorial "The size couldn't stay at 3x3 forever..."
 width 5
 height 5
 
