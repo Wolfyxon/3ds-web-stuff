@@ -74,6 +74,7 @@ Big thanks to https://www.3dbrew.org/ and [3DS Browser specs by Nintendo](https:
 Besides, from planned games:
 - [ ] Fix compatibility and performance issues on Old 3DS/2DS
 - [ ] Create a faster rendering library
+- Put all library functions in namespaces instead of importing them right onto the script
 - Migrate all games using canvasGame.js to the new rendering library
 - Remake the home page and make it behave more like the home menu
 - Create a map creator and loader for games
