@@ -40,5 +40,15 @@ window.addEventListener("load", function() {
     /*loadMessages();
     /setInterval(loadMessages, 2000);*/
 
+    document.getElementById("btn-about").addEventListener("click", function() {
+        alert(
+            "3DS Web Stuff chat room \n\n" +
+            "All messages you send are public and are temporarily stored in a database.\n" +
+            "Your IP address is stored in the database as a sha1 encrypted hash which can be used to identify malicious users, but cannot be decrypted and traced back to the original address.\n" +
+            "This app talks to the API available at https://github.com/Wolfyxon/3ds-web-stuff-backend/ to send and retrieve messages. \n\n" +
+            "This app is experimental. Continued abuse may result in a shutdown."
+        );
+    }, false)
+
     
 }, false);
