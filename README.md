@@ -68,6 +68,7 @@ Big thanks to https://www.3dbrew.org/ and [3DS Browser specs by Nintendo](https:
 ### People
 - @Wolfyxon : programming, site design, sprites
 - @magiczocker10 : huge code improvements. Creator of [Minesweeper](https://wolfyxon.github.io/3ds-web-stuff/games/minesweeper), [Connect 4](https://wolfyxon.github.io/3ds-web-stuff/games/connect4), [Hangman](https://wolfyxon.github.io/3ds-web-stuff/games/hagman) and some other games. Screenshots.
+- @basic-experimental: Creator of [Picross](https://wolfyxon.github.io/3ds-web-stuff/games/picross) and support for various new image codes in [Coder](https://wolfyxon.github.io/3ds-web-stuff/other/coder)
 - @Trickiy : amazing game ideas and detailed bug reports
 - @iHeolity : testing
 
