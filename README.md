@@ -33,16 +33,15 @@ https://wolfyxon.github.io/3ds-web-stuff
 - Tanks and Cannons - Tower defense game about tanks and cannons.
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
-- [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - turn text into a QR code.
+- [x] [Coder](https://wolfyxon.github.io/3ds-web-stuff/other/coder) - Turn text into encoded images
 - [x] [Calculator](https://wolfyxon.github.io/3ds-web-stuff/other/calculator) - just a calculator.
 - [x] [Random number generator](https://wolfyxon.github.io/3ds-web-stuff/other/rand) - generate random numbers in a range
 - [x] [Hack](https://wolfyxon.github.io/3ds-web-stuff/other/hack) - very real hacking interface
 - [ ] [Brush](https://wolfyxon.github.io/3ds-web-stuff/other/brush) - basically a drawing app
+- [ ] Chat Room - global online web chat
 - [ ] Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
 - Timer
-- Barcode generator - turn text into a barcode.
 - Unit converter - convert between units.
-- Chat Room
 
 ## Screenshots
 <p>
@@ -60,7 +59,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 ## Credits
 Inspired by: http://three-ds.atspace.com/ (author unknown)
 
-Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs for helping with adapting to this old browser.
+Big thanks to https://www.3dbrew.org/ and [3DS Browser specs by Nintendo](https://en-americas-support.nintendo.com/app/answers/detail/a_id/13802/~/nintendo-3ds-internet-browser-specs) for helping with adapting to this old browser.
 
 **This project is not affiliated with Nintendo, and it's only community driven.**
 
@@ -74,6 +73,7 @@ Big thanks to https://www.3dbrew.org/ and https://en-americas-support.nintendo.c
 Besides, from planned games:
 - [ ] Fix compatibility and performance issues on Old 3DS/2DS
 - [ ] Create a faster rendering library
+- [ ] Put all library functions in namespaces instead of importing them right onto the script
 - Migrate all games using canvasGame.js to the new rendering library
 - Remake the home page and make it behave more like the home menu
 - Create a map creator and loader for games
@@ -84,4 +84,4 @@ Besides, from planned games:
 Docs: http://goqr.me/api/doc/  
 Used URL: http://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TEXT_HERE
 #### Assets
-- ![](other/calculator/backspace.png) [Backspace icon from Google Fonts](https://fonts.google.com/icons?selected=Material+Symbols+Outlined:backspace:FILL@0;wght@400;GRAD@0;opsz@24&icon.query=backspace)
+Some button icons are from https://fonts.google.com/icons

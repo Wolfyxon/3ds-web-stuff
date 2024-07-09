@@ -1,11 +1,15 @@
 libName("net");
 
+const net = {
+    _localhostCorsWarned: false
+}
+
 /**
  * Gets the domain name from the given URL
  * @param  {String} url URL of the server/website
  * @return {String}
  */
-function getDomain(url){
+net.getDomain = function(url) {
     const protocolSplit = url.split("//");
     return protocolSplit[protocolSplit.length-1].split("/")[0];
 }
@@ -15,7 +19,17 @@ function getDomain(url){
  * @param  {String} domain Checks if HTTP requests can be sent to the specified domain
  * @return {boolean}
  */
-function isDomainAllowed(domain){
+net.isDomainAllowed = function(domain) {
+    if(domain.indexOf("localhost") !== -1) {
+        
+        if(!net._localhostCorsWarned) {
+            net._localhostCorsWarned = true;
+            console.warn("localhost is always blocked by CORS on most browsers. Consider installing an extension to bypass it");
+        }
+        
+        return true;
+    }
+
     const content = document.head.getAttribute("content");
     return document.head.getAttribute("http-equiv") === "Access-Control-Allow-Origin" && (content === "*" || content.indexOf(domain) !== -1);
 }
@@ -26,14 +40,12 @@ function isDomainAllowed(domain){
  * @param {Function} callback Callback function containing the response code and body
  * @param {Boolean} [allowInsecure=false] Allows the raw usage of HTTP. Please only use HTTP instead of HTTPS if the request can't be made with HTTPS.
  */
-function httpGet(url, callback, allowInsecure){
+net.httpGet = function(url, callback, allowInsecure) {
     if(!url){
-        console.error("No URL specified");
-        return;
+        throw "No URL specified";
     }
     if(!callback){
-        console.error("No callback function specified");
-        return;
+        throw "No callback function specified";
     }
 
     if(!is3DS() && !allowInsecure) url = url.replace("http://","https://");
@@ -55,20 +67,18 @@ function httpGet(url, callback, allowInsecure){
  * @param {Function} callback Callback function containing the response code and body
  * @param {String} [contentType=application/json] Content type
  */
-function httpPost(url, data, callback, contentType) {
+net.httpPost = function(url, data, callback, contentType) {
     if(!url) {
-        console.error("No URL specified");
-        return;
+        throw "No URL specified";
     }
     if(!callback){
-        console.error("No callback function specified");
-        return;
+        throw "No callback function specified";
     }
     if(!contentType) contentType = "application/json";
 
     const xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function(){
+    xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) callback(xhr.status, xhr.responseText);
     };
 

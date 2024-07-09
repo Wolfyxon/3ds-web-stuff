@@ -58,7 +58,7 @@ window.addEventListener("load", function(){
         const hourlyFlags = ["temperature_2m","rain","snowfall","snow_depth","visibility","wind_speed_10m"];
         const url = "http://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+long+"&current="+currentFlags.join(",")+"&hourly="+hourlyFlags.join(",");
 
-        httpGet(url,function(code, body){
+        net.httpGet(url,function(code, body){
             if(code !== 200){
                 alert("Failed to load weather. Code: "+code);
                 return;
@@ -88,7 +88,7 @@ window.addEventListener("load", function(){
 
     btnSearch.addEventListener("click",function(){
         if(searchInput.value.replace(" ","").length === 0) return;
-        searchLocations(searchInput.value, function (results){
+        geo.searchLocations(searchInput.value, function (results){
             console.log(results);
             clearResults();
             showResults();
@@ -111,7 +111,7 @@ window.addEventListener("load", function(){
     clearResults();
     hideResults();
 
-    approximateUserLocation(function(data){
+    geo.approximateUserLocation(function(data){
         if(userPickedLocation) return;
 
         if(data["status"] !== "success"){

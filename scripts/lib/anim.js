@@ -33,7 +33,7 @@ Animation = function(element){
 };
 Animation.prototype = {
 	addKeyframe: function(property, value, timeOffset) {
-		this.element.innerHTML += '<img src="' + value + '" alt=" ">';
+		this.element.innerHTML += '<img src="' + value + '" alt="Animation">';
 		this.frameCount++;
 	},
 

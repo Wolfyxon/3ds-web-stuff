@@ -2,7 +2,6 @@ window.addEventListener("load", function(){
     const canvas = document.getElementById("canv");
     const ctx = canvas.getContext("2d");
 
-    const menuContainer = document.getElementById("menu-container");
     const menu = document.getElementById("menu");
 
     const brushSizeSlider = document.getElementById("brush-size");
@@ -10,8 +9,8 @@ window.addEventListener("load", function(){
     const btnEraser = document.getElementById("btn-erase");
 
     const btnClear = document.getElementById("btn-clear");
-    const btnExport = document.getElementById("btn-export");
-    const btnSave = document.getElementById("btn-save");
+    //const btnExport = document.getElementById("btn-export");
+    //const btnSave = document.getElementById("btn-save");
 
     // draw, line, picker
     var currentTool = "draw";
@@ -140,22 +139,14 @@ window.addEventListener("load", function(){
 
     var menuEnabled = false;
 
-    var menuPos = 1;
-    var prevFrameTime = Date.now();
-    setInterval(function() {
-        const delta = (Date.now() - prevFrameTime) / 16;
-        prevFrameTime = Date.now();
-
-        const menuSpeed = 0.2;
-        if(menuEnabled) menuPos = lerp(menuPos, 70, menuSpeed*delta);
-        else menuPos = lerp(menuPos, 1, menuSpeed*delta);
-
-        menu.style.marginTop = menuPos+"%";
-    });
-
-
     onBtnJustPressed("a",function (){
         menuEnabled = !menuEnabled;
+
+        if(menuEnabled) {
+            menu.style.marginTop = "70%";
+        } else {
+            menu.style.marginTop = "1%";
+        }
     });
 
     canvas.addEventListener("mousemove", drawMouse, false);
