@@ -27,11 +27,17 @@ window.addEventListener("load", function() {
             }
 
             const data = JSON.parse(res);
-            console.log(data);
+            chatLog.innerHTML = "";
+
+            for(var i = 0; i < data.length; i++) {
+                var msg = data[i];
+                addMessage(msg.username, msg.message);
+            }
         });
     }
 
     loadMessages();
+    setInterval(loadMessages, 2000);
 
     
 }, false);
