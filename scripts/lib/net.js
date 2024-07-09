@@ -18,6 +18,11 @@ net.getDomain = function(url) {
  * @return {boolean}
  */
 net.isDomainAllowed = function(domain) {
+    if(domain.indexOf("localhost") !== -1) {
+        console.warn("localhost is always blocked by CORS on most browsers. Consider installing an extension to bypass it");
+        return true;
+    }
+
     const content = document.head.getAttribute("content");
     return document.head.getAttribute("http-equiv") === "Access-Control-Allow-Origin" && (content === "*" || content.indexOf(domain) !== -1);
 }
