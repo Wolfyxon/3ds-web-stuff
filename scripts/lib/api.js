@@ -4,7 +4,7 @@ libName("api");
 depend("net");
 
 const api = {
-    url: "localhost:3000/api" // TODO: Change when the API is deployed to the web
+    url: "http://localhost:3000/api" // TODO: Change when the API is deployed to the web
 };
 
 /**
