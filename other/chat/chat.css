@@ -1,3 +1,5 @@
+/* --== Top screen ==-- */
+
 #chat-log {
     overflow-y: scroll;
     height: 100%;
@@ -19,3 +21,34 @@
 .message-text {
     margin-left: 3px;
 }
+
+/* --== Bottom screen ==-- */
+
+/* - Start menu - */
+
+#rule-list {
+    text-align: left;
+    background-color: rgb(255, 249, 162);
+    border-left: 3px solid orange;
+    border-right: 3px solid orange;
+    border-radius: 10px;
+    width: 70%;
+    margin: 20px auto;
+    overflow: scroll;
+}
+
+#start-menu {
+    text-align: center;
+}
+
+#btn-join {
+    width: 40%;
+    background-color: rgb(92, 230, 0);
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#btn-join:active {
+    background-color: rgb(76, 190, 0);
+}
+
