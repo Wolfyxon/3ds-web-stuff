@@ -33,7 +33,7 @@ https://wolfyxon.github.io/3ds-web-stuff
 - Tanks and Cannons - Tower defense game about tanks and cannons.
 - Sans - Holy crap sand undertable. (Sans boss fight recreation from UNDERTALE by Toby Fox)
 ### Other
-- [x] [QR code generator](https://wolfyxon.github.io/3ds-web-stuff/other/qr) - turn text into a QR code.
+- [x] [Coder](https://wolfyxon.github.io/3ds-web-stuff/other/coder) - Turn text into encoded images
 - [x] [Calculator](https://wolfyxon.github.io/3ds-web-stuff/other/calculator) - just a calculator.
 - [x] [Random number generator](https://wolfyxon.github.io/3ds-web-stuff/other/rand) - generate random numbers in a range
 - [x] [Hack](https://wolfyxon.github.io/3ds-web-stuff/other/hack) - very real hacking interface
@@ -41,7 +41,6 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [ ] Chat Room - global online web chat
 - [ ] Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
 - Timer
-- Barcode generator - turn text into a barcode.
 - Unit converter - convert between units.
 
 ## Screenshots
