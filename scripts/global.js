@@ -34,6 +34,10 @@ registerFallback(Object.prototype, "keys", function () {
     return oKeys(this);
 });
 
+registerFallback(String.prototype, "startsWith", function (str) {
+	return this.substring(0, str.length) == str;
+});
+
 // console doesn't seem to be available on DSi
 registerFallback(window, "console", {});
 registerFallback(console, "log", doNothing);
