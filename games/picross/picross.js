@@ -91,10 +91,6 @@ window.addEventListener('load', function() {
 		this.parentNode.removeChild(tempDiv);
 	}
 
-	String.prototype.startsWith = function (str) { // This is a polyfill
-		return this.substring(0, str.length) == str;
-	};
-
 	function boardClick(event, buttons, non) {
 		if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
 			event.target.setAttribute("data-state", "flagged");
