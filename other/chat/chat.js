@@ -21,7 +21,7 @@ window.addEventListener("load", function() {
     }
 
     function loadMessages() {
-        api.request("chat/get", function(code, res) {
+        api.get("chat/get", function(code, res) {
             if(code != 200) {
                 console.error("Cannot get chat: " + code);
                 return;

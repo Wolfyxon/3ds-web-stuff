@@ -8,11 +8,11 @@ const api = {
 };
 
 /**
- * Sends an HTTP request to the 3DS Web Stuff API
+ * Sends an HTTP get to the 3DS Web Stuff API
  * @param {string} endpoint
  * @param {function} callback
  */
-api.request = function(endpoint, callback) {
+api.get = function(endpoint, callback) {
     if(!net.isDomainAllowed(net.getDomain(api.url))) {
         throw "Cannot query API: Domain " + api.url + " not allowed by CORS";
     }
