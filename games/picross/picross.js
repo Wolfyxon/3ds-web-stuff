@@ -267,7 +267,7 @@ window.addEventListener('load', function() {
 				var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
 				net.httpGet("boards/" + groupName + "-" + levelNum + ".non", function(status, text){
 					if(status == 404){
-						alert(text + "; Attempting to load demo.non instead");
+						alert("Request failed; Attempting to load demo.non instead");
 						net.httpGet("boards/demo.non", function(status, text){play(parseNon(text)); fadeTimer++;});
 					} else {
 						play(parseNon(text));
