@@ -19,5 +19,19 @@ window.addEventListener("load", function() {
         chatLog.appendChild(msg);
     }
 
+    function loadMessages() {
+        api.request("chat/get", function(code, res) {
+            if(code != 200) {
+                console.error("Cannot get chat: " + code);
+                return;
+            }
+
+            const data = JSON.parse(res);
+            console.log(data);
+        });
+    }
+
+    loadMessages();
+
     
 }, false);
