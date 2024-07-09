@@ -86,6 +86,7 @@ window.addEventListener('load', function() {
 	}
 
 	function play(non) {
+		document.getElementById("title").innerHTML = "";
 		const height = non.height,
 			width = non.width,
 			title = document.getElementById("title");
