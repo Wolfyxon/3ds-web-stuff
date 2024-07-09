@@ -1,3 +1,5 @@
+depend("api");
+
 window.addEventListener("load", function() {
     const chatLog = document.getElementById("chat-log");
 
