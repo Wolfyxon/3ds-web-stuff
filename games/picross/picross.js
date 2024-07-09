@@ -1,23 +1,4 @@
 window.addEventListener('load', function() {
-	function requestText(url, callback){
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', url, true);
-
-		xhr.onload = function() {
-			if (this.status == 200) {
-				callback(this.responseText);
-			} else {
-				callback("Request failed with status " + this.status);
-			}
-		};
-
-		xhr.onerror = function(e) {
-			callback("Request failed after " + e.loaded + " bytes transfered");
-		};
-
-		xhr.send();
-	}
-
 	Element.prototype.appendNew = function(tagname, attributes1, attributes2) {
 	        /* Examples:
 	        myElem.appendNew("div")  ->  myElem.innerHTML == "<div></div>"
@@ -284,10 +265,10 @@ window.addEventListener('load', function() {
 				}
 				var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
 				var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
-				requestText("boards/" + groupName + "-" + levelNum + ".non", function(text){
-					if(text.startsWith("Request failed")){
+				net.httpGet("boards/" + groupName + "-" + levelNum + ".non", function(status, text){
+					if(status == 404){
 						alert(text + "; Attempting to load demo.non instead");
-						requestText("boards/demo.non", function(text){play(parseNon(text)); fadeTimer++;});
+						net.httpGet("boards/demo.non", function(status, text){play(parseNon(text)); fadeTimer++;});
 					} else {
 						play(parseNon(text));
 						fadeTimer++;
@@ -310,10 +291,8 @@ window.addEventListener('load', function() {
 			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
 			fadeDiv.style.display = "block";
 			if(fadeTimer == 30){
-				requestText("", function(e) {
-					showLevelSelect();
-					fadeDiv.makeLastChild();
-				});
+				showLevelSelect();
+				fadeDiv.makeLastChild();
 			}else if(fadeTimer == 90) {
 				clearInterval(fadeTimeout);
 				fadeDiv.parentNode.removeChild(fadeDiv);
