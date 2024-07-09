@@ -17,6 +17,7 @@ window.addEventListener("load", function() {
         msg.appendChild(textEle);
 
         chatLog.appendChild(msg);
+        chatLog.scrollTop = chatLog.scrollHeight;
     }
 
     function loadMessages() {
