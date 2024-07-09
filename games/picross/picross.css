@@ -1,0 +1,123 @@
+#board {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 10px;
+}
+
+#board table {
+	/* Table with buttons */
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#board table tbody tr td {
+	/* Table cell with button */
+	padding: 0;
+	border: none;
+}
+
+.boardButton {
+	/* Button for the board */
+	width: 15px;
+	height: 15px;
+	margin: 0;
+	line-height: 20px;
+	display: block;
+}
+
+.boardButton[data-state="unpressed"] {
+	/* Tiles that have had no interaction */
+	background-color: #EEEEEE;
+}
+
+.boardButton[data-state="pressed"] {
+	/* Tiles that are active */
+	background-color: #444444;
+}
+
+.boardButton[data-state="flagged"] {
+	/* Tiles that are flagged as not active */
+	background-color: #FF0000;
+}
+
+#board table thead tr th {
+	/* Top hints */
+	vertical-align: bottom;
+}
+
+#board table tbody tr th {
+	/* Left hints */
+	text-align: right;
+}
+
+#tutorial {
+  font-size: 14px;
+	color: #806080
+}
+
+#winMessage {
+  position: absolute;
+  top: 120px;
+  left: 77.245px;
+  font-weight: bold;
+  font-size: 60px;
+  text-align: center;
+  color: #30D020;
+	
+}
+
+.LevelTile {
+  box-sizing: border-box;
+  width: 53px;
+  height: 53px;
+  border: 2px solid black;
+}
+
+.LevelGroupName {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.LevelNumber {
+  line-height: 32px;
+  text-align: center;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+#levelSelect {
+  position: relative;
+  box-sizing: border-box;
+  width: 320px;
+  height: 240px;
+}
+
+#levelSelectTable {
+  border-collapse: separate;
+  border-spacing: 3px 1.5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#LevelFadeTransition {
+  width: 320px;
+  height: 240px;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+}
+
+#home {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#bottom-screen {
+  position: relative;
+}
+
+#top-screen {
+  position: relative;
+}
