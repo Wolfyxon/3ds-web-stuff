@@ -1,0 +1,18 @@
+catalogue "https://wolfyxon.github.io/3ds-web-stuff/"
+title "Tutorial 1"
+by "Basic-Experimental"
+copyright "&copy; Copyright 2024"
+license GPLv4 or later, CC BY-NC-ND
+tutorial "On the bottom screen, you will see a grid of boxes. On the top and left sides, there are numbers. These are called hints. Hints on the top tell you how many consecutive boxes are filled in in that collumn. Hints on the left tell you how many consecutive boxes are filled in in that row. Click on the boxes to fill them in. Your goal is to match the information from the hints."
+width 3
+height 3
+
+rows
+2
+1
+1
+
+columns
+1
+2
+1
