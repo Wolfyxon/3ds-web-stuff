@@ -13,5 +13,5 @@ const api = {
  * @param {function} callback
  */
 api.request = function(endpoint, callback) {
-    httpGet(url + "/" + endpoint, callback, true);
+    net.httpGet(url + "/" + endpoint, callback, true);
 }

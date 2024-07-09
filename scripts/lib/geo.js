@@ -12,8 +12,8 @@ depend("net");
  */
 function searchLocations(query, callback){
     const url = "http://geocoding-api.open-meteo.com/v1/search?name="; // using https gives response code 0 on the 3DS
-    if(!isDomainAllowed(getDomain(url))) throw new Error("Please add 'geocoding-api.open-meteo.com' to the allowed CORS domains");
-    httpGet(url+query, function(code, body){
+    if(!net.isDomainAllowed(net.getDomain(url))) throw new Error("Please add 'geocoding-api.open-meteo.com' to the allowed CORS domains");
+    net.httpGet(url+query, function(code, body){
         const jsonBody = JSON.parse(body);
         var results = [];
         const gottenResults = jsonBody["results"];
@@ -40,9 +40,9 @@ function findFirstLocation(query, callback){
  */
 function approximateUserLocation(callback){
     const url = "http://ip-api.com/json"; // Free tier of this API doesn't support SSL (so no HTTPS)
-    if(!isDomainAllowed(getDomain(url))) throw new Error("Please add 'ip-api.co' to the allowed CORS domains");
+    if(!net.isDomainAllowed(net.getDomain(url))) throw new Error("Please add 'ip-api.co' to the allowed CORS domains");
 
-    httpGet(url,function(code, body){
+    net.httpGet(url,function(code, body){
         const jsonBody = JSON.parse(body);
         callback(jsonBody);
     }, true);
