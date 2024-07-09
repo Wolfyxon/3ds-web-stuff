@@ -1,6 +1,8 @@
 libName("net");
 
-const net = {}
+const net = {
+    _localhostCorsWarned: false
+}
 
 /**
  * Gets the domain name from the given URL
@@ -19,7 +21,12 @@ net.getDomain = function(url) {
  */
 net.isDomainAllowed = function(domain) {
     if(domain.indexOf("localhost") !== -1) {
-        console.warn("localhost is always blocked by CORS on most browsers. Consider installing an extension to bypass it");
+        
+        if(!net._localhostCorsWarned) {
+            net._localhostCorsWarned = true;
+            console.warn("localhost is always blocked by CORS on most browsers. Consider installing an extension to bypass it");
+        }
+        
         return true;
     }
 
