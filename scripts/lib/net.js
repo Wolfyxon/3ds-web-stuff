@@ -7,7 +7,7 @@ const net = {}
  * @param  {String} url URL of the server/website
  * @return {String}
  */
-net.getDomain = function(url){
+net.getDomain = function(url) {
     const protocolSplit = url.split("//");
     return protocolSplit[protocolSplit.length-1].split("/")[0];
 }
@@ -17,7 +17,7 @@ net.getDomain = function(url){
  * @param  {String} domain Checks if HTTP requests can be sent to the specified domain
  * @return {boolean}
  */
-net.isDomainAllowed = function(domain){
+net.isDomainAllowed = function(domain) {
     const content = document.head.getAttribute("content");
     return document.head.getAttribute("http-equiv") === "Access-Control-Allow-Origin" && (content === "*" || content.indexOf(domain) !== -1);
 }
@@ -28,7 +28,7 @@ net.isDomainAllowed = function(domain){
  * @param {Function} callback Callback function containing the response code and body
  * @param {Boolean} [allowInsecure=false] Allows the raw usage of HTTP. Please only use HTTP instead of HTTPS if the request can't be made with HTTPS.
  */
-net.httpGet = function(url, callback, allowInsecure){
+net.httpGet = function(url, callback, allowInsecure) {
     if(!url){
         throw "No URL specified";
     }
@@ -66,7 +66,7 @@ net.httpPost = function(url, data, callback, contentType) {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function(){
+    xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) callback(xhr.status, xhr.responseText);
     };
 
