@@ -38,11 +38,11 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Random number generator](https://wolfyxon.github.io/3ds-web-stuff/other/rand) - generate random numbers in a range
 - [x] [Hack](https://wolfyxon.github.io/3ds-web-stuff/other/hack) - very real hacking interface
 - [ ] [Brush](https://wolfyxon.github.io/3ds-web-stuff/other/brush) - basically a drawing app
+- [ ] Chat Room - global online web chat
 - [ ] Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
 - Timer
 - Barcode generator - turn text into a barcode.
 - Unit converter - convert between units.
-- Chat Room
 
 ## Screenshots
 <p>
