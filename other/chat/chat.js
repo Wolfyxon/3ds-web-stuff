@@ -37,8 +37,8 @@ window.addEventListener("load", function() {
         });
     }
 
-    loadMessages();
-    setInterval(loadMessages, 2000);
+    /*loadMessages();
+    /setInterval(loadMessages, 2000);*/
 
     
 }, false);
