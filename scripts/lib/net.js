@@ -28,12 +28,10 @@ function isDomainAllowed(domain){
  */
 function httpGet(url, callback, allowInsecure){
     if(!url){
-        console.error("No URL specified");
-        return;
+        throw "No URL specified";
     }
     if(!callback){
-        console.error("No callback function specified");
-        return;
+        throw "No callback function specified";
     }
 
     if(!is3DS() && !allowInsecure) url = url.replace("http://","https://");
@@ -57,12 +55,10 @@ function httpGet(url, callback, allowInsecure){
  */
 function httpPost(url, data, callback, contentType) {
     if(!url) {
-        console.error("No URL specified");
-        return;
+        throw "No URL specified";
     }
     if(!callback){
-        console.error("No callback function specified");
-        return;
+        throw "No callback function specified";
     }
     if(!contentType) contentType = "application/json";
 
