@@ -88,7 +88,7 @@ window.addEventListener("load", function(){
 
     btnSearch.addEventListener("click",function(){
         if(searchInput.value.replace(" ","").length === 0) return;
-        searchLocations(searchInput.value, function (results){
+        geo.searchLocations(searchInput.value, function (results){
             console.log(results);
             clearResults();
             showResults();
@@ -111,7 +111,7 @@ window.addEventListener("load", function(){
     clearResults();
     hideResults();
 
-    approximateUserLocation(function(data){
+    geo.approximateUserLocation(function(data){
         if(userPickedLocation) return;
 
         if(data["status"] !== "success"){
