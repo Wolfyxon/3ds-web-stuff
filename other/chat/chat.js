@@ -31,7 +31,7 @@ window.addEventListener("load", function() {
             chatLog.innerHTML = "";
 
             for(var i = 0; i < data.length; i++) {
-                var msg = data[i];
+                var msg = data[data.length - i - 1];
                 addMessage(msg.username, msg.message);
             }
         });
