@@ -13,5 +13,9 @@ const api = {
  * @param {function} callback
  */
 api.request = function(endpoint, callback) {
+    if(!net.isDomainAllowed(net.getDomain(api.url))) {
+        throw "Cannot query API: Domain " + api.url + " not allowed by CORS";
+    }
+
     net.httpGet(api.url + "/" + endpoint, callback, true);
 }
