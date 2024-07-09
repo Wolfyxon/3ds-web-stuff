@@ -1,3 +1,7 @@
+#chat-log {
+    overflow-y: scroll;
+}
+
 #chat-log > * {
     border-left: 3px solid orange;
     padding-left: 5px;
