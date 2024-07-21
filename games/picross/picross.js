@@ -192,9 +192,8 @@ window.addEventListener('load', function() {
 		// Function to check if a sequence matches the hints
 		function matchesHints(sequence, hints) {
 			var myHints = hints.slice(),
-				i = 0,
 				hintsIndex = 0;
-			while (i < sequence.length) {
+			for(var i = 0; i < sequence.length; i++) {
 				if(sequence[i]){
 					if(hintsIndex == myHints.length){
 						return false;
@@ -208,9 +207,8 @@ window.addEventListener('load', function() {
 						hintsIndex++;
 					}
 				}
-				i++;
 			}
-			if (hintsIndex < myHints.length && myHints[hintsIndex] != 0) {
+			if (hintsIndex < myHints.length && myHints[myHints.length - 1] != 0) {
 				return false;
 			}
 
