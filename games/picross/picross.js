@@ -1,6 +1,7 @@
 window.addEventListener('load', function() {
+	var currentNews, buttonSelectX, buttonSelectY;
 	Element.prototype.appendNew = function(tagname, attributes1, attributes2) {
-	        /* Examples:
+		/* Examples:
 	        myElem.appendNew("div")  ->  myElem.innerHTML == "<div></div>"
 	        myElem.appendNew("div", "Hello, world!")  ->  myElem.innerHTML == "<div>Hello, world!</div>"
 	        myElem.appendNew("div", {id: "foo"})  ->  myElem.innerHTML == "<div id='foo'></div>"
@@ -9,15 +10,15 @@ window.addEventListener('load', function() {
 		attributes1 = attributes1 || "";
 		attributes2 = attributes2 || "";
 		var content,
-		        attributes;
+			attributes;
 		if(typeof attributes1 === "object") {
-		        attributes = attributes1;
-		        content = attributes2;
+			attributes = attributes1;
+			content = attributes2;
 		} else {
-		        attributes = {};
-		        content = attributes1;
+			attributes = {};
+			content = attributes1;
 		}
-		
+
 		var elem = document.createElement(tagname);
 		if (tagname !== 'input') elem.innerHTML = content;
 		for (var attribute in attributes) {
@@ -58,19 +59,20 @@ window.addEventListener('load', function() {
 	};
 
 	Element.prototype.getChildByClassName = function(name) {
-                var children = this.childNodes;
-                for(var i = 0; i < children.length; i++) {
-			if(children[i].class == name) {
+		var children = this.childNodes;
+		for(var i = 0; i < children.length; i++) {
+			console.log(children[i].className);
+			if(children[i].className == name) {
 				return children[i];
 			}
 		}
-	}
+	};
 
 	Element.prototype.makeLastChild = function () {
-		tempDiv = this.parentNode.appendNew("div");
+		var tempDiv = this.parentNode.appendNew("div");
 		this.parentNode.insertBefore(this, tempDiv);
 		this.parentNode.removeChild(tempDiv);
-	}
+	};
 
 	function boardClick(event, buttons, non) {
 		if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
@@ -96,7 +98,7 @@ window.addEventListener('load', function() {
 		}
 
 		if (non.tutorial !== null) {
-			title.appendNew("div", { "id": "tutorial" }, non.tutorial)
+			title.appendNew("div", { "id": "tutorial" }, non.tutorial);
 		}
 
 		const board = document.getElementById("board"),
@@ -107,10 +109,10 @@ window.addEventListener('load', function() {
 		tool.appendNew("input", {"type": "checkbox", "id": "flag"});
 		tool.appendNew("lable", {"for": "flag"}, "Flag");
 		const hb = home.appendNew("button", {"id": "homeButton"}, "Home");
-		hb.addEventListener("click", doFadeToLS);
+		hb.addEventListener("click", doFadeToLS, false);
 
 		fadeDiv.makeLastChild();
-		
+
 
 		var tr = table.appendNew("thead").appendNew("tr");
 		tr.appendNew("th");
@@ -190,9 +192,8 @@ window.addEventListener('load', function() {
 		// Function to check if a sequence matches the hints
 		function matchesHints(sequence, hints) {
 			var myHints = hints.slice(),
-				i = 0,
 				hintsIndex = 0;
-			while (i < sequence.length) {
+			for(var i = 0; i < sequence.length; i++) {
 				if(sequence[i]){
 					if(hintsIndex == myHints.length){
 						return false;
@@ -206,9 +207,8 @@ window.addEventListener('load', function() {
 						hintsIndex++;
 					}
 				}
-				i++;
 			}
-			if (hintsIndex < myHints.length && myHints[hintsIndex] != 0) {
+			if (hintsIndex < myHints.length && myHints[myHints.length - 1] != 0) {
 				return false;
 			}
 
@@ -249,7 +249,7 @@ window.addEventListener('load', function() {
 
 		document.getElementById("winMessage").innerHTML = "You win!";
 	}
-	
+
 	function doFadeAndStart(lt) {
 		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"});
 		const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
@@ -298,24 +298,24 @@ window.addEventListener('load', function() {
 				clearInterval(fadeTimeout);
 				fadeDiv.parentNode.removeChild(fadeDiv);
 			}
-			
+
 			fadeTimer++;
 		}, 10);
 	}
-	
+
 	function showLevelSelect() {
 		document.getElementById("title").innerHTML = currentNews;
 		document.getElementById("board").innerHTML = "";
 		document.getElementById("winMessage").innerHTML = "";
-		tool = document.getElementById("tool");
-		home = document.getElementById("home");
+		var tool = document.getElementById("tool"),
+			home = document.getElementById("home");
 		if(tool) {
 			tool.parentNode.removeChild(tool);
 		}
 		if(home) {
 			home.parentNode.removeChild(home);
 		}
-		
+
 		buttonSelectX = 0;
 		buttonSelectY = 0;
 		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"}),
@@ -360,16 +360,16 @@ window.addEventListener('load', function() {
 		if(!oldSelectedLevel) {
 			return;
 		}
-		
+
 		if(button == "A") {
 			const selectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
 			selectedLevel.startIconAnim();
 			doFadeAndStart(selectedLevel);
 			return;
 		}
-		
+
 		oldSelectedLevel.stopIconAnim();
-		
+
 		if(button == "Up") {
 			buttonSelectY -= 1;
 		}
@@ -395,15 +395,15 @@ window.addEventListener('load', function() {
 		if(buttonSelectY < 0) {
 			buttonSelectY = 0;
 		}
-		
+
 		const newSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
 		newSelectedLevel.startIconAnim();
 	}
-        currentNews = document.getElementById("title").innerHTML;
-	onBtnJustPressed("A", function() {levelSelectButton("A")});
-	onBtnJustPressed("Up", function() {levelSelectButton("Up")});
-	onBtnJustPressed("Down", function() {levelSelectButton("Down")});
-	onBtnJustPressed("Left", function() {levelSelectButton("Left")});
-	onBtnJustPressed("Right", function() {levelSelectButton("Right")});
+	currentNews = document.getElementById("title").innerHTML;
+	onBtnJustPressed("A", function() {levelSelectButton("A");});
+	onBtnJustPressed("Up", function() {levelSelectButton("Up");});
+	onBtnJustPressed("Down", function() {levelSelectButton("Down");});
+	onBtnJustPressed("Left", function() {levelSelectButton("Left");});
+	onBtnJustPressed("Right", function() {levelSelectButton("Right");});
 	showLevelSelect();
 }, false);
