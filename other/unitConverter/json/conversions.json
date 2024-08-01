@@ -1,0 +1,61 @@
+{
+    "Length": {
+        "Kilometer/s": 0.001,
+        "Meter/s": 1,
+        "Centimeter/s": 100,
+        "Milimeter/s": 1000,
+        "Micrometer/s": 1000000,
+        "Nanometer/s": 1000000000,
+        "Mile/s": 0.000621371,
+        "Yard/s": 1.09361,
+        "Foot|Feet": 3.28084,
+        "Inch/es": 39.3701,
+        "Nautical Mile/s": 0.000539957
+    },
+    "Mass": {
+        "Metric Ton/s": 0.001,
+        "Kilogram/s": 1,
+        "Gram/s": 1000,
+        "Miligram/s": 1000000,
+        "Microgram/s": 1000000000,
+        "Imperial Ton/s": 0.000984207,
+        "US ton/s": 0.00110231,
+        "Stone/s": 0.157473,
+        "Pound/s": 2.20462,
+        "Ounce/s": 35.274
+    },
+    "Volume": {
+        "US Gallon/s": 0.264172,
+        "US Quart/s": 1.05669,
+        "US Pint/s": 2.11338,
+        "US Cup/s": 4.2267548297,
+        "US Fluid Ounce/s": 33.814,
+        "US Tablespoon/s": 67.628,
+        "US Teaspoon/s": 202.884,
+        "Cubic Meter/s": 0.001,
+        "Mililiter/s": 1000,
+        "Imperial Gallon/s": 0.219969,
+        "Imperial Quart/s": 0.879877,
+        "Imperial Pint/s": 1.75975,
+        "Imperial Cup/s": 3.51951,
+        "Imperial Fluid Ounce/s": 35.1951,
+        "Imperial Tablespoon/s": 56.3121,
+        "Imperial Teaspoon/s": 168.936,
+        "Cubic Foot|Cubic Feet": 0.0353147,
+        "Cubic Inch/es": 61.0237
+    },
+    "Time": {
+        "Nanosecond/s": 1000000000,
+        "Microsecond/s": 1000000,
+        "Millisecond/s": 1000,
+        "Second/s": 1,
+        "Minute/s": 0.016666667,
+        "Hour/s": 0.000277778,
+        "Day/s": 0.000011574,
+        "Week/s": 0.0000016534,
+        "Month/s": 3.8052e-7,
+        "Year/s": 3.171e-8,
+        "Decade/s": 3.171e-9,
+        "Century|Centuries": 3.171e-10
+    }
+}

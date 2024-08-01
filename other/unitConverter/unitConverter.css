@@ -1,0 +1,43 @@
+h3 {
+	text-align: center;
+    font-size: 40px;
+    margin-top: 0;
+}
+
+#inputNum {
+    width: 120px;
+}
+
+#outputNum{
+    text-align: center;
+    font-size: 30px;
+}
+
+#disclaimer {
+    position: absolute;
+    font-size: 15px;
+    bottom: 15px;
+}
+
+#btn-convert {
+    background-color: limegreen;
+	border: 2px green solid;
+	border-radius: 5px;
+	margin-top: 2%;
+    font-size: 30px;
+    font-weight: bold;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    bottom: 5px;
+    left: 60px;
+}
+
+#btn-convert:active {
+	background: lime;
+}
+
+#top-screen,
+#bottom-screen {
+    position: relative;
+}

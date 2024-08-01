@@ -194,8 +194,10 @@ function includes(container,search){
 function oKeys(obj) {
     var out = [];
     for (var k in obj) {
-        out.push(k);
-    }
+		if(obj.hasOwnProperty(k)) { // Avoids derived members of Object.prototype
+        	out.push(k);
+    	}
+	}
     return out;
 }
 
