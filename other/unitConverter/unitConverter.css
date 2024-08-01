@@ -23,14 +23,12 @@ h3 {
     background-color: limegreen;
 	border: 2px green solid;
 	border-radius: 5px;
-	margin-top: 2%;
     font-size: 30px;
     font-weight: bold;
     width: 200px;
     height: 50px;
-    position: absolute;
-    bottom: 5px;
-    left: 60px;
+    margin: 5px auto;
+    display: block;
 }
 
 #btn-convert:active {
