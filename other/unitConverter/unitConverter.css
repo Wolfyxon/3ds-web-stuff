@@ -37,6 +37,10 @@ h3 {
 	background: lime;
 }
 
+#bottom-screen > div {
+    margin-bottom: 5px;
+}
+
 #top-screen,
 #bottom-screen {
     position: relative;
