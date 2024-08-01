@@ -39,11 +39,11 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Calculator](https://wolfyxon.github.io/3ds-web-stuff/other/calculator) - just a calculator.
 - [x] [Random number generator](https://wolfyxon.github.io/3ds-web-stuff/other/rand) - generate random numbers in a range
 - [x] [Hack](https://wolfyxon.github.io/3ds-web-stuff/other/hack) - very real hacking interface
+- [x] [Unit Converter](https://wolfyxon.github.io/3ds-web-stuff/other/unitConverter) - convert between units
 - [ ] [Brush](https://wolfyxon.github.io/3ds-web-stuff/other/brush) - basically a drawing app
 - [ ] Chat Room - global online web chat
 - [ ] Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
 - Timer
-- Unit converter - convert between units.
 
 ## Screenshots
 <p>
