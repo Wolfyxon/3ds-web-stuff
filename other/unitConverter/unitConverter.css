@@ -4,11 +4,11 @@ h3 {
     margin-top: 0;
 }
 
-#inputNum {
+#input-num {
     width: 120px;
 }
 
-#outputNum{
+#output-num {
     text-align: center;
     font-size: 30px;
 }

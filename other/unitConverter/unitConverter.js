@@ -32,7 +32,7 @@ window.addEventListener('load', function() {
     
     net.httpGet("json/conversions.json", function(status, text){
         window.conv = JSON.parse(text);
-        const unitType = document.getElementById("unitType");
+        const unitType = document.getElementById("unit-type");
         const keys = conv.keys();
         for(var i = 0; i < keys.length; i++) {
             unitType.appendNew("option", {"value": keys[i]}, keys[i]);
@@ -53,9 +53,9 @@ window.addEventListener('load', function() {
     }
 
     function updateInputUnit() {
-        const unitType = document.getElementById("unitType"),
-			inputUnitFrom = document.getElementById("inputUnitFrom"),
-			inputUnitTo = document.getElementById("inputUnitTo");
+        const unitType = document.getElementById("unit-type"),
+			inputUnitFrom = document.getElementById("input-unit-from"),
+			inputUnitTo = document.getElementById("input-unit-to");
         inputUnitFrom.innerHTML = "";
         inputUnitTo.innerHTML = "";
         
@@ -69,18 +69,18 @@ window.addEventListener('load', function() {
     }
 
 	function updateUnitsFrom() {
-		const unitFrom = document.getElementById("unitFrom"),
-			inputUnitFrom = document.getElementById("inputUnitFrom");
+		const unitFrom = document.getElementById("unit-from"),
+			inputUnitFrom = document.getElementById("input-unit-from");
 
 		unitFrom.innerHTML = getPlural(inputUnitFrom.value);
 	}
 
 	function convert() {
-		const unitType = document.getElementById("unitType"),
-			inputUnitFrom = document.getElementById("inputUnitFrom"),
-			inputUnitTo = document.getElementById("inputUnitTo"),
-			inputNum = document.getElementById("inputNum"),
-			outputNum = document.getElementById("outputNum");
+		const unitType = document.getElementById("unit-type"),
+			inputUnitFrom = document.getElementById("input-unit-from"),
+			inputUnitTo = document.getElementById("input-unit-to"),
+			inputNum = document.getElementById("input-num"),
+			outputNum = document.getElementById("output-num");
 		
 		var calculated = inputNum.value * conv[unitType.value][inputUnitTo.value] / conv[unitType.value][inputUnitFrom.value];
 
@@ -94,11 +94,11 @@ window.addEventListener('load', function() {
 		
 	}
 
-	document.getElementById("unitType").addEventListener("change", updateInputUnit);
-	document.getElementById("inputUnitFrom").addEventListener("change", updateUnitsFrom);
+	document.getElementById("unit-type").addEventListener("change", updateInputUnit);
+	document.getElementById("input-unit-from").addEventListener("change", updateUnitsFrom);
 	document.getElementById("btn-convert").addEventListener("click", convert);
-	document.getElementById("inputNum").addEventListener("change", function() {
-		inputNum =document.getElementById("inputNum");
+	document.getElementById("input-num").addEventListener("change", function() {
+		inputNum =document.getElementById("input-num");
 		if(inputNum.value < 0) {
 			inputNum.value = 0;
 		}
