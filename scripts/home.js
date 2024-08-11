@@ -23,6 +23,12 @@ window.addEventListener('load', function() {
 		anim.addKeyframe('src', petRoot + aName[0] + '/' + aName[0] + aName[3][f] + '.png');		
 	}
 	anim.play();
+	window.addEventListener('blur', function() {
+		anim.stop();
+	}, false);
+	window.addEventListener('focus', function() {
+		anim.play();
+	}, false);
 
 	function setTab(newId) {
 		tabs.children[id].style.display = 'none';

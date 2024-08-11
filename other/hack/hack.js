@@ -99,8 +99,25 @@ window.addEventListener('load', function() {
 	genBars();
 	genNums();
 
-	setInterval(echo, 50);
-	setInterval(genTiles, 1000);
-	setInterval(genBars, 500);
-	setInterval(genNums, 20);
+	var intervalIDs = [];
+	if (!document.hidden) {
+		intervalIDs.push(setInterval(echo, 50));
+		intervalIDs.push(setInterval(genTiles, 1000));
+		intervalIDs.push(setInterval(genBars, 500));
+		intervalIDs.push(setInterval(genNums, 20));
+	}
+	window.addEventListener('blur', function() {
+		if (intervalIDs.length === 0) return;
+		intervalIDs.forEach(function(id) {
+			clearInterval(id);
+		})
+		intervalIDs.length = 0;
+	}, false);
+	window.addEventListener('focus', function() {
+		if (intervalIDs.length > 0) return;
+		intervalIDs.push(setInterval(echo, 50));
+		intervalIDs.push(setInterval(genTiles, 1000));
+		intervalIDs.push(setInterval(genBars, 500));
+		intervalIDs.push(setInterval(genNums, 20));
+	}, false);
 }, false);
