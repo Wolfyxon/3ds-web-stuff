@@ -1,8 +1,5 @@
 libName("anim");
 
-function stopAnim(v) {
-	clearInterval(v);
-}
 function startAnim(data) {
 	return setInterval(function() {
 		if (!data.playing) return;
@@ -29,7 +26,7 @@ Animation = function(element){
 	this.playing = false;
 	this.frame = 0;
 	this.frameCount = 0;
-	this.loopItv = startAnim(this);
+	this.intervalId = 0;
 };
 Animation.prototype = {
 	addKeyframe: function(property, value, timeOffset) {
@@ -49,20 +46,28 @@ Animation.prototype = {
 
 	setSpacing: function(v) {
 		if (typeof(v) !== 'number') return;
-		stopAnim(this.loopItv);
 		this.spacing = v;
-		this.loopItv = startAnim(this);
+		if (this.intervalId > 0) {
+			clearInterval(this.intervalId);
+			this.intervalId = startAnim(this);
+		}
 	},
 
 	play: function() {
+		if (this.intervalId > 0) return;
 		this.playing = true;
+		this.intervalId = startAnim(this);
+		console.log('Play animation', this.intervalId);
 	},
 
 	stop: function() {
+		if (this.intervalId === 0) return;
 		this.playing = false;
+		console.log('Stop animation', this.intervalId);
+		clearInterval(this.intervalId);
+		this.intervalId = 0;
 	}
 };
-
 
 /**
  * Converts RGB into a hexadecimal color.
