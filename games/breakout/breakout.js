@@ -1,246 +1,312 @@
-depend("canvasGame");
+window.addEventListener('load', function() {
+	//'use strict';
+	const canvas = document.getElementById('canv'),
+		canvas2 = document.getElementById('canv2'),
+		ctx = canvas.getContext('2d'),
+		ctx2 = canvas2.getContext('2d', {alpha: false}),
+		btnStart = document.getElementById('btn-start'),
+		hearts = document.getElementById('lives').children,
+		overlay = document.getElementById('overlay'),
+		overlayTitle = document.getElementById('title'),
+		overlayGameover = document.getElementById('gameover'),
+		usePerformance = typeof(performance) !== 'undefined',
+		background = '#000b1c',
+		blockH = 8,
+		rowColors = [
+			'red',
+			'orange',
+			'yellow',
+			'lime',
+			'cyan',
+			'blue',
+			'purple',
+			'magenta'
+		],
+		fps = is3DS() ? 30 : 60,
+		speed = 5;
+	var active = false,
+		lives = hearts.length,
+		time,
+		blocks,
+		blockW = 0,
+		lives = 5,
+		ball = {
+			'x': 0,
+			'y': 0,
+			'd': 4,
+			'oldX': 0,
+			'oldY': 0,
+			'rot': 0
+		},
+		player = {
+			'x': 0,
+			'y': 370,
+			'w': 30,
+			'h': 5,
+			'oldX': 0
+		};
 
-// TODO: After elementGame is complete, migrate
+	ball.oldX = ball.x;
+	ball.oldY = ball.y;
 
-window.addEventListener("load", function() {
-    const canvas = document.getElementById("canv");
+	function isBallTouching(target) {
+		return !(ball.x > (target.x + target.w) ||
+				 (ball.x + ball.d) < target.x ||
+				 ball.y > (target.y + target.h) ||
+				 (ball.y + ball.d) < target.y);
+	}
 
-    const hearts = document.getElementById("lives").children;
-    var lives = hearts.length;
+	function moveLocalXY(x_, y_) {
+		const angle = deg2rad(ball.rot);
+		return [
+			x_ * Math.cos(angle) - y_ * Math.sin(angle),
+			x_ * Math.sin(angle) + y_ * Math.cos(angle)
+		]
+	}
 
-    const overlay = document.getElementById("overlay");
-    const overlayTitle = document.getElementById("title");
-    const overlayGameover = document.getElementById("gameover");
+	function drawBlock(block) {
+		ctx2.fillStyle = rowColors[block.r % rowColors.length];
+		ctx2.outlineSize = 1;
+		ctx2.outlineOpacity = 0.5;
+		ctx2.outlineStyle = rowColors[block.r % rowColors.length];
+		ctx2.fillRect(block.x, block.y, blockW, blockH);
+	}
+	function createBlocks(columns, rows) {
+		blocks = [];
+		const padding = 5,
+			spacing = 4,
+			totalSpacing = spacing * (columns - 1);
+		blockW = clamp((canvas.width - totalSpacing) / columns - padding * 0.5, 0, 60);
 
-    overlay.targetOpaticy = 1;
+		for (var row=0; row < rows; row++) {
+			for (var col=0; col < columns; col++) {
+				const block = {
+					x: (canvas.width - (columns * (blockW + spacing) - spacing)) * 0.5 + col * (blockW + spacing),
+					y: row * (blockH + spacing) + padding + 10,
+					w: blockW,
+					h: blockH,
+					r: row
+				};
+				blocks.push(block);
+				drawBlock(block);
+			}
+		}
+	}
 
-    const plrY = 370;
-    const plrH = 5;
-    const plrW = 30;
-    const plrInitPos = new Vector2(canvas.width/2 - plrW/2, plrY);
-    const plrButtonSpeed = 0.3;
-    const player = new Rect2D(plrInitPos.copy(), plrW, plrH);
-    player.fillStyle = "#8C7BFF";
+	function showOverlay() {
+		btnStart.style.removeProperty('display');
+		overlay.targetOpaticy = 1;
+	}
+	function hideOverlay() {
+		btnStart.style.display = 'none';
+		overlay.targetOpaticy = 0;
+	}
 
-    const ballSize = 4;
-    const ballAccel = 1.02;
-    const ballInitSpeed = 0.15;
-    const ballMaxSpeed = 0.5;
-    var ballSpeed = ballInitSpeed;
-    const ball = new Rect2D(new Vector2(canvas.width/2 - ballSize/2,canvas.height/2 - 100 - ballSize/2),ballSize, ballSize);
-    const initBallPos = ball.area.startVec.copy();
-    ball.fillStyle = "white";
-    resetBall();
+	function updateHearts() {
+		for(var i=0; i<hearts.length; i++) {
+			const heart = hearts[hearts.length - 1 - i];
+			if(i >= lives) {
+				heart.src = "img/noLife.png";
+			} else {
+				heart.src = "img/life.png";
+			}
+		}
+	}
+	updateHearts();
 
-    var active = false;
+	function drawBall() {
+		ctx.clearRect(Math.floor(ball.oldX), Math.floor(ball.oldY), ball.d, ball.d);
+		ctx.fillStyle = '#FFF';
+		ctx.beginPath();
+		ctx.arc(Math.floor(ball.x)+ball.d*0.5, Math.floor(ball.y)+ball.d*0.5, ball.d*0.5, 0, 2 * Math.PI, false);
+		ctx.closePath();
+		ctx.fill();
+		ball.oldX = ball.x;
+		ball.oldY = ball.y;
+	}
 
-    var blocks = [];
+	function drawPlayer() {
+		if (player.oldX === player.x) return;
+		if (player.x < 0) player.x = 0;
+		if (player.x + player.w > canv.width) player.x = canv.width - player.w;
+		ctx2.fillStyle = background;
+		ctx2.fillRect(player.oldX-1, player.y, player.w+2, player.h);
+		ctx2.fillStyle = '#8C7BFF';
+		ctx2.fillRect(player.x, player.y, player.w, player.h);
+		player.oldX = player.x;
+	}
 
-    const rowColors = [
-        "red",
-        "orange",
-        "yellow",
-        "lime",
-        "cyan",
-        "blue",
-        "purple",
-        "magenta"
-    ]
+	function touchMove(e){
+		if (!active) return;
+		const rect = canvas.getBoundingClientRect(),
+			scaleX = canvas.width / rect.width,
+			touch = e.touches[0];
+		player.x = (touch.clientX - rect.left) * scaleX;
+		e.preventDefault();
+		drawPlayer();
+	}
 
-    function createBlocks(columns, rows) {
-        blocks = [];
-        const padding = 5;
-        const spacing = 4;
+	function mouseMove(e){
+		if (!active || e.buttons === 0) return;
+		const rect = canvas.getBoundingClientRect(),
+			scaleX = canvas.width / rect.width;
+		player.x = (e.clientX - rect.left) * scaleX;
+		drawPlayer();
+	}
 
-        const totalSpacing = spacing * (columns - 1);
-        const w = clamp((canvas.width - totalSpacing) / columns - padding/2, 0, 60);
-        const h = 8;
+	function getTimeStamp() {
+		return usePerformance ? performance.now() : new Date().getTime();
+	}
 
-        for(var row=0; row < rows; row++) {
-            for(var col=0; col < columns; col++) {
-                const x = (canvas.width - (columns * (w + spacing) - spacing)) / 2 + col * (w + spacing);
-                const y = row * (h + spacing) + padding + 10;
+	function resetBall() {
+		ball.x = canvas.width * 0.5 - ball.d * 0.5;
+		ball.y = canvas.height * 0.5 - 100 - ball.d * 0.5;
+		//ballSpeed = ballInitSpeed;
+		var offset = randf(5,20);
+		if(randi(0,1) === 1) offset *= -1;
+		ball.rot = 180 + offset;
+	}
 
-                const block = new Rect2D(new Vector2(x, y), w, h);
-                block.fillStyle = rowColors[row % rowColors.length];
-                block.outlineSize = 1;
-                block.outlineOpacity = 0.5;
-                block.outlineStyle = block.fillStyle;
+	var lastBounce = 0;
+	const bounceCooldown = 100;
 
-                blocks.push(block);
-            }
-        }
-    }
+	function preBounce(){
+		const now = Date.now();
+		if(now < lastBounce+bounceCooldown) return false;
+		lastBounce = now;
+		return true;
+	}
 
-    function showOverlay() { overlay.targetOpaticy = 1; }
-    function hideOverlay() { overlay.targetOpaticy = 0; }
+	function bounce(){
+		if(!preBounce()) return;
 
+		if(ball.rot === 0) ball.rot += 1;
+		ball.rot = 180 - ball.rot;
+		const bNew = moveLocalXY(0, -ball.d);
+		ball.x += bNew[0];
+		ball.y += bNew[1];
+		drawBall();
 
-    function updateHearts() {
-        for(var i=0; i<hearts.length; i++) {
-            const heart = hearts[hearts.length - 1 - i];
-            if(i >= lives) {
-                heart.src = "img/noLife.png";
-            } else {
-                heart.src = "img/life.png";
-            }
-        }
-    }
-    updateHearts()
+		if(active) {
+			//ballSpeed *= ballAccel;
+			//ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
+		}
+	}
 
-    function resetBall(){
-        ball.area.moveTo(initBallPos.copy());
-        ballSpeed = ballInitSpeed;
-        var offset = randf(5,20);
-        if(randi(0,1) === 1) offset *= -1;
-        ball.rotation = 180 + offset;
-    }
+	function reset() {
+		lives = hearts.length;
+		updateHearts();
+		resetBall();
+		createBlocks(8, 5);
+		drawPlayer();
+		drawBall();
+	}
+	function start() {
+		if (active) return;
+		reset();
+		hideOverlay();
+		active = true;
+	}
 
-    var lastBounce = 0;
-    const bounceCooldown = 100;
+	function update() {
+		var now = getTimeStamp(),
+			deltaTime = now - (time || now),
+			increment = Math.floor(speed * (fps / 1000) * deltaTime);
+		time = now;
 
-    function preBounce(){
-        const now = Date.now();
-        if(now < lastBounce+bounceCooldown) return false;
-        lastBounce = now;
-        return true;
-    }
+		const bNew = moveLocalXY(0, increment);
+		ball.x += bNew[0];
+		ball.y += bNew[1];
+		drawBall();
 
-    function bounce(){
-        if(!preBounce()) return;
+		if ( (ball.y <= 0 || ball.x <= 0 || ball.x >= canvas.width) && preBounce()) {
+			if(ball.y <= 0) {
+				ball.rot = 180 - ball.rot;
+			} else {
+				ball.rot = -ball.rot;
+			}
+			if(active) {
+				//ballSpeed *= ballAccel;
+				//ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
+			}
+		}
 
-        if(ball.rotation === 0) ball.rotation += 1;
-        ball.rotation = 180 - ball.rotation;
-        ball.moveLocalXY(0, -ball.area.getHeight());
+		if (ball.y >= canvas.height) {
+			if (active) {
+				lives -= 1;
+				updateHearts();
 
-        if(active) {
-            ballSpeed *= ballAccel;
-            ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
-        }
-    }
+				if (lives <= 0) {
+					active = false;
+					resetBall();
+					showOverlay();
+					overlayTitle.style.display = 'none';
+					overlayGameover.style.display = '';
+				} else {
+					resetBall();
+				}
 
-    function setUserX(x) {
-        player.area.moveTo(new Vector2(x - player.area.getWidth() / 2, plrY));
-    }
+			} else {
+				ball.rotation = 180 - ball.rotation;
+			}
+		}
 
-    function touchMove(e){
-        if(!active) return;
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const touch = e.touches[0];
-        const x = (touch.clientX - rect.left) * scaleX;
+		if (ball.y > 360 && isBallTouching(player)) bounce();
 
-        e.preventDefault();
-        setUserX(x);
-    }
+		// Check block collision
+		if (ball.y < 80) {
+			for (var i=0; i < blocks.length; i++) {
+				const block = blocks[i];
+	
+				if (isBallTouching(block)) {
+					bounce();
+					if (active) {
+						ctx2.fillStyle = background;
+						ctx2.fillRect(block.x, block.y, blockW, blockH);
+						blocks.splice(i,1);
+						i--;
+					}
+				}
+			}
+		}
 
-    function mouseMove(e){
-        if(!active) return;
-        if(e.buttons === 0) return;
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const x = (e.clientX - rect.left) * scaleX;
+		overlay.style.opacity = lerp(overlay.style.opacity, overlay.targetOpaticy, 0.01 * deltaTime);
 
-       setUserX(x);
-    }
+		if (active) {
+			if (isBtnPressed('left') && player.x > 0) {
+				player.x = player.x - increment;
+				drawPlayer();
+			} else if (isBtnPressed('right') && (player.x + player.w ) < canvas.width) {
+				player.x = player.x + increment;
+				drawPlayer();
+			}
+		} else {
+			player.x = ball.x+ball.d*0.5 - player.w*0.5;
+			drawPlayer();
+		}
+	}
 
-    function start() {
-        if(!active) {
-            lives = hearts.length;
-            updateHearts();
-            hideOverlay();
-            resetBall();
-            player.area.moveTo(plrInitPos.copy());
-            active = true;
-        }
-    }
+	overlay.targetOpaticy = 1;
+	reset();
 
-    createBlocks(8,5);
+	var intervalID = document.hidden ? 0 : setInterval(update);
+	window.addEventListener('blur', function() {
+		console.log('Game paused');
+		clearInterval(intervalID);
+		intervalID = 0;
+	}, false);
+	window.addEventListener('focus', function() {
+		if (!intervalID) {
+			console.log('Game resumed');
+			time = getTimeStamp();
+			intervalID = setInterval(update);
+		}
+	}, false);
 
-    var prevFrameTime = Date.now();
-    setInterval(function() {
-        const delta = (Date.now() - prevFrameTime);
-        prevFrameTime = Date.now();
-
-        clearCanvas(canvas);
-
-        player.render(canvas);
-        ball.render(canvas);
-
-        const currentSpeed = -ballSpeed * delta;
-        ball.moveLocalXY(0, currentSpeed);
-
-        const bY = ball.getY();
-        const bX = ball.getX();
-
-        if( (bY <= 0 || bX <= 0 || bX >= canvas.width) && preBounce()) {
-            if(bY <= 0) {
-                ball.rotation = 180 - ball.rotation;
-            } else {
-                ball.rotation = -ball.rotation;
-            }
-            if(active) {
-                ballSpeed *= ballAccel;
-                ballSpeed = clamp(ballSpeed, 0, ballMaxSpeed);
-            }
-        }
-
-        if(bY >= canvas.height) {
-            if(active) {
-                lives -= 1;
-                updateHearts();
-
-                if(lives <= 0) {
-                    active = false;
-                    showOverlay();
-                    overlayTitle.style.display = "none";
-                    overlayGameover.style.display = "";
-                } else {
-                    resetBall();
-                }
-
-            } else {
-                ball.rotation = 180 -  ball.rotation;
-            }
-        }
-
-        if(bY > 100) {
-            if(ball.area.isTouching(player.area) || ball.area.isInTheWay(player.area, new Vector2(0, currentSpeed), ball.rotation, 6)) {
-                bounce();
-            }
-        }
-
-        for(var i=0; i < blocks.length; i++) {
-            const block = blocks[i];
-
-            if(bY < 100 && ball.area.isTouching(block.area)) {
-                bounce();
-                if(active) {
-                    blocks.splice(i,1);
-                    i--;
-                }
-            }
-
-            block.render(canvas);
-        }
-
-
-        overlay.style.opacity = lerp(overlay.style.opacity, overlay.targetOpaticy, 0.01 * delta);
-
-        if(active) {
-            if(isBtnPressed("left") && player.getX() > 0) player.area.offsetXY(-plrButtonSpeed * delta, 0)
-            if(isBtnPressed("right") && (player.getX() + plrW ) < canvas.width) player.area.offsetXY(plrButtonSpeed * delta, 0)
-        } else {
-            player.area.moveTo(new Vector2(ball.getCenter().x - plrW/2, plrY));
-        }
-
-    });
-
-    onBtnJustPressed("a", start);
-    document.getElementById("btn-start").addEventListener("click", start);
-
-    window.addEventListener("touchmove", touchMove);
-    window.addEventListener("touchstart", touchMove);
-    window.addEventListener("mousemove", mouseMove);
-    window.addEventListener("mousedown", mouseMove);
-});
+	onBtnJustPressed('a', start);
+	btnStart.addEventListener('click', start, false);
+	window.addEventListener('touchmove', touchMove, false);
+	window.addEventListener('touchstart', touchMove, false);
+	window.addEventListener('mousemove', mouseMove, false);
+	window.addEventListener('mousedown', mouseMove, false);
+}, false);
