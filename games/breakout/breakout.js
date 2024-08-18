@@ -164,7 +164,7 @@ window.addEventListener('load', function() {
 		//ballSpeed = ballInitSpeed;
 		var offset = randf(5,20);
 		if(randi(0,1) === 1) offset *= -1;
-		ball.rot = 180 + offset;
+		ball.rot = offset;
 	}
 
 	var lastBounce = 0;
