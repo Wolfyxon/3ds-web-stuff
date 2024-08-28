@@ -1,3 +1,27 @@
+@-webkit-keyframes flash {
+    0% {
+        background-color: none;
+    }
+    50% {
+        background-color: white;
+    }
+    100% {
+        background-color: none;
+    }
+}
+
+@keyframes flash {
+    0% {
+        background-color: none;
+    }
+    50% {
+        background-color: white;
+    }
+    100% {
+        background-color: none;
+    }
+}
+
 #top-screen, #bottom-screen {
     background-color: #2B2B2B;
 }
@@ -9,6 +33,11 @@
     color: #E0E0E0;
     font-size: 50px;
     line-height: 240px;
+}
+
+#time-display[data-flashing="true"] {
+    animation: flash 1s infinite;
+    -webkit-animation: flash 1s infinite;
 }
 
 #app-controls {

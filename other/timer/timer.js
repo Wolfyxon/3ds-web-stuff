@@ -161,21 +161,14 @@ window.addEventListener("load", function() {
 		clearInterval(timerInterval);
 		timeDisplay.innerText = timerTime(0, 0, 0);
 		if(alarm) {
-			flashInterval = setInterval(function () {
-				if(timeDisplay.innerText === timerTime(0, 0, 0)) {
-					timeDisplay.innerHTML = "";
-					timeDisplay.appendNew("div", {"style": "width: 400px; height: 240px; background-color: #FFFFFF"});
-				} else {
-					timeDisplay.innerText = timerTime(0, 0, 0);
-				}
-			}, 500);
+			timeDisplay.setAttribute("data-flashing", true)
 		} else {
 			if(timerButtons.contains(timerStopButton)) {
 				timerButtons.innerHTML = "";
 				timerStartButton = timerButtons.appendNew("button", "Start");
 				timerStartButton.addEventListener("click", startTimer, false);
 			}
-			clearInterval(flashInterval);
+			timeDisplay.setAttribute("data-flashing", false)
 		}
 	}
 
