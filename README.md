@@ -40,10 +40,10 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [x] [Random number generator](https://wolfyxon.github.io/3ds-web-stuff/other/rand) - generate random numbers in a range
 - [x] [Hack](https://wolfyxon.github.io/3ds-web-stuff/other/hack) - very real hacking interface
 - [x] [Unit Converter](https://wolfyxon.github.io/3ds-web-stuff/other/unitConverter) - convert between units
+- [x] [Timer & stopwatch](https://wolfyxon.github.io/3ds-web-stuff/other/timer) - measure time
 - [ ] [Brush](https://wolfyxon.github.io/3ds-web-stuff/other/brush) - basically a drawing app
 - [ ] Chat Room - global online web chat
 - [ ] Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
-- Timer
 
 ## Screenshots
 <p>
