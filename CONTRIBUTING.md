@@ -1,4 +1,4 @@
-# Contributing guildlines
+# Contributing guidelines
 ## Pull requests
 ### Guide
 If you want to contribute to the project directly by writing code:
