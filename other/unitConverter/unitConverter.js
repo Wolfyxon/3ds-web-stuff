@@ -33,7 +33,7 @@ window.addEventListener('load', function() {
     net.httpGet("json/conversions.json", function(status, text){
         window.conv = JSON.parse(text);
         const unitType = document.getElementById("unit-type");
-        const keys = conv.keys();
+        const keys = Object.keys(conv);
         for(var i = 0; i < keys.length; i++) {
             unitType.appendNew("option", {"value": keys[i]}, keys[i]);
         }
@@ -59,7 +59,7 @@ window.addEventListener('load', function() {
         inputUnitFrom.innerHTML = "";
         inputUnitTo.innerHTML = "";
         
-        const keys = conv[unitType.value].keys();
+        const keys = Object.keys(conv[unitType.value]);
         for(var i = 0; i < keys.length; i++) {
             inputUnitFrom.appendNew("option", {"value": keys[i]}, getPlural(keys[i]));
             inputUnitTo.appendNew("option", {"value": keys[i]}, getPlural(keys[i]));
@@ -104,3 +104,4 @@ window.addEventListener('load', function() {
 		}
 	});
 });
+
