@@ -30,8 +30,8 @@ registerFallback(Array.prototype, "includes", function (value) {
     return includes(this, value);
 });
 
-registerFallback(Object.prototype, "keys", function () {
-    return oKeys(this);
+registerFallback(Object, "keys", function (obj) {
+    return oKeys(obj);
 });
 
 registerFallback(String.prototype, "startsWith", function (str) {
