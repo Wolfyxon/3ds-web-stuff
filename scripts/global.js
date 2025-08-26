@@ -38,6 +38,13 @@ registerFallback(String.prototype, "startsWith", function (str) {
 	return this.substring(0, str.length) == str;
 });
 
+registerFallback(Math, "sign", function(x) {
+    if(+x == 0) return 0;
+    if(+x < 0) return -1;
+    if(+x > 0) return 1;
+    return NaN;
+});
+
 // console doesn't seem to be available on DSi
 registerFallback(window, "console", {});
 registerFallback(console, "log", doNothing);
