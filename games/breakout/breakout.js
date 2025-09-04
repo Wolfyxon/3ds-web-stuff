@@ -128,7 +128,7 @@ window.addEventListener('load', function() {
 	function drawPlayer() {
 		if (player.oldX === player.x) return;
 		if (player.x < 0) player.x = 0;
-		if (player.x + player.w > canv.width) player.x = canv.width - player.w;
+		if (player.x + player.w > canvas.width) player.x = canvas.width - player.w;
 		ctx2.fillStyle = background;
 		ctx2.fillRect(player.oldX-1, player.y, player.w+2, player.h);
 		ctx2.fillStyle = '#8C7BFF';

@@ -222,7 +222,7 @@ window.addEventListener('load', function() {
 		if(!running) reset();
 	});
 
-	document.getElementById('btn-restart').addEventListener('click', reset);
+	document.getElementById('btn-restart').addEventListener('click', reset, false);
 
 	reset();
-});
+}, false);

@@ -237,10 +237,10 @@ window.addEventListener("load", function() {
     });
 
     onBtnJustPressed("a", start);
-    document.getElementById("btn-start").addEventListener("click", start);
+    document.getElementById("btn-start").addEventListener("click", start, false);
 
-    window.addEventListener("touchmove", touchMove);
-    window.addEventListener("touchstart", touchMove);
-    window.addEventListener("mousemove", mouseMove);
-    window.addEventListener("mousedown", mouseMove);
-});
+    window.addEventListener("touchmove", touchMove, false);
+    window.addEventListener("touchstart", touchMove, false);
+    window.addEventListener("mousemove", mouseMove, false);
+    window.addEventListener("mousedown", mouseMove, false);
+}, false);

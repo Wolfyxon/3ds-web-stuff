@@ -227,5 +227,5 @@ window.addEventListener('load',function(){
 
     btnRestart.addEventListener('click',function(){
         if(!alive) reset();
-    })
-})
+    }, false)
+}, false)

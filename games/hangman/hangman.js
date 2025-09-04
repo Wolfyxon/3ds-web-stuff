@@ -179,7 +179,7 @@ window.addEventListener('load', function() {
 		for (var j = 0; j < selectedWord.length; j++) {
 			var ele = document.createElement('span');
 			ele.innerText = '_';
-			ele.setAttribute('data-displayletter', selectedWord.substring(j, j + 1));
+			ele.setAttribute('data-displayletter', selectedWord.slice(j, j + 1));
 			ele.setAttribute('data-letter', ele.getAttribute('data-displayletter').toLowerCase());
 			ele.setAttribute('data-hidden', '.');
 			letters.push(ele);

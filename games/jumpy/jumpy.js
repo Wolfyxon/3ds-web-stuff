@@ -141,5 +141,5 @@ window.addEventListener('load', function() {
 
 	});
 
-	window.addEventListener('click', jump);
-});
+	window.addEventListener('click', jump, false);
+}, false);

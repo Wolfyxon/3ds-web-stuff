@@ -21,6 +21,8 @@ window.addEventListener('load', function() {
 		moveY,
 		foodX,
 		foodY,
+		won = false,
+		lost = false,
 		foodEaten = 0,
 		time = 0,
 		paused = true,
@@ -82,6 +84,8 @@ window.addEventListener('load', function() {
 		lastDir = 2;
 		foodEaten = 0;
 		time = 0;
+		won = false;
+		lost = false;
 		snake = [
 			[Math.floor(cols * 0.5), Math.floor(rows * 0.5)]
 		];

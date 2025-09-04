@@ -84,7 +84,7 @@ window.addEventListener('load', function() {
 	function generateTable(size) {
 		t.textContent='';
 		for (var i = 0; i < size; i++) {
-			var row = t.insertRow();
+			var row = t.insertRow( -1 );
 			for (var j = 0; j < size; j++) {
 				var cell = document.createElement('td');
 				cell.textContent = field[i][j];
@@ -113,7 +113,7 @@ window.addEventListener('load', function() {
 		var i = document.getElementById('input');
 		i.textContent = '';
 		for (var j = 1; j <= size; j++) {
-			var r = i.insertRow(i.rows.length),
+			var r = i.insertRow( -1 ),
 				c = document.createElement('td');
 			c.textContent = j;
 			r.appendChild(c);

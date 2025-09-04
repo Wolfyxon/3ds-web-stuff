@@ -195,4 +195,4 @@ window.addEventListener('load', function() {
 		ctx.closePath();
 		ctx.fill();
 	});
-});
+}, false);
