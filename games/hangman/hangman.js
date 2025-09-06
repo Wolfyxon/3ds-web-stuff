@@ -133,7 +133,7 @@ window.addEventListener( 'load', function () {
 			var b = letters[ a ];
 			if ( b.getAttribute( 'data-displayletter' ).toLowerCase() === k.toLowerCase() ) {
 				found++;
-				b.innerText = b.getAttribute( 'data-displayletter' );
+				b.textContent = b.getAttribute( 'data-displayletter' );
 				b.removeAttribute( 'data-hidden' );
 			} else if ( b.getAttribute( 'data-hidden' ) ) {
 				closed++;
@@ -155,7 +155,7 @@ window.addEventListener( 'load', function () {
 				for ( var i = 0; i < letters.length; i++ ) {
 					const l = letters[ i ];
 					if ( l.getAttribute( 'data-hidden' ) ) {
-						l.innerText = l.getAttribute( 'data-displayletter' );
+						l.textContent = l.getAttribute( 'data-displayletter' );
 						l.removeAttribute( 'data-hidden' );
 						l.className += 'failed';
 					}
@@ -182,7 +182,7 @@ window.addEventListener( 'load', function () {
 		var selectedWord = words[ Math.floor( Math.random() * words.length ) ];
 		for ( var j = 0; j < selectedWord.length; j++ ) {
 			var ele = document.createElement( 'span' );
-			ele.innerText = '_';
+			ele.textContent = '_';
 			ele.setAttribute( 'data-displayletter', selectedWord.slice( j, j + 1 ) );
 			ele.setAttribute( 'data-letter', ele.getAttribute( 'data-displayletter' ).toLowerCase() );
 			ele.setAttribute( 'data-hidden', '.' );
