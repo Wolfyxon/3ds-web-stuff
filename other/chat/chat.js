@@ -8,12 +8,12 @@ window.addEventListener("load", function() {
         
         const authorEle = document.createElement("span");
         authorEle.className = "message-author";
-        authorEle.innerText = author;
+        authorEle.textContent = author;
         msg.appendChild(authorEle);
 
         const textEle = document.createElement("span");
         textEle.className = "message-text";
-        textEle.innerText = text;
+        textEle.textContent = text;
         msg.appendChild(textEle);
 
         chatLog.appendChild(msg);

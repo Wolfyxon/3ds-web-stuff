@@ -31,9 +31,9 @@ window.addEventListener("load", function(){
             maxFps = Math.max(fps, maxFps);
             minFps = Math.min(fps, minFps);
 
-            fpsTxt.innerText = fps.toFixed(2);
-            minFpsTxt.innerText = minFps.toFixed(2);
-            maxFpsTxt.innerText = maxFps.toFixed(2);
+            fpsTxt.textContent = fps.toFixed(2);
+            minFpsTxt.textContent = minFps.toFixed(2);
+            maxFpsTxt.textContent = maxFps.toFixed(2);
         }
 
 
@@ -54,7 +54,7 @@ window.addEventListener("load", function(){
             const p = particles[i];
             p.moveVec(p.velocity.getMul(0.2 * delta));
         }
-        particlesTxt.innerText = particles.length;
+        particlesTxt.textContent = particles.length;
 
         maxwell.moveVec(vel.mul(spd));
 

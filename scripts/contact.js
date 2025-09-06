@@ -15,11 +15,11 @@ window.addEventListener("load",function(){
 		const content = contentInput.value;
 
 		if(content.replace(" ","") === ""){
-			contentError.innerText = "Message can't be empty";
+			contentError.textContent = "Message can't be empty";
 			return false;
 		}
 		if(content.length > 2000){
-			contentError.innerText = "Too long. Maximum length is 2000 characters.";
+			contentError.textContent = "Too long. Maximum length is 2000 characters.";
 			return false;
 		}
 

@@ -71,7 +71,7 @@ window.addEventListener('load', function() {
 		ball.y = height / 2.1;
 		ball.rot = 0;
 		ball.speed = originalBallSpeed;
-		text.innerText = '';
+		text.textContent = '';
 		active = true;
 	}
 
@@ -108,8 +108,8 @@ window.addEventListener('load', function() {
 	}
 
 	function updateScore() {
-		playerScoreTxt.innerText = player.score;
-		enemyScoreTxt.innerText = enemy.score;
+		playerScoreTxt.textContent = player.score;
+		enemyScoreTxt.textContent = enemy.score;
 	}
 
 	function isBallTouching(target) {
@@ -122,7 +122,7 @@ window.addEventListener('load', function() {
 	function registerCountdownUpdate(i) {
 		text.style.color = 'orange';
 		setTimeout(function() {
-			text.innerText = (countdown-i);
+			text.textContent = (countdown-i);
 		}, (countdown-(countdown-i)) * 1000);
 	}
 
@@ -131,7 +131,7 @@ window.addEventListener('load', function() {
 	}
 	setTimeout(function() {
 		active = true;
-		text.innerText = '';
+		text.textContent = '';
 	}, countdown * 1000);
 
 	var prevFrameTime = Date.now();
@@ -168,18 +168,18 @@ window.addEventListener('load', function() {
 
 			if (ball.x <= 0) {
 				active = false;
-				text.innerText = 'AI scored';
+				text.textContent = 'AI scored';
 				text.style.color = 'red';
 				enemy.score++;
 				scheduleNextRound();
 				updateScore();
 			} else if (ball.x+ball.w >= width) {
 				active = false;
-				text.innerText = 'You scored';
+				text.textContent = 'You scored';
 				text.style.color = 'lime';
 				player.score++;
 				level++;
-				levelTxt.innerText = 'Level: ' + level;
+				levelTxt.textContent = 'Level: ' + level;
 				scheduleNextRound();
 				updateScore();
 			}

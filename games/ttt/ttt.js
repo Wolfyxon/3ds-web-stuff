@@ -141,13 +141,13 @@ window.addEventListener( 'load', function () {
 		if ( checkWin( X, Y ) ) {
 			winsX += curPlayer ? 1 : 0;
 			winsO += curPlayer ? 0 : 1;
-			winX.innerText = winsX;
-			winO.innerText = winsO;
+			winX.textContent = winsX;
+			winO.textContent = winsO;
 			setTimeout( reset, 1500 );
 		}
 		curPlayer = !curPlayer;
 		plrTxt.style.color = curPlayer ? '#f00' : '#0026ff';
-		plrTxt.innerText = curPlayer ? 'X' : 'O';
+		plrTxt.textContent = curPlayer ? 'X' : 'O';
 		if ( filled === 9 && !won ) {
 			reset();
 		}

@@ -41,7 +41,7 @@ window.addEventListener("load", function(){
         const country = data["country"] || "";
         const admin1 = data["admin1"] || "";
 
-        elem.innerText = name+", " + admin1 + ", " + country;
+        elem.textContent = name+", " + admin1 + ", " + country;
         searchResults.appendChild(elem);
 
         const lat = data["latitude"];
@@ -49,7 +49,7 @@ window.addEventListener("load", function(){
 
         elem.addEventListener("click",function(){
             userPickedLocation = true;
-            loadWeather(lat, long, elem.innerText);
+            loadWeather(lat, long, elem.textContent);
         }, false);
     }
 
@@ -66,8 +66,8 @@ window.addEventListener("load", function(){
             const jsonBody = JSON.parse(body);
             console.log(jsonBody);
 
-            degreesTxt.innerText = jsonBody["current"]["temperature_2m"] + "°C";
-            locationTxt.innerText = locationString;
+            degreesTxt.textContent = jsonBody["current"]["temperature_2m"] + "°C";
+            locationTxt.textContent = locationString;
 
             const color = getTemperatureColor(jsonBody["current"]["temperature_2m"]);
             topScreen.style.backgroundColor = color;

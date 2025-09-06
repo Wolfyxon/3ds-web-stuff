@@ -91,7 +91,7 @@ window.addEventListener("load", function() {
 			clearInterval(stopwatchInterval);
 			appControls.innerHTML = "";
 			timeDisplay.innerHTML = "";
-			timeDisplay.innerText = timerTime(0, 0, 0);
+			timeDisplay.textContent = timerTime(0, 0, 0);
             timeSelect = appControls.appendNew("div", {"id": "time-select"});
             hourSelect = timeSelect.appendNew("select");
             for(var i = 0; i < 24; i++) {
@@ -128,7 +128,7 @@ window.addEventListener("load", function() {
 		timerButtons.innerHTML = "";
 		timerStopButton = timerButtons.appendNew("button", "Stop");
 		timerStopButton.addEventListener("click", function() {stopTimer(false)}, false);
-		timeDisplay.innerText = timerTime(hourValue, minuteValue, secondValue);
+		timeDisplay.textContent = timerTime(hourValue, minuteValue, secondValue);
 		timerInterval = setInterval(function() {
 			if(secondValue == 0 && minuteValue == 0 && hourValue == 0) {
 				stopTimer(true);
@@ -143,7 +143,7 @@ window.addEventListener("load", function() {
 				hourValue -= 1;
 				minuteValue = 59;
 			}
-			timeDisplay.innerText = timerTime(hourValue, minuteValue, secondValue);
+			timeDisplay.textContent = timerTime(hourValue, minuteValue, secondValue);
 		}, 1000);
 	}
 
@@ -159,7 +159,7 @@ window.addEventListener("load", function() {
 
 	function stopTimer(alarm) {
 		clearInterval(timerInterval);
-		timeDisplay.innerText = timerTime(0, 0, 0);
+		timeDisplay.textContent = timerTime(0, 0, 0);
 		if(alarm) {
 			timeDisplay.setAttribute("data-flashing", true)
 		} else {
@@ -223,7 +223,7 @@ window.addEventListener("load", function() {
 
 	function updateStopwatch() {
 		const stopwatchEllapsedTime = stopwatchPausedTime + (new Date().getTime() - stopwatchStartTime);
-		timeDisplay.innerText = stopwatchTime(stopwatchEllapsedTime);
+		timeDisplay.textContent = stopwatchTime(stopwatchEllapsedTime);
 	}
 	
 	function stopwatchTime(stopwatchEllapsedTime) {
