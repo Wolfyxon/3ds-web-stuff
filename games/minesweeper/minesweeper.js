@@ -2,14 +2,15 @@
 
 window.addEventListener( 'load', function () {
 	const field = document.getElementById( 'field' ),
+		tbody = field.appendChild( document.createElement( 'tbody' ) ),
 		minesDisplay = document.getElementById( 'mines' ),
 		flagsDisplay = document.getElementById( 'flags' ),
 		timeDisplay = document.getElementById( 'time' ),
 		restartMsg = document.getElementById( 'restart-msg' ),
 		resetBtn = document.getElementById( 'btn-reset' ),
 		flagBtn = document.getElementById( 'btn-flag' ),
-		width = 9,
-		height = 9,
+		width = 12,
+		height = 12,
 		mineCount = 10,
 		pos = [
 			[ -1, -1 ],
@@ -20,7 +21,8 @@ window.addEventListener( 'load', function () {
 			[ -1, 1 ],
 			[ 0, 1 ],
 			[ 1, 1 ]
-		];
+		],
+		data = [];
 	var lost = false,
 		won = false,
 		first = true,
@@ -28,34 +30,36 @@ window.addEventListener( 'load', function () {
 		time = 0,
 		timeout,
 		flagCount = 0,
-		mines = [],
 		opened = 0;
+
+	function drawIcon( x, y, tile ) {
+		data[ y ][ x ][ 3 ].src = './img/' + tile + '.png';
+	}
 
 	function generate( excludeX, excludeY ) {
 		excludeX = excludeX || -1;
 		excludeY = excludeY || -1;
-		field.innerHTML = '';
-		var cells = [];
+		const cells = [];
+		var minesPlaced = 0;
 
 		/* generate cells */
 		for ( var y = 0; y < height; y++ ) {
-			var row2 = document.createElement( 'tr' );
 			for ( var x = 0; x < width; x++ ) {
-				var cell2 = document.createElement( 'td' );
-				cell2.setAttribute( 'data-row', y );
-				cells.push( [ cell2, x, y ] );
-				row2.appendChild( cell2 );
+				const d = data[ y ][ x ];
+				d[ 0 ] = 0; // count
+				d[ 1 ] = false; // open state
+				d[ 2 ] = false; // flagged
+				cells.push( [ x, y ] );
+				drawIcon( x, y, 'closed' );
 			}
-			field.appendChild( row2 );
 		}
 
-		var minesPlaced = 0;
 		while ( minesPlaced < mineCount ) {
 			var index = Math.floor( Math.random() * cells.length ),
 				abc = cells[ index ],
-				cell = abc[ 0 ],
-				col = abc[ 1 ],
-				row = abc[ 2 ];
+				col = abc[ 0 ],
+				row = abc[ 1 ],
+				cell = data[ row ][ col ];
 
 			// Return if cell should be excluded
 			if ( col === excludeX && row === excludeY ) {
@@ -63,9 +67,7 @@ window.addEventListener( 'load', function () {
 			}
 
 			// Place mine
-			cell.textContent = 'o';
-			cell.className = 'mine';
-			mines.push( cell );
+			cell[ 0 ] = -1;
 
 			// Increase count on adjacent cells
 			for ( var i = 0; i < pos.length; i++ ) {
@@ -76,10 +78,9 @@ window.addEventListener( 'load', function () {
 					continue;
 				}
 
-				var c = field.rows[ y2 ].cells[ x2 ];
-				if ( c.textContent !== 'o' ) {
-					c.textContent = Number( c.textContent ) + 1;
-					c.className = 'num' + c.textContent;
+				const c = data[ y2 ][ x2 ];
+				if ( c[ 0 ] >= 0 ) {
+					c[ 0 ]++;
 				}
 			}
 
@@ -88,13 +89,26 @@ window.addEventListener( 'load', function () {
 		}
 	}
 
-	function endGame( cell ) {
+	function endGame( clickedX, clickedY ) {
 		restartMsg.style.visibility = 'visible';
-		cell.style.backgroundColor = '#EA3323';
-		cell.style.borderColor = '#CD372E';
 		lost = true;
-		for ( var i = 0; i < mines.length; i++ ) {
-			mines[ i ].className += ' open';
+		var icon = '';
+		for ( var y = 0; y < width; y++ ) {
+			for ( var x = 0; x < height; x++ ) {
+				const d = data[ y ][ x ];
+				if ( d[ 0 ] === -1 && d[ 2 ] ) { // flagged + bomb
+					continue;
+				} else if ( d[ 0 ] >= 0 && d[ 2 ] ) { // wrongly flagged
+					icon = 'wrong';
+				} else if ( clickedX === x && clickedY === y ) { // clicked bomb
+					icon = 'hit';
+				} else if ( d[ 0 ] === -1 ) { // bomb
+					icon = 'mine';
+				} else {
+					continue;
+				}
+				drawIcon( x, y, icon );
+			}
 		}
 	}
 
@@ -104,22 +118,24 @@ window.addEventListener( 'load', function () {
 		}
 
 		// Return if already open or flagged
-		const cell = field.rows[ y ].cells[ x ];
-		if ( cell.className.indexOf( 'open' ) > 0 || cell.getAttribute( 'flagged' ) === '1' ) {
+		const cell = data[ y ][ x ];
+		if ( cell[ 1 ] || cell[ 2 ] ) {
+			return;
+		}
+
+		// If it's a mine
+		if ( cell[ 0 ] === -1 ) {
+			endGame( x, y );
 			return;
 		}
 
 		// Open field
-		cell.className += ' open';
 		opened++;
-
-		// If it's a mine
-		if ( cell.textContent === 'o' ) {
-			endGame( cell );
-		}
+		cell[ 1 ] = true;
+		drawIcon( x, y, cell[ 0 ] );
 
 		// Return if count > 0
-		if ( cell.textContent !== '' ) {
+		if ( cell[ 0 ] > 0 ) {
 			return;
 		}
 
@@ -134,7 +150,6 @@ window.addEventListener( 'load', function () {
 		won = false;
 		first = true;
 		time = 0;
-		mines.length = 0;
 		opened = 0;
 		flagCount = 0;
 		minesDisplay.textContent = mineCount;
@@ -142,10 +157,7 @@ window.addEventListener( 'load', function () {
 		timeDisplay.textContent = '0 sec';
 		restartMsg.style.visibility = '';
 		generate();
-		field.style.display = '';
 	}
-
-	reset();
 
 	function updateTime() {
 		if ( first || won || lost ) {
@@ -157,42 +169,43 @@ window.addEventListener( 'load', function () {
 		timeDisplay.textContent = time + ' sec';
 	}
 
-	field.addEventListener( 'click', function ( event ) {
-		if ( won || lost || event.target.nodeName !== 'TD' ) {
+	function imgClick( e ) {
+		if ( won || lost ) {
 			return;
 		}
-		const cell = event.target,
-			row = Number( cell.getAttribute( 'data-row' ) ),
-			column = cell.cellIndex;
+		const x = Number( e.target.getAttribute( 'data-column' ) ),
+			y = Number( e.target.getAttribute( 'data-row' ) ),
+			cell = data[ y ][ x ];
 
 		// Return if the cell is already open
-		if ( !cell || cell.className.indexOf( 'open' ) > 0 ) {
+		if ( cell[ 1 ] ) {
 			return;
 		}
 
 		// Check flagged attribute
-		var flagNum = parseInt( cell.getAttribute( 'flagged' ) ) || -1;
+		const flagged = cell[ 2 ];
 
 		// Flag or unflag
 		if ( flagging ) {
-			if ( ( flagCount === mineCount ) && flagNum === -1 ) {
+			if ( ( flagCount === mineCount ) && !flagged ) {
 				return;
 			}
-			cell.setAttribute( 'flagged', -flagNum );
-			flagCount -= flagNum;
+			cell[ 2 ] = !cell[ 2 ];
+			flagCount += flagged ? -1 : 1;
 			flagsDisplay.textContent = mineCount - flagCount;
+			drawIcon( x, y, flagged ? 'closed' : 'flag' );
 			first = false;
 			return;
 		}
 
 		// Return if flagged
-		if ( flagNum === 1 ) {
+		if ( flagged ) {
 			return;
 		}
 
 		// Reset if first click is a bomb
-		if ( first && cell.textContent === 'o' ) {
-			generate( column, row );
+		if ( first && cell[ 0 ] === -1 ) {
+			generate( x, y );
 		}
 
 		// Start timer if not running
@@ -202,7 +215,7 @@ window.addEventListener( 'load', function () {
 
 		// Open cell
 		first = false;
-		open( column, row );
+		open( x, y );
 
 		// Check if all cells are open
 		if ( opened + mineCount === width * height ) {
@@ -210,7 +223,26 @@ window.addEventListener( 'load', function () {
 			alert( 'You won!' );
 			won = true;
 		}
-	}, false );
+	}
+
+	function generateTable() {
+		for ( var y = 0; y < height; y++ ) {
+			const row = tbody.appendChild( document.createElement( 'tr' ) );
+			data[ y ] = [];
+			for ( var x = 0; x < width; x++ ) {
+				const td = row.appendChild( document.createElement( 'td' ) ),
+					img = td.appendChild( document.createElement( 'img' ) );
+				img.setAttribute( 'data-column', String( x ) );
+				img.setAttribute( 'data-row', String( y ) );
+				img.src = './img/closed.png';
+				img.addEventListener( 'click', imgClick, false );
+				data[ y ][ x ] = [ 0, false, false, img ];
+			}
+		}
+	}
+
+	generateTable();
+	reset();
 
 	resetBtn.addEventListener( 'click', function () {
 		if ( opened === 0 ) {
