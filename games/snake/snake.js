@@ -5,10 +5,10 @@ window.addEventListener( 'load', function () {
 			willReadFrequently: true
 		} ),
 		status = document.getElementById( 'status' ),
-		start = document.getElementById( 'start' ),
+		start = document.getElementById( 'buttonStart' ),
 		foodTxt = document.getElementById( 'food-eaten' ),
 		timeTxt = document.getElementById( 'time' ),
-		gamemodeContainer = document.getElementById( 'gamemode-container' ),
+		gamemodeContainer = document.getElementById( 'gamemodeContainer' ),
 		btnEnableWalls = document.getElementById( 'btn-enable-walls' ),
 		btnDisableWalls = document.getElementById( 'btn-disable-walls' ),
 		size = 10,
@@ -17,12 +17,12 @@ window.addEventListener( 'load', function () {
 		back1 = '#6abe30',
 		back2 = '#99e550';
 	var snake = [],
+		won = false,
+		lost = false,
 		moveX,
 		moveY,
 		foodX,
 		foodY,
-		won = false,
-		lost = false,
 		foodEaten = 0,
 		time = 0,
 		paused = true,
@@ -125,6 +125,28 @@ window.addEventListener( 'load', function () {
 		}
 
 	}
+
+	function move( e ) {
+		if ( paused ) {
+			return;
+		}
+
+		const b = e.target.getAttribute( 'data-dir' );
+		if ( b === 'left' && lastDir !== 0 ) {
+			moveX = -1;
+			moveY = 0;
+		} else if ( b === 'up' && lastDir !== 1 ) {
+			moveX = 0;
+			moveY = -1;
+		} else if ( b === 'right' && lastDir !== 2 ) {
+			moveX = 1;
+			moveY = 0;
+		} else if ( b === 'down' && lastDir !== 3 ) {
+			moveX = 0;
+			moveY = 1;
+		}
+	}
+
 	updateGamemodes();
 
 	setInterval( function () {
@@ -237,6 +259,10 @@ window.addEventListener( 'load', function () {
 		}
 	}, false );
 
+	document.getElementById( 'buttonUp' ).addEventListener( 'click', move, false );
+	document.getElementById( 'buttonDown' ).addEventListener( 'click', move, false );
+	document.getElementById( 'buttonLeft' ).addEventListener( 'click', move, false );
+	document.getElementById( 'buttonRight' ).addEventListener( 'click', move, false );
 	start.addEventListener( 'click', reset, false );
 
 	btnDisableWalls.addEventListener( 'click', function () {

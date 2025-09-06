@@ -25,12 +25,22 @@
 					<div><span id="food-eaten">0</span> <span id="food-icon"></span></div>
 					<div id="time">0:00:00</div>
 				</div>
-				<div id="start-container">
-					<button id="start">&#xE000 Start</button>
+				<div>
+					<div>
+						<button id="buttonUp" data-dir="up">&#xE01B;</button>
+					</div>
+					<div>
+						<button id="buttonLeft" data-dir="left">&#xE01A;</button>
+						<button id="buttonDown" data-dir="down">&#xE01C;</button>
+						<button id="buttonRight" data-dir="right">&#xE019;</button>
+					</div>
 				</div>
-				<div id="gamemode-container">
-					<p>Gamemodes:</p>
-					<div id="gamemodes">
+				<div class="startContainer">
+					<button id="buttonStart">&#xE000; Start</button>
+				</div>
+				<div id="gamemodeContainer">
+					<div>Gamemodes:</div>
+					<div class="gamemodes">
 						<button id="btn-enable-walls">Walls</button>
 						<button id="btn-disable-walls">No walls</button>
 					</div>
