@@ -1,0 +1,12 @@
+<svg width="400" height="160" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 60px;
+            font-weight: bold;
+            fill: #ff9000;
+        }
+    </style>
+    <rect x="5" y="5" width="390" height="150" rx="20" stroke="#000000" fill="#40B0FF" stroke-width="6"/>
+    <text x="35.8" y="100">Regenerate</text>
+</svg>
