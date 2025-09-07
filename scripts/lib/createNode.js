@@ -1,5 +1,7 @@
-//DSi appears to not wait for global.js to finish executing, and complains about libName being undefined.
-if(libName) libName("createNode");
+// DSi appears to not wait for global.js to finish executing, and complains about libName being undefined.
+try {
+	libName("createNode");
+} catch(err) {}
 
 // IIFE to keep helper functions private
 (function() {
