@@ -66,7 +66,7 @@ window.addEventListener("load", function() {
 	function reset(){
 		alive = true;
 		passedPipes = 0;
-		txtPipes.innerText = passedPipes;
+		txtPipes.textContent = passedPipes;
 		pipes = [];
 		gameover.style.visibility = "hidden";
 		pigeon.rotation = 0;
@@ -121,7 +121,7 @@ window.addEventListener("load", function() {
 		const delta = (Date.now() - prevFrameTime) / 16;
 		prevFrameTime = Date.now();
 
-		txtFps.innerText = (1000 / (delta * 16)).toFixed(2);
+		txtFps.textContent = (1000 / (delta * 16)).toFixed(2);
 
 		if(alive && started){
 			if(pipes.length > 0){
@@ -157,10 +157,10 @@ window.addEventListener("load", function() {
 			if(pipe.getX() <= 10 && !pipe.passed){
 				pipe.passed = true;
 				passedPipes += 0.5;
-				txtPipes.innerText = passedPipes;
+				txtPipes.textContent = passedPipes;
 				if(passedPipes > highScore){
 					highScore = passedPipes;
-					txtHighScore.innerText = passedPipes;
+					txtHighScore.textContent = passedPipes;
 					txtHighScore.style.color = "lime";
 				}
 			}

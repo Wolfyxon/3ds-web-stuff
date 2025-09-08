@@ -1,6 +1,5 @@
 /* Originally made by magiczocker10 */
-
-#top-screen  {
+#top-screen {
 	background-color: #51c045;
 	color: #fff;
 	text-align: center;
@@ -21,6 +20,10 @@
 	width: 60%;
 }
 
+#icons {
+	display: none;
+}
+
 #stats {
 	background-color: #006405;
 	border-radius: 10px;
@@ -37,77 +40,19 @@
 }
 
 #field {
+	border-spacing: 0;
 	display: inline-table;
+	position: relative;
 	border-bottom: #fff 2px solid;
 	border-left: #808080 2px solid;
 	border-right: #fff 2px solid;
 	border-top: #808080 2px solid;
-	border-radius: 5px;
-	border-spacing: 0;
 	margin-left: auto;
 	margin-right: auto;
 }
-td {
-	-webkit-background-size: 100% 100%;
-		-o-background-size: 100%;
-			background-size: 100%;
-	background-color: #C0C0C0;
-	border-bottom: #808080 2px solid;
-	border-left: #fff 2px solid;
-	border-right: #808080 2px solid;
-	border-top: #fff 2px solid;
-	color: #C0C0C0;
-	font-weight: bold;
-	height: 16px;
-	line-height: 1;
-	-webkit-user-select: none;
-	        user-select: none;
-	width: 16px;
-}
-td.num1.open {
-	color: #0000F5;
-}
-td.num2.open {
-	color: #377E22;
-}
-td.num3.open {
-	color: #EA3323;
-}
-td.num4.open {
-	color: #00007B;
-}
-td.num5.open {
-	color: #75140C;
-}
-td.num6.open {
-	color: #377E7F;
-}
-td.num7.open {
-	color: #000;
-}
-td.num8.open {
-	color: #808080;
-}
-td:not(.open) {
-	cursor: pointer;
-}
-td.open {
-	border: #909090 1px solid;
-	height: 18px;
-	width: 18px;
-}
 
-td.mine.open {
-	-webkit-background-size: 100% 100%;
-	     -o-background-size: 100%;
-	        background-size: 100%;
-	background-image: url("img/bomb.png");
-	font-size: 0;
-}
-
-td[flagged="1"] {
-	font-size: 0;
-	background-image: url("img/flag.png");
+#field td {
+	padding: 0;
 }
 
 #restart-msg {
@@ -127,4 +72,8 @@ td[flagged="1"] {
 
 #buttons img {
 	width: 100%;
+}
+
+.hidden {
+	display: none;
 }

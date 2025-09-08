@@ -100,9 +100,9 @@ window.addEventListener('load', function() {
 		screenEle.style.webkitAnimationPlayState = 'running';
 		screenEle.style.animationPlayState = 'running';
 		gameover.style.display = 'none';
-		killCounter.innerText = '0';
-		projectiles.innerText = '';
-		heliEle.innerText = '';
+		killCounter.textContent = '0';
+		projectiles.textContent = '';
+		heliEle.textContent = '';
 		lifebar.style.height = '0%';
 		targetEle.style.left = '';
 		targetEle.style.top = '';
@@ -147,7 +147,7 @@ window.addEventListener('load', function() {
 							helis[j][0].parentElement.removeChild(helis[j][0]);
 							helis.splice(j, 1);
 							j--;
-							killCounter.innerText = Number(killCounter.innerText) + 1;
+							killCounter.textContent = Number(killCounter.textContent) + 1;
 							spawnHeli();
 						}
 						projectiles.removeChild(pEle);
@@ -222,7 +222,7 @@ window.addEventListener('load', function() {
 		if(!running) reset();
 	});
 
-	document.getElementById('btn-restart').addEventListener('click', reset);
+	document.getElementById('btn-restart').addEventListener('click', reset, false);
 
 	reset();
-});
+}, false);

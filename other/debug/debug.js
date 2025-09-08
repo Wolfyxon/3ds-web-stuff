@@ -6,13 +6,13 @@ window.addEventListener("load",function (){
 		gamepadTxt = document.getElementById("gamepad"),
 		anim = document.getElementById("anim-test");
 
-	userAg.innerText = navigator.userAgent;
-	document.getElementById("is-3ds").innerText = "Is 3DS: " + is3DS();
+	userAg.textContent = navigator.userAgent;
+	document.getElementById("is-3ds").textContent = "Is 3DS: " + is3DS();
 
 	var clickCount = 0;
 	btn.addEventListener("click",function (){
 		clickCount+=1;
-		btn.innerText = "Clicked "+clickCount+" times";
+		btn.textContent = "Clicked "+clickCount+" times";
 	}, false);
 
 	var targetColor = "#FF0000";
@@ -23,10 +23,10 @@ window.addEventListener("load",function (){
 	},1000);
 
 	setInterval(function (){
-		gamepadTxt.innerText = "Pressed: "+getPressedBtns();
-		scrollPos.innerText = "Scroll pos: " + window.scrollX + " " + window.scrollY;
+		gamepadTxt.textContent = "Pressed: "+getPressedBtns();
+		scrollPos.textContent = "Scroll pos: " + window.scrollX + " " + window.scrollY;
 		const zoom = (( window.outerWidth - 10 ) / window.innerWidth) * 100;
-		zoomPos.innerText = "Zoom: " + window.outerWidth + " " +window.outerHeight + " " + zoom + "%";
+		zoomPos.textContent = "Zoom: " + window.outerWidth + " " +window.outerHeight + " " + zoom + "%";
 		anim.style.backgroundColor = lerpColor(anim.style.backgroundColor,targetColor,0.01);
 	});
 
@@ -60,8 +60,8 @@ window.addEventListener("load",function (){
 
 	setInterval(function(){
 		const delta = Date.now() - prevFrameTime;
-		deltaTxt.innerText = "Current delta: " +  delta / 1000;
-		fpsTxt.innerText = "FPS: " + (1000 / delta).toFixed(2);
+		deltaTxt.textContent = "Current delta: " +  delta / 1000;
+		fpsTxt.textContent = "FPS: " + (1000 / delta).toFixed(2);
 
 		prevFrameTime = Date.now();
 
