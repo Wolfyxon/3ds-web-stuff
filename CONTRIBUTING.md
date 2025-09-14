@@ -37,16 +37,17 @@ Also see https://developer.mozilla.org/ whenever you need to check if a property
 ```
 games
 |_ gameName
-  |_ gameName.js
-  |_ gameName.css
+  |_ script.js
+  |_ style.css
   |_ index.html
 
 other
 |_ appName
-  |_ appName.js
-  |_ appName.css
+  |_ script.js
+  |_ style.css
   |_ index.html
 ```
+(Alternatively you can use *gameName.js* and *gameName.css*, but that's the old standard and shouldn't be used anymore)
 - Avoid using absolute paths such as `/styles/global.css` so the site can run without a server (ex. when just opening HTML file locally in your browser). Use `../../styles/global.css` instead. Absolute paths should only be used if the same page can be accessed from multiple URLs (such as the 404 page).
 
 ## Bugs and suggestions
