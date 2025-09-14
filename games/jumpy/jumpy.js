@@ -33,7 +33,7 @@ window.addEventListener('load', function() {
 	function reset() {
 		time = 0;
 		speed = defaultSpeed;
-		gameoverTxt.innerText = '';
+		gameoverTxt.textContent = '';
 		highScoreText.style.color = '';
 		for (var i=0; i<spikes.length; i++) {
 			topScreen.removeChild(spikes[i][1]);
@@ -76,8 +76,8 @@ window.addEventListener('load', function() {
 		const timeValTxt = new Date(time * 1000).toISOString().slice(11,19),
 			highTimeValTxt = new Date(highScore * 1000).toISOString().slice(11,19);
 
-		timeText.innerText = 'Time: '  + timeValTxt;
-		highScoreText.innerText = 'High score: ' + highTimeValTxt;
+		timeText.textContent = 'Time: '  + timeValTxt;
+		highScoreText.textContent = 'High score: ' + highTimeValTxt;
 		if (highScore <= time) {
 			highScoreText.style.color = '#279A00';
 		}
@@ -126,7 +126,7 @@ window.addEventListener('load', function() {
 					player.style.backgroundPositionX = '-135px';
 					active = false;
 					resetCooldown = true;
-					gameoverTxt.innerText = 'GAME OVER';
+					gameoverTxt.textContent = 'GAME OVER';
 					setTimeout(function() {
 						resetCooldown = false;
 					}, 200);
@@ -141,5 +141,5 @@ window.addEventListener('load', function() {
 
 	});
 
-	window.addEventListener('click', jump);
-});
+	window.addEventListener('click', jump, false);
+}, false);

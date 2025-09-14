@@ -38,7 +38,7 @@ window.addEventListener('load',function(){
     const projectiles = [];
 
     function updateKills(){
-        killsTxt.innerText = kills;
+        killsTxt.textContent = kills;
     }
 
     function addHelicopter(x,y){
@@ -227,5 +227,5 @@ window.addEventListener('load',function(){
 
     btnRestart.addEventListener('click',function(){
         if(!alive) reset();
-    })
-})
+    }, false)
+}, false)

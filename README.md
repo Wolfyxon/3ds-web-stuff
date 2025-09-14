@@ -75,6 +75,8 @@ Big thanks to https://www.3dbrew.org/ and [3DS Browser specs by Nintendo](https:
 
 ## TODO
 Besides, from planned games:
+- [ ] Improve snake move button elements
+- [ ] Make helicopters in jetfighter not fly too low (they become impossible or hard to hit)
 - [ ] Fix compatibility and performance issues on Old 3DS/2DS
 - [ ] Create a faster rendering library
 - [ ] Put all library functions in namespaces instead of importing them right onto the script

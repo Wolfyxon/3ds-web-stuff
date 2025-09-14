@@ -1,0 +1,19 @@
+# DISCLAIMER:
+# The contents of this file are politically neutral and not intended to offend anyone.
+# This file is used to abuse the filtering mechanisms of gitcode.com and github-zh.com 
+# to prevent them from scraping this repo.
+#
+# Thanks to astro-angelfish for this idea
+
+996
+75
+007
+shadowsocks
+v2ray
+vmess
+proxy
+gfw
+Great Fire Wall
+VPN
+Tiananmen Square 1989
+Taiwan

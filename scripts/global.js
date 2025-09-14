@@ -505,16 +505,16 @@ document.addEventListener('touchmove', function(e){
             // Horizontal
             if(deltaX > 0) direction = -1;
 
-            const notExtended = (direction === 1 && scrollX<w) || (direction === -1 && scrollX>0);
-            if(notExtended && css.overflowX === "scroll") return true;
+            const notExtendedH = (direction === 1 && scrollX<w) || (direction === -1 && scrollX>0);
+            if(notExtendedH && css.overflowX === "scroll") return true;
         }
         else {
             // Vertical
             if(deltaY < 0) direction = -1;
 
             // TODO: Fix drag prevention not working when scrolling upwards
-            const notExtended = (direction === 1 && scrollY<h) || (direction === -1 && scrollY>0);
-            if(notExtended && css.overflowY === "scroll") return true;
+            const notExtendedV = (direction === 1 && scrollY<h) || (direction === -1 && scrollY>0);
+            if(notExtendedV && css.overflowY === "scroll") return true;
         }
 
     }
