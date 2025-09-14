@@ -30,12 +30,27 @@ registerFallback(Array.prototype, "includes", function (value) {
     return includes(this, value);
 });
 
-registerFallback(Object.prototype, "keys", function () {
-    return oKeys(this);
+registerFallback(Object, "keys", function (obj) {
+    return oKeys(obj);
 });
 
 registerFallback(String.prototype, "startsWith", function (str) {
 	return this.substring(0, str.length) == str;
+});
+
+registerFallback(Math, "sign", function(x) {
+    if(+x == 0) return 0;
+    if(+x < 0) return -1;
+    if(+x > 0) return 1;
+    return NaN;
+});
+
+registerFallback(Array.prototype, "indexOf", function(searchElement, fromIndex) {
+    for(var i = fromIndex || 0; i < this.length; i++) {
+        if(this[i] === searchElement) return i;
+    }
+
+    return -1;
 });
 
 // console doesn't seem to be available on DSi
@@ -194,9 +209,7 @@ function includes(container,search){
 function oKeys(obj) {
     var out = [];
     for (var k in obj) {
-		if(obj.hasOwnProperty(k)) { // Avoids derived members of Object.prototype
-        	out.push(k);
-    	}
+        out.push(k);
 	}
     return out;
 }
