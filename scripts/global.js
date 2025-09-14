@@ -45,6 +45,14 @@ registerFallback(Math, "sign", function(x) {
     return NaN;
 });
 
+registerFallback(Array.prototype, "indexOf", function(searchElement, fromIndex) {
+    for(var i = fromIndex || 0; i < this.length; i++) {
+        if(this[i] === searchElement) return i;
+    }
+
+    return -1;
+});
+
 // console doesn't seem to be available on DSi
 registerFallback(window, "console", {});
 registerFallback(console, "log", doNothing);
