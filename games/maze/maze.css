@@ -43,7 +43,7 @@
     bottom: 220px;
     left: 30px;
     background-color: #ff9000;
-    color: #40B0FF;
+    color: #0080FF;
     font-size: 20px;
     font-weight: bold; /* Todo: Figure out why DSi is ignoring this */
     padding-left: 10px;
@@ -54,7 +54,6 @@
 #menu-text {
     font-size: 30px; /* Todo: Figure out why DSi is ignoring this */
     text-align: center;
-    color: #40B0FF;
     margin-top: 10px;
     margin-bottom: 30px;
 }
