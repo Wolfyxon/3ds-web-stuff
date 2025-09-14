@@ -45,7 +45,7 @@
     background-color: #ff9000;
     color: #40B0FF;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: bold; /* Todo: Figure out why DSi is ignoring this */
     padding-left: 10px;
     padding-right: 10px;
     border: 5px inset #E0E0E0;
@@ -77,11 +77,6 @@
     background-color: #F0F0F0;
     border: 1px solid #808080;
     border-radius: 50%;
-}
-
-.menu-slider::-o-range-track {
-  background-color: transparent;
-  border: none;
 }
 
 .menu-slider-label {
