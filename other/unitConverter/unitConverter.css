@@ -1,45 +1,45 @@
 h3 {
 	text-align: center;
-    font-size: 40px;
-    margin-top: 0;
+	font-size: 30pt;
+	margin-top: 0;
 }
 
 #input-num {
-    width: 120px;
+	width: 120px;
 }
 
 #output-num {
-    text-align: center;
-    font-size: 30px;
+	text-align: center;
+	font-size: 30px;
 }
 
 #disclaimer {
-    position: absolute;
-    font-size: 15px;
-    bottom: 15px;
+	position: absolute;
+	font-size: 15px;
+	bottom: 15px;
 }
 
 #btn-convert {
-    background-color: limegreen;
-	border: 2px green solid;
+	background-color: #32cd32;
+	border: 2px #008000 solid;
 	border-radius: 5px;
-    font-size: 30px;
-    font-weight: bold;
-    width: 200px;
-    height: 50px;
-    margin: 5px auto;
-    display: block;
+	font-size: 22.5pt;
+	font-weight: bold;
+	width: 200px;
+	height: 50px;
+	margin: 5px auto;
+	display: block;
 }
 
 #btn-convert:active {
-	background: lime;
+	background-color: #0f0;
 }
 
 #bottom-screen > div {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 #top-screen,
 #bottom-screen {
-    position: relative;
+	position: relative;
 }

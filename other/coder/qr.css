@@ -5,8 +5,8 @@
 }
 
 #code {
-    max-width: 300px;
-    max-height: 140px;
+	max-width: 300px;
+	max-height: 140px;
 }
 
 #text {
@@ -18,8 +18,8 @@
 #right {
 	cursor: pointer;
 	display: inline-block;
-	font-size: 12px;
-	line-height: 160px;
+	font-size: 9pt;
+	line-height: 120pt;
 	vertical-align: bottom;
 	width: 10px;
 }
@@ -34,18 +34,18 @@
 }
 
 #btn-gen {
-	background-color: limegreen;
-	border: 2px green solid;
+	background-color: #32cd32;
+	border: 2px #008000 solid;
 	border-radius: 5px;
 	height: 10%;
 	margin-top: 2%;
 }
 
 #btn-gen:active {
-	background: lime;
+	background: #00ff00;
 }
 
-input[name="codeSelectRadio"] {
+input[ name="codeSelectRadio" ] {
 	display: none;
 }
 
@@ -58,7 +58,7 @@ label {
 	border: 2px solid;
 	border-radius: 5px;
 	display: inline-block;
-	font-size: 14px;
+	font-size: 10.5pt;
 	margin-bottom: 5px;
 	text-align: center;
 	width: 128px;
