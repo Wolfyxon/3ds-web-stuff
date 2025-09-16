@@ -67,7 +67,6 @@ window.addEventListener('load', function() {
 	function reset() {
 		var c = input.tHead.rows[0].cells;
 		for (var j=0; j<c.length; j++) {
-			c[j].style.color = '';
 			c[j].setAttribute('data-index', '5');
 		}
 
@@ -90,9 +89,8 @@ window.addEventListener('load', function() {
 		if (row < 0) return;
 		if (row === 0) e.target.style.color = 'transparent';
 
-		cell.textContent = 'o';
-		cell.setAttribute('data-player', player ? '1' : '0');
-		cell.style.color = player ? '#ff0000' : '#0026ff';
+		cell.textContent = '●';
+		cell.className = player ? 'playerR' : 'playerB';
 
 		checkWin(column, row);
 		if (won) {

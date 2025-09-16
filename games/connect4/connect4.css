@@ -1,6 +1,6 @@
 #top-screen,
 #bottom-screen {
-	background-color: #262626;
+	background-color: #333;
 	color: #f6f6f6;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -22,20 +22,12 @@
 }
 
 #field td {
-	background-color: #c7c7c7;
-	border: 1px solid #767676;
-	color: #262626;
+	background-color: #636163;
+	border: 1px solid #848284;
+	font-size: 12pt;
 	height: 20px;
-	line-height: 0;
+	line-height: 12pt;
 	width: 20px;
-}
-
-#field td[ data-player='1' ] {
-	color: #f00;
-}
-
-#field td[ data-player='0' ] {
-	color: #0026ff;
 }
 
 /* Input arrows */
@@ -61,29 +53,30 @@
 
 #pointsB,
 #pointsR {
-	background-color: #c7c7c7;
-	border: 3px solid #c7c7c7;
+	background-color: #636163;
+	border: 3px solid #636163;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	color: #262626;
 	height: 40px;
 	width: 40px;
 	display: inline-block;
 }
 
+#pointsB,
+.playerB {
+	color: #82efff;
+}
+
+#pointsR,
+.playerR {
+	color: #ff0;
+}
+
 #pointsB.current {
-	border-color: #0026ff;
+	border-color: #82efff;
 }
 
 #pointsR.current {
-	border-color: #f00;
-}
-
-#pointsB {
-	color: #00f;
-}
-
-#pointsR {
-	color: #f00;
+	border-color: #ff0;
 }
