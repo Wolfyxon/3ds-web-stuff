@@ -100,16 +100,16 @@ body {
 .heli {
 	width: 48px;
 	height: 81px;
-	transition: top 2s, left 2s;
 	-webkit-transition: top 2s, left 2s;
+	transition: top 2s, left 2s;
 }
 
 .heli .inner {
-	-webkit-transform-origin: 21.5px 31px;
 	background-image: url( img/heli.png );
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100%;
+	-webkit-transform-origin: 21.5px 31px;
 	transform-origin: 21.5px 31px;
 	width: 100%;
 }
