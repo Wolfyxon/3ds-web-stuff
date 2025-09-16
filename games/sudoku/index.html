@@ -2,54 +2,56 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Sudoku</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<meta name="description" content="Sudoku game for the 3DS.">
-	<meta name="author" content="magiczocker">
+    <meta charset="utf-8">
+    <title>Sudoku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Sudoku game for the 3DS.">
+    <meta name="author" content="magiczocker">
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="sudoku.css">
 
     <script src="../../scripts/global.js" type="text/javascript"></script>
-	<script src="sudoku.js" type="text/javascript"></script>
+    <script src="sudoku.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="screens">
-        <div id="top-screen">
-			Sudoku
-		</div>
+        <div id="top-screen">Sudoku</div>
         <div id="bottom-screen">
-			<table id="board"></table>
-			<table id="input"></table>
-			<div id="settings">
-				<table>
-					<tr>
-						<td>
-							<label for="sizeselector">Field Size:</label>
-							<select id="sizeselector">
-								<option data-size="4" selected>4x4</option>
-								<option data-size="6">6x6</option>
-								<option data-size="9">9x9</option>
-							</select>
-						</td>
-					</tr><tr>
-						<td>
-							<label for="diffselector">Difficulty:</label>
-							<select id="diffselector">
-								<option data-emptycells="9,20,45" selected>Easy</option>
-								<option data-emptycells="10,23,52">Medium</option>
-								<option data-emptycells="12,26,59">Hard</option>
-							</select>
-						</td>
-					</tr><tr>
-						<td>
-							<button id="resetbtn">Reset</button>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div id="open">X</div>
-		</div>
-	</div>
+            <table id="board"></table>
+            <table id="input"></table>
+            <div id="settings">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="sizeselector">Field Size:</label>
+                                <select id="sizeselector">
+                                    <option data-size="4" selected>4x4</option>
+                                    <option data-size="6">6x6</option>
+                                    <option data-size="9">9x9</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="diffselector">Difficulty:</label>
+                                <select id="diffselector">
+                                    <option data-emptycells="9,20,45" selected>Easy</option>
+                                    <option data-emptycells="10,23,52">Medium</option>
+                                    <option data-emptycells="12,26,59">Hard</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="resetbtn" type="button">Reset</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="open">X</div>
+        </div>
+    </div>
 </body>
 </html>

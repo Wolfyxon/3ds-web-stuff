@@ -14,20 +14,20 @@
     <script src="ttt.js" type="text/javascript"></script>
 </head>
 <body>
-<div id="screens">
-    <div id="top-screen">
-		<h2>Tic-Tac-Toe!</h2>
-		<div id="stats">
-			<div><span style="color: #f00">X</span> <span id="wins-x">0</span></div>
-			<div><span style="color: #0026ff">O</span> <span id="wins-o">0</span></div>
-		</div>
-		<h1 id="turn-txt"><span id="plr" style="color: #f00">X</span>'s turn</h1>
+    <div id="screens">
+        <div id="top-screen">
+            <h2>Tic-Tac-Toe!</h2>
+            <div id="stats">
+                <div><span class="playerX">X</span> <span id="wins-x">0</span></div>
+                <div><span class="playerO">O</span> <span id="wins-o">0</span></div>
+            </div>
+            <h1 id="turn-txt"><span id="plr" class="playerX">X</span>'s turn</h1>
+        </div>
+        <div id="bottom-screen">
+            <div id="field-wrap">
+                <canvas id="field" width="200" height="200"></canvas>
+            </div>
+        </div>
     </div>
-    <div id="bottom-screen">
-		<div id="field-wrap">
-	        <canvas id="field" width="200" height="200"></canvas>
-		</div>
-    </div>
-</div>
 </body>
 </html>

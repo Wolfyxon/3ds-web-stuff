@@ -1,10 +1,10 @@
 /* Originally made by magiczocker10 */
-
 #top-screen,
 #bottom-screen {
 	background-color: #e8e3c4;
 	text-align: center;
 }
+
 #field-wrap {
 	display: inline-block;
 	height: 200px;
@@ -12,16 +12,26 @@
 	position: relative;
 	width: 200px;
 }
+
 #field,
 #back {
 	left: 0;
 	position: absolute;
 	top: 0;
 }
+
 #turn-txt {
+    background-color: #fff;
     border: 1px black solid;
-    background-color: white;
-    width: 50%;
-    margin-left: 25%;
     border-radius: 10px;
+    margin-left: 25%;
+    width: 50%;
+}
+
+.playerX {
+	color: #f00;
+}
+
+.playerO {
+	color: #0026ff;
 }

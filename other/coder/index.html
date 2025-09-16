@@ -11,55 +11,54 @@
 
     <script src="../../scripts/global.js" type="text/javascript"></script>
     <script src="qr.js" type="text/javascript"></script>
-
 </head>
 <body>
     <div id="screens">
         <div id="top-screen">
-                <h3>QR and barcode generator</h3>
+            <h3>QR and barcode generator</h3>
             <img id="code" src="img/ERROR.png" alt="Error getting the QR code">
         </div>
         <div id="bottom-screen">
-			<div id="left" style="color:transparent">&#xE01A;</div>
-			<div class="page">
+            <div id="left" style="color:transparent">&#xE01A;</div>
+            <div class="page">
                 <input type="radio" id="qrcode" name="codeSelectRadio" value="qrcode" checked>
-				<label for="qrcode"><div><img src="img/qrcode.gif" alt="QR Code icon"></div>QR Code</label>
+                <label for="qrcode"><div><img src="img/qrcode.gif" alt="QR Code icon"></div>QR Code</label>
 
-				<input type="radio" id="aztec" name="codeSelectRadio" value="azteccode">
-				<label for="aztec"><div><img src="img/aztec.gif" alt="Aztec icon"></div>Aztec</label>
+                <input type="radio" id="aztec" name="codeSelectRadio" value="azteccode">
+                <label for="aztec"><div><img src="img/aztec.gif" alt="Aztec icon"></div>Aztec</label>
 
-				<input type="radio" id="microqrcode" name="codeSelectRadio" value="microqrcode">
-				<label for="microqrcode"><div><img src="img/microqrcode.gif" alt="Micro QR Code icon"></div>Micro QR Code</label>
+                <input type="radio" id="microqrcode" name="codeSelectRadio" value="microqrcode">
+                <label for="microqrcode"><div><img src="img/microqrcode.gif" alt="Micro QR Code icon"></div>Micro QR Code</label>
 
-				<input type="radio" id="code39" name="codeSelectRadio" value="code39">
-				<label for="code39"><div><img src="img/code39.gif" alt="Code39 icon"></div>Code39</label>
+                <input type="radio" id="code39" name="codeSelectRadio" value="code39">
+                <label for="code39"><div><img src="img/code39.gif" alt="Code39 icon"></div>Code39</label>
 
-				<input type="radio" id="code128" name="codeSelectRadio" value="code128">
-				<label for="code128"><div><img src="img/code128.gif" alt="Code128 icon"></div>Code128</label>
+                <input type="radio" id="code128" name="codeSelectRadio" value="code128">
+                <label for="code128"><div><img src="img/code128.gif" alt="Code128 icon"></div>Code128</label>
 
-				<input type="radio" id="datamatrix" name="codeSelectRadio" value="datamatrix">
-				<label for="datamatrix"><div><img src="img/datamatrix.gif" alt="Data Matrix icon"></div>Data Matrix</label>
-			</div>
-			<div class="page" style="display: none">
+                <input type="radio" id="datamatrix" name="codeSelectRadio" value="datamatrix">
+                <label for="datamatrix"><div><img src="img/datamatrix.gif" alt="Data Matrix icon"></div>Data Matrix</label>
+            </div>
+            <div class="page" style="display: none">
                 <input type="radio" id="ean8" name="codeSelectRadio" value="ean8">
-				<label for="ean8"><div><img src="img/ean8.gif" alt="EAN-8 icon"></div>EAN-8</label>
+                <label for="ean8"><div><img src="img/ean8.gif" alt="EAN-8 icon"></div>EAN-8</label>
 
-				<input type="radio" id="ean13" name="codeSelectRadio" value="ean13">
-				<label for="ean13"><div><img src="img/ean13.gif" alt="EAN-13 icon"></div>EAN-13</label>
+                <input type="radio" id="ean13" name="codeSelectRadio" value="ean13">
+                <label for="ean13"><div><img src="img/ean13.gif" alt="EAN-13 icon"></div>EAN-13</label>
 
-				<input type="radio" id="pdf417" name="codeSelectRadio" value="pdf417">
-				<label for="pdf417"><div><img src="img/pdf417.gif" alt="PDF-417 icon"></div>PDF-417</label>
+                <input type="radio" id="pdf417" name="codeSelectRadio" value="pdf417">
+                <label for="pdf417"><div><img src="img/pdf417.gif" alt="PDF-417 icon"></div>PDF-417</label>
 
-				<input type="radio" id="upca" name="codeSelectRadio" value="upca">
-				<label for="upca"><div><img src="img/upca.gif" alt="UPC-A icon"></div>UPC-A</label>
+                <input type="radio" id="upca" name="codeSelectRadio" value="upca">
+                <label for="upca"><div><img src="img/upca.gif" alt="UPC-A icon"></div>UPC-A</label>
 
-				<input type="radio" id="upce" name="codeSelectRadio" value="upce">
-				<label for="upce"><div><img src="img/upce.gif" alt="UPC-E icon"></div>UPC-E</label>
-			</div>
-			<div id="right">&#xE019;</div>
-			<input type="text" id="text" class="screen-unlocker" placeholder="Input text...">
-			<button id="btn-gen">Generate</button>
-		</div>
+                <input type="radio" id="upce" name="codeSelectRadio" value="upce">
+                <label for="upce"><div><img src="img/upce.gif" alt="UPC-E icon"></div>UPC-E</label>
+            </div>
+            <div id="right">&#xE019;</div>
+            <input type="text" id="text" class="screen-unlocker" placeholder="Input text...">
+            <button id="btn-gen" type="button">Generate</button>
+        </div>
     </div>
 </body>
 </html>
