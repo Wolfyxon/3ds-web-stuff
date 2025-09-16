@@ -1,15 +1,18 @@
 @-webkit-keyframes backgroundAnimation {
 	from {
-		background-position-y: 0px;
+		background-position-y: 0;
 	}
+
 	to {
 		background-position-y: 64px;
 	}
 }
+
 @keyframes backgroundAnimation {
 	from {
-		background-position-y: 0px;
+		background-position-y: 0;
 	}
+
 	to {
 		background-position-y: 64px;
 	}
@@ -17,19 +20,21 @@
 
 @-webkit-keyframes rotorAnimation {
 	from {
-		-webkit-transform: rotate(0deg);
+		-webkit-transform: rotate( 0deg );
 	}
+
 	to {
-		-webkit-transform: rotate(360deg);
+		-webkit-transform: rotate( 360deg );
 	}
 }
 
 @keyframes rotorAnimation {
 	from {
-		transform: rotate(0deg);
+		transform: rotate( 0deg );
 	}
+
 	to {
-		transform: rotate(360deg);
+		transform: rotate( 360deg );
 	}
 }
 
@@ -43,7 +48,7 @@ body {
 	-webkit-animation: backgroundAnimation 0.5s infinite linear;
 	animation: backgroundAnimation 0.5s infinite linear;
 	background-color: #86cde1;
-	background-image: url("img/background.png");
+	background-image: url( img/background.png );
 	height: 457px;
 	margin: 0;
 	margin-left: 40px;
@@ -54,7 +59,7 @@ body {
 }
 
 #target {
-	background-image: url('img/jet.png');
+	background-image: url( img/jet.png );
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 52px;
@@ -62,6 +67,7 @@ body {
 	top: 335px;
 	width: 53px;
 }
+
 #barleft,
 #barright {
 	background: #484d56;
@@ -72,19 +78,21 @@ body {
 	top: 10px;
 	width: 38px;
 }
+
 #barright {
 	margin-left: 362px;
 }
 
 #lifebar {
-	background-color: #ff0000;
-	border: 3px solid black;
+	background-color: #f00;
+	border: 3px solid #000;
 	border-radius: 5px;
 	height: 195px;
 	margin-left: 4px;
 	margin-top: 8px;
 	width: 25px;
 }
+
 #lifebar-neg {
 	background-color: #8b0000;
 }
@@ -95,17 +103,19 @@ body {
 	transition: top 2s, left 2s;
 	-webkit-transition: top 2s, left 2s;
 }
+
 .heli .inner {
 	-webkit-transform-origin: 21.5px 31px;
-	background-image: url('img/heli.png');
+	background-image: url( img/heli.png );
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100%;
 	transform-origin: 21.5px 31px;
 	width: 100%;
 }
+
 .heli .lifebar {
-	background-color: #00ff00;
+	background-color: #0f0;
 	display: inline-block;
 	height: 5px;
 	margin-left: -5px;
@@ -113,8 +123,9 @@ body {
 	width: 50px;
 	z-index: 2;
 }
+
 .heli .lifebar-neg {
-	background-color: #006a00; 
+	background-color: #006a00;
 	float: right;
 	height: 100%;
 	z-index: 2;
@@ -123,7 +134,7 @@ body {
 .rotor {
 	-webkit-animation: rotorAnimation 0.5s infinite linear;
 	animation: rotorAnimation 0.5s infinite linear;
-	background-image: url('img/rotor.png');
+	background-image: url( img/rotor.png );
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 80px;
@@ -142,8 +153,8 @@ body {
 
 #killCounter {
 	color: #fff;
-	font-family: "Liberation Sans", sans-serif;
-	font-size: 14px;
+	font-family: 'Liberation Sans', sans-serif;
+	font-size: 10.5pt;
 	text-align: center;
 }
 
@@ -154,10 +165,11 @@ body {
 }
 
 .projectile.jet {
-	background: red;
+	background: #f00;
 }
+
 .projectile {
-	background: black;
+	background: #000;
 	height: 4px;
 	margin: 0;
 	padding: 0;
@@ -167,21 +179,23 @@ body {
 
 /* Game over */
 #gameover {
-	color: white;
+	color: #fff;
 	margin-top: 20%;
 	position: relative;
 	text-align: center;
 	top: 217px;
 }
+
 #gameover h1 {
-	color: red;
-	-webkit-text-stroke: 1px black;
+	color: #f00;
+	-webkit-text-stroke: 1px #000;
 }
+
 #btn-restart {
-	background-color: purple;
-	border: black;
+	background-color: #800080;
+	border: #000;
 	border-radius: 5px;
-	color: white;
+	color: #fff;
 	cursor: pointer;
 	padding: 2%;
 	width: 30%;
@@ -192,18 +206,22 @@ body {
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 0.5;
 	}
 }
+
 @keyframes overlayFade {
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 0.5;
 	}
 }
+
 #overlay {
 	animation: overlayFade 1s 1 linear;
 	background-color: #000;

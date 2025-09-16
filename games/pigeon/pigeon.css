@@ -1,100 +1,102 @@
 #bottom-screen {
-    text-align: center;
-    background-color: #1d1d1f;
-    color: white;
+	text-align: center;
+	background-color: #1d1d1f;
+	color: #fff;
 }
 
 @-webkit-keyframes scrollText {
-    from {
-        background-position-x: 0px;
-    }
-    to {
-        background-position-x: -40px;
-    }
+	from {
+		background-position-x: 0;
+	}
+
+	to {
+		background-position-x: -40px;
+	}
 }
 
 @keyframes scrollText {
-    from {
-        background-position-x: 0px;
-    }
-    to {
-        background-position-x: -40px;
-    }
+	from {
+		background-position-x: 0;
+	}
+
+	to {
+		background-position-x: -40px;
+	}
 }
 
 .bigtext {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 #top-screen {
-    position: relative;
+	position: relative;
 }
 
 #canv {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 #moon {
-    user-select: none;
-    position: absolute;
-    top: 10px;
-    left: 300px;
-    width: 90px;
-    height: 90px;
+	user-select: none;
+	position: absolute;
+	top: 10px;
+	left: 300px;
+	width: 90px;
+	height: 90px;
 }
 
 #bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("img/bg.png");
-    -webkit-animation: scrollText 1.2s infinite linear;
-    animation: scrollText 1.2s infinite linear;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url( img/bg.png );
+	-webkit-animation: scrollText 1.2s infinite linear;
+	animation: scrollText 1.2s infinite linear;
 }
 
 #sprites {
-    visibility: hidden;
-    max-height: 0;
+	visibility: hidden;
+	max-height: 0;
 }
 
 .bigtext {
-    position: absolute;
-    width: 500px;
-    left: 100px;
-    top: 90px;
+	position: absolute;
+	width: 500px;
+	left: 100px;
+	top: 90px;
 }
 
 #gameover {
-    color: red;
-    z-index: 100;
+	color: #f00;
+	z-index: 100;
 }
 
 #prestart {
-    color: yellow;
+	color: #ff0;
 
 }
 
 #stats > * {
-    display: inline-block;
-    width: 25%;
+	display: inline-block;
+	width: 25%;
 }
 
 #stats > * img {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
 }
 
 #stats > * span {
-    vertical-align: top;
+	vertical-align: top;
 }
 
 #fps-container {
-    font-size: 50%;
+	font-size: 50%;
 }

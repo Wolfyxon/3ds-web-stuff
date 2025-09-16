@@ -21,11 +21,11 @@
 }
 
 #turn-txt {
-    background-color: #fff;
-    border: 1px black solid;
-    border-radius: 10px;
-    margin-left: 25%;
-    width: 50%;
+	background-color: #fff;
+	border: 1px #000 solid;
+	border-radius: 10px;
+	margin-left: 25%;
+	width: 50%;
 }
 
 .playerX {

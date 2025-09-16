@@ -3,9 +3,9 @@
 	background-color: #262626;
 	color: #f6f6f6;
 	-webkit-user-select: none;
-	   -moz-user-select: none;
-	    -ms-user-select: none;
-	        user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	text-align: center;
 }
 
@@ -14,12 +14,13 @@
 	background-color: #767676;
 	border: 2px solid #767676;
 	-webkit-border-radius: 5px;
-	   -moz-border-radius: 5px;
-	        border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 	border-spacing: 0;
 	margin: auto;
 	margin-bottom: 10px;
 }
+
 #field td {
 	background-color: #c7c7c7;
 	border: 1px solid #767676;
@@ -28,10 +29,12 @@
 	line-height: 0;
 	width: 20px;
 }
-#field td[data-player="1"] {
-	color: #ff0000;
+
+#field td[ data-player='1' ] {
+	color: #f00;
 }
-#field td[data-player="0"] {
+
+#field td[ data-player='0' ] {
 	color: #0026ff;
 }
 
@@ -40,6 +43,7 @@
 	border-spacing: 0;
 	margin: auto;
 }
+
 #input th {
 	border: 1px solid transparent;
 	height: 20px;
@@ -51,30 +55,35 @@
 #points {
 	top: 88px;
 	position: relative;
-	font-size: 30px;
-	line-height: 40px;
+	font-size: 22.5pt;
+	line-height: 30pt;
 }
+
 #pointsB,
 #pointsR {
 	background-color: #c7c7c7;
 	border: 3px solid #c7c7c7;
 	-webkit-border-radius: 10px;
-	   -moz-border-radius: 10px;
-	        border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 	color: #262626;
 	height: 40px;
 	width: 40px;
 	display: inline-block;
 }
+
 #pointsB.current {
-	border-color: #0026ff;	
+	border-color: #0026ff;
 }
+
 #pointsR.current {
-	border-color: #ff0000;
+	border-color: #f00;
 }
+
 #pointsB {
-    color: blue;
+	color: #00f;
 }
+
 #pointsR {
-    color: red;
+	color: #f00;
 }
