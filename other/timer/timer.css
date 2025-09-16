@@ -41,8 +41,8 @@
 }
 
 #time-display[ data-flashing='true' ] {
-	animation: flash 1s infinite;
 	-webkit-animation: flash 1s infinite;
+	animation: flash 1s infinite;
 }
 
 #app-controls {
