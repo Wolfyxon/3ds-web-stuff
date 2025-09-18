@@ -59,18 +59,18 @@
 	background-color: #eaebf0;
 }
 
-#board[ data-size='4' ] tr:nth-child( 2 ) td,
-#board[ data-size='6' ] tr:nth-child( 2 ) td,
-#board[ data-size='6' ] tr:nth-child( 4 ) td,
-#board[ data-size='9' ] tr:nth-child( 3 ) td,
-#board[ data-size='9' ] tr:nth-child( 6 ) td {
+#board[ data-size='4' ] tr:nth-child(2) td,
+#board[ data-size='6' ] tr:nth-child(2) td,
+#board[ data-size='6' ] tr:nth-child(4) td,
+#board[ data-size='9' ] tr:nth-child(3) td,
+#board[ data-size='9' ] tr:nth-child(6) td {
 	border-bottom: 3px solid #767676;
 }
 
-#board[ data-size='4' ] td:nth-child( 2 ),
-#board[ data-size='6' ] td:nth-child( 3 ),
-#board[ data-size='9' ] td:nth-child( 3 ),
-#board[ data-size='9' ] td:nth-child( 6 ) {
+#board[ data-size='4' ] td:nth-child(2),
+#board[ data-size='6' ] td:nth-child(3),
+#board[ data-size='9' ] td:nth-child(3),
+#board[ data-size='9' ] td:nth-child(6) {
 	border-right: 3px solid #767676;
 }
 
