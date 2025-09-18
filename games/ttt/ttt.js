@@ -146,7 +146,7 @@ window.addEventListener( 'load', function () {
 			setTimeout( reset, 1500 );
 		}
 		curPlayer = !curPlayer;
-		plrTxt.style.color = curPlayer ? '#f00' : '#0026ff';
+		plrTxt.className = curPlayer ? 'playerX' : 'playerO';
 		plrTxt.textContent = curPlayer ? 'X' : 'O';
 		if ( filled === 9 && !won ) {
 			reset();

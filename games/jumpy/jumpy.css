@@ -1,19 +1,22 @@
 #top-screen {
 	position: relative;
 }
+
 #bottom-screen {
 	text-align: center;
 }
+
 #gameover {
-	color: red;
+	color: #f00;
 	position: absolute;
 	left: 100px;
 	top: 70px;
 	-webkit-text-stroke-width: 2px;
-	-webkit-text-stroke-color: black;
+	-webkit-text-stroke-color: #000;
 }
+
 #player {
-	background-image: url('img/jumpy.png');
+	background-image: url( img/jumpy.png );
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 65px;
@@ -23,6 +26,7 @@
 	top: 152px;
 	width: 45px;
 }
+
 .spike {
 	height: 51px;
 	position: absolute;

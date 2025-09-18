@@ -34,6 +34,7 @@ window.addEventListener( 'load', function () {
 
 	function drawIcon( x, y, tile ) {
 		data[ y ][ x ][ 3 ].src = './img/' + tile + '.png';
+		data[ y ][ x ][ 3 ].setAttribute( 'title', tile );
 	}
 
 	function generate( excludeX, excludeY ) {

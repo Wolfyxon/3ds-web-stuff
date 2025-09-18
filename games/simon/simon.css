@@ -3,9 +3,9 @@
 	background-color: #262626;
 	color: #f6f6f6;
 	-webkit-user-select: none;
-	   -moz-user-select: none;
-	    -ms-user-select: none;
-	        user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	text-align: center;
 	position: relative;
 }
@@ -21,7 +21,7 @@
 	border: 2px solid #393c3e;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
-	border-top: none;
+	border-top: unset;
 	color: #f1f2f6;
 	cursor: pointer;
 	height: 23px;
@@ -59,13 +59,14 @@
 	top: 0;
 	width: 100%;
 }
+
 #open {
 	background-color: #272727;
 	border-left: 2px solid #393c3e;
 	border-bottom: 2px solid #393c3e;
 	-webkit-border-bottom-left-radius: 5px;
-	   -moz-border-radius-bottomleft: 5px;
-	        border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-left-radius: 5px;
 	color: #f1f2f6;
 	cursor: pointer;
 	height: 15px;
@@ -76,30 +77,35 @@
 	position: absolute;
 	width: 15px;
 }
+
 #buttons,
 #right,
 #left {
 	border: 2px solid #f1f2f6;
 	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	height: 22px;
 	margin: 0;
 	vertical-align: top;
 }
+
 #buttons {
 	background-color: #393c3e;
 	color: #f1f2f6;
 }
+
 #right,
 #left {
 	background-color: #f1f2f6;
 	color: #000;
 	padding: 1px 6px;
 }
+
 #right {
 	border-top-right-radius: 11px;
 	border-bottom-right-radius: 11px;
 }
+
 #left {
 	border-top-left-radius: 11px;
 	border-bottom-left-radius: 11px;
