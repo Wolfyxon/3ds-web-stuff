@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
 	const blue = document.getElementById('pointsB'),
-		red = document.getElementById('pointsR'),
+		yellow = document.getElementById('pointsY'),
 		field = document.getElementById('field'),
 		input = document.getElementById('input'),
 		rows = field.tBodies[0].rows;
@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
 		won = false;
 
 	function getType(x, y) {
-		return rows[y].cells[x].getAttribute('data-player');
+		return rows[y].cells[x].className;
 	}
 
 	function checkWin(x, y) {
@@ -61,19 +61,20 @@ window.addEventListener('load', function() {
 
 	function updateCurrent() {
 		blue.className = player ? '' : 'current';
-		red.className = player ? 'current' : '';
+		yellow.className = player ? 'current' : '';
 	}
 
 	function reset() {
 		var c = input.tHead.rows[0].cells;
 		for (var j=0; j<c.length; j++) {
-			c[j].setAttribute('data-index', '5');
+			c[ j ].setAttribute('data-index', '5');
+			c[ j ].removeAttribute( 'class' );
 		}
 
 		var cells = field.getElementsByTagName('td');
 		for (var i=0; i<cells.length; i++) {
-			cells[i].textContent = '';
-			cells[i].setAttribute('data-player', '');
+			cells[ i ].textContent = '';
+			cells[ i ].removeAttribute( 'class' );
 		}
 		won = false;
 		updateCurrent();
@@ -86,16 +87,19 @@ window.addEventListener('load', function() {
 			row = Number(e.target.getAttribute('data-index')),
 			cell = rows[row].cells[column];
 
-		if (row < 0) return;
-		if (row === 0) e.target.style.color = 'transparent';
+		if ( row < 0 ) {
+			return;
+		} else if ( row === 0 ) {
+			e.target.className = 'hide';
+		}
 
 		cell.textContent = '●';
-		cell.className = player ? 'playerR' : 'playerB';
+		cell.className = player ? 'playerY' : 'playerB';
 
 		checkWin(column, row);
-		if (won) {
-			alert((player ? 'Red' : 'Blue') + ' won');
-			if (player) red.textContent = Number(red.textContent) + 1;
+		if ( won ) {
+			alert((player ? 'Yellow' : 'Blue') + ' won');
+			if (player) yellow.textContent = Number(yellow.textContent) + 1;
 			else blue.textContent = Number(blue.textContent) + 1;
 		}
 		player = !player;

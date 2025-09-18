@@ -43,6 +43,11 @@
 	width: 20px;
 }
 
+#input th.hide {
+	color: transparent;
+	pointer-events: none;
+}
+
 /* Player score */
 #points {
 	top: 88px;
@@ -52,7 +57,7 @@
 }
 
 #pointsB,
-#pointsR {
+#pointsY {
 	background-color: #636163;
 	border: 3px solid #636163;
 	-webkit-border-radius: 10px;
@@ -68,8 +73,8 @@
 	color: #82efff;
 }
 
-#pointsR,
-.playerR {
+#pointsY,
+.playerY {
 	color: #ff0;
 }
 
@@ -77,6 +82,6 @@
 	border-color: #82efff;
 }
 
-#pointsR.current {
+#pointsY.current {
 	border-color: #ff0;
 }
