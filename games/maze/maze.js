@@ -155,6 +155,18 @@ window.addEventListener('load', function() {
         return maze;
     }
 
+    function generateCellLabel(row, col) {
+        var colLabel = "";
+
+        while(col >= 0) {
+            colLabel = String.fromCharCode(65 + (col % 26)) + colLabel;
+            col = Math.floor(col / 26) - 1;
+        }
+
+        return colLabel + (row + 1);
+        
+    }
+
     function createMazeDisplay(screen, rows, cols, maze) {
         const containerStyle = getComputedStyle(document.getElementsByClassName(screen + "-maze-container")[0]);
 
@@ -219,6 +231,7 @@ window.addEventListener('load', function() {
                                     height: imgSize + "px"
                                 },
                                 src: "images/empty.png",
+                                alt: generateCellLabel(i, j),
                                 onclick: (maze ? "selectTile" : "selectZoomedTile") + "(" + i + ", " + j + ");"
                             }
                     ]
