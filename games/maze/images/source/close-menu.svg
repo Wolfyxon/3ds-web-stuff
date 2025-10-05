@@ -17,6 +17,6 @@
         dominant-baseline: middle;
     }
     </style>
-    <rect x="5" y="5" width="390" height="150" rx="20" stroke="#000000" fill="#0080FF" stroke-width="6"/>
+    <rect x="5" y="5" width="390" height="150" rx="20" stroke="#000000" fill="#0050D0" stroke-width="6"/>
     <text x="200" y="85">Close</text>
 </svg>
