@@ -1,7 +1,3 @@
-/*
-TODO:
- - Change onclick string handler over to function
-*/
 window.addEventListener('load', function() {
     function generateMaze(rows, cols) {
         var maze = [];
