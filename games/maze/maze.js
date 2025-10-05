@@ -159,7 +159,7 @@ window.addEventListener('load', function() {
         return maze;
     }
 
-    function generateCellLabel(row, col) {
+    function generateCellImageAlt(row, col) {
         var colLabel = "";
 
         while(col >= 0) {
@@ -168,7 +168,6 @@ window.addEventListener('load', function() {
         }
 
         return colLabel + (row + 1);
-        
     }
 
     function createMazeDisplay(screen, rows, cols, maze) {
@@ -234,8 +233,7 @@ window.addEventListener('load', function() {
                                     height: maze ? "100%" : imgSize + "px"
                                 },
                                 src: "images/empty.png",
-                                alt: generateCellLabel(i, j),
-                                onclick: (maze ? "selectTile" : "selectZoomedTile") + "(" + i + ", " + j + ");"
+                                alt: generateCellImageAlt(i, j)
                             }
                     ]
                 ]);
@@ -252,8 +250,17 @@ window.addEventListener('load', function() {
                     td.applyStyle(tdStyle);
                 }
 
+                const img = td.childNodes[0];
+
+                (function(i, j) {
+                    img.addEventListener("click", maze ?
+                        function() { selectTile(i, j) } :
+                        function() { selectZoomedTile(i, j); }
+                    , false);
+                })(i, j);
+
                 mazeCells[i][j] = td;
-                mazeImages[i][j] = td.childNodes[0];
+                mazeImages[i][j] = img;
             }
         }
 
@@ -303,12 +310,13 @@ window.addEventListener('load', function() {
                     cellStyles[i][j] = cellStyle;
 
                     if(mazeImages[mazeRow][mazeCol].src != zoomedImages[i][j].src) {
-                        zoomedImages[i][j].onload = function() {
+                        zoomedImages[i][j].addEventListener("load", function imgLoaded(event) {
                             loadedImages++;
                             if(loadedImages == neededImages) {
                                 applyZoomedCellStyles();
                             }
-                        };
+                            event.target.removeEventListener("load", imgLoaded, false);
+                        }, false);
                     
                         zoomedImages[i][j].src = mazeImages[mazeRow][mazeCol].src;
 
