@@ -61,7 +61,11 @@ libName("createNode");
 						this.style[prop] = obj[prop];
 					}
 				} catch (err) {}
-				this.style.setProperty(prop, obj[prop], undefined);
+				if(obj[prop] == null || obj[prop] == "") { // Most browsers would just handle this case on their own, but the DSi doesn't seem to
+					this.style.removeProperty(prop, obj[prop], undefined);
+				} else {
+					this.style.setProperty(prop, obj[prop], undefined);
+				}
 			}
 		} else {
 			throw new TypeError("Expected a plain object");

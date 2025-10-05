@@ -1,3 +1,7 @@
+/*
+TODO:
+ - Change onclick string handler over to function
+*/
 window.addEventListener('load', function() {
     function generateMaze(rows, cols) {
         var maze = [];
@@ -169,9 +173,9 @@ window.addEventListener('load', function() {
 
     function createMazeDisplay(screen, rows, cols, maze) {
         const containerStyle = getComputedStyle(document.getElementsByClassName(screen + "-maze-container")[0]);
-
+        
         const screenWidth = containerStyle.width.match(/\d+/)[0];
-        const screenHeight = containerStyle.height.match(/\d+/)[0];
+        const screenHeight = is3DS() && screen == "bottom" ? window.innerHeight : containerStyle.height.match(/\d+/)[0];
 
         const table = document.getElementById(screen + "-maze-table");
 
@@ -186,7 +190,6 @@ window.addEventListener('load', function() {
                 marginLeft: "10px",
                 marginTop: ((screenHeight - (rows * cellSize)) / 2) + "px"
             });
-            
         } else {
             cellSize = (screenHeight - 20) / rows;
 
@@ -228,7 +231,7 @@ window.addEventListener('load', function() {
                             {
                                 style: {
                                     width: imgSize + "px",
-                                    height: imgSize + "px"
+                                    height: maze ? "100%" : imgSize + "px"
                                 },
                                 src: "images/empty.png",
                                 alt: generateCellLabel(i, j),
@@ -258,6 +261,15 @@ window.addEventListener('load', function() {
     }
 
     function updateZoomedDisplay() {
+        function applyZoomedCellStyles() {
+            for(var i = 0; i < zoomedRows; i++) {
+                for(var j = 0; j < zoomedCols; j++) {
+                    if(cellStyles[i][j]) {
+                        zoomedCells[i][j].applyStyle(cellStyles[i][j]);
+                    }
+                }
+            }
+        }
         if(zoomedRows % 2 == 0 || zoomedCols % 2 == 0) {
             console.error("Rows and cols in zoomed display must be even");
             return;
@@ -265,31 +277,58 @@ window.addEventListener('load', function() {
 
         const sides = ["top", "bottom", "left", "right"];
 
+        const cellStyles = [];
+
+        var neededImages = 0;
+
+        var loadedImages = 0;
+
         for(var i = 0; i < zoomedRows; i++) {
+            cellStyles[i] = [];
             for(var j = 0; j < zoomedCols; j++) {
                 var mazeRow = i + prow - Math.floor(zoomedRows / 2);
                 var mazeCol = j + pcol - Math.floor(zoomedCols / 2);
 
                 if(mazeRow >= 0 && mazeCol >= 0 && mazeRow < rows && mazeCol < cols) {
-                    var cellStyle = {"background-color": "#FFFFFF"};
+                    const cellStyle = {"background-color": "#FFFFFF"};
 
                     for(var d = 0; d < 4; d++) {
                         if(maze[mazeRow][mazeCol][sides[d]]) {
                             cellStyle["border-" + sides[d]] = "thin solid black";
                         } else {
-                            zoomedCells[i][j].style.removeProperty("border-" + sides[d]);
+                            cellStyle["border-" + sides[d]] = "";
                         }
                     }
 
-                    zoomedCells[i][j].applyStyle(cellStyle);
+                    cellStyles[i][j] = cellStyle;
 
-                    zoomedImages[i][j].src = mazeImages[mazeRow][mazeCol].src;
+                    if(mazeImages[mazeRow][mazeCol].src != zoomedImages[i][j].src) {
+                        zoomedImages[i][j].onload = function() {
+                            loadedImages++;
+                            if(loadedImages == neededImages) {
+                                applyZoomedCellStyles();
+                            }
+                        };
+                    
+                        zoomedImages[i][j].src = mazeImages[mazeRow][mazeCol].src;
+
+                        neededImages++;
+                    }
                 } else {
-                    zoomedCells[i][j].setAttribute("style", "");
+                    cellStyles[i][j] = {
+                        "border-top": "",
+                        "border-bottom": "",
+                        "border-left": "",
+                        "border-right": "",
+                        "background-color": ""
+                    };
+
                     zoomedImages[i][j].src = "images/empty.png";
                 }
             }
         }
+
+        if(neededImages == 0) applyZoomedCellStyles();
     }
 
     function updateMainDisplay() {
@@ -740,4 +779,30 @@ window.addEventListener('load', function() {
         hideMenu();
         startGame();
     }, false);
+
+    
+
+    if(is3DS()) { // TODO: This could be isNew3DS, but that function currently doesn't exist
+        var currentHeight = window.innerHeight;
+        setInterval(function() {
+            if(window.innerHeight != currentHeight && (window.innerHeight == 212 || window.innerHeight == 240)) {
+                currentHeight = window.innerHeight;
+                if(mainDisplay == "bottom") {
+                    const mazeDisplay = createMazeDisplay("bottom", rows, cols, maze);
+
+                    mazeCells = mazeDisplay.cells;
+                    mazeImages = mazeDisplay.images;
+                    
+                    updateMainDisplay();
+                } else {
+                    const zoomedDisplay = createMazeDisplay("bottom", zoomedRows, zoomedCols);
+
+                    zoomedCells = zoomedDisplay.cells;
+                    zoomedImages = zoomedDisplay.images;
+                    
+                    updateZoomedDisplay();
+                }
+            }
+        });
+    }
 }, false);
