@@ -1,62 +1,65 @@
 #top-screen,
 #bottom-screen {
-    background-color: #e3efc2;
-    color: #f6f6f6;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-align: center;
+	background-color: #e3efc2;
+	color: #f6f6f6;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	text-align: center;
 }
+
 #keyboard {
-    margin: 20px 0;
+	margin: 20px 0;
 }
+
 #keyboard span {
-    background-color: #fff47b;
-    border: 1px solid #ffc500;
-    border-radius: 5px;
-    color: #262626;
-    display: inline-block;
-    height: 20px;
-    line-height: 20px;
-    margin: 5px;
-    width: 20px;
+	background-color: #fff47b;
+	border: 1px solid #ffc500;
+	border-radius: 5px;
+	color: #262626;
+	display: inline-block;
+	height: 20px;
+	line-height: 15pt;
+	margin: 5px;
+	width: 20px;
 }
-#keyboard span[data-disabled] {
-    visibility: hidden;
+
+#keyboard span[ data-disabled ] {
+	visibility: hidden;
 }
 
 #canvas {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    background-color: white;
-    border-radius: 5px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	background-color: #fff;
+	border-radius: 5px;
 }
 
 #display {
-    display: inline-block;
-    letter-spacing: 2px;
-    margin-top: 20px;
+	display: inline-block;
+	letter-spacing: 2px;
+	margin-top: 20px;
 }
 
 #display span.failed {
-    color: #F00;
+	color: #f00;
 }
 
 #display span.success {
-    color: #00c700;
+	color: #00c700;
 }
 
 #display span {
-    color: black;
-    font-size: x-large;
+	color: #000;
+	font-size: x-large;
 }
 
 #btn-reset {
-    background-color: orange;
-    padding: 1% 5%;
-    border: 2px yellow solid;
-    border-radius: 10px;
+	background-color: #ffa500;
+	padding: 1% 5%;
+	border: 2px #ff0 solid;
+	border-radius: 10px;
 }

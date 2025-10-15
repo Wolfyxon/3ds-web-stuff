@@ -1,66 +1,65 @@
 #screens > * {
-    color: white;
-    background-color: #000b1c;
+	color: #fff;
+	background-color: #000b1c;
 }
 
-#canv  {
+#canv {
 	background-color: transparent;
-    outline: 1px solid #868686;
+	outline: 1px solid #868686;
 }
 
 #lives {
-    padding: 0;
-    margin: 0;
-    width: 40px;
-    height: 100%;
-    text-align: center;
-    vertical-align: top;
-    display: inline-block;
+	padding: 0;
+	margin: 0;
+	width: 40px;
+	height: 100%;
+	text-align: center;
+	vertical-align: top;
+	display: inline-block;
 }
 
 #lives img {
-    display: block;
-    width: 12px;
-    height: 12px;
-    margin-top: 15%;
-    padding: 10% 0;
-    margin-left: auto;
-    margin-right: auto;
+	display: block;
+	width: 12px;
+	height: 12px;
+	margin-top: 15%;
+	padding: 10% 0;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #overlay {
-    text-align: center;
-    pointer-events: none;
+	text-align: center;
+	pointer-events: none;
 }
 
 #overlay button {
-    pointer-events: all;
+	pointer-events: all;
 }
 
 #top-overlay {
-    height: 217px;
+	height: 217px;
 }
 
-
 #gameover h1 {
-    height: 100%;
-    color: red;
-    -webkit-text-stroke: 1px darkred;
+	height: 100%;
+	color: #f00;
+	-webkit-text-stroke: 1px #8b0000;
 }
 
 #bottom-overlay {
-    padding: 15% 0;
+	padding: 15% 0;
 }
 
 #tip {
-    font-size: 70%;
+	font-size: 70%;
 }
 
 #btn-start {
-    color: white;
-    background-color: black;
-    border: 2px lime solid;
-    outline: none;
-    padding: 1% 5%;
-    border-radius: 20px;
+	color: #fff;
+	background-color: #000;
+	border: 2px #0f0 solid;
+	outline: unset;
+	padding: 1% 5%;
+	border-radius: 20px;
 }

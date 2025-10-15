@@ -1,65 +1,62 @@
 /* --== Top screen ==-- */
-
 #chat-log {
-    overflow-y: scroll;
-    height: 100%;
+	overflow-y: scroll;
+	height: 100%;
 }
 
 #chat-log > * {
-    border-left: 3px solid orange;
-    padding-left: 5px;
-    margin: 5px;
-    width: 95%;
+	border-left: 3px solid #ffa500;
+	padding-left: 5px;
+	margin: 5px;
+	width: 95%;
 }
 
 .message-author {
-    background-color: rgb(185, 185, 255);
-    padding: 0 2px;
-    border-radius: 3px;
+	background-color: #b9b9ff;
+	padding: 0 2px;
+	border-radius: 3px;
 }
 
 .message-text {
-    margin-left: 3px;
+	margin-left: 3px;
 }
 
 /* --== Bottom screen ==-- */
-
-/* - Start menu - */
-
 #rule-list {
-    text-align: left;
-    background-color: rgb(255, 249, 162);
-    border-left: 3px solid orange;
-    border-right: 3px solid orange;
-    border-radius: 10px;
-    width: 70%;
-    margin: 20px auto;
-    overflow: scroll;
+	text-align: left;
+	background-color: #fff9a2;
+	border-left: 3px solid #ffa500;
+	border-right: 3px solid #ffa500;
+	border-radius: 10px;
+	font-size: 10pt;
+	width: 70%;
+	margin: 20px auto;
+	overflow: scroll;
 }
 
 #start-menu {
-    text-align: center;
+	text-align: center;
 }
 
 #btn-join {
-    width: 40%;
-    background-color: rgb(92, 230, 0);
-    border-radius: 10px;
-    border: 1px solid black;
+	width: 40%;
+	background-color: #5ce600;
+	border-radius: 10px;
+	border: 1px solid #000;
 }
 
 #btn-join:active {
-    background-color: rgb(76, 190, 0);
+	background-color: #4cbe00;
 }
 
 #btn-about {
-    display: block;
-    margin: 3px auto;
-    background: none;
-    border: none;
-    text-decoration: underline;
+	display: block;
+	margin: 3px auto;
+	background: none;
+	border: unset;
+	text-decoration: underline;
 }
 
 #btn-about:active {
-    color: gray;
+	color: #808080;
 }

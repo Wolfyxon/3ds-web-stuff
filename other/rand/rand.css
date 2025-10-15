@@ -1,49 +1,49 @@
 #screens > * {
-    text-align: center;
+	text-align: center;
 }
 
 #top-screen{
-    background-color: #48335b;
+	background-color: #48335b;
 }
 
 #bottom-screen {
-    color: white;
-    background-color: #2e1886;
+	color: #fff;
+	background-color: #2e1886;
 }
 
 #settings {
-    margin-top: 20%;
-    width: 100%;
+	margin-top: 20%;
+	width: 100%;
 }
 
-input[type="number"] {
-   width: 90%;
-    border-radius: 5px;
-    outline: none;
-    border: none;
+input[ type='number' ] {
+	width: 90%;
+	border-radius: 5px;
+	outline: unset;
+	border: unset;
 }
 
 #result {
-    display: table-cell;
-    vertical-align: middle;
-    word-break: break-all;
+	display: table-cell;
+	vertical-align: middle;
+	word-break: break-all;
 }
 
 #result-container {
-    display: table;
-    background-color: white;
-    border: 2px solid black;
-    width: 40%;
-    height: 70%;
-    border-radius: 20px;
-    margin: 7% 30%;
+	display: table;
+	background-color: #fff;
+	border: 2px solid #000;
+	width: 40%;
+	height: 70%;
+	border-radius: 20px;
+	margin: 7% 30%;
 }
 
 #btn-gen {
-    color: white;
-    background-color: #0f960f;
-    border: 2px lime solid;
-    border-radius: 5px;
-    padding: 1%;
-    margin: 3%;
+	color: #fff;
+	background-color: #0f960f;
+	border: 2px #00ff00 solid;
+	border-radius: 5px;
+	padding: 1%;
+	margin: 3%;
 }

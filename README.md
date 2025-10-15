@@ -8,6 +8,18 @@ https://wolfyxon.github.io/3ds-web-stuff
 **Or scan the QR code to quickly launch the browser on your 3DS:**  
 ![QR code](.github/urlQr.png)
 
+## Screenshots
+<p>
+  <img alt="Home page" src=".github/screenshots/home.png" width="200px" height="250px">
+  <img alt="Pong" src=".github/screenshots/pong.png" width="200px" height="250px">
+  <img alt="JetFighter" src=".github/screenshots/jetfighter.png" width="200px" height="250px">
+  <img alt="Pigeon" src=".github/screenshots/pigeon.png" width="200px" height="250px">
+  <img alt="Jumpy" src=".github/screenshots/jumpy.png" width="200px" height="250px">
+  <img alt="Hangman" src=".github/screenshots/hangman.png" width="200px" height="250px">
+  <img alt="Calculator" src=".github/screenshots/calculator.png" width="200px" height="250px">
+  <img alt="Connect 4" src=".github/screenshots/connect4.png" width="200px" height="250px">
+</p>
+
 ## Available stuff
 - [x] Complete
 - [ ] in progress
@@ -45,19 +57,6 @@ https://wolfyxon.github.io/3ds-web-stuff
 - [ ] [Brush](https://wolfyxon.github.io/3ds-web-stuff/other/brush) - basically a drawing app
 - [ ] Chat Room - global online web chat
 - [ ] Weather app - a weather app utilizing the [OpenMeteo](https://open-meteo.com/) API
-
-## Screenshots
-<p>
-  <img alt="Home page" src=".github/screenshots/home.png" width="200px" height="250px">
-  <img alt="Pong" src=".github/screenshots/pong.png" width="200px" height="250px">
-  <img alt="JetFighter" src=".github/screenshots/jetfighter.png" width="200px" height="250px">
-  <img alt="Pigeon" src=".github/screenshots/pigeon.png" width="200px" height="250px">
-  <img alt="Jumpy" src=".github/screenshots/jumpy.png" width="200px" height="250px">
-  <img alt="Hangman" src=".github/screenshots/hangman.png" width="200px" height="250px">
-  <img alt="Calculator" src=".github/screenshots/calculator.png" width="200px" height="250px">
-  <img alt="Connect 4" src=".github/screenshots/connect4.png" width="200px" height="250px">
-</p>
-
 
 ## Credits
 Inspired by: http://three-ds.atspace.com/ (author unknown)

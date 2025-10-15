@@ -2,8 +2,8 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head http-equiv="Access-Control-Allow-Origin" content="geocoding-api.open-meteo.com|api.open-meteo.com|ip-api.com">
+    <meta charset="utf-8">
     <title>Weather forecast</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="description" content="Weather forecast for the 3DS.">
     <link rel="stylesheet" href="../../styles/global.css">
@@ -14,7 +14,6 @@
     <script src="../../scripts/lib/geo.js" type="text/javascript"></script>
 
     <script src="forecast.js" type="text/javascript"></script>
-
 </head>
 <body>
     <div id="screens">
@@ -29,14 +28,12 @@
         <div id="bottom-screen">
             <div id="search-bar">
                 <input type="text" id="input-search" placeholder="Find a location">
-                <button id="btn-clear">X</button>
-                <button id="btn-search"><img src="search.png"></button>
+                <button id="btn-clear" type="button">X</button>
+                <button id="btn-search" type="button"><img src="search.png" alt="Search"></button>
             </div>
             <div id="bottom-container">
                 <div id="search-results">
-                    <button>
-                        City Name, Province, Country
-                    </button>
+                    <button type="button">City Name, Province, Country</button>
                 </div>
                 <div id="bottom-info">
                     <h1 id="degrees">Pick a location</h1>
