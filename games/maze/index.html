@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <title>Maze</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Maze game for the 3DS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../styles/global.css">
+	<link rel="stylesheet" href="maze.css">
+
+    <script src="../../scripts/global.js" type="text/javascript"></script>
+	<script src="../../scripts/lib/createNode.js" type="text/javascript"></script>
+	<script src="maze.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="screens">
+        <div id="top-screen" class="top-maze-container">
+            <table id="top-maze-table">
+				<tbody id="top-maze-tbody">
+					
+				</tbody>
+			</table>
+        </div>
+        <div id="bottom-screen">
+            <div id="left-button-container">
+                <button type="button" id="zoom-in" class="side-button" title="Zoom In">
+                    <img src="images/zoom-in.png" alt="Zoom In">
+                </button>
+                <button type="button" id="zoom-out" class="side-button" title="Zoom Out">
+                    <img src="images/zoom-out.png" alt="Zoom Out">
+                </button>
+            </div>
+            <div class="bottom-maze-container">
+                <table id="bottom-maze-table">
+                    <tbody id="bottom-maze-tbody">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div id="right-button-container">
+                <button type="button" id="menu-button" class="side-button" title="Menu">
+                    <img src="images/menu-button.png" alt="Menu">
+                </button>
+                <button type="button" id="swap-screens" class="side-button" title="Swap Screens">
+                    <img src="images/swap-screens.png" alt="Swap Screens">
+                </button>
+            </div>
+            <div id="menu-overlay"></div>
+            <div id="menu-box">
+                <p id="menu-text"></p>
+                <div>
+                    <label for="rows-slider" class="menu-slider-label">Rows: </label>
+                    <input type="range" class="menu-slider" name="rows-slider" min="5" max="20" title="Rows">
+                    <div class="menu-slider-number" id="rows-slider-number"></div>
+                </div>
+                <div>
+                    <label for="cols-slider" class="menu-slider-label">Columns: </label>
+                    <input type="range" class="menu-slider" name="cols-slider" min="5" max="20" title="Columns">
+                    <div class="menu-slider-number" id="cols-slider-number"></div>
+                </div>
+                <div id="menu-buttons">
+                    <button type="button" id="close-menu" title="Close">
+                        <img src="images/close-menu.png" alt="Close Menu">
+                    </button>
+                    <button type="button" id="regenerate-button" title="Regenerate">
+                        <img src="images/regenerate-button.png" alt="Regenerate">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

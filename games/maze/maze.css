@@ -1,0 +1,164 @@
+#top-screen {
+    background-color: #40B0FF;
+}
+
+#bottom-screen {
+    background-color: #40B0FF;
+}
+
+#bottom-screen {
+    font-size: 0px;
+}
+
+#left-button-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 40px;
+    height: 240px;
+}
+
+#right-button-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 40px;
+    height: 240px;
+}
+
+#menu-overlay {
+    display: none;
+    width: 320px;
+    height: 240px;
+    position: absolute;
+    top: 227px;
+    background-color: #000000;
+    opacity: 0.5;
+}
+
+#menu-box {
+    display: none;
+    box-sizing: border-box;
+    width: 260px;
+    height: 200px;
+    position: relative;
+    bottom: 220px;
+    left: 30px;
+    background-color: #ff9000;
+    color: #0050D0;
+    font-size: 20px;
+    font-weight: bold; /* Todo: Figure out why DSi is ignoring this */
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 5px inset #E0E0E0;
+}
+
+#menu-text {
+    font-size: 30px; /* Todo: Figure out why DSi is ignoring this */
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.menu-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-block;
+    vertical-align: middle;
+    width: 35%;
+    height: 5px;
+    background: #E0E0E0;
+    border-radius: 2px;
+}
+
+.menu-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #F0F0F0;
+    border: 1px solid #808080;
+    border-radius: 50%;
+}
+
+.menu-slider-label {
+    display: inline-block;
+    width: 40%;
+}
+
+.menu-slider-number {
+    display: inline;
+    text-align: right;
+}
+
+#menu-buttons {
+    margin-top: 20px;
+    position: relative;
+}
+
+#menu-buttons button {
+    height: 40px;
+    width: 40%;
+    border-width: 0px;
+    padding: 0px;
+    background: transparent;
+}
+
+#close-menu {
+    position: absolute;
+    left: 0px;
+}
+
+#regenerate-button {
+    position: absolute;
+    right: 0px;
+}
+
+#menu-buttons button img {
+    width: 100%;
+    height: 100%;
+}
+
+.bottom-maze-container {
+    display: inline-block;
+    width: 240px;
+    height: 240px;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+table td {
+    overflow: hidden;
+    padding: 0px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.maze-cell {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.side-button {
+    width: 40px;
+    height: 40px;
+    border-width: 0px;
+    margin-bottom: 5px;
+    padding: 0px;
+    background: transparent;
+}
+
+.side-button:active:enabled {
+    width: 36px;
+    height: 36px;
+    margin-top: 2px;
+    margin-bottom: 7px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.side-button img {
+    width: 100%;
+    height: 100%;
+}
