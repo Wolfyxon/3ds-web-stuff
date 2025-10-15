@@ -19,13 +19,16 @@ window.addEventListener('load', function() {
 	anim.setLooped(true);
 	anim.setDelay(aName[1]);
 	anim.setSpacing(aName[2]);
-	for (var f=0; f<aName[3].length; f++) {
+
+	for(var f = 0; f < aName[3].length; f++) {
 		anim.addKeyframe('src', petRoot + aName[0] + '/' + aName[0] + aName[3][f] + '.png');		
 	}
+
 	anim.play();
 	window.addEventListener('blur', function() {
 		anim.stop();
 	}, false);
+
 	window.addEventListener('focus', function() {
 		anim.play();
 	}, false);
@@ -33,6 +36,7 @@ window.addEventListener('load', function() {
 	function setTab(newId) {
 		tabs.children[id].style.display = 'none';
 		tabBtns.children[id].style.backgroundColor = '#653198';
+
 		id = newId;
 		tabs.children[id].style.display = '';
 		tabBtns.children[id].style.backgroundColor = 'darkred';

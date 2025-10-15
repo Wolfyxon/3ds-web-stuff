@@ -21,9 +21,9 @@ function drawLineChart(canvas, points, color) {
 	var minY = 0,
 		maxY = 0;
 
-	const xSpacing = w/points.length;
+	const xSpacing = w / points.length;
 
-	for(var i=0;i<points.length;i++){
+	for(var i = 0; i < points.length; i++){
 		const point = points[i];
 
 		if(point.y < minY) minY = point.y;

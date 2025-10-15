@@ -19,11 +19,12 @@ geo.searchLocations = function(query, callback) {
         throw new Error("Please add 'geocoding-api.open-meteo.com' to the allowed CORS domains");
     }
     
-    net.httpGet(url+query, function(code, body) {
+    net.httpGet(url + query, function(code, body) {
         const jsonBody = JSON.parse(body);
         var results = [];
         const gottenResults = jsonBody["results"];
         if(gottenResults) results = gottenResults;
+
         callback(results);
     });
 }

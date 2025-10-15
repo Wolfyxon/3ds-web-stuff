@@ -71,7 +71,7 @@ SceneNode.prototype = {
         const idx = this._classList.indexOf(className);
 
         if(idx === -1) {
-            console.warn("Does not belong to class '"+className+"'");
+            console.warn("Does not belong to class '" + className + "'");
             return;
         }
 
@@ -149,7 +149,7 @@ SceneNode.prototype = {
      * @param {number} y Vertical scale
      */
     setScaleXY: function(x, y) {
-        if(x == this._scale.x && y == this._scale.y) // use == for string compatibility
+        if(x == this._scale.x && y == this._scale.y) return; // use == for string compatibility
         this._scale.x = x;
         this._scale.y = y;
         this.updateTransform();
@@ -265,10 +265,12 @@ SceneNode.prototype = {
      */
     removeChild: function(node) {
         const idx = this._children.indexOf(node);
+        
         if(idx === -1) {
             console.warn("Attempt to remove not owned child");
             return;
         }
+
         this._children.splice(idx, 1);
         node._parent = null;
 

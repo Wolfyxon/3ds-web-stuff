@@ -140,6 +140,7 @@ function Area2D(vec1, vec2){
 		const h = area.getHeight() * scale;
 		const deltaW = w - area.getWidth();
 		const deltaH = h - area.getHeight();
+
 		area.startVec.x -= deltaW / 2;
 		area.startVec.y -= deltaH / 2;
 		area.endVec.x += deltaW / 2;
@@ -165,8 +166,10 @@ function Area2D(vec1, vec2){
      */
 	area.isTouching = function(anotherArea){
 		return isTouching(
-			area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight(),
-			anotherArea.startVec.x,anotherArea.startVec.y,anotherArea.getWidth(),anotherArea.getHeight()
+			area.startVec.x,area.startVec.y ,
+			area.getWidth(), area.getHeight(),
+			anotherArea.startVec.x, anotherArea.startVec.y,
+			anotherArea.getWidth(),anotherArea.getHeight()
 		);
 	};
 
@@ -269,14 +272,15 @@ function Area2D(vec1, vec2){
 	area.renderDebug = function(canvas){
 		const ctx = getCtx(canvas); //canvas.getContext("2d", {alpha: alphaEnabled});
 		ctx.fillStyle = "red";
-		ctx.fillRect(area.startVec.x,area.startVec.y,area.getWidth(),area.getHeight());
+		ctx.fillRect(area.startVec.x, area.startVec.y, area.getWidth(), area.getHeight());
 		ctx.fillStyle = "blue";
+		
 		const w = 4;
-		ctx.fillRect(area.getTopLeft().x,area.getTopLeft().y,w,w);
-		ctx.fillRect(area.getTopRight().x-w,area.getTopRight().y,w,w);
-		ctx.fillRect(area.getBottomLeft().x,area.getBottomLeft().y-w,w,w);
-		ctx.fillRect(area.getBottomRight().x-w,area.getBottomRight().y-w,w,w);
-
+		
+		ctx.fillRect(area.getTopLeft().x, area.getTopLeft().y, w, w);
+		ctx.fillRect(area.getTopRight().x - w, area.getTopRight().y, w, w);
+		ctx.fillRect(area.getBottomLeft().x, area.getBottomLeft().y - w, w, w);
+		ctx.fillRect(area.getBottomRight().x - w, area.getBottomRight().y - w, w, w);
 
 		ctx.fillStyle = "";
 	};
@@ -394,7 +398,8 @@ function Rect2D(pos, w, h){
 			ctx.fillStyle = rect.outlineStyle;
 			const s  = rect.outlineSize;
 			ctx.globalAlpha = rect.outlineOpacity * rect.opacity;
-			ctx.fillRect(-(width / 2)-s, -(height / 2)-s, width+s*2, height +s*2);
+
+			ctx.fillRect(-(width / 2) - s, -(height / 2) - s, width + s * 2, height + s * 2);
 			ctx.globalAlpha = 1;
 			ctx.clearRect(-(width / 2), -(height / 2), width, height);
 		}
@@ -402,6 +407,7 @@ function Rect2D(pos, w, h){
 		ctx.fillStyle = rect.fillStyle;
 		if(rect.fillStyle !== "" && rect.fillStyle !== "none"){
 			ctx.globalAlpha = rect.fillOpacity * rect.opacity;
+
 			ctx.fillRect(-(width / 2), -(height / 2), width, height);
 		}
 
@@ -447,9 +453,9 @@ function CanvasSprite(image,x,y,rot,w,h){
 	if(!w) w = image.clientWidth;
 	if(!h) h = image.clientHeight;
 
-	var tmpVec = new Vector2(x,y);
+	var tmpVec = new Vector2(x, y);
 	var spr = {
-		area: new Area2D(new Vector2(x,y),tmpVec.getOffsetXY(w,h)),
+		area: new Area2D(new Vector2(x, y),tmpVec.getOffsetXY(w, h)),
 		image: image,
 		lastCanvas: null,
 		visible: true,
@@ -489,10 +495,10 @@ function CanvasSprite(image,x,y,rot,w,h){
      */
 	spr.moveXY = function(x_,y_){
 		if(spr.lastCanvas && spr.restrictMovement){
-			if(spr.getX()+x_ < 0 || spr.getX()+x_ >= spr.lastCanvas.width-spr.area.getWidth()) return;
-			if(spr.getY()+y_ < 0 || spr.getY()+y_ >= spr.lastCanvas.height-spr.area.getHeight()) return;
+			if(spr.getX() + x_ < 0 || spr.getX() + x_ >= spr.lastCanvas.width-spr.area.getWidth()) return;
+			if(spr.getY() + y_ < 0 || spr.getY() + y_ >= spr.lastCanvas.height-spr.area.getHeight()) return;
 		}
-		spr.area.offsetXY(x_,y_);
+		spr.area.offsetXY(x_, y_);
 	};
 
 	/**
@@ -633,7 +639,7 @@ function drawDashedLine(canvas, startVec, endVec, width, spacing, color){
  * @param {HTMLCanvasElement} canvas The <canvas> to clear
  */
 function clearCanvas(canvas){
-	getCtx(canvas).clearRect(0, 0, canvas.width*2, canvas.height*2);
+	getCtx(canvas).clearRect(0, 0, canvas.width * 2, canvas.height * 2);
 }
 
 

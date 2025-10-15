@@ -44,16 +44,21 @@ net.httpGet = function(url, callback, allowInsecure) {
     if(!url){
         throw "No URL specified";
     }
+
     if(!callback){
         throw "No callback function specified";
     }
 
-    if(!is3DS() && !allowInsecure) url = url.replace("http://","https://");
+    if(!is3DS() && !allowInsecure) {
+        url = url.replace("http://","https://");
+    }
 
     const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) callback(xhr.status, xhr.responseText);
+        if (xhr.readyState === 4) {
+            callback(xhr.status, xhr.responseText);
+        }
     };
 
     xhr.open('GET', url, true);
@@ -71,9 +76,11 @@ net.httpPost = function(url, data, callback, contentType) {
     if(!url) {
         throw "No URL specified";
     }
+
     if(!callback){
         throw "No callback function specified";
     }
+    
     if(!contentType) contentType = "application/json";
 
     const xhr = new XMLHttpRequest();

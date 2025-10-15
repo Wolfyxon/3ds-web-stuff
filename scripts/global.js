@@ -82,6 +82,7 @@ function randf(min, max) {
 function randi(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
+
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -102,8 +103,11 @@ function pickRandom(array){
  * @return {Number}
  */
 function lerp(start, end, speed){
-    if(speed >= 1) return end;
-    return (1-speed)*start+speed*end;
+    if(speed >= 1) {
+        return end;
+    }
+
+    return (1 - speed) * start + speed * end;
 }
 
 /**
@@ -243,6 +247,7 @@ var pressCallbacks = {
  */
 function onBtnJustPressed(name, callback){
     const keys = oKeys(pressCallbacks);
+
     for(var i = 0; i < keys.length; i++) {
         const key = keys[i];
         if(key.toLowerCase() === name.toLowerCase()) {
@@ -280,10 +285,15 @@ function isButton(keycode, buttonName){
 function getPressedBtns(){
     const keys = oKeys(pressStates);
     var res = [];
+
     for(var i = 0; i < keys.length; i++) {
         const key = keys[i];
-        if (pressStates[key]) res.push(key);
+        
+        if(pressStates[key]) {
+            res.push(key);
+        }
     }
+
     return res;
 }
 
@@ -295,9 +305,13 @@ function getPressedBtns(){
 function isBtnPressed(name){
     const keys = oKeys(pressStates);
     name = name.toLowerCase();
+
     for(var i = 0; i < keys.length; i++) {
         const key = keys[i];
-        if (pressStates[key] && name === key.toLowerCase()) return true;
+
+        if (pressStates[key] && name === key.toLowerCase()) {
+            return true;
+        }
     }
     return false;
 }
@@ -310,8 +324,9 @@ function isBtnPressed(name){
  */
 function registerNon3DSlink(a){
     a.addEventListener("click", function (e){
-        alert("The 3DS doesn't support that page. Please open \n\n"+a.href+"\n\non a external device (with a modern browser)");
+        alert("The 3DS doesn't support that page. Please open \n\n" + a.href + "\n\non a external device (with a modern browser)");
         e.preventDefault();
+
         return false;
     }, false);
 }
@@ -403,8 +418,10 @@ var forcePosition = true;
  */
 function centerScreen() {
     if(!forcePosition) return;
+    
     const x = 40;
     const y = 227;
+
     if(window.scrollX === x && window.scrollY === y) return;
     window.scrollTo(x,y);
 }
@@ -421,13 +438,16 @@ function globalHandleKeyDown(e){
     preventKey(e);
 
     const name = keycodes[e.keyCode];
+    
     if(name) {
         if(!pressStates[name]) {
             const callbacks = pressCallbacks[name];
+
             for(var i = 0; i < callbacks.length; i++) {
                 callbacks[i]();
             }
         }
+
         pressStates[name] = true;
     }
 }
@@ -440,6 +460,7 @@ function globalHandleKeyUp(e){
     preventKey(e);
 
     const name = keycodes[e.keyCode];
+
     if(name) {
         pressStates[name] = false;
     }
@@ -471,7 +492,7 @@ function preventKey(event){
 // You can't access console logs on the 3DS, so it will show an alert when there's an error
 if(is3DS()){
     window.addEventListener("error", function(e) {
-        alert(e.filename+":"+e.lineno+" "+e.message);
+        alert(e.filename + ":" + e.lineno + " " + e.message);
         return false;
     }, false);
 }
@@ -482,7 +503,9 @@ var touchStart;
 
 document.addEventListener('touchstart', function(e) {
     touchStart = e.touches[0];
-    if(e.target.classList.contains("drag-protection")) e.preventDefault(); // this can't be applied globally since it breaks click events
+    if(e.target.classList.contains("drag-protection")) {
+        e.preventDefault(); // this can't be applied globally since it breaks click events
+    }
 
     releaseAllKeys(); // Temporary fix
 }, false);
@@ -513,16 +536,22 @@ document.addEventListener('touchmove', function(e){
             // Horizontal
             if(deltaX > 0) direction = -1;
 
-            const notExtendedH = (direction === 1 && scrollX<w) || (direction === -1 && scrollX>0);
-            if(notExtendedH && css.overflowX === "scroll") return true;
+            const notExtendedH = (direction === 1 && scrollX < w) || (direction === -1 && scrollX > 0);
+            
+            if(notExtendedH && css.overflowX === "scroll") {
+                return true;
+            }
         }
         else {
             // Vertical
             if(deltaY < 0) direction = -1;
 
             // TODO: Fix drag prevention not working when scrolling upwards
-            const notExtendedV = (direction === 1 && scrollY<h) || (direction === -1 && scrollY>0);
-            if(notExtendedV && css.overflowY === "scroll") return true;
+            const notExtendedV = (direction === 1 && scrollY < h) || (direction === -1 && scrollY > 0);
+            
+            if(notExtendedV && css.overflowY === "scroll") {
+                return true;
+            }
         }
 
     }
@@ -535,13 +564,19 @@ document.addEventListener('touchmove', function(e){
 window.addEventListener("load",function (){
     if(is3DS()){
         const non3dsLinks = document.getElementsByClassName("non-3ds-link");
-        for(var i = 0; i < non3dsLinks.length; i++) registerNon3DSlink(non3dsLinks[i]);
-
         const unlockers = document.getElementsByClassName("screen-unlocker");
-        for(var i = 0; i < unlockers.length; i++) registerScreenUnlocker(unlockers[i]);
+        
+        for(var i = 0; i < non3dsLinks.length; i++) {
+            registerNon3DSlink(non3dsLinks[i]);
+        }
+
+        for(var i = 0; i < unlockers.length; i++) {
+            registerScreenUnlocker(unlockers[i]);
+        }
 
     } else {
         const only3ds = document.getElementsByClassName("only-3ds");
+
         for(var i = 0; i < only3ds.length; i++) {
             only3ds[i].style.display = "none";
         }
@@ -549,8 +584,10 @@ window.addEventListener("load",function (){
 
     // This ensures that the canvas isn't stretched and blured
     const dualScreen = document.getElementsByClassName("dual-screen");
+
     for(var i = 0; i < dualScreen.length; i++){
         const elm = dualScreen[i];
+        
         if(elm.tagName.toLowerCase() === "canvas"){
             const ctx = elm.getContext("2d");
             ctx.imageSmoothingEnabled = false;
