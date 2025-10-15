@@ -99,7 +99,7 @@ window.addEventListener( 'load', function () {
 		outputNum = document.getElementById( 'output-num' ),
 		btnConvert = document.getElementById( 'btn-convert' ),
 		conv = window.conversions || {},
-		keys = conv.keys();
+		keys = Object.keys(conv);
 
 	Element.prototype.appendNew = function ( tagname, attributes1, attributes2 ) {
 		/* Examples:
@@ -154,7 +154,7 @@ window.addEventListener( 'load', function () {
 		inputUnitFrom.innerHTML = '';
 		inputUnitTo.innerHTML = '';
 
-		const keys2 = conv[ unitType.value ].keys();
+		const keys2 = Object.keys(conv[ unitType.value ]);
 		for ( var z = 0; z < keys2.length; z++ ) {
 			inputUnitFrom.appendNew( 'option', { value: keys2[ z ] }, getPlural( keys2[ z ] ) );
 			inputUnitTo.appendNew( 'option', { value: keys2[ z ] }, getPlural( keys2[ z ] ) );
