@@ -57,13 +57,11 @@ Animation.prototype = {
 		if (this.intervalId > 0) return;
 		this.playing = true;
 		this.intervalId = startAnim(this);
-		console.log('Play animation', this.intervalId);
 	},
 
 	stop: function() {
 		if (this.intervalId === 0) return;
 		this.playing = false;
-		console.log('Stop animation', this.intervalId);
 		clearInterval(this.intervalId);
 		this.intervalId = 0;
 	}
