@@ -55,6 +55,8 @@ net.httpGet = function(url, callback, allowInsecure) {
 
     const xhr = new XMLHttpRequest();
 
+    xhr.responseType = "text";
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             callback(xhr.status, xhr.responseText);

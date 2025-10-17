@@ -1,78 +1,27 @@
 window.addEventListener('load', function() {
-	var currentNews, buttonSelectX, buttonSelectY;
-	Element.prototype.appendNew = function(tagname, attributes1, attributes2) {
-		/* Examples:
-	        myElem.appendNew("div")  ->  myElem.innerHTML == "<div></div>"
-	        myElem.appendNew("div", "Hello, world!")  ->  myElem.innerHTML == "<div>Hello, world!</div>"
-	        myElem.appendNew("div", {id: "foo"})  ->  myElem.innerHTML == "<div id='foo'></div>"
-	        myElem.appendNew("div", {id: "foo"}, "Hello, world!");  ->  myElem.innerHTML == "<div id='foo'>Hello, world!</div>"
-	        */
-		attributes1 = attributes1 || "";
-		attributes2 = attributes2 || "";
-		var content,
-			attributes;
-		if(typeof attributes1 === "object") {
-			attributes = attributes1;
-			content = attributes2;
-		} else {
-			attributes = {};
-			content = attributes1;
-		}
+	var currentNews, buttonSelectX, buttonSelectY, ltData;
 
-		var elem = document.createElement(tagname);
-		if (tagname !== 'input') elem.innerHTML = content;
-		for (var attribute in attributes) {
-			if (attributes.hasOwnProperty(attribute)) {
-				elem[attribute] = attributes[attribute];
-				elem.setAttribute(attribute, attributes[attribute]);
-			}
-		}
-		this.appendChild(elem);
-		return elem;
-	};
-
-	Element.prototype.startIconAnim = function() {
-		const elem = this;
+	function startIconAnim(element) {
 		var animIndex = 0;
-		clearInterval(elem["data-iconAnimInterval"]);
-		elem["data-iconAnimInterval"] = setInterval(function() {
-			const rot = 
-				Math.sin(animIndex/20) * 8;
+		clearInterval(ltData[element.id].iconAnimInterval);
+		ltData[element.id].iconAnimInterval = setInterval(function() {
+			const rot = Math.sin(animIndex/20) * 8;
 			const scale = 1 + (Math.abs(((animIndex/80) % 2) - 1) - 0.5) * 0.1; // Triangle Wave
-			elem.style["-webkit-transform"] = "rotate(" + rot + "deg) scale(" + scale + ")";
+			element.style["-webkit-transform"] = "rotate(" + rot + "deg) scale(" + scale + ")";
 			animIndex++;
 		}, 10);
 	};
 
-	Element.prototype.stopIconAnim = function() {
-		const elem = this;
-		clearInterval(elem["data-iconAnimInterval"]);
-		elem.style["-webkit-transform"] = "rotate(0deg) scale(1)";
-	};
+	function stopIconAnim(element) {
+		clearInterval(ltData[element.id].iconAnimInterval);
+		element.style["-webkit-transform"] = "rotate(0deg) scale(1)";
+	}
 
-	Array.prototype.last = function(set) {
-		if (set) {
-			this[this.length - 1] = set;
-		} else {
-			return this[this.length - 1];
-		}
-	};
-
-	Element.prototype.getChildByClassName = function(name) {
-		var children = this.childNodes;
-		for(var i = 0; i < children.length; i++) {
-			console.log(children[i].className);
-			if(children[i].className == name) {
-				return children[i];
-			}
-		}
-	};
-
-	Element.prototype.makeLastChild = function () {
-		var tempDiv = this.parentNode.appendNew("div");
-		this.parentNode.insertBefore(this, tempDiv);
-		this.parentNode.removeChild(tempDiv);
-	};
+	function makeLastChild(element) {
+		var tempDiv = element.parentNode.appendNew(["div"]);
+		element.parentNode.insertBefore(element, tempDiv);
+		element.parentNode.removeChild(tempDiv);
+	}
 
 	function boardClick(event, buttons, non) {
 		if (event.target.getAttribute("data-state") != "flagged" && document.getElementById("flag").checked) {
@@ -93,45 +42,49 @@ window.addEventListener('load', function() {
 			width = non.width,
 			title = document.getElementById("title");
 		if (non.title !== null) {
-			title.appendNew("h2", { "id": "name" }, non.title);
-			title.appendNew("h3", { "id": "author" }, "By " + non.by);
+			title.appendNew(["h2", { "id": "name" }, non.title]);
+			title.appendNew(["h3", { "id": "author" }, "By " + non.by]);
 		}
 
 		if (non.tutorial !== null) {
-			title.appendNew("div", { "id": "tutorial" }, non.tutorial);
+			title.appendNew(["div", { "id": "tutorial" }, non.tutorial]);
 		}
 
 		const board = document.getElementById("board"),
-			table = board.appendNew("table"),
-			tool = document.getElementById("tool") || board.parentNode.appendNew("div", {"id": "tool"}),
-			home = document.getElementById("home") || board.parentNode.appendNew("div", {"id": "home"}),
+			table = board.appendNew(["table"]),
+			tool = document.getElementById("tool") || board.parentNode.appendNew(["div", {"id": "tool"}]),
+			home = document.getElementById("home") || board.parentNode.appendNew(["div", {"id": "home"}]),
 			fadeDiv = document.getElementById("LevelFadeTransition");
-		tool.appendNew("input", {"type": "checkbox", "id": "flag"});
-		tool.appendNew("lable", {"for": "flag"}, "Flag");
-		const hb = home.appendNew("button", {"id": "homeButton"}, "Home");
+		tool.appendNew(["input", {"type": "checkbox", "id": "flag"}]);
+		tool.appendNew(["lable", {"for": "flag"}, "Flag"]);
+		const hb = home.appendNew(["button", {"id": "homeButton"}, "Home"]);
 		hb.addEventListener("click", doFadeToLS, false);
 
-		fadeDiv.makeLastChild();
+		makeLastChild(fadeDiv);
 
 
-		var tr = table.appendNew("thead").appendNew("tr");
-		tr.appendNew("th");
-		for (var k = 0; k < width; k++) {
-			tr.appendNew("th", non.columns[k].join("<br>"));
+		var tr = table.appendNew(["thead"]).appendNew(["tr"]);
+		tr.appendNew(["th"]);
+		for (var i = 0; i < width; i++) {
+			const th = tr.appendNew(["th", non.columns[i][0]]);
+			for(var j = 1; j < non.columns[i].length; j++) {
+				th.appendNew(["br"]);
+				th.appendNew(non.columns[i][j]);
+			}
 		}
 
-		const tbody = table.appendNew("tbody");
+		const tbody = table.appendNew(["tbody"]);
 		var buttons = [];
 		for (var i = 0; i < height; i++) {
 			buttons.push([]);
-			var tr = tbody.appendNew("tr");
-			tr.appendNew("th", non.rows[i].join(" "));
+			var tr = tbody.appendNew(["tr"]);
+			tr.appendNew(["th", non.rows[i].join(" ")]);
 			for (var j = 0; j < width; j++) {
-				buttons[i].push(tr.appendNew("td").appendNew("button", {
+				buttons[i].push(tr.appendNew(["td"]).appendNew(["button", {
 					"class": "boardButton",
 					"data-pos": j + "," + i,
 					"data-state": "unpressed"
-				}));
+				}]));
 				buttons[i][j].addEventListener("click", function(event) {
 					boardClick(event, buttons, non);
 				}, false);
@@ -180,11 +133,10 @@ window.addEventListener('load', function() {
 	}
 
 	function hasWon(buttons, non) {
-		// Make an array of 
 		var buttonsBool = [];
 		for(var i = 0; i < buttons.length; i++){
 			buttonsBool.push([]);
-			for(var j = 0; j < buttons[i].length; j++){
+			for(var j = 0; j < buttons[i].length; j++) {
 				buttonsBool[i].push(buttons[i][j].getAttribute("data-state") == "pressed");
 			}
 		}
@@ -218,7 +170,6 @@ window.addEventListener('load', function() {
 		// Check rows
 		for (var rowIndex = 0; rowIndex < buttonsBool.length; rowIndex++) {
 			if (!matchesHints(buttonsBool[rowIndex], non.rows[rowIndex])) {
-				//alert("Row " + (rowIndex + 1) + " failed");
 				return false;
 			}
 		}
@@ -230,7 +181,6 @@ window.addEventListener('load', function() {
 				column.push(buttonsBool[rowIndex][colIndex]);
 			}
 			if (!matchesHints(column, non.columns[colIndex])) {
-				//alert("Column " + (colIndex + 1) + " failed");
 				return false;
 			}
 		}
@@ -251,9 +201,9 @@ window.addEventListener('load', function() {
 	}
 
 	function doFadeAndStart(lt) {
-		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"});
-		const fadeDiv = ls.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
-		fadeDiv.makeLastChild();
+		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew(["div", {"id": "levelSelect"}]);
+		const fadeDiv = ls.parentNode.appendNew(["div", {"id": "LevelFadeTransition", "style": "display: none;"}]);
+		makeLastChild(fadeDiv);
 		var fadeTimer = 0;
 		const fadeTimeout = setInterval(function() {
 			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
@@ -264,8 +214,8 @@ window.addEventListener('load', function() {
 				} catch(err) {
 					return;
 				}
-				var groupName = lt.getChildByClassName("LevelGroupName").innerHTML;
-				var levelNum = lt.getChildByClassName("LevelNumber").innerHTML;
+				var groupName = lt.getElementsByClassName("LevelGroupName")[0].innerHTML;
+				var levelNum = lt.getElementsByClassName("LevelNumber")[0].innerHTML;
 				net.httpGet("boards/" + groupName + "-" + levelNum + ".non", function(status, text){
 					if(status == 404){
 						alert("Request failed; Attempting to load demo.non instead");
@@ -285,15 +235,15 @@ window.addEventListener('load', function() {
 	}
 
 	function doFadeToLS() {
-		const fadeDiv = board.parentNode.appendNew("div", {"id": "LevelFadeTransition", "style": "display: none;"});
-		fadeDiv.makeLastChild();
+		const fadeDiv = board.parentNode.appendNew(["div", {"id": "LevelFadeTransition", "style": "display: none;"}]);
+		makeLastChild(fadeDiv);
 		var fadeTimer = 0;
 		const fadeTimeout = setInterval(function() {
 			fadeDiv.style.opacity = Math.min(1.25 - Math.abs((fadeTimer/40) - 1), 1);
 			fadeDiv.style.display = "block";
 			if(fadeTimer == 30){
 				showLevelSelect();
-				fadeDiv.makeLastChild();
+				makeLastChild(fadeDiv);
 			}else if(fadeTimer == 90) {
 				clearInterval(fadeTimeout);
 				fadeDiv.parentNode.removeChild(fadeDiv);
@@ -318,36 +268,39 @@ window.addEventListener('load', function() {
 
 		buttonSelectX = 0;
 		buttonSelectY = 0;
-		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew("div", {"id": "levelSelect"}),
-			table = ls.appendNew("table", {"id": "levelSelectTable"}),
+		const ls = document.getElementById("levelSelect") || document.getElementById("bottom-screen").appendNew(["div", {"id": "levelSelect"}]),
+			table = ls.appendNew(["table", {"id": "levelSelectTable"}]),
 			groupNames = ["Tutorial", "Easy", "Medium", "Hard"],
 			groupColors = ["#80B0FF", "#20D020", "#FFFF20", "#FF4040"];
+		ltData = {};
 		var levelTiles = [];
 		for(var i = 0; i < 4; i++) {
-			const tr = table.appendNew("tr");
+			const tr = table.appendNew(["tr"]);
 			for(var j = 0; j < 5; j++) {
-				const lt = table.appendNew("td").appendNew("div", {"class": "LevelTile", "id": "lt_" + j + "," + i});
+				const lt = table.appendNew(["td"]).appendNew(["div", {"class": "LevelTile", "id": "lt_" + j + "," + i}]);
 				lt.style["background-color"] = groupColors[i];
-				lt.appendNew("div", {"class": "LevelGroupName"}, groupNames[i]);
-				lt.appendNew("div", {"class": "LevelNumber"}, j+1);
-				lt["data-startonclick"] = false;
-				lt["data-iconAnimInterval"] = null;
+				lt.appendNew(["div", {"class": "LevelGroupName"}, groupNames[i]]);
+				lt.appendNew(["div", {"class": "LevelNumber"}, (j+1).toString()]);
+				ltData[lt.id] = {
+					startOnClick: false,
+					iconAnimInterval: null
+				};
 				lt.addEventListener("click", function(event) {
 					var lt = event.target;
 					if(! lt.id.startsWith("lt_")) {
 						lt = lt.parentNode;
 					}
-					if(lt["data-startonclick"]) {
+					if(ltData[lt.id].startOnClick) {
 						doFadeAndStart(lt);
 					} else {
 						buttonSelectX = parseInt(lt.id[3]);
 						buttonSelectY = parseInt(lt.id[5]);
 						for(var i = 0; i < levelTiles.length; i++) {
-							levelTiles[i].stopIconAnim();
-							levelTiles[i]["data-startonclick"] = false;
+							stopIconAnim(levelTiles[i]);
+							ltData[levelTiles[i].id].startOnClick = false;
 						}
-						lt["data-startonclick"] = true;
-						lt.startIconAnim();
+						ltData[lt.id].startOnClick = true;
+						startIconAnim(lt);
 					}
 				}, false);
 				levelTiles.push(lt);
@@ -363,12 +316,11 @@ window.addEventListener('load', function() {
 
 		if(button == "A") {
 			const selectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
-			selectedLevel.startIconAnim();
 			doFadeAndStart(selectedLevel);
 			return;
 		}
 
-		oldSelectedLevel.stopIconAnim();
+		stopIconAnim(oldSelectedLevel);
 
 		if(button == "Up") {
 			buttonSelectY -= 1;
@@ -397,7 +349,7 @@ window.addEventListener('load', function() {
 		}
 
 		const newSelectedLevel = document.getElementById("lt_" + buttonSelectX + "," + buttonSelectY);
-		newSelectedLevel.startIconAnim();
+		startIconAnim(newSelectedLevel);
 	}
 	currentNews = document.getElementById("title").innerHTML;
 	onBtnJustPressed("A", function() {levelSelectButton("A");});
