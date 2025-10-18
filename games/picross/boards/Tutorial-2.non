@@ -2,7 +2,7 @@ catalogue "https://wolfyxon.github.io/3ds-web-stuff/"
 title "Tutorial 2"
 by "Basic-Experimental"
 copyright "&copy; Copyright 2024"
-license GPLv4 or later, CC BY-NC-ND
+license LGPLv2.1 or later, CC BY-NC
 tutorial "Some hints have multiple numbers. Each number tells you the length of a series of filled in boxes. Each series must have at least one empty box seperating it and the next. For example, the hint ''2 3'' would mean that the first series of filled in boxes would be 2 long, then at least one empty box, followed by a series of 3 filled in boxes. There would be no more filled in boxes after that."
 width 3
 height 3
